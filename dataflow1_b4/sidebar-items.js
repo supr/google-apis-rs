@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["cmn",""]],"macro":[["map!","This macro is advertised in the documentation, which is why we deliver it as well"]],"struct":[["Dataflow","Central instance to access all Dataflow related resource activities"]]});

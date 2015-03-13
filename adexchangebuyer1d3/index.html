@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `adexchangebuyer1d3` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, adexchangebuyer1d3">
+
+    <title>adexchangebuyer1d3 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'adexchangebuyer1d3', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>adexchangebuyer1d3</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/adexchangebuyer1d3/lib.rs.html#5-4885'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id="features" class='section-header'><a
+                           href="#features">Features</a></h1>
+<p>Handle the following <em>Resources</em> with ease from the central <a href="struct.AdExchangeBuyer.html">hub</a> ... </p>
+
+<ul>
+<li><a href="struct.Account.html">accounts</a> (<a href="struct.AccountGetMethodBuilder.html"><em>get</em></a>, <a href="struct.AccountListMethodBuilder.html"><em>list</em></a>, <a href="struct.AccountPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.AccountUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.BillingInfo.html">billing info</a> (<a href="struct.BillingInfoGetMethodBuilder.html"><em>get</em></a> and <a href="struct.BillingInfoListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.Budget.html">budget</a> (<a href="struct.BudgetGetMethodBuilder.html"><em>get</em></a>, <a href="struct.BudgetPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.BudgetUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Creative.html">creatives</a> (<a href="struct.CreativeGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CreativeInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.CreativeListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.DirectDeal.html">direct deals</a> (<a href="struct.DirectDealGetMethodBuilder.html"><em>get</em></a> and <a href="struct.DirectDealListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.PerformanceReport.html">performance report</a> (<a href="struct.PerformanceReportListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.PretargetingConfig.html">pretargeting config</a> (<a href="struct.PretargetingConfigDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.PretargetingConfigGetMethodBuilder.html"><em>get</em></a>, <a href="struct.PretargetingConfigInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.PretargetingConfigListMethodBuilder.html"><em>list</em></a>, <a href="struct.PretargetingConfigPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.PretargetingConfigUpdateMethodBuilder.html"><em>update</em></a>)</li>
+</ul>
+
+<p>Everything else about the <em>Ad Exchange Buyer</em> API can be found at the
+<a href="https://developers.google.com/ad-exchange/buyer-rest">official documentation site</a>.</p>
+
+<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+
+<h1 id="structure-of-this-library" class='section-header'><a
+                           href="#structure-of-this-library">Structure of this Library</a></h1>
+<p>The API is structured into the following primary items:</p>
+
+<ul>
+<li><strong><a href="struct.AdExchangeBuyer.html">Hub</a></strong>
+
+<ul>
+<li>a central object to maintain state and allow accessing all <em>Activities</em></li>
+</ul></li>
+<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+
+<ul>
+<li>primary types that you can apply <em>Activities</em> to</li>
+<li>a collection of properties and <em>Parts</em></li>
+<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+
+<ul>
+<li>a collection of properties</li>
+<li>never directly used in <em>Activities</em></li>
+</ul></li>
+</ul></li>
+<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+
+<ul>
+<li>operations to apply to <em>Resources</em></li>
+</ul></li>
+</ul>
+
+<p>Generally speaking, you can invoke <em>Activities</em> like this:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>resource</span>().<span class='ident'>activity</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>Or specifically ...</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>pretargeting_config</span>().<span class='ident'>insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>pretargeting_config</span>().<span class='ident'>patch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>pretargeting_config</span>().<span class='ident'>get</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>pretargeting_config</span>().<span class='ident'>update</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>The <code>resource()</code> and <code>activity(...)</code> calls create <a href="http://en.wikipedia.org/wiki/Builder_pattern">builders</a>. The second one dealing with <code>Activities</code> 
+supports various methods to configure the impending operation (not shown here). It is made such that all required arguments have to be 
+specified right away (i.e. <code>(...)</code>), whereas all optional ones can be <a href="http://en.wikipedia.org/wiki/Builder_pattern">build up</a> as desired.
+The <code>doit()</code> method performs the actual communication with the server and returns the respective result.</p>
+
+<h1 id="usage" class='section-header'><a
+                           href="#usage">Usage</a></h1>
+<h2 id="a-complete-example" class='section-header'><a
+                           href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>adexchangebuyer1d3</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+ 
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
+<span class='comment'>// among other things.</span>
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
+<span class='comment'>// unless you replace  `None` with the desired Flow</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
+<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>AdExchangeBuyer</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// As the method needs a request, you would usually fill it with the desired information</span>
+<span class='comment'>// into the respective structure. Some of the parts shown here might not be applicable !</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span>: <span class='ident'>PretargetingConfig</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+ 
+<span class='comment'>// You can configure optional parameters by calling the respective setters at will, and</span>
+<span class='comment'>// execute the final call using `doit()`.</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>pretargeting_config</span>().<span class='ident'>patch</span>(<span class='kw-2'>&amp;</span><span class='ident'>req</span>, <span class='string'>&quot;accountId&quot;</span>, <span class='string'>&quot;configId&quot;</span>)
+             .<span class='ident'>doit</span>();
+ 
+<span class='kw'>match</span> <span class='ident'>result</span> {
+    <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+}
+</pre>
+
+<h2 id="handling-errors" class='section-header'><a
+                           href="#handling-errors">Handling Errors</a></h2>
+<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+the doit() methods, or handed as possibly intermediate results to either the 
+<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+
+<p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
+makes the system potentially resilient to all kinds of errors.</p>
+
+<h2 id="about-customization/callbacks" class='section-header'><a
+                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
+<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+Respective methods will be called to provide progress information, as well as determine whether the system should 
+retry on failure.</p>
+
+<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+
+<h2 id="about-parts" class='section-header'><a
+                           href="#about-parts">About Parts</a></h2>
+<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
+<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+the server to indicate either the set parts of the request or the desired parts in the response.</p>
+
+<h2 id="about-builder-arguments" class='section-header'><a
+                           href="#about-builder-arguments">About Builder Arguments</a></h2>
+<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+These will always take a single argument, for which the following statements are true.</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
+<li>strings are passed as <code>&amp;str</code></li>
+<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+</ul>
+
+<p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
+                               title='adexchangebuyer1d3::cmn'>cmn</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.map!.html'
+                               title='adexchangebuyer1d3::map!'>map!</a></td>
+                        <td class='docblock short'><p>This macro is advertised in the documentation, which is why we deliver it as well</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Account.html'
+                               title='adexchangebuyer1d3::Account'>Account</a></td>
+                        <td class='docblock short'><p>Configuration data for an Ad Exchange buyer account.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.AccountGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.AccountListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.AccountPatchMethodBuilder.html">patch</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountBidderLocation.html'
+                               title='adexchangebuyer1d3::AccountBidderLocation'>AccountBidderLocation</a></td>
+                        <td class='docblock short'><p>Your bidder locations that have distinct URLs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountGetMethodBuilder.html'
+                               title='adexchangebuyer1d3::AccountGetMethodBuilder'>AccountGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets one account by ID.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountListMethodBuilder.html'
+                               title='adexchangebuyer1d3::AccountListMethodBuilder'>AccountListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves the authenticated user&#39;s list of accounts.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountMethodsBuilder.html'
+                               title='adexchangebuyer1d3::AccountMethodsBuilder'>AccountMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>account</em> resources.
+It is not used directly, but through the <code>AdExchangeBuyer</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountPatchMethodBuilder.html'
+                               title='adexchangebuyer1d3::AccountPatchMethodBuilder'>AccountPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing account. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountUpdateMethodBuilder.html'
+                               title='adexchangebuyer1d3::AccountUpdateMethodBuilder'>AccountUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountsList.html'
+                               title='adexchangebuyer1d3::AccountsList'>AccountsList</a></td>
+                        <td class='docblock short'><p>An account feed lists Ad Exchange buyer accounts that the user has access to. Each entry in the feed corresponds to a single buyer account.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdExchangeBuyer.html'
+                               title='adexchangebuyer1d3::AdExchangeBuyer'>AdExchangeBuyer</a></td>
+                        <td class='docblock short'><p>Central instance to access all AdExchangeBuyer related resource activities</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BillingInfo.html'
+                               title='adexchangebuyer1d3::BillingInfo'>BillingInfo</a></td>
+                        <td class='docblock short'><p>The configuration data for an Ad Exchange billing info.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BillingInfoGetMethodBuilder.html">get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BillingInfoGetMethodBuilder.html'
+                               title='adexchangebuyer1d3::BillingInfoGetMethodBuilder'>BillingInfoGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns the billing information for one account specified by account ID.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BillingInfoList.html'
+                               title='adexchangebuyer1d3::BillingInfoList'>BillingInfoList</a></td>
+                        <td class='docblock short'><p>A billing info feed lists Billing Info the Ad Exchange buyer account has access to. Each entry in the feed corresponds to a single billing info.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BillingInfoListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BillingInfoListMethodBuilder.html'
+                               title='adexchangebuyer1d3::BillingInfoListMethodBuilder'>BillingInfoListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of billing information for all accounts of the authenticated user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BillingInfoMethodsBuilder.html'
+                               title='adexchangebuyer1d3::BillingInfoMethodsBuilder'>BillingInfoMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>billingInfo</em> resources.
+It is not used directly, but through the <code>AdExchangeBuyer</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Budget.html'
+                               title='adexchangebuyer1d3::Budget'>Budget</a></td>
+                        <td class='docblock short'><p>The configuration data for Ad Exchange RTB - Budget API.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BudgetPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.BudgetUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.BudgetGetMethodBuilder.html">get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BudgetGetMethodBuilder.html'
+                               title='adexchangebuyer1d3::BudgetGetMethodBuilder'>BudgetGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns the budget information for the adgroup specified by the accountId and billingId.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BudgetMethodsBuilder.html'
+                               title='adexchangebuyer1d3::BudgetMethodsBuilder'>BudgetMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>budget</em> resources.
+It is not used directly, but through the <code>AdExchangeBuyer</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BudgetPatchMethodBuilder.html'
+                               title='adexchangebuyer1d3::BudgetPatchMethodBuilder'>BudgetPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BudgetUpdateMethodBuilder.html'
+                               title='adexchangebuyer1d3::BudgetUpdateMethodBuilder'>BudgetUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the budget amount for the budget of the adgroup specified by the accountId and billingId, with the budget amount in the request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Creative.html'
+                               title='adexchangebuyer1d3::Creative'>Creative</a></td>
+                        <td class='docblock short'><p>A creative and its classification data.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.CreativeInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.CreativeListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.CreativeGetMethodBuilder.html">get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeCorrections.html'
+                               title='adexchangebuyer1d3::CreativeCorrections'>CreativeCorrections</a></td>
+                        <td class='docblock short'><p>Shows any corrections that were applied to this creative. Read-only. This field should not be set in requests.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeDisapprovalReasons.html'
+                               title='adexchangebuyer1d3::CreativeDisapprovalReasons'>CreativeDisapprovalReasons</a></td>
+                        <td class='docblock short'><p>The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons. In this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set in requests.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeFilteringReasons.html'
+                               title='adexchangebuyer1d3::CreativeFilteringReasons'>CreativeFilteringReasons</a></td>
+                        <td class='docblock short'><p>The filtering reasons for the creative. If this feature is not enabled, please ask your technical account manager. Read-only. This field should not be set in requests.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeFilteringReasonsReasons.html'
+                               title='adexchangebuyer1d3::CreativeFilteringReasonsReasons'>CreativeFilteringReasonsReasons</a></td>
+                        <td class='docblock short'><p>The filtering reasons.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeGetMethodBuilder.html'
+                               title='adexchangebuyer1d3::CreativeGetMethodBuilder'>CreativeGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the status for a single creative. A creative will be available 30-40 minutes after submission.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeInsertMethodBuilder.html'
+                               title='adexchangebuyer1d3::CreativeInsertMethodBuilder'>CreativeInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Submit a new creative.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeListMethodBuilder.html'
+                               title='adexchangebuyer1d3::CreativeListMethodBuilder'>CreativeListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of the authenticated user&#39;s active creatives. A creative will be available 30-40 minutes after submission.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativeMethodsBuilder.html'
+                               title='adexchangebuyer1d3::CreativeMethodsBuilder'>CreativeMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>creative</em> resources.
+It is not used directly, but through the <code>AdExchangeBuyer</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreativesList.html'
+                               title='adexchangebuyer1d3::CreativesList'>CreativesList</a></td>
+                        <td class='docblock short'><p>The creatives feed lists the active creatives for the Ad Exchange buyer accounts that the user has access to. Each entry in the feed corresponds to a single creative.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.CreativeListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DirectDeal.html'
+                               title='adexchangebuyer1d3::DirectDeal'>DirectDeal</a></td>
+                        <td class='docblock short'><p>The configuration data for an Ad Exchange direct deal.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.DirectDealGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.DirectDealListMethodBuilder.html">list</a> (none)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DirectDealGetMethodBuilder.html'
+                               title='adexchangebuyer1d3::DirectDealGetMethodBuilder'>DirectDealGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets one direct deal by ID.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DirectDealListMethodBuilder.html'
+                               title='adexchangebuyer1d3::DirectDealListMethodBuilder'>DirectDealListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves the authenticated user&#39;s list of direct deals.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DirectDealMethodsBuilder.html'
+                               title='adexchangebuyer1d3::DirectDealMethodsBuilder'>DirectDealMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>directDeal</em> resources.
+It is not used directly, but through the <code>AdExchangeBuyer</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DirectDealsList.html'
+                               title='adexchangebuyer1d3::DirectDealsList'>DirectDealsList</a></td>
+                        <td class='docblock short'><p>A direct deals feed lists Direct Deals the Ad Exchange buyer account has access to. This includes direct deals set up for the buyer account as well as its merged stream seats.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.DirectDealListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PerformanceReport.html'
+                               title='adexchangebuyer1d3::PerformanceReport'>PerformanceReport</a></td>
+                        <td class='docblock short'><p>The configuration data for an Ad Exchange performance report list.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PerformanceReportList.html'
+                               title='adexchangebuyer1d3::PerformanceReportList'>PerformanceReportList</a></td>
+                        <td class='docblock short'><p>The configuration data for an Ad Exchange performance report list. <a href="https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release">https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release</a> <a href="https://cs.corp.google.com/#piper///depot/google3/contentads/adx/tools/rtb_api/adxrtb.py">https://cs.corp.google.com/#piper///depot/google3/contentads/adx/tools/rtb_api/adxrtb.py</a></p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PerformanceReportListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PerformanceReportListMethodBuilder.html'
+                               title='adexchangebuyer1d3::PerformanceReportListMethodBuilder'>PerformanceReportListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves the authenticated user&#39;s list of performance metrics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PerformanceReportMethodsBuilder.html'
+                               title='adexchangebuyer1d3::PerformanceReportMethodsBuilder'>PerformanceReportMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>performanceReport</em> resources.
+It is not used directly, but through the <code>AdExchangeBuyer</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfig.html'
+                               title='adexchangebuyer1d3::PretargetingConfig'>PretargetingConfig</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PretargetingConfigInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.PretargetingConfigPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.PretargetingConfigGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.PretargetingConfigUpdateMethodBuilder.html">update</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigDeleteMethodBuilder.html'
+                               title='adexchangebuyer1d3::PretargetingConfigDeleteMethodBuilder'>PretargetingConfigDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes an existing pretargeting config.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigDimensions.html'
+                               title='adexchangebuyer1d3::PretargetingConfigDimensions'>PretargetingConfigDimensions</a></td>
+                        <td class='docblock short'><p>Requests which allow one of these (width, height) pairs will match. All pairs must be supported ad dimensions.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigExcludedPlacements.html'
+                               title='adexchangebuyer1d3::PretargetingConfigExcludedPlacements'>PretargetingConfigExcludedPlacements</a></td>
+                        <td class='docblock short'><p>Requests containing any of these placements will not match.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigGetMethodBuilder.html'
+                               title='adexchangebuyer1d3::PretargetingConfigGetMethodBuilder'>PretargetingConfigGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a specific pretargeting configuration</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigInsertMethodBuilder.html'
+                               title='adexchangebuyer1d3::PretargetingConfigInsertMethodBuilder'>PretargetingConfigInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Inserts a new pretargeting configuration.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigList.html'
+                               title='adexchangebuyer1d3::PretargetingConfigList'>PretargetingConfigList</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PretargetingConfigListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigListMethodBuilder.html'
+                               title='adexchangebuyer1d3::PretargetingConfigListMethodBuilder'>PretargetingConfigListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of the authenticated user&#39;s pretargeting configurations.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigMethodsBuilder.html'
+                               title='adexchangebuyer1d3::PretargetingConfigMethodsBuilder'>PretargetingConfigMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>pretargetingConfig</em> resources.
+It is not used directly, but through the <code>AdExchangeBuyer</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigPatchMethodBuilder.html'
+                               title='adexchangebuyer1d3::PretargetingConfigPatchMethodBuilder'>PretargetingConfigPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing pretargeting config. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigPlacements.html'
+                               title='adexchangebuyer1d3::PretargetingConfigPlacements'>PretargetingConfigPlacements</a></td>
+                        <td class='docblock short'><p>Requests containing any of these placements will match.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PretargetingConfigUpdateMethodBuilder.html'
+                               title='adexchangebuyer1d3::PretargetingConfigUpdateMethodBuilder'>PretargetingConfigUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing pretargeting config.</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
+                               title='adexchangebuyer1d3::Scope'>Scope</a></td>
+                        <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
+A scope is needed when requesting an
+<a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "adexchangebuyer1d3";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

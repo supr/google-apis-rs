@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Stride","Stride is similar to the slice iterator, but with a certain number of steps (the stride) skipped per iteration."],["StrideMut","StrideMut is like Stride, but with mutable elements."]]});

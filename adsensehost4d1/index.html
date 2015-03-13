@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `adsensehost4d1` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, adsensehost4d1">
+
+    <title>adsensehost4d1 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'adsensehost4d1', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>adsensehost4d1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/adsensehost4d1/lib.rs.html#5-5926'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id="features" class='section-header'><a
+                           href="#features">Features</a></h1>
+<p>Handle the following <em>Resources</em> with ease from the central <a href="struct.AdSenseHost.html">hub</a> ... </p>
+
+<ul>
+<li><a href="struct.Account.html">accounts</a> (<a href="struct.AccountAdclientGetMethodBuilder.html"><em>get adclients</em></a>, <a href="struct.AccountAdclientListMethodBuilder.html"><em>list adclients</em></a>, <a href="struct.AccountAdunitDeleteMethodBuilder.html"><em>delete adunits</em></a>, <a href="struct.AccountAdunitGetMethodBuilder.html"><em>get adunits</em></a>, <a href="struct.AccountAdunitGetAdCodeMethodBuilder.html"><em>getadcode adunits</em></a>, <a href="struct.AccountAdunitInsertMethodBuilder.html"><em>insert adunits</em></a>, <a href="struct.AccountAdunitListMethodBuilder.html"><em>list adunits</em></a>, <a href="struct.AccountAdunitPatchMethodBuilder.html"><em>patch adunits</em></a>, <a href="struct.AccountAdunitUpdateMethodBuilder.html"><em>update adunits</em></a>, <a href="struct.AccountGetMethodBuilder.html"><em>get</em></a>, <a href="struct.AccountListMethodBuilder.html"><em>list</em></a> and <a href="struct.AccountReportGenerateMethodBuilder.html"><em>generate reports</em></a>)</li>
+<li>adclients (<a href="struct.AdclientGetMethodBuilder.html"><em>get</em></a> and <a href="struct.AdclientListMethodBuilder.html"><em>list</em></a>)</li>
+<li>associationsessions (<a href="struct.AssociationsessionStartMethodBuilder.html"><em>start</em></a> and <a href="struct.AssociationsessionVerifyMethodBuilder.html"><em>verify</em></a>)</li>
+<li>customchannels (<a href="struct.CustomchannelDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.CustomchannelGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CustomchannelInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.CustomchannelListMethodBuilder.html"><em>list</em></a>, <a href="struct.CustomchannelPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.CustomchannelUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Report.html">reports</a> (<a href="struct.ReportGenerateMethodBuilder.html"><em>generate</em></a>)</li>
+<li>urlchannels (<a href="struct.UrlchannelDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.UrlchannelInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.UrlchannelListMethodBuilder.html"><em>list</em></a>)</li>
+</ul>
+
+<p>Everything else about the <em>AdSense Host</em> API can be found at the
+<a href="https://developers.google.com/adsense/host/">official documentation site</a>.</p>
+
+<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+
+<h1 id="structure-of-this-library" class='section-header'><a
+                           href="#structure-of-this-library">Structure of this Library</a></h1>
+<p>The API is structured into the following primary items:</p>
+
+<ul>
+<li><strong><a href="struct.AdSenseHost.html">Hub</a></strong>
+
+<ul>
+<li>a central object to maintain state and allow accessing all <em>Activities</em></li>
+</ul></li>
+<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+
+<ul>
+<li>primary types that you can apply <em>Activities</em> to</li>
+<li>a collection of properties and <em>Parts</em></li>
+<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+
+<ul>
+<li>a collection of properties</li>
+<li>never directly used in <em>Activities</em></li>
+</ul></li>
+</ul></li>
+<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+
+<ul>
+<li>operations to apply to <em>Resources</em></li>
+</ul></li>
+</ul>
+
+<p>Generally speaking, you can invoke <em>Activities</em> like this:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>resource</span>().<span class='ident'>activity</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>Or specifically ...</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adunits_get</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>get</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adunits_list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adunits_get_ad_code</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>reports_generate</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adunits_delete</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adunits_update</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adunits_patch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adunits_insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adclients_list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>adclients_get</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>The <code>resource()</code> and <code>activity(...)</code> calls create <a href="http://en.wikipedia.org/wiki/Builder_pattern">builders</a>. The second one dealing with <code>Activities</code> 
+supports various methods to configure the impending operation (not shown here). It is made such that all required arguments have to be 
+specified right away (i.e. <code>(...)</code>), whereas all optional ones can be <a href="http://en.wikipedia.org/wiki/Builder_pattern">build up</a> as desired.
+The <code>doit()</code> method performs the actual communication with the server and returns the respective result.</p>
+
+<h1 id="usage" class='section-header'><a
+                           href="#usage">Usage</a></h1>
+<h2 id="a-complete-example" class='section-header'><a
+                           href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>adsensehost4d1</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+ 
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
+<span class='comment'>// among other things.</span>
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
+<span class='comment'>// unless you replace  `None` with the desired Flow</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
+<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>AdSenseHost</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// You can configure optional parameters by calling the respective setters at will, and</span>
+<span class='comment'>// execute the final call using `doit()`.</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>accounts</span>().<span class='ident'>reports_generate</span>(<span class='string'>&quot;accountId&quot;</span>, <span class='string'>&quot;startDate&quot;</span>, <span class='string'>&quot;endDate&quot;</span>)
+             .<span class='ident'>start_index</span>(<span class='number'>92</span>)
+             .<span class='ident'>sort</span>(<span class='string'>&quot;nonumy&quot;</span>)
+             .<span class='ident'>metric</span>(<span class='string'>&quot;dolores&quot;</span>)
+             .<span class='ident'>max_results</span>(<span class='number'>40</span>)
+             .<span class='ident'>locale</span>(<span class='string'>&quot;sadipscing&quot;</span>)
+             .<span class='ident'>filter</span>(<span class='string'>&quot;aliquyam&quot;</span>)
+             .<span class='ident'>dimension</span>(<span class='string'>&quot;ea&quot;</span>)
+             .<span class='ident'>doit</span>();
+ 
+<span class='kw'>match</span> <span class='ident'>result</span> {
+    <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+}
+</pre>
+
+<h2 id="handling-errors" class='section-header'><a
+                           href="#handling-errors">Handling Errors</a></h2>
+<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+the doit() methods, or handed as possibly intermediate results to either the 
+<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+
+<p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
+makes the system potentially resilient to all kinds of errors.</p>
+
+<h2 id="about-customization/callbacks" class='section-header'><a
+                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
+<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+Respective methods will be called to provide progress information, as well as determine whether the system should 
+retry on failure.</p>
+
+<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+
+<h2 id="about-parts" class='section-header'><a
+                           href="#about-parts">About Parts</a></h2>
+<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
+<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+the server to indicate either the set parts of the request or the desired parts in the response.</p>
+
+<h2 id="about-builder-arguments" class='section-header'><a
+                           href="#about-builder-arguments">About Builder Arguments</a></h2>
+<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+These will always take a single argument, for which the following statements are true.</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
+<li>strings are passed as <code>&amp;str</code></li>
+<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+</ul>
+
+<p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
+                               title='adsensehost4d1::cmn'>cmn</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.map!.html'
+                               title='adsensehost4d1::map!'>map!</a></td>
+                        <td class='docblock short'><p>This macro is advertised in the documentation, which is why we deliver it as well</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Account.html'
+                               title='adsensehost4d1::Account'>Account</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountAdunitGetMethodBuilder.html">adunits.get</a> (none)</li>
+<li><a href="struct.AccountGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.AccountAdunitListMethodBuilder.html">adunits.list</a> (none)</li>
+<li><a href="struct.AccountAdunitGetAdCodeMethodBuilder.html">adunits.getAdCode</a> (none)</li>
+<li><a href="struct.AccountReportGenerateMethodBuilder.html">reports.generate</a> (none)</li>
+<li><a href="struct.AccountAdunitDeleteMethodBuilder.html">adunits.delete</a> (none)</li>
+<li><a href="struct.AccountAdunitUpdateMethodBuilder.html">adunits.update</a> (none)</li>
+<li><a href="struct.AccountAdunitPatchMethodBuilder.html">adunits.patch</a> (none)</li>
+<li><a href="struct.AccountAdunitInsertMethodBuilder.html">adunits.insert</a> (none)</li>
+<li><a href="struct.AccountListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.AccountAdclientListMethodBuilder.html">adclients.list</a> (none)</li>
+<li><a href="struct.AccountAdclientGetMethodBuilder.html">adclients.get</a> (none)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdclientGetMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdclientGetMethodBuilder'>AccountAdclientGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get information about one of the ad clients in the specified publisher&#39;s AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdclientListMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdclientListMethodBuilder'>AccountAdclientListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List all hosted ad clients in the specified hosted account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdunitDeleteMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdunitDeleteMethodBuilder'>AccountAdunitDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete the specified ad unit from the specified publisher AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdunitGetAdCodeMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdunitGetAdCodeMethodBuilder'>AccountAdunitGetAdCodeMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get ad code for the specified ad unit, attaching the specified host custom channels.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdunitGetMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdunitGetMethodBuilder'>AccountAdunitGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get the specified host ad unit in this AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdunitInsertMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdunitInsertMethodBuilder'>AccountAdunitInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Insert the supplied ad unit into the specified publisher AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdunitListMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdunitListMethodBuilder'>AccountAdunitListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List all ad units in the specified publisher&#39;s AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdunitPatchMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdunitPatchMethodBuilder'>AccountAdunitPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update the supplied ad unit in the specified publisher AdSense account. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountAdunitUpdateMethodBuilder.html'
+                               title='adsensehost4d1::AccountAdunitUpdateMethodBuilder'>AccountAdunitUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update the supplied ad unit in the specified publisher AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountGetMethodBuilder.html'
+                               title='adsensehost4d1::AccountGetMethodBuilder'>AccountGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get information about the selected associated AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountListMethodBuilder.html'
+                               title='adsensehost4d1::AccountListMethodBuilder'>AccountListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List hosted accounts associated with this AdSense account by ad client id.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountMethodsBuilder.html'
+                               title='adsensehost4d1::AccountMethodsBuilder'>AccountMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>account</em> resources.
+It is not used directly, but through the <code>AdSenseHost</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountReportGenerateMethodBuilder.html'
+                               title='adsensehost4d1::AccountReportGenerateMethodBuilder'>AccountReportGenerateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format specify &quot;alt=csv&quot; as a query parameter.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Accounts.html'
+                               title='adsensehost4d1::Accounts'>Accounts</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdClient.html'
+                               title='adsensehost4d1::AdClient'>AdClient</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AdclientGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.AccountAdclientGetMethodBuilder.html">adclients.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdClients.html'
+                               title='adsensehost4d1::AdClients'>AdClients</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AdclientListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.AccountAdclientListMethodBuilder.html">adclients.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdCode.html'
+                               title='adsensehost4d1::AdCode'>AdCode</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountAdunitGetAdCodeMethodBuilder.html">adunits.getAdCode</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdSenseHost.html'
+                               title='adsensehost4d1::AdSenseHost'>AdSenseHost</a></td>
+                        <td class='docblock short'><p>Central instance to access all AdSenseHost related resource activities</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdStyle.html'
+                               title='adsensehost4d1::AdStyle'>AdStyle</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdStyleColors.html'
+                               title='adsensehost4d1::AdStyleColors'>AdStyleColors</a></td>
+                        <td class='docblock short'><p>The colors included in the style. These are represented as six hexadecimal characters, similar to HTML color codes, but without the leading hash.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdStyleFont.html'
+                               title='adsensehost4d1::AdStyleFont'>AdStyleFont</a></td>
+                        <td class='docblock short'><p>The font which is included in the style.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdUnit.html'
+                               title='adsensehost4d1::AdUnit'>AdUnit</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountAdunitGetMethodBuilder.html">adunits.get</a> (response)</li>
+<li><a href="struct.AccountAdunitPatchMethodBuilder.html">adunits.patch</a> (request|response)</li>
+<li><a href="struct.AccountAdunitUpdateMethodBuilder.html">adunits.update</a> (request|response)</li>
+<li><a href="struct.AccountAdunitDeleteMethodBuilder.html">adunits.delete</a> (response)</li>
+<li><a href="struct.AccountAdunitInsertMethodBuilder.html">adunits.insert</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdUnitContentAdsSettings.html'
+                               title='adsensehost4d1::AdUnitContentAdsSettings'>AdUnitContentAdsSettings</a></td>
+                        <td class='docblock short'><p>Settings specific to content ads (AFC) and highend mobile content ads (AFMC).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdUnitContentAdsSettingsBackupOption.html'
+                               title='adsensehost4d1::AdUnitContentAdsSettingsBackupOption'>AdUnitContentAdsSettingsBackupOption</a></td>
+                        <td class='docblock short'><p>The backup option to be used in instances where no ad is available.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdUnitMobileContentAdsSettings.html'
+                               title='adsensehost4d1::AdUnitMobileContentAdsSettings'>AdUnitMobileContentAdsSettings</a></td>
+                        <td class='docblock short'><p>Settings specific to WAP mobile content ads (AFMC).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdUnits.html'
+                               title='adsensehost4d1::AdUnits'>AdUnits</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountAdunitListMethodBuilder.html">adunits.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdclientGetMethodBuilder.html'
+                               title='adsensehost4d1::AdclientGetMethodBuilder'>AdclientGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get information about one of the ad clients in the Host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdclientListMethodBuilder.html'
+                               title='adsensehost4d1::AdclientListMethodBuilder'>AdclientListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List all host ad clients in this AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdclientMethodsBuilder.html'
+                               title='adsensehost4d1::AdclientMethodsBuilder'>AdclientMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>adclient</em> resources.
+It is not used directly, but through the <code>AdSenseHost</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AssociationSession.html'
+                               title='adsensehost4d1::AssociationSession'>AssociationSession</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AssociationsessionVerifyMethodBuilder.html">verify</a> (response)</li>
+<li><a href="struct.AssociationsessionStartMethodBuilder.html">start</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AssociationsessionMethodsBuilder.html'
+                               title='adsensehost4d1::AssociationsessionMethodsBuilder'>AssociationsessionMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>associationsession</em> resources.
+It is not used directly, but through the <code>AdSenseHost</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AssociationsessionStartMethodBuilder.html'
+                               title='adsensehost4d1::AssociationsessionStartMethodBuilder'>AssociationsessionStartMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create an association session for initiating an association with an AdSense user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AssociationsessionVerifyMethodBuilder.html'
+                               title='adsensehost4d1::AssociationsessionVerifyMethodBuilder'>AssociationsessionVerifyMethodBuilder</a></td>
+                        <td class='docblock short'><p>Verify an association session after the association callback returns from AdSense signup.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomChannel.html'
+                               title='adsensehost4d1::CustomChannel'>CustomChannel</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.CustomchannelGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.CustomchannelUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.CustomchannelDeleteMethodBuilder.html">delete</a> (response)</li>
+<li><a href="struct.CustomchannelInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.CustomchannelPatchMethodBuilder.html">patch</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomChannels.html'
+                               title='adsensehost4d1::CustomChannels'>CustomChannels</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.CustomchannelListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomchannelDeleteMethodBuilder.html'
+                               title='adsensehost4d1::CustomchannelDeleteMethodBuilder'>CustomchannelDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete a specific custom channel from the host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomchannelGetMethodBuilder.html'
+                               title='adsensehost4d1::CustomchannelGetMethodBuilder'>CustomchannelGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get a specific custom channel from the host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomchannelInsertMethodBuilder.html'
+                               title='adsensehost4d1::CustomchannelInsertMethodBuilder'>CustomchannelInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Add a new custom channel to the host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomchannelListMethodBuilder.html'
+                               title='adsensehost4d1::CustomchannelListMethodBuilder'>CustomchannelListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List all host custom channels in this AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomchannelMethodsBuilder.html'
+                               title='adsensehost4d1::CustomchannelMethodsBuilder'>CustomchannelMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>customchannel</em> resources.
+It is not used directly, but through the <code>AdSenseHost</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomchannelPatchMethodBuilder.html'
+                               title='adsensehost4d1::CustomchannelPatchMethodBuilder'>CustomchannelPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update a custom channel in the host AdSense account. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomchannelUpdateMethodBuilder.html'
+                               title='adsensehost4d1::CustomchannelUpdateMethodBuilder'>CustomchannelUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update a custom channel in the host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Report.html'
+                               title='adsensehost4d1::Report'>Report</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AccountReportGenerateMethodBuilder.html">reports.generate</a> (response)</li>
+<li><a href="struct.ReportGenerateMethodBuilder.html">generate</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReportGenerateMethodBuilder.html'
+                               title='adsensehost4d1::ReportGenerateMethodBuilder'>ReportGenerateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Generate an AdSense report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format specify &quot;alt=csv&quot; as a query parameter.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReportHeaders.html'
+                               title='adsensehost4d1::ReportHeaders'>ReportHeaders</a></td>
+                        <td class='docblock short'><p>The header information of the columns requested in the report. This is a list of headers; one for each dimension in the request, followed by one for each metric in the request.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReportMethodsBuilder.html'
+                               title='adsensehost4d1::ReportMethodsBuilder'>ReportMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>report</em> resources.
+It is not used directly, but through the <code>AdSenseHost</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlChannel.html'
+                               title='adsensehost4d1::UrlChannel'>UrlChannel</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.UrlchannelDeleteMethodBuilder.html">delete</a> (response)</li>
+<li><a href="struct.UrlchannelInsertMethodBuilder.html">insert</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlChannels.html'
+                               title='adsensehost4d1::UrlChannels'>UrlChannels</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.UrlchannelListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlchannelDeleteMethodBuilder.html'
+                               title='adsensehost4d1::UrlchannelDeleteMethodBuilder'>UrlchannelDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete a URL channel from the host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlchannelInsertMethodBuilder.html'
+                               title='adsensehost4d1::UrlchannelInsertMethodBuilder'>UrlchannelInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Add a new URL channel to the host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlchannelListMethodBuilder.html'
+                               title='adsensehost4d1::UrlchannelListMethodBuilder'>UrlchannelListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List all host URL channels in the host AdSense account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlchannelMethodsBuilder.html'
+                               title='adsensehost4d1::UrlchannelMethodsBuilder'>UrlchannelMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>urlchannel</em> resources.
+It is not used directly, but through the <code>AdSenseHost</code> hub.</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
+                               title='adsensehost4d1::Scope'>Scope</a></td>
+                        <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
+A scope is needed when requesting an
+<a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "adsensehost4d1";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

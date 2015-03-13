@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `androidpublisher2` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, androidpublisher2">
+
+    <title>androidpublisher2 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'androidpublisher2', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>androidpublisher2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/androidpublisher2/lib.rs.html#5-10937'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id="features" class='section-header'><a
+                           href="#features">Features</a></h1>
+<p>Handle the following <em>Resources</em> with ease from the central <a href="struct.AndroidPublisher.html">hub</a> ... </p>
+
+<ul>
+<li>edits (<a href="struct.EditApklistingDeleteMethodBuilder.html"><em>delete apklistings</em></a>, <a href="struct.EditApklistingDeleteallMethodBuilder.html"><em>deleteall apklistings</em></a>, <a href="struct.EditApklistingGetMethodBuilder.html"><em>get apklistings</em></a>, <a href="struct.EditApklistingListMethodBuilder.html"><em>list apklistings</em></a>, <a href="struct.EditApklistingPatchMethodBuilder.html"><em>patch apklistings</em></a>, <a href="struct.EditApklistingUpdateMethodBuilder.html"><em>update apklistings</em></a>, <a href="struct.EditApkAddexternallyhostedMethodBuilder.html"><em>addexternallyhosted apks</em></a>, <a href="struct.EditApkListMethodBuilder.html"><em>list apks</em></a>, <a href="struct.EditApkUploadMethodBuilder.html"><em>upload apks</em></a>, <a href="struct.EditCommitMethodBuilder.html"><em>commit</em></a>, <a href="struct.EditDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.EditDetailGetMethodBuilder.html"><em>get details</em></a>, <a href="struct.EditDetailPatchMethodBuilder.html"><em>patch details</em></a>, <a href="struct.EditDetailUpdateMethodBuilder.html"><em>update details</em></a>, <a href="struct.EditExpansionfileGetMethodBuilder.html"><em>get expansionfiles</em></a>, <a href="struct.EditExpansionfilePatchMethodBuilder.html"><em>patch expansionfiles</em></a>, <a href="struct.EditExpansionfileUpdateMethodBuilder.html"><em>update expansionfiles</em></a>, <a href="struct.EditExpansionfileUploadMethodBuilder.html"><em>upload expansionfiles</em></a>, <a href="struct.EditGetMethodBuilder.html"><em>get</em></a>, <a href="struct.EditImageDeleteMethodBuilder.html"><em>delete images</em></a>, <a href="struct.EditImageDeleteallMethodBuilder.html"><em>deleteall images</em></a>, <a href="struct.EditImageListMethodBuilder.html"><em>list images</em></a>, <a href="struct.EditImageUploadMethodBuilder.html"><em>upload images</em></a>, <a href="struct.EditInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.EditListingDeleteMethodBuilder.html"><em>delete listings</em></a>, <a href="struct.EditListingDeleteallMethodBuilder.html"><em>deleteall listings</em></a>, <a href="struct.EditListingGetMethodBuilder.html"><em>get listings</em></a>, <a href="struct.EditListingListMethodBuilder.html"><em>list listings</em></a>, <a href="struct.EditListingPatchMethodBuilder.html"><em>patch listings</em></a>, <a href="struct.EditListingUpdateMethodBuilder.html"><em>update listings</em></a>, <a href="struct.EditTesterGetMethodBuilder.html"><em>get testers</em></a>, <a href="struct.EditTesterPatchMethodBuilder.html"><em>patch testers</em></a>, <a href="struct.EditTesterUpdateMethodBuilder.html"><em>update testers</em></a>, <a href="struct.EditTrackGetMethodBuilder.html"><em>get tracks</em></a>, <a href="struct.EditTrackListMethodBuilder.html"><em>list tracks</em></a>, <a href="struct.EditTrackPatchMethodBuilder.html"><em>patch tracks</em></a>, <a href="struct.EditTrackUpdateMethodBuilder.html"><em>update tracks</em></a> and <a href="struct.EditValidateMethodBuilder.html"><em>validate</em></a>)</li>
+<li>inappproducts (<a href="struct.InappproductBatchMethodBuilder.html"><em>batch</em></a>, <a href="struct.InappproductDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.InappproductGetMethodBuilder.html"><em>get</em></a>, <a href="struct.InappproductInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.InappproductListMethodBuilder.html"><em>list</em></a>, <a href="struct.InappproductPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.InappproductUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>purchases (<a href="struct.PurchaseProductGetMethodBuilder.html"><em>get products</em></a>, <a href="struct.PurchaseSubscriptionCancelMethodBuilder.html"><em>cancel subscriptions</em></a>, <a href="struct.PurchaseSubscriptionDeferMethodBuilder.html"><em>defer subscriptions</em></a>, <a href="struct.PurchaseSubscriptionGetMethodBuilder.html"><em>get subscriptions</em></a>, <a href="struct.PurchaseSubscriptionRefundMethodBuilder.html"><em>refund subscriptions</em></a> and <a href="struct.PurchaseSubscriptionRevokeMethodBuilder.html"><em>revoke subscriptions</em></a>)</li>
+</ul>
+
+<p>Everything else about the <em>Android Publisher</em> API can be found at the
+<a href="https://developers.google.com/android-publisher">official documentation site</a>.</p>
+
+<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+
+<h1 id="structure-of-this-library" class='section-header'><a
+                           href="#structure-of-this-library">Structure of this Library</a></h1>
+<p>The API is structured into the following primary items:</p>
+
+<ul>
+<li><strong><a href="struct.AndroidPublisher.html">Hub</a></strong>
+
+<ul>
+<li>a central object to maintain state and allow accessing all <em>Activities</em></li>
+</ul></li>
+<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+
+<ul>
+<li>primary types that you can apply <em>Activities</em> to</li>
+<li>a collection of properties and <em>Parts</em></li>
+<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+
+<ul>
+<li>a collection of properties</li>
+<li>never directly used in <em>Activities</em></li>
+</ul></li>
+</ul></li>
+<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+
+<ul>
+<li>operations to apply to <em>Resources</em></li>
+</ul></li>
+</ul>
+
+<p>Generally speaking, you can invoke <em>Activities</em> like this:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>resource</span>().<span class='ident'>activity</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>Or specifically ...</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>inappproducts</span>().<span class='ident'>patch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>inappproducts</span>().<span class='ident'>insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>inappproducts</span>().<span class='ident'>get</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>inappproducts</span>().<span class='ident'>update</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>The <code>resource()</code> and <code>activity(...)</code> calls create <a href="http://en.wikipedia.org/wiki/Builder_pattern">builders</a>. The second one dealing with <code>Activities</code> 
+supports various methods to configure the impending operation (not shown here). It is made such that all required arguments have to be 
+specified right away (i.e. <code>(...)</code>), whereas all optional ones can be <a href="http://en.wikipedia.org/wiki/Builder_pattern">build up</a> as desired.
+The <code>doit()</code> method performs the actual communication with the server and returns the respective result.</p>
+
+<h1 id="usage" class='section-header'><a
+                           href="#usage">Usage</a></h1>
+<h2 id="a-complete-example" class='section-header'><a
+                           href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>androidpublisher2</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+ 
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
+<span class='comment'>// among other things.</span>
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
+<span class='comment'>// unless you replace  `None` with the desired Flow</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
+<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>AndroidPublisher</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// As the method needs a request, you would usually fill it with the desired information</span>
+<span class='comment'>// into the respective structure. Some of the parts shown here might not be applicable !</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span>: <span class='ident'>InAppProduct</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+ 
+<span class='comment'>// You can configure optional parameters by calling the respective setters at will, and</span>
+<span class='comment'>// execute the final call using `doit()`.</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>inappproducts</span>().<span class='ident'>patch</span>(<span class='kw-2'>&amp;</span><span class='ident'>req</span>, <span class='string'>&quot;packageName&quot;</span>, <span class='string'>&quot;sku&quot;</span>)
+             .<span class='ident'>auto_convert_missing_prices</span>(<span class='boolval'>true</span>)
+             .<span class='ident'>doit</span>();
+ 
+<span class='kw'>match</span> <span class='ident'>result</span> {
+    <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+}
+</pre>
+
+<h2 id="handling-errors" class='section-header'><a
+                           href="#handling-errors">Handling Errors</a></h2>
+<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+the doit() methods, or handed as possibly intermediate results to either the 
+<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+
+<p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
+makes the system potentially resilient to all kinds of errors.</p>
+
+<h2 id="about-customization/callbacks" class='section-header'><a
+                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
+<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+Respective methods will be called to provide progress information, as well as determine whether the system should 
+retry on failure.</p>
+
+<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+
+<h2 id="about-parts" class='section-header'><a
+                           href="#about-parts">About Parts</a></h2>
+<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
+<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+the server to indicate either the set parts of the request or the desired parts in the response.</p>
+
+<h2 id="about-builder-arguments" class='section-header'><a
+                           href="#about-builder-arguments">About Builder Arguments</a></h2>
+<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+These will always take a single argument, for which the following statements are true.</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
+<li>strings are passed as <code>&amp;str</code></li>
+<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+</ul>
+
+<p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
+                               title='androidpublisher2::cmn'>cmn</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.map!.html'
+                               title='androidpublisher2::map!'>map!</a></td>
+                        <td class='docblock short'><p>This macro is advertised in the documentation, which is why we deliver it as well</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AndroidPublisher.html'
+                               title='androidpublisher2::AndroidPublisher'>AndroidPublisher</a></td>
+                        <td class='docblock short'><p>Central instance to access all AndroidPublisher related resource activities</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Apk.html'
+                               title='androidpublisher2::Apk'>Apk</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditApkUploadMethodBuilder.html">apks.upload</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ApkBinary.html'
+                               title='androidpublisher2::ApkBinary'>ApkBinary</a></td>
+                        <td class='docblock short'><p>Represents the binary payload of an APK.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ApkListing.html'
+                               title='androidpublisher2::ApkListing'>ApkListing</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditApklistingGetMethodBuilder.html">apklistings.get</a> (response)</li>
+<li><a href="struct.EditApklistingPatchMethodBuilder.html">apklistings.patch</a> (request|response)</li>
+<li><a href="struct.EditApklistingUpdateMethodBuilder.html">apklistings.update</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ApkListingsListResponse.html'
+                               title='androidpublisher2::ApkListingsListResponse'>ApkListingsListResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditApklistingListMethodBuilder.html">apklistings.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ApksAddExternallyHostedRequest.html'
+                               title='androidpublisher2::ApksAddExternallyHostedRequest'>ApksAddExternallyHostedRequest</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditApkAddexternallyhostedMethodBuilder.html">apks.addexternallyhosted</a> (request)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ApksAddExternallyHostedResponse.html'
+                               title='androidpublisher2::ApksAddExternallyHostedResponse'>ApksAddExternallyHostedResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditApkAddexternallyhostedMethodBuilder.html">apks.addexternallyhosted</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ApksListResponse.html'
+                               title='androidpublisher2::ApksListResponse'>ApksListResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditApkListMethodBuilder.html">apks.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AppDetails.html'
+                               title='androidpublisher2::AppDetails'>AppDetails</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditDetailPatchMethodBuilder.html">details.patch</a> (request|response)</li>
+<li><a href="struct.EditDetailUpdateMethodBuilder.html">details.update</a> (request|response)</li>
+<li><a href="struct.EditDetailGetMethodBuilder.html">details.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AppEdit.html'
+                               title='androidpublisher2::AppEdit'>AppEdit</a></td>
+                        <td class='docblock short'><p>Represents an edit of an app. An edit allows clients to make multiple changes before committing them in one operation.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.EditCommitMethodBuilder.html">commit</a> (response)</li>
+<li><a href="struct.EditValidateMethodBuilder.html">validate</a> (response)</li>
+<li><a href="struct.EditGetMethodBuilder.html">get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApkAddexternallyhostedMethodBuilder.html'
+                               title='androidpublisher2::EditApkAddexternallyhostedMethodBuilder'>EditApkAddexternallyhostedMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to enterprises using Google Play for work whose application is configured to restrict distribution to the enterprise domain.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApkListMethodBuilder.html'
+                               title='androidpublisher2::EditApkListMethodBuilder'>EditApkListMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>apks.list</em> method supported by a <em>edit</em> resource.
+It is not used directly, but through a <code>EditMethodsBuilder</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApkUploadMethodBuilder.html'
+                               title='androidpublisher2::EditApkUploadMethodBuilder'>EditApkUploadMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>apks.upload</em> method supported by a <em>edit</em> resource.
+It is not used directly, but through a <code>EditMethodsBuilder</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApklistingDeleteMethodBuilder.html'
+                               title='androidpublisher2::EditApklistingDeleteMethodBuilder'>EditApklistingDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes the APK-specific localized listing for a specified APK and language code.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApklistingDeleteallMethodBuilder.html'
+                               title='androidpublisher2::EditApklistingDeleteallMethodBuilder'>EditApklistingDeleteallMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes all the APK-specific localized listings for a specified APK.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApklistingGetMethodBuilder.html'
+                               title='androidpublisher2::EditApklistingGetMethodBuilder'>EditApklistingGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Fetches the APK-specific localized listing for a specified APK and language code.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApklistingListMethodBuilder.html'
+                               title='androidpublisher2::EditApklistingListMethodBuilder'>EditApklistingListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all the APK-specific localized listings for a specified APK.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApklistingPatchMethodBuilder.html'
+                               title='androidpublisher2::EditApklistingPatchMethodBuilder'>EditApklistingPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates or creates the APK-specific localized listing for a specified APK and language code. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditApklistingUpdateMethodBuilder.html'
+                               title='androidpublisher2::EditApklistingUpdateMethodBuilder'>EditApklistingUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates or creates the APK-specific localized listing for a specified APK and language code.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditCommitMethodBuilder.html'
+                               title='androidpublisher2::EditCommitMethodBuilder'>EditCommitMethodBuilder</a></td>
+                        <td class='docblock short'><p>Commits/applies the changes made in this edit back to the app.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditDeleteMethodBuilder.html'
+                               title='androidpublisher2::EditDeleteMethodBuilder'>EditDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes an edit for an app. Creating a new edit will automatically delete any of your previous edits so this method need only be called if you want to preemptively abandon an edit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditDetailGetMethodBuilder.html'
+                               title='androidpublisher2::EditDetailGetMethodBuilder'>EditDetailGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Fetches app details for this edit. This includes the default language and developer support contact information.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditDetailPatchMethodBuilder.html'
+                               title='androidpublisher2::EditDetailPatchMethodBuilder'>EditDetailPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates app details for this edit. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditDetailUpdateMethodBuilder.html'
+                               title='androidpublisher2::EditDetailUpdateMethodBuilder'>EditDetailUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates app details for this edit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditExpansionfileGetMethodBuilder.html'
+                               title='androidpublisher2::EditExpansionfileGetMethodBuilder'>EditExpansionfileGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Fetches the Expansion File configuration for the APK specified.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditExpansionfilePatchMethodBuilder.html'
+                               title='androidpublisher2::EditExpansionfilePatchMethodBuilder'>EditExpansionfilePatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the APK&#39;s Expansion File configuration to reference another APK&#39;s Expansion Files. To add a new Expansion File use the Upload method. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditExpansionfileUpdateMethodBuilder.html'
+                               title='androidpublisher2::EditExpansionfileUpdateMethodBuilder'>EditExpansionfileUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the APK&#39;s Expansion File configuration to reference another APK&#39;s Expansion Files. To add a new Expansion File use the Upload method.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditExpansionfileUploadMethodBuilder.html'
+                               title='androidpublisher2::EditExpansionfileUploadMethodBuilder'>EditExpansionfileUploadMethodBuilder</a></td>
+                        <td class='docblock short'><p>Uploads and attaches a new Expansion File to the APK specified.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditGetMethodBuilder.html'
+                               title='androidpublisher2::EditGetMethodBuilder'>EditGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns information about the edit specified. Calls will fail if the edit is no long active (e.g. has been deleted, superseded or expired).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditImageDeleteMethodBuilder.html'
+                               title='androidpublisher2::EditImageDeleteMethodBuilder'>EditImageDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes the image (specified by id) from the edit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditImageDeleteallMethodBuilder.html'
+                               title='androidpublisher2::EditImageDeleteallMethodBuilder'>EditImageDeleteallMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes all images for the specified language and image type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditImageListMethodBuilder.html'
+                               title='androidpublisher2::EditImageListMethodBuilder'>EditImageListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all images for the specified language and image type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditImageUploadMethodBuilder.html'
+                               title='androidpublisher2::EditImageUploadMethodBuilder'>EditImageUploadMethodBuilder</a></td>
+                        <td class='docblock short'><p>Uploads a new image and adds it to the list of images for the specified language and image type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditInsertMethodBuilder.html'
+                               title='androidpublisher2::EditInsertMethodBuilder'>EditInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new edit for an app, populated with the app&#39;s current state.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditListingDeleteMethodBuilder.html'
+                               title='androidpublisher2::EditListingDeleteMethodBuilder'>EditListingDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes the specified localized store listing from an edit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditListingDeleteallMethodBuilder.html'
+                               title='androidpublisher2::EditListingDeleteallMethodBuilder'>EditListingDeleteallMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes all localized listings from an edit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditListingGetMethodBuilder.html'
+                               title='androidpublisher2::EditListingGetMethodBuilder'>EditListingGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Fetches information about a localized store listing.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditListingListMethodBuilder.html'
+                               title='androidpublisher2::EditListingListMethodBuilder'>EditListingListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns all of the localized store listings attached to this edit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditListingPatchMethodBuilder.html'
+                               title='androidpublisher2::EditListingPatchMethodBuilder'>EditListingPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates or updates a localized store listing. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditListingUpdateMethodBuilder.html'
+                               title='androidpublisher2::EditListingUpdateMethodBuilder'>EditListingUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates or updates a localized store listing.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditMethodsBuilder.html'
+                               title='androidpublisher2::EditMethodsBuilder'>EditMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>edit</em> resources.
+It is not used directly, but through the <code>AndroidPublisher</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditTesterGetMethodBuilder.html'
+                               title='androidpublisher2::EditTesterGetMethodBuilder'>EditTesterGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>testers.get</em> method supported by a <em>edit</em> resource.
+It is not used directly, but through a <code>EditMethodsBuilder</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditTesterPatchMethodBuilder.html'
+                               title='androidpublisher2::EditTesterPatchMethodBuilder'>EditTesterPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>testers.patch</em> method supported by a <em>edit</em> resource.
+It is not used directly, but through a <code>EditMethodsBuilder</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditTesterUpdateMethodBuilder.html'
+                               title='androidpublisher2::EditTesterUpdateMethodBuilder'>EditTesterUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>testers.update</em> method supported by a <em>edit</em> resource.
+It is not used directly, but through a <code>EditMethodsBuilder</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditTrackGetMethodBuilder.html'
+                               title='androidpublisher2::EditTrackGetMethodBuilder'>EditTrackGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Fetches the track configuration for the specified track type. Includes the APK version codes that are in this track.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditTrackListMethodBuilder.html'
+                               title='androidpublisher2::EditTrackListMethodBuilder'>EditTrackListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all the track configurations for this edit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditTrackPatchMethodBuilder.html'
+                               title='androidpublisher2::EditTrackPatchMethodBuilder'>EditTrackPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new APKs will cause it to resume. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditTrackUpdateMethodBuilder.html'
+                               title='androidpublisher2::EditTrackUpdateMethodBuilder'>EditTrackUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new APKs will cause it to resume.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EditValidateMethodBuilder.html'
+                               title='androidpublisher2::EditValidateMethodBuilder'>EditValidateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Checks that the edit can be successfully committed. The edit&#39;s changes are not applied to the live app.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ExpansionFile.html'
+                               title='androidpublisher2::ExpansionFile'>ExpansionFile</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditExpansionfileGetMethodBuilder.html">expansionfiles.get</a> (response)</li>
+<li><a href="struct.EditExpansionfilePatchMethodBuilder.html">expansionfiles.patch</a> (request|response)</li>
+<li><a href="struct.EditExpansionfileUpdateMethodBuilder.html">expansionfiles.update</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ExpansionFilesUploadResponse.html'
+                               title='androidpublisher2::ExpansionFilesUploadResponse'>ExpansionFilesUploadResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditExpansionfileUploadMethodBuilder.html">expansionfiles.upload</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ExternallyHostedApk.html'
+                               title='androidpublisher2::ExternallyHostedApk'>ExternallyHostedApk</a></td>
+                        <td class='docblock short'><p>Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This function is only available to enterprises who are using Android for Work, and whos application is restricted to the enterprise private channel</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ExternallyHostedApkUsesPermission.html'
+                               title='androidpublisher2::ExternallyHostedApkUsesPermission'>ExternallyHostedApkUsesPermission</a></td>
+                        <td class='docblock short'><p>A permission used by this APK.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Image.html'
+                               title='androidpublisher2::Image'>Image</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ImagesDeleteAllResponse.html'
+                               title='androidpublisher2::ImagesDeleteAllResponse'>ImagesDeleteAllResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditImageDeleteallMethodBuilder.html">images.deleteall</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ImagesListResponse.html'
+                               title='androidpublisher2::ImagesListResponse'>ImagesListResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditImageListMethodBuilder.html">images.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ImagesUploadResponse.html'
+                               title='androidpublisher2::ImagesUploadResponse'>ImagesUploadResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditImageUploadMethodBuilder.html">images.upload</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InAppProduct.html'
+                               title='androidpublisher2::InAppProduct'>InAppProduct</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.InappproductPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.InappproductInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.InappproductGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.InappproductUpdateMethodBuilder.html">update</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InAppProductListing.html'
+                               title='androidpublisher2::InAppProductListing'>InAppProductListing</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductBatchMethodBuilder.html'
+                               title='androidpublisher2::InappproductBatchMethodBuilder'>InappproductBatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>batch</em> method supported by a <em>inappproduct</em> resource.
+It is not used directly, but through a <code>InappproductMethodsBuilder</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductDeleteMethodBuilder.html'
+                               title='androidpublisher2::InappproductDeleteMethodBuilder'>InappproductDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete an in-app product for an app.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductGetMethodBuilder.html'
+                               title='androidpublisher2::InappproductGetMethodBuilder'>InappproductGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns information about the in-app product specified.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductInsertMethodBuilder.html'
+                               title='androidpublisher2::InappproductInsertMethodBuilder'>InappproductInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new in-app product for an app.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductListMethodBuilder.html'
+                               title='androidpublisher2::InappproductListMethodBuilder'>InappproductListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List all the in-app products for an Android app, both subscriptions and managed in-app products..</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductMethodsBuilder.html'
+                               title='androidpublisher2::InappproductMethodsBuilder'>InappproductMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>inappproduct</em> resources.
+It is not used directly, but through the <code>AndroidPublisher</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductPatchMethodBuilder.html'
+                               title='androidpublisher2::InappproductPatchMethodBuilder'>InappproductPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the details of an in-app product. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductUpdateMethodBuilder.html'
+                               title='androidpublisher2::InappproductUpdateMethodBuilder'>InappproductUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates the details of an in-app product.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsBatchRequest.html'
+                               title='androidpublisher2::InappproductsBatchRequest'>InappproductsBatchRequest</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.InappproductBatchMethodBuilder.html">batch</a> (request)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsBatchRequestEntry.html'
+                               title='androidpublisher2::InappproductsBatchRequestEntry'>InappproductsBatchRequestEntry</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsBatchResponse.html'
+                               title='androidpublisher2::InappproductsBatchResponse'>InappproductsBatchResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.InappproductBatchMethodBuilder.html">batch</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsBatchResponseEntry.html'
+                               title='androidpublisher2::InappproductsBatchResponseEntry'>InappproductsBatchResponseEntry</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsInsertRequest.html'
+                               title='androidpublisher2::InappproductsInsertRequest'>InappproductsInsertRequest</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsInsertResponse.html'
+                               title='androidpublisher2::InappproductsInsertResponse'>InappproductsInsertResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsListResponse.html'
+                               title='androidpublisher2::InappproductsListResponse'>InappproductsListResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.InappproductListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsUpdateRequest.html'
+                               title='androidpublisher2::InappproductsUpdateRequest'>InappproductsUpdateRequest</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InappproductsUpdateResponse.html'
+                               title='androidpublisher2::InappproductsUpdateResponse'>InappproductsUpdateResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Listing.html'
+                               title='androidpublisher2::Listing'>Listing</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditListingUpdateMethodBuilder.html">listings.update</a> (request|response)</li>
+<li><a href="struct.EditListingPatchMethodBuilder.html">listings.patch</a> (request|response)</li>
+<li><a href="struct.EditListingGetMethodBuilder.html">listings.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListingsListResponse.html'
+                               title='androidpublisher2::ListingsListResponse'>ListingsListResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditListingListMethodBuilder.html">listings.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MonthDay.html'
+                               title='androidpublisher2::MonthDay'>MonthDay</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PageInfo.html'
+                               title='androidpublisher2::PageInfo'>PageInfo</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Price.html'
+                               title='androidpublisher2::Price'>Price</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProductPurchase.html'
+                               title='androidpublisher2::ProductPurchase'>ProductPurchase</a></td>
+                        <td class='docblock short'><p>A ProductPurchase resource indicates the status of a user&#39;s inapp product purchase.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PurchaseProductGetMethodBuilder.html">products.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PurchaseMethodsBuilder.html'
+                               title='androidpublisher2::PurchaseMethodsBuilder'>PurchaseMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>purchase</em> resources.
+It is not used directly, but through the <code>AndroidPublisher</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PurchaseProductGetMethodBuilder.html'
+                               title='androidpublisher2::PurchaseProductGetMethodBuilder'>PurchaseProductGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Checks the purchase and consumption status of an inapp item.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PurchaseSubscriptionCancelMethodBuilder.html'
+                               title='androidpublisher2::PurchaseSubscriptionCancelMethodBuilder'>PurchaseSubscriptionCancelMethodBuilder</a></td>
+                        <td class='docblock short'><p>Cancels a user&#39;s subscription purchase. The subscription remains valid until its expiration time.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PurchaseSubscriptionDeferMethodBuilder.html'
+                               title='androidpublisher2::PurchaseSubscriptionDeferMethodBuilder'>PurchaseSubscriptionDeferMethodBuilder</a></td>
+                        <td class='docblock short'><p>Defers a user&#39;s subscription purchase until a specified future expiration time.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PurchaseSubscriptionGetMethodBuilder.html'
+                               title='androidpublisher2::PurchaseSubscriptionGetMethodBuilder'>PurchaseSubscriptionGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Checks whether a user&#39;s subscription purchase is valid and returns its expiry time.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PurchaseSubscriptionRefundMethodBuilder.html'
+                               title='androidpublisher2::PurchaseSubscriptionRefundMethodBuilder'>PurchaseSubscriptionRefundMethodBuilder</a></td>
+                        <td class='docblock short'><p>Refunds a user&#39;s subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PurchaseSubscriptionRevokeMethodBuilder.html'
+                               title='androidpublisher2::PurchaseSubscriptionRevokeMethodBuilder'>PurchaseSubscriptionRevokeMethodBuilder</a></td>
+                        <td class='docblock short'><p>Refunds and immediately revokes a user&#39;s subscription purchase. Access to the subscription will be terminated immediately and it will stop recurring.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Season.html'
+                               title='androidpublisher2::Season'>Season</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionDeferralInfo.html'
+                               title='androidpublisher2::SubscriptionDeferralInfo'>SubscriptionDeferralInfo</a></td>
+                        <td class='docblock short'><p>A SubscriptionDeferralInfo contains the data needed to defer a subscription purchase to a future expiry time.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionPurchase.html'
+                               title='androidpublisher2::SubscriptionPurchase'>SubscriptionPurchase</a></td>
+                        <td class='docblock short'><p>A SubscriptionPurchase resource indicates the status of a user&#39;s subscription purchase.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PurchaseSubscriptionGetMethodBuilder.html">subscriptions.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionPurchasesDeferRequest.html'
+                               title='androidpublisher2::SubscriptionPurchasesDeferRequest'>SubscriptionPurchasesDeferRequest</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PurchaseSubscriptionDeferMethodBuilder.html">subscriptions.defer</a> (request)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionPurchasesDeferResponse.html'
+                               title='androidpublisher2::SubscriptionPurchasesDeferResponse'>SubscriptionPurchasesDeferResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PurchaseSubscriptionDeferMethodBuilder.html">subscriptions.defer</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Testers.html'
+                               title='androidpublisher2::Testers'>Testers</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditTesterGetMethodBuilder.html">testers.get</a> (response)</li>
+<li><a href="struct.EditTesterPatchMethodBuilder.html">testers.patch</a> (request|response)</li>
+<li><a href="struct.EditTesterUpdateMethodBuilder.html">testers.update</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TokenPagination.html'
+                               title='androidpublisher2::TokenPagination'>TokenPagination</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Track.html'
+                               title='androidpublisher2::Track'>Track</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditTrackUpdateMethodBuilder.html">tracks.update</a> (request|response)</li>
+<li><a href="struct.EditTrackPatchMethodBuilder.html">tracks.patch</a> (request|response)</li>
+<li><a href="struct.EditTrackGetMethodBuilder.html">tracks.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TracksListResponse.html'
+                               title='androidpublisher2::TracksListResponse'>TracksListResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.EditTrackListMethodBuilder.html">tracks.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
+                               title='androidpublisher2::Scope'>Scope</a></td>
+                        <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
+A scope is needed when requesting an
+<a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "androidpublisher2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

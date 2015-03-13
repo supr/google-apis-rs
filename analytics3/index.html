@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `analytics3` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, analytics3">
+
+    <title>analytics3 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'analytics3', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>analytics3</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/analytics3/lib.rs.html#5-18830'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id="features" class='section-header'><a
+                           href="#features">Features</a></h1>
+<p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Analytics.html">hub</a> ... </p>
+
+<ul>
+<li>data (<a href="struct.DataGaGetMethodBuilder.html"><em>get ga</em></a>, <a href="struct.DataMcfGetMethodBuilder.html"><em>get mcf</em></a> and <a href="struct.DataRealtimeGetMethodBuilder.html"><em>get realtime</em></a>)</li>
+<li>management (<a href="struct.ManagementAccountSummaryListMethodBuilder.html"><em>list accountsummaries</em></a>, <a href="struct.ManagementAccountUserLinkDeleteMethodBuilder.html"><em>delete accountuserlinks</em></a>, <a href="struct.ManagementAccountUserLinkInsertMethodBuilder.html"><em>insert accountuserlinks</em></a>, <a href="struct.ManagementAccountUserLinkListMethodBuilder.html"><em>list accountuserlinks</em></a>, <a href="struct.ManagementAccountUserLinkUpdateMethodBuilder.html"><em>update accountuserlinks</em></a>, <a href="struct.ManagementAccountListMethodBuilder.html"><em>list accounts</em></a>, <a href="struct.ManagementCustomDataSourceListMethodBuilder.html"><em>list customdatasources</em></a>, <a href="struct.ManagementCustomDimensionGetMethodBuilder.html"><em>get customdimensions</em></a>, <a href="struct.ManagementCustomDimensionInsertMethodBuilder.html"><em>insert customdimensions</em></a>, <a href="struct.ManagementCustomDimensionListMethodBuilder.html"><em>list customdimensions</em></a>, <a href="struct.ManagementCustomDimensionPatchMethodBuilder.html"><em>patch customdimensions</em></a>, <a href="struct.ManagementCustomDimensionUpdateMethodBuilder.html"><em>update customdimensions</em></a>, <a href="struct.ManagementCustomMetricGetMethodBuilder.html"><em>get custommetrics</em></a>, <a href="struct.ManagementCustomMetricInsertMethodBuilder.html"><em>insert custommetrics</em></a>, <a href="struct.ManagementCustomMetricListMethodBuilder.html"><em>list custommetrics</em></a>, <a href="struct.ManagementCustomMetricPatchMethodBuilder.html"><em>patch custommetrics</em></a>, <a href="struct.ManagementCustomMetricUpdateMethodBuilder.html"><em>update custommetrics</em></a>, <a href="struct.ManagementExperimentDeleteMethodBuilder.html"><em>delete experiments</em></a>, <a href="struct.ManagementExperimentGetMethodBuilder.html"><em>get experiments</em></a>, <a href="struct.ManagementExperimentInsertMethodBuilder.html"><em>insert experiments</em></a>, <a href="struct.ManagementExperimentListMethodBuilder.html"><em>list experiments</em></a>, <a href="struct.ManagementExperimentPatchMethodBuilder.html"><em>patch experiments</em></a>, <a href="struct.ManagementExperimentUpdateMethodBuilder.html"><em>update experiments</em></a>, <a href="struct.ManagementFilterDeleteMethodBuilder.html"><em>delete filters</em></a>, <a href="struct.ManagementFilterGetMethodBuilder.html"><em>get filters</em></a>, <a href="struct.ManagementFilterInsertMethodBuilder.html"><em>insert filters</em></a>, <a href="struct.ManagementFilterListMethodBuilder.html"><em>list filters</em></a>, <a href="struct.ManagementFilterPatchMethodBuilder.html"><em>patch filters</em></a>, <a href="struct.ManagementFilterUpdateMethodBuilder.html"><em>update filters</em></a>, <a href="struct.ManagementGoalGetMethodBuilder.html"><em>get goals</em></a>, <a href="struct.ManagementGoalInsertMethodBuilder.html"><em>insert goals</em></a>, <a href="struct.ManagementGoalListMethodBuilder.html"><em>list goals</em></a>, <a href="struct.ManagementGoalPatchMethodBuilder.html"><em>patch goals</em></a>, <a href="struct.ManagementGoalUpdateMethodBuilder.html"><em>update goals</em></a>, <a href="struct.ManagementProfileFilterLinkDeleteMethodBuilder.html"><em>delete profilefilterlinks</em></a>, <a href="struct.ManagementProfileFilterLinkGetMethodBuilder.html"><em>get profilefilterlinks</em></a>, <a href="struct.ManagementProfileFilterLinkInsertMethodBuilder.html"><em>insert profilefilterlinks</em></a>, <a href="struct.ManagementProfileFilterLinkListMethodBuilder.html"><em>list profilefilterlinks</em></a>, <a href="struct.ManagementProfileFilterLinkPatchMethodBuilder.html"><em>patch profilefilterlinks</em></a>, <a href="struct.ManagementProfileFilterLinkUpdateMethodBuilder.html"><em>update profilefilterlinks</em></a>, <a href="struct.ManagementProfileUserLinkDeleteMethodBuilder.html"><em>delete profileuserlinks</em></a>, <a href="struct.ManagementProfileUserLinkInsertMethodBuilder.html"><em>insert profileuserlinks</em></a>, <a href="struct.ManagementProfileUserLinkListMethodBuilder.html"><em>list profileuserlinks</em></a>, <a href="struct.ManagementProfileUserLinkUpdateMethodBuilder.html"><em>update profileuserlinks</em></a>, <a href="struct.ManagementProfileDeleteMethodBuilder.html"><em>delete profiles</em></a>, <a href="struct.ManagementProfileGetMethodBuilder.html"><em>get profiles</em></a>, <a href="struct.ManagementProfileInsertMethodBuilder.html"><em>insert profiles</em></a>, <a href="struct.ManagementProfileListMethodBuilder.html"><em>list profiles</em></a>, <a href="struct.ManagementProfilePatchMethodBuilder.html"><em>patch profiles</em></a>, <a href="struct.ManagementProfileUpdateMethodBuilder.html"><em>update profiles</em></a>, <a href="struct.ManagementSegmentListMethodBuilder.html"><em>list segments</em></a>, <a href="struct.ManagementUnsampledReportGetMethodBuilder.html"><em>get unsampledreports</em></a>, <a href="struct.ManagementUnsampledReportInsertMethodBuilder.html"><em>insert unsampledreports</em></a>, <a href="struct.ManagementUnsampledReportListMethodBuilder.html"><em>list unsampledreports</em></a>, <a href="struct.ManagementUploadDeleteUploadDataMethodBuilder.html"><em>deleteuploaddata uploads</em></a>, <a href="struct.ManagementUploadGetMethodBuilder.html"><em>get uploads</em></a>, <a href="struct.ManagementUploadListMethodBuilder.html"><em>list uploads</em></a>, <a href="struct.ManagementUploadUploadDataMethodBuilder.html"><em>uploaddata uploads</em></a>, <a href="struct.ManagementWebPropertyAdWordsLinkDeleteMethodBuilder.html"><em>delete webpropertyadwordslinks</em></a>, <a href="struct.ManagementWebPropertyAdWordsLinkGetMethodBuilder.html"><em>get webpropertyadwordslinks</em></a>, <a href="struct.ManagementWebPropertyAdWordsLinkInsertMethodBuilder.html"><em>insert webpropertyadwordslinks</em></a>, <a href="struct.ManagementWebPropertyAdWordsLinkListMethodBuilder.html"><em>list webpropertyadwordslinks</em></a>, <a href="struct.ManagementWebPropertyAdWordsLinkPatchMethodBuilder.html"><em>patch webpropertyadwordslinks</em></a>, <a href="struct.ManagementWebPropertyAdWordsLinkUpdateMethodBuilder.html"><em>update webpropertyadwordslinks</em></a>, <a href="struct.ManagementWebpropertyGetMethodBuilder.html"><em>get webproperties</em></a>, <a href="struct.ManagementWebpropertyInsertMethodBuilder.html"><em>insert webproperties</em></a>, <a href="struct.ManagementWebpropertyListMethodBuilder.html"><em>list webproperties</em></a>, <a href="struct.ManagementWebpropertyPatchMethodBuilder.html"><em>patch webproperties</em></a>, <a href="struct.ManagementWebpropertyUpdateMethodBuilder.html"><em>update webproperties</em></a>, <a href="struct.ManagementWebpropertyUserLinkDeleteMethodBuilder.html"><em>delete webpropertyuserlinks</em></a>, <a href="struct.ManagementWebpropertyUserLinkInsertMethodBuilder.html"><em>insert webpropertyuserlinks</em></a>, <a href="struct.ManagementWebpropertyUserLinkListMethodBuilder.html"><em>list webpropertyuserlinks</em></a> and <a href="struct.ManagementWebpropertyUserLinkUpdateMethodBuilder.html"><em>update webpropertyuserlinks</em></a>)</li>
+<li>metadata (<a href="struct.MetadataColumnListMethodBuilder.html"><em>list columns</em></a>)</li>
+<li>provisioning (<a href="struct.ProvisioningCreateAccountTicketMethodBuilder.html"><em>createaccountticket</em></a>)</li>
+</ul>
+
+<p>Everything else about the <em>analytics</em> API can be found at the
+<a href="https://developers.google.com/analytics/">official documentation site</a>.</p>
+
+<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+
+<h1 id="structure-of-this-library" class='section-header'><a
+                           href="#structure-of-this-library">Structure of this Library</a></h1>
+<p>The API is structured into the following primary items:</p>
+
+<ul>
+<li><strong><a href="struct.Analytics.html">Hub</a></strong>
+
+<ul>
+<li>a central object to maintain state and allow accessing all <em>Activities</em></li>
+</ul></li>
+<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+
+<ul>
+<li>primary types that you can apply <em>Activities</em> to</li>
+<li>a collection of properties and <em>Parts</em></li>
+<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+
+<ul>
+<li>a collection of properties</li>
+<li>never directly used in <em>Activities</em></li>
+</ul></li>
+</ul></li>
+<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+
+<ul>
+<li>operations to apply to <em>Resources</em></li>
+</ul></li>
+</ul>
+
+<p>Generally speaking, you can invoke <em>Activities</em> like this:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>resource</span>().<span class='ident'>activity</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>Or specifically ...</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>management</span>().<span class='ident'>webproperty_user_links_insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>management</span>().<span class='ident'>profile_user_links_insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>management</span>().<span class='ident'>profile_user_links_update</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>management</span>().<span class='ident'>account_user_links_update</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>management</span>().<span class='ident'>webproperty_user_links_update</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>management</span>().<span class='ident'>account_user_links_insert</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>The <code>resource()</code> and <code>activity(...)</code> calls create <a href="http://en.wikipedia.org/wiki/Builder_pattern">builders</a>. The second one dealing with <code>Activities</code> 
+supports various methods to configure the impending operation (not shown here). It is made such that all required arguments have to be 
+specified right away (i.e. <code>(...)</code>), whereas all optional ones can be <a href="http://en.wikipedia.org/wiki/Builder_pattern">build up</a> as desired.
+The <code>doit()</code> method performs the actual communication with the server and returns the respective result.</p>
+
+<h1 id="usage" class='section-header'><a
+                           href="#usage">Usage</a></h1>
+<h2 id="a-complete-example" class='section-header'><a
+                           href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>analytics3</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+ 
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
+<span class='comment'>// among other things.</span>
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
+<span class='comment'>// unless you replace  `None` with the desired Flow</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
+<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Analytics</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// As the method needs a request, you would usually fill it with the desired information</span>
+<span class='comment'>// into the respective structure. Some of the parts shown here might not be applicable !</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span>: <span class='ident'>EntityUserLink</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+ 
+<span class='comment'>// You can configure optional parameters by calling the respective setters at will, and</span>
+<span class='comment'>// execute the final call using `doit()`.</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>management</span>().<span class='ident'>profile_user_links_update</span>(<span class='kw-2'>&amp;</span><span class='ident'>req</span>, <span class='string'>&quot;accountId&quot;</span>, <span class='string'>&quot;webPropertyId&quot;</span>, <span class='string'>&quot;profileId&quot;</span>, <span class='string'>&quot;linkId&quot;</span>)
+             .<span class='ident'>doit</span>();
+ 
+<span class='kw'>match</span> <span class='ident'>result</span> {
+    <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+}
+</pre>
+
+<h2 id="handling-errors" class='section-header'><a
+                           href="#handling-errors">Handling Errors</a></h2>
+<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+the doit() methods, or handed as possibly intermediate results to either the 
+<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+
+<p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
+makes the system potentially resilient to all kinds of errors.</p>
+
+<h2 id="about-customization/callbacks" class='section-header'><a
+                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
+<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+Respective methods will be called to provide progress information, as well as determine whether the system should 
+retry on failure.</p>
+
+<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+
+<h2 id="about-parts" class='section-header'><a
+                           href="#about-parts">About Parts</a></h2>
+<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
+<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+the server to indicate either the set parts of the request or the desired parts in the response.</p>
+
+<h2 id="about-builder-arguments" class='section-header'><a
+                           href="#about-builder-arguments">About Builder Arguments</a></h2>
+<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+These will always take a single argument, for which the following statements are true.</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
+<li>strings are passed as <code>&amp;str</code></li>
+<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+</ul>
+
+<p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
+                               title='analytics3::cmn'>cmn</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.map!.html'
+                               title='analytics3::map!'>map!</a></td>
+                        <td class='docblock short'><p>This macro is advertised in the documentation, which is why we deliver it as well</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Account.html'
+                               title='analytics3::Account'>Account</a></td>
+                        <td class='docblock short'><p>JSON template for Analytics account entry.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountChildLink.html'
+                               title='analytics3::AccountChildLink'>AccountChildLink</a></td>
+                        <td class='docblock short'><p>Child link for an account entry. Points to the list of web properties for this account.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountPermissions.html'
+                               title='analytics3::AccountPermissions'>AccountPermissions</a></td>
+                        <td class='docblock short'><p>Permissions the user has for this account.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountRef.html'
+                               title='analytics3::AccountRef'>AccountRef</a></td>
+                        <td class='docblock short'><p>JSON template for a linked account.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountSummaries.html'
+                               title='analytics3::AccountSummaries'>AccountSummaries</a></td>
+                        <td class='docblock short'><p>An AccountSummary collection lists a summary of accounts, properties and views (profiles) to which the user has access. Each resource in the collection corresponds to a single AccountSummary.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementAccountSummaryListMethodBuilder.html">accountSummaries.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountSummary.html'
+                               title='analytics3::AccountSummary'>AccountSummary</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics AccountSummary. An AccountSummary is a lightweight tree comprised of properties/profiles.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AccountTicket.html'
+                               title='analytics3::AccountTicket'>AccountTicket</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics account ticket. The account ticket consists of the ticket ID and the basic information for the account, property and profile.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ProvisioningCreateAccountTicketMethodBuilder.html">createAccountTicket</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Accounts.html'
+                               title='analytics3::Accounts'>Accounts</a></td>
+                        <td class='docblock short'><p>An account collection provides a list of Analytics accounts to which a user has access. The account collection is the entry point to all management information. Each resource in the collection corresponds to a single Analytics account.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementAccountListMethodBuilder.html">accounts.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AdWordsAccount.html'
+                               title='analytics3::AdWordsAccount'>AdWordsAccount</a></td>
+                        <td class='docblock short'><p>JSON template for an AdWords account.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Analytics.html'
+                               title='analytics3::Analytics'>Analytics</a></td>
+                        <td class='docblock short'><p>Central instance to access all Analytics related resource activities</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyticsDataimportDeleteUploadDataRequest.html'
+                               title='analytics3::AnalyticsDataimportDeleteUploadDataRequest'>AnalyticsDataimportDeleteUploadDataRequest</a></td>
+                        <td class='docblock short'><p>Request template for the delete upload data request.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementUploadDeleteUploadDataMethodBuilder.html">uploads.deleteUploadData</a> (request)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Column.html'
+                               title='analytics3::Column'>Column</a></td>
+                        <td class='docblock short'><p>JSON template for a metadata column.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Columns.html'
+                               title='analytics3::Columns'>Columns</a></td>
+                        <td class='docblock short'><p>Lists columns (dimensions and metrics) for a particular report type.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MetadataColumnListMethodBuilder.html">columns.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomDataSource.html'
+                               title='analytics3::CustomDataSource'>CustomDataSource</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics custom data source.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomDataSourceChildLink.html'
+                               title='analytics3::CustomDataSourceChildLink'>CustomDataSourceChildLink</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomDataSourceParentLink.html'
+                               title='analytics3::CustomDataSourceParentLink'>CustomDataSourceParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for this custom data source. Points to the web property to which this custom data source belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomDataSources.html'
+                               title='analytics3::CustomDataSources'>CustomDataSources</a></td>
+                        <td class='docblock short'><p>Lists Analytics custom data sources to which the user has access. Each resource in the collection corresponds to a single Analytics custom data source.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementCustomDataSourceListMethodBuilder.html">customDataSources.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomDimension.html'
+                               title='analytics3::CustomDimension'>CustomDimension</a></td>
+                        <td class='docblock short'><p>JSON template for Analytics Custom Dimension.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementCustomDimensionInsertMethodBuilder.html">customDimensions.insert</a> (request|response)</li>
+<li><a href="struct.ManagementCustomDimensionPatchMethodBuilder.html">customDimensions.patch</a> (request|response)</li>
+<li><a href="struct.ManagementCustomDimensionUpdateMethodBuilder.html">customDimensions.update</a> (request|response)</li>
+<li><a href="struct.ManagementCustomDimensionGetMethodBuilder.html">customDimensions.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomDimensionParentLink.html'
+                               title='analytics3::CustomDimensionParentLink'>CustomDimensionParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for the custom dimension. Points to the property to which the custom dimension belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomDimensions.html'
+                               title='analytics3::CustomDimensions'>CustomDimensions</a></td>
+                        <td class='docblock short'><p>A custom dimension collection lists Analytics custom dimensions to which the user has access. Each resource in the collection corresponds to a single Analytics custom dimension.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementCustomDimensionListMethodBuilder.html">customDimensions.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomMetric.html'
+                               title='analytics3::CustomMetric'>CustomMetric</a></td>
+                        <td class='docblock short'><p>JSON template for Analytics Custom Metric.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementCustomMetricPatchMethodBuilder.html">customMetrics.patch</a> (request|response)</li>
+<li><a href="struct.ManagementCustomMetricInsertMethodBuilder.html">customMetrics.insert</a> (request|response)</li>
+<li><a href="struct.ManagementCustomMetricGetMethodBuilder.html">customMetrics.get</a> (response)</li>
+<li><a href="struct.ManagementCustomMetricUpdateMethodBuilder.html">customMetrics.update</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomMetricParentLink.html'
+                               title='analytics3::CustomMetricParentLink'>CustomMetricParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for the custom metric. Points to the property to which the custom metric belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomMetrics.html'
+                               title='analytics3::CustomMetrics'>CustomMetrics</a></td>
+                        <td class='docblock short'><p>A custom metric collection lists Analytics custom metrics to which the user has access. Each resource in the collection corresponds to a single Analytics custom metric.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementCustomMetricListMethodBuilder.html">customMetrics.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataGaGetMethodBuilder.html'
+                               title='analytics3::DataGaGetMethodBuilder'>DataGaGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns Analytics data for a view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataMcfGetMethodBuilder.html'
+                               title='analytics3::DataMcfGetMethodBuilder'>DataMcfGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns Analytics Multi-Channel Funnels data for a view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataMethodsBuilder.html'
+                               title='analytics3::DataMethodsBuilder'>DataMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>data</em> resources.
+It is not used directly, but through the <code>Analytics</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataRealtimeGetMethodBuilder.html'
+                               title='analytics3::DataRealtimeGetMethodBuilder'>DataRealtimeGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns real time data for a view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EntityAdWordsLink.html'
+                               title='analytics3::EntityAdWordsLink'>EntityAdWordsLink</a></td>
+                        <td class='docblock short'><p>JSON template for Analytics Entity AdWords Link.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementWebPropertyAdWordsLinkUpdateMethodBuilder.html">webPropertyAdWordsLinks.update</a> (request|response)</li>
+<li><a href="struct.ManagementWebPropertyAdWordsLinkPatchMethodBuilder.html">webPropertyAdWordsLinks.patch</a> (request|response)</li>
+<li><a href="struct.ManagementWebPropertyAdWordsLinkInsertMethodBuilder.html">webPropertyAdWordsLinks.insert</a> (request|response)</li>
+<li><a href="struct.ManagementWebPropertyAdWordsLinkGetMethodBuilder.html">webPropertyAdWordsLinks.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EntityAdWordsLinkEntity.html'
+                               title='analytics3::EntityAdWordsLinkEntity'>EntityAdWordsLinkEntity</a></td>
+                        <td class='docblock short'><p>Web property being linked.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EntityAdWordsLinks.html'
+                               title='analytics3::EntityAdWordsLinks'>EntityAdWordsLinks</a></td>
+                        <td class='docblock short'><p>An entity AdWords link collection provides a list of GA-AdWords links Each resource in this collection corresponds to a single link.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementWebPropertyAdWordsLinkListMethodBuilder.html">webPropertyAdWordsLinks.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EntityUserLink.html'
+                               title='analytics3::EntityUserLink'>EntityUserLink</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics Entity-User Link. Returns permissions that a user has for an entity.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementWebpropertyUserLinkInsertMethodBuilder.html">webpropertyUserLinks.insert</a> (request|response)</li>
+<li><a href="struct.ManagementProfileUserLinkInsertMethodBuilder.html">profileUserLinks.insert</a> (request|response)</li>
+<li><a href="struct.ManagementProfileUserLinkUpdateMethodBuilder.html">profileUserLinks.update</a> (request|response)</li>
+<li><a href="struct.ManagementAccountUserLinkUpdateMethodBuilder.html">accountUserLinks.update</a> (request|response)</li>
+<li><a href="struct.ManagementWebpropertyUserLinkUpdateMethodBuilder.html">webpropertyUserLinks.update</a> (request|response)</li>
+<li><a href="struct.ManagementAccountUserLinkInsertMethodBuilder.html">accountUserLinks.insert</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EntityUserLinkEntity.html'
+                               title='analytics3::EntityUserLinkEntity'>EntityUserLinkEntity</a></td>
+                        <td class='docblock short'><p>Entity for this link. It can be an account, a web property, or a view (profile).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EntityUserLinkPermissions.html'
+                               title='analytics3::EntityUserLinkPermissions'>EntityUserLinkPermissions</a></td>
+                        <td class='docblock short'><p>Permissions the user has for this entity.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EntityUserLinks.html'
+                               title='analytics3::EntityUserLinks'>EntityUserLinks</a></td>
+                        <td class='docblock short'><p>An entity user link collection provides a list of Analytics ACL links Each resource in this collection corresponds to a single link.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementAccountUserLinkListMethodBuilder.html">accountUserLinks.list</a> (response)</li>
+<li><a href="struct.ManagementWebpropertyUserLinkListMethodBuilder.html">webpropertyUserLinks.list</a> (response)</li>
+<li><a href="struct.ManagementProfileUserLinkListMethodBuilder.html">profileUserLinks.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Experiment.html'
+                               title='analytics3::Experiment'>Experiment</a></td>
+                        <td class='docblock short'><p>JSON template for Analytics experiment resource.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementExperimentPatchMethodBuilder.html">experiments.patch</a> (request|response)</li>
+<li><a href="struct.ManagementExperimentInsertMethodBuilder.html">experiments.insert</a> (request|response)</li>
+<li><a href="struct.ManagementExperimentUpdateMethodBuilder.html">experiments.update</a> (request|response)</li>
+<li><a href="struct.ManagementExperimentGetMethodBuilder.html">experiments.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ExperimentParentLink.html'
+                               title='analytics3::ExperimentParentLink'>ExperimentParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for an experiment. Points to the view (profile) to which this experiment belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ExperimentVariations.html'
+                               title='analytics3::ExperimentVariations'>ExperimentVariations</a></td>
+                        <td class='docblock short'><p>Array of variations. The first variation in the array is the original. The number of variations may not change once an experiment is in the RUNNING state. At least two variations are required before status can be set to RUNNING.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Experiments.html'
+                               title='analytics3::Experiments'>Experiments</a></td>
+                        <td class='docblock short'><p>An experiment collection lists Analytics experiments to which the user has access. Each view (profile) can have a set of experiments. Each resource in the Experiment collection corresponds to a single Analytics experiment.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementExperimentListMethodBuilder.html">experiments.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Filter.html'
+                               title='analytics3::Filter'>Filter</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics account filter.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementFilterDeleteMethodBuilder.html">filters.delete</a> (response)</li>
+<li><a href="struct.ManagementFilterPatchMethodBuilder.html">filters.patch</a> (request|response)</li>
+<li><a href="struct.ManagementFilterUpdateMethodBuilder.html">filters.update</a> (request|response)</li>
+<li><a href="struct.ManagementFilterGetMethodBuilder.html">filters.get</a> (response)</li>
+<li><a href="struct.ManagementFilterInsertMethodBuilder.html">filters.insert</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilterAdvancedDetails.html'
+                               title='analytics3::FilterAdvancedDetails'>FilterAdvancedDetails</a></td>
+                        <td class='docblock short'><p>Details for the filter of the type ADVANCED.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilterExpression.html'
+                               title='analytics3::FilterExpression'>FilterExpression</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics filter expression.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilterLowercaseDetails.html'
+                               title='analytics3::FilterLowercaseDetails'>FilterLowercaseDetails</a></td>
+                        <td class='docblock short'><p>Details for the filter of the type LOWER.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilterParentLink.html'
+                               title='analytics3::FilterParentLink'>FilterParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for this filter. Points to the account to which this filter belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilterRef.html'
+                               title='analytics3::FilterRef'>FilterRef</a></td>
+                        <td class='docblock short'><p>JSON template for a profile filter link.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilterSearchAndReplaceDetails.html'
+                               title='analytics3::FilterSearchAndReplaceDetails'>FilterSearchAndReplaceDetails</a></td>
+                        <td class='docblock short'><p>Details for the filter of the type SEARCH_AND_REPLACE.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilterUppercaseDetails.html'
+                               title='analytics3::FilterUppercaseDetails'>FilterUppercaseDetails</a></td>
+                        <td class='docblock short'><p>Details for the filter of the type UPPER.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Filters.html'
+                               title='analytics3::Filters'>Filters</a></td>
+                        <td class='docblock short'><p>A filter collection lists filters created by users in an Analytics account. Each resource in the collection corresponds to a filter.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementFilterListMethodBuilder.html">filters.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaData.html'
+                               title='analytics3::GaData'>GaData</a></td>
+                        <td class='docblock short'><p>Analytics data for a given view (profile).</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.DataGaGetMethodBuilder.html">ga.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaDataColumnHeaders.html'
+                               title='analytics3::GaDataColumnHeaders'>GaDataColumnHeaders</a></td>
+                        <td class='docblock short'><p>Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaDataDataTable.html'
+                               title='analytics3::GaDataDataTable'>GaDataDataTable</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaDataDataTableCols.html'
+                               title='analytics3::GaDataDataTableCols'>GaDataDataTableCols</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaDataDataTableRows.html'
+                               title='analytics3::GaDataDataTableRows'>GaDataDataTableRows</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaDataDataTableRowsC.html'
+                               title='analytics3::GaDataDataTableRowsC'>GaDataDataTableRowsC</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaDataProfileInfo.html'
+                               title='analytics3::GaDataProfileInfo'>GaDataProfileInfo</a></td>
+                        <td class='docblock short'><p>Information for the view (profile), for which the Analytics data was requested.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GaDataQuery.html'
+                               title='analytics3::GaDataQuery'>GaDataQuery</a></td>
+                        <td class='docblock short'><p>Analytics data request query parameters.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Goal.html'
+                               title='analytics3::Goal'>Goal</a></td>
+                        <td class='docblock short'><p>JSON template for Analytics goal resource.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementGoalGetMethodBuilder.html">goals.get</a> (response)</li>
+<li><a href="struct.ManagementGoalUpdateMethodBuilder.html">goals.update</a> (request|response)</li>
+<li><a href="struct.ManagementGoalPatchMethodBuilder.html">goals.patch</a> (request|response)</li>
+<li><a href="struct.ManagementGoalInsertMethodBuilder.html">goals.insert</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GoalEventDetails.html'
+                               title='analytics3::GoalEventDetails'>GoalEventDetails</a></td>
+                        <td class='docblock short'><p>Details for the goal of the type EVENT.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GoalEventDetailsEventConditions.html'
+                               title='analytics3::GoalEventDetailsEventConditions'>GoalEventDetailsEventConditions</a></td>
+                        <td class='docblock short'><p>List of event conditions.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GoalParentLink.html'
+                               title='analytics3::GoalParentLink'>GoalParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for a goal. Points to the view (profile) to which this goal belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GoalUrlDestinationDetails.html'
+                               title='analytics3::GoalUrlDestinationDetails'>GoalUrlDestinationDetails</a></td>
+                        <td class='docblock short'><p>Details for the goal of the type URL_DESTINATION.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GoalUrlDestinationDetailsSteps.html'
+                               title='analytics3::GoalUrlDestinationDetailsSteps'>GoalUrlDestinationDetailsSteps</a></td>
+                        <td class='docblock short'><p>List of steps configured for this goal funnel.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GoalVisitNumPagesDetails.html'
+                               title='analytics3::GoalVisitNumPagesDetails'>GoalVisitNumPagesDetails</a></td>
+                        <td class='docblock short'><p>Details for the goal of the type VISIT_NUM_PAGES.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GoalVisitTimeOnSiteDetails.html'
+                               title='analytics3::GoalVisitTimeOnSiteDetails'>GoalVisitTimeOnSiteDetails</a></td>
+                        <td class='docblock short'><p>Details for the goal of the type VISIT_TIME_ON_SITE.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Goals.html'
+                               title='analytics3::Goals'>Goals</a></td>
+                        <td class='docblock short'><p>A goal collection lists Analytics goals to which the user has access. Each view (profile) can have a set of goals. Each resource in the Goal collection corresponds to a single Analytics goal.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementGoalListMethodBuilder.html">goals.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementAccountListMethodBuilder.html'
+                               title='analytics3::ManagementAccountListMethodBuilder'>ManagementAccountListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all accounts to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementAccountSummaryListMethodBuilder.html'
+                               title='analytics3::ManagementAccountSummaryListMethodBuilder'>ManagementAccountSummaryListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementAccountUserLinkDeleteMethodBuilder.html'
+                               title='analytics3::ManagementAccountUserLinkDeleteMethodBuilder'>ManagementAccountUserLinkDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Removes a user from the given account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementAccountUserLinkInsertMethodBuilder.html'
+                               title='analytics3::ManagementAccountUserLinkInsertMethodBuilder'>ManagementAccountUserLinkInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Adds a new user to the given account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementAccountUserLinkListMethodBuilder.html'
+                               title='analytics3::ManagementAccountUserLinkListMethodBuilder'>ManagementAccountUserLinkListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists account-user links for a given account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementAccountUserLinkUpdateMethodBuilder.html'
+                               title='analytics3::ManagementAccountUserLinkUpdateMethodBuilder'>ManagementAccountUserLinkUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates permissions for an existing user on the given account.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomDataSourceListMethodBuilder.html'
+                               title='analytics3::ManagementCustomDataSourceListMethodBuilder'>ManagementCustomDataSourceListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List custom data sources to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomDimensionGetMethodBuilder.html'
+                               title='analytics3::ManagementCustomDimensionGetMethodBuilder'>ManagementCustomDimensionGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get a custom dimension to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomDimensionInsertMethodBuilder.html'
+                               title='analytics3::ManagementCustomDimensionInsertMethodBuilder'>ManagementCustomDimensionInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new custom dimension.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomDimensionListMethodBuilder.html'
+                               title='analytics3::ManagementCustomDimensionListMethodBuilder'>ManagementCustomDimensionListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists custom dimensions to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomDimensionPatchMethodBuilder.html'
+                               title='analytics3::ManagementCustomDimensionPatchMethodBuilder'>ManagementCustomDimensionPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing custom dimension. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomDimensionUpdateMethodBuilder.html'
+                               title='analytics3::ManagementCustomDimensionUpdateMethodBuilder'>ManagementCustomDimensionUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing custom dimension.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomMetricGetMethodBuilder.html'
+                               title='analytics3::ManagementCustomMetricGetMethodBuilder'>ManagementCustomMetricGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Get a custom metric to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomMetricInsertMethodBuilder.html'
+                               title='analytics3::ManagementCustomMetricInsertMethodBuilder'>ManagementCustomMetricInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new custom metric.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomMetricListMethodBuilder.html'
+                               title='analytics3::ManagementCustomMetricListMethodBuilder'>ManagementCustomMetricListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists custom metrics to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomMetricPatchMethodBuilder.html'
+                               title='analytics3::ManagementCustomMetricPatchMethodBuilder'>ManagementCustomMetricPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing custom metric. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementCustomMetricUpdateMethodBuilder.html'
+                               title='analytics3::ManagementCustomMetricUpdateMethodBuilder'>ManagementCustomMetricUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing custom metric.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementExperimentDeleteMethodBuilder.html'
+                               title='analytics3::ManagementExperimentDeleteMethodBuilder'>ManagementExperimentDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete an experiment.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementExperimentGetMethodBuilder.html'
+                               title='analytics3::ManagementExperimentGetMethodBuilder'>ManagementExperimentGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns an experiment to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementExperimentInsertMethodBuilder.html'
+                               title='analytics3::ManagementExperimentInsertMethodBuilder'>ManagementExperimentInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new experiment.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementExperimentListMethodBuilder.html'
+                               title='analytics3::ManagementExperimentListMethodBuilder'>ManagementExperimentListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists experiments to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementExperimentPatchMethodBuilder.html'
+                               title='analytics3::ManagementExperimentPatchMethodBuilder'>ManagementExperimentPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update an existing experiment. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementExperimentUpdateMethodBuilder.html'
+                               title='analytics3::ManagementExperimentUpdateMethodBuilder'>ManagementExperimentUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update an existing experiment.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementFilterDeleteMethodBuilder.html'
+                               title='analytics3::ManagementFilterDeleteMethodBuilder'>ManagementFilterDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete a filter.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementFilterGetMethodBuilder.html'
+                               title='analytics3::ManagementFilterGetMethodBuilder'>ManagementFilterGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns a filters to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementFilterInsertMethodBuilder.html'
+                               title='analytics3::ManagementFilterInsertMethodBuilder'>ManagementFilterInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new filter.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementFilterListMethodBuilder.html'
+                               title='analytics3::ManagementFilterListMethodBuilder'>ManagementFilterListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all filters for an account</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementFilterPatchMethodBuilder.html'
+                               title='analytics3::ManagementFilterPatchMethodBuilder'>ManagementFilterPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing filter. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementFilterUpdateMethodBuilder.html'
+                               title='analytics3::ManagementFilterUpdateMethodBuilder'>ManagementFilterUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing filter.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementGoalGetMethodBuilder.html'
+                               title='analytics3::ManagementGoalGetMethodBuilder'>ManagementGoalGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a goal to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementGoalInsertMethodBuilder.html'
+                               title='analytics3::ManagementGoalInsertMethodBuilder'>ManagementGoalInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new goal.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementGoalListMethodBuilder.html'
+                               title='analytics3::ManagementGoalListMethodBuilder'>ManagementGoalListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists goals to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementGoalPatchMethodBuilder.html'
+                               title='analytics3::ManagementGoalPatchMethodBuilder'>ManagementGoalPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing view (profile). This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementGoalUpdateMethodBuilder.html'
+                               title='analytics3::ManagementGoalUpdateMethodBuilder'>ManagementGoalUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementMethodsBuilder.html'
+                               title='analytics3::ManagementMethodsBuilder'>ManagementMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>management</em> resources.
+It is not used directly, but through the <code>Analytics</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileDeleteMethodBuilder.html'
+                               title='analytics3::ManagementProfileDeleteMethodBuilder'>ManagementProfileDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes a view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileFilterLinkDeleteMethodBuilder.html'
+                               title='analytics3::ManagementProfileFilterLinkDeleteMethodBuilder'>ManagementProfileFilterLinkDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete a profile filter link.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileFilterLinkGetMethodBuilder.html'
+                               title='analytics3::ManagementProfileFilterLinkGetMethodBuilder'>ManagementProfileFilterLinkGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns a single profile filter link.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileFilterLinkInsertMethodBuilder.html'
+                               title='analytics3::ManagementProfileFilterLinkInsertMethodBuilder'>ManagementProfileFilterLinkInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new profile filter link.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileFilterLinkListMethodBuilder.html'
+                               title='analytics3::ManagementProfileFilterLinkListMethodBuilder'>ManagementProfileFilterLinkListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all profile filter links for a profile.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileFilterLinkPatchMethodBuilder.html'
+                               title='analytics3::ManagementProfileFilterLinkPatchMethodBuilder'>ManagementProfileFilterLinkPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update an existing profile filter link. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileFilterLinkUpdateMethodBuilder.html'
+                               title='analytics3::ManagementProfileFilterLinkUpdateMethodBuilder'>ManagementProfileFilterLinkUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Update an existing profile filter link.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileGetMethodBuilder.html'
+                               title='analytics3::ManagementProfileGetMethodBuilder'>ManagementProfileGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a view (profile) to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileInsertMethodBuilder.html'
+                               title='analytics3::ManagementProfileInsertMethodBuilder'>ManagementProfileInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileListMethodBuilder.html'
+                               title='analytics3::ManagementProfileListMethodBuilder'>ManagementProfileListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists views (profiles) to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfilePatchMethodBuilder.html'
+                               title='analytics3::ManagementProfilePatchMethodBuilder'>ManagementProfilePatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing view (profile). This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileUpdateMethodBuilder.html'
+                               title='analytics3::ManagementProfileUpdateMethodBuilder'>ManagementProfileUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileUserLinkDeleteMethodBuilder.html'
+                               title='analytics3::ManagementProfileUserLinkDeleteMethodBuilder'>ManagementProfileUserLinkDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Removes a user from the given view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileUserLinkInsertMethodBuilder.html'
+                               title='analytics3::ManagementProfileUserLinkInsertMethodBuilder'>ManagementProfileUserLinkInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Adds a new user to the given view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileUserLinkListMethodBuilder.html'
+                               title='analytics3::ManagementProfileUserLinkListMethodBuilder'>ManagementProfileUserLinkListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists profile-user links for a given view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementProfileUserLinkUpdateMethodBuilder.html'
+                               title='analytics3::ManagementProfileUserLinkUpdateMethodBuilder'>ManagementProfileUserLinkUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates permissions for an existing user on the given view (profile).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementSegmentListMethodBuilder.html'
+                               title='analytics3::ManagementSegmentListMethodBuilder'>ManagementSegmentListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists segments to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementUnsampledReportGetMethodBuilder.html'
+                               title='analytics3::ManagementUnsampledReportGetMethodBuilder'>ManagementUnsampledReportGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns a single unsampled report.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementUnsampledReportInsertMethodBuilder.html'
+                               title='analytics3::ManagementUnsampledReportInsertMethodBuilder'>ManagementUnsampledReportInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new unsampled report.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementUnsampledReportListMethodBuilder.html'
+                               title='analytics3::ManagementUnsampledReportListMethodBuilder'>ManagementUnsampledReportListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists unsampled reports to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementUploadDeleteUploadDataMethodBuilder.html'
+                               title='analytics3::ManagementUploadDeleteUploadDataMethodBuilder'>ManagementUploadDeleteUploadDataMethodBuilder</a></td>
+                        <td class='docblock short'><p>Delete data associated with a previous upload.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementUploadGetMethodBuilder.html'
+                               title='analytics3::ManagementUploadGetMethodBuilder'>ManagementUploadGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>List uploads to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementUploadListMethodBuilder.html'
+                               title='analytics3::ManagementUploadListMethodBuilder'>ManagementUploadListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List uploads to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementUploadUploadDataMethodBuilder.html'
+                               title='analytics3::ManagementUploadUploadDataMethodBuilder'>ManagementUploadUploadDataMethodBuilder</a></td>
+                        <td class='docblock short'><p>Upload data for a custom data source.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebPropertyAdWordsLinkDeleteMethodBuilder.html'
+                               title='analytics3::ManagementWebPropertyAdWordsLinkDeleteMethodBuilder'>ManagementWebPropertyAdWordsLinkDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes a web property-AdWords link.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebPropertyAdWordsLinkGetMethodBuilder.html'
+                               title='analytics3::ManagementWebPropertyAdWordsLinkGetMethodBuilder'>ManagementWebPropertyAdWordsLinkGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns a web property-AdWords link to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebPropertyAdWordsLinkInsertMethodBuilder.html'
+                               title='analytics3::ManagementWebPropertyAdWordsLinkInsertMethodBuilder'>ManagementWebPropertyAdWordsLinkInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a webProperty-AdWords link.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebPropertyAdWordsLinkListMethodBuilder.html'
+                               title='analytics3::ManagementWebPropertyAdWordsLinkListMethodBuilder'>ManagementWebPropertyAdWordsLinkListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists webProperty-AdWords links for a given web property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebPropertyAdWordsLinkPatchMethodBuilder.html'
+                               title='analytics3::ManagementWebPropertyAdWordsLinkPatchMethodBuilder'>ManagementWebPropertyAdWordsLinkPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing webProperty-AdWords link. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebPropertyAdWordsLinkUpdateMethodBuilder.html'
+                               title='analytics3::ManagementWebPropertyAdWordsLinkUpdateMethodBuilder'>ManagementWebPropertyAdWordsLinkUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing webProperty-AdWords link.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyGetMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyGetMethodBuilder'>ManagementWebpropertyGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a web property to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyInsertMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyInsertMethodBuilder'>ManagementWebpropertyInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Create a new property if the account has fewer than 20 properties. Web properties are visible in the Google Analytics interface only if they have at least one profile.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyListMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyListMethodBuilder'>ManagementWebpropertyListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists web properties to which the user has access.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyPatchMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyPatchMethodBuilder'>ManagementWebpropertyPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing web property. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyUpdateMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyUpdateMethodBuilder'>ManagementWebpropertyUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing web property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyUserLinkDeleteMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyUserLinkDeleteMethodBuilder'>ManagementWebpropertyUserLinkDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Removes a user from the given web property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyUserLinkInsertMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyUserLinkInsertMethodBuilder'>ManagementWebpropertyUserLinkInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Adds a new user to the given web property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyUserLinkListMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyUserLinkListMethodBuilder'>ManagementWebpropertyUserLinkListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists webProperty-user links for a given web property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagementWebpropertyUserLinkUpdateMethodBuilder.html'
+                               title='analytics3::ManagementWebpropertyUserLinkUpdateMethodBuilder'>ManagementWebpropertyUserLinkUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates permissions for an existing user on the given web property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.McfData.html'
+                               title='analytics3::McfData'>McfData</a></td>
+                        <td class='docblock short'><p>Multi-Channel Funnels data for a given view (profile).</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.DataMcfGetMethodBuilder.html">mcf.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.McfDataColumnHeaders.html'
+                               title='analytics3::McfDataColumnHeaders'>McfDataColumnHeaders</a></td>
+                        <td class='docblock short'><p>Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.McfDataProfileInfo.html'
+                               title='analytics3::McfDataProfileInfo'>McfDataProfileInfo</a></td>
+                        <td class='docblock short'><p>Information for the view (profile), for which the Analytics data was requested.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.McfDataQuery.html'
+                               title='analytics3::McfDataQuery'>McfDataQuery</a></td>
+                        <td class='docblock short'><p>Analytics data request query parameters.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.McfDataRows.html'
+                               title='analytics3::McfDataRows'>McfDataRows</a></td>
+                        <td class='docblock short'><p>A union object representing a dimension or metric value. Only one of &quot;primitiveValue&quot; or &quot;conversionPathValue&quot; attribute will be populated.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.McfDataRowsConversionPathValue.html'
+                               title='analytics3::McfDataRowsConversionPathValue'>McfDataRowsConversionPathValue</a></td>
+                        <td class='docblock short'><p>A conversion path dimension value, containing a list of interactions with their attributes.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetadataColumnListMethodBuilder.html'
+                               title='analytics3::MetadataColumnListMethodBuilder'>MetadataColumnListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all columns for a report type</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetadataMethodsBuilder.html'
+                               title='analytics3::MetadataMethodsBuilder'>MetadataMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>metadata</em> resources.
+It is not used directly, but through the <code>Analytics</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Profile.html'
+                               title='analytics3::Profile'>Profile</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics view (profile).</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementProfileInsertMethodBuilder.html">profiles.insert</a> (request|response)</li>
+<li><a href="struct.ManagementProfileUpdateMethodBuilder.html">profiles.update</a> (request|response)</li>
+<li><a href="struct.ManagementProfileGetMethodBuilder.html">profiles.get</a> (response)</li>
+<li><a href="struct.ManagementProfilePatchMethodBuilder.html">profiles.patch</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProfileChildLink.html'
+                               title='analytics3::ProfileChildLink'>ProfileChildLink</a></td>
+                        <td class='docblock short'><p>Child link for this view (profile). Points to the list of goals for this view (profile).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProfileFilterLink.html'
+                               title='analytics3::ProfileFilterLink'>ProfileFilterLink</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics profile filter link.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementProfileFilterLinkUpdateMethodBuilder.html">profileFilterLinks.update</a> (request|response)</li>
+<li><a href="struct.ManagementProfileFilterLinkGetMethodBuilder.html">profileFilterLinks.get</a> (response)</li>
+<li><a href="struct.ManagementProfileFilterLinkInsertMethodBuilder.html">profileFilterLinks.insert</a> (request|response)</li>
+<li><a href="struct.ManagementProfileFilterLinkPatchMethodBuilder.html">profileFilterLinks.patch</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProfileFilterLinks.html'
+                               title='analytics3::ProfileFilterLinks'>ProfileFilterLinks</a></td>
+                        <td class='docblock short'><p>A profile filter link collection lists profile filter links between profiles and filters. Each resource in the collection corresponds to a profile filter link.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementProfileFilterLinkListMethodBuilder.html">profileFilterLinks.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProfileParentLink.html'
+                               title='analytics3::ProfileParentLink'>ProfileParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for this view (profile). Points to the web property to which this view (profile) belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProfilePermissions.html'
+                               title='analytics3::ProfilePermissions'>ProfilePermissions</a></td>
+                        <td class='docblock short'><p>Permissions the user has for this view (profile).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProfileRef.html'
+                               title='analytics3::ProfileRef'>ProfileRef</a></td>
+                        <td class='docblock short'><p>JSON template for a linked view (profile).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProfileSummary.html'
+                               title='analytics3::ProfileSummary'>ProfileSummary</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics ProfileSummary. ProfileSummary returns basic information (i.e., summary) for a profile.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Profiles.html'
+                               title='analytics3::Profiles'>Profiles</a></td>
+                        <td class='docblock short'><p>A view (profile) collection lists Analytics views (profiles) to which the user has access. Each resource in the collection corresponds to a single Analytics view (profile).</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementProfileListMethodBuilder.html">profiles.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProvisioningCreateAccountTicketMethodBuilder.html'
+                               title='analytics3::ProvisioningCreateAccountTicketMethodBuilder'>ProvisioningCreateAccountTicketMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates an account ticket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProvisioningMethodsBuilder.html'
+                               title='analytics3::ProvisioningMethodsBuilder'>ProvisioningMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>provisioning</em> resources.
+It is not used directly, but through the <code>Analytics</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RealtimeData.html'
+                               title='analytics3::RealtimeData'>RealtimeData</a></td>
+                        <td class='docblock short'><p>Real time data for a given view (profile).</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.DataRealtimeGetMethodBuilder.html">realtime.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RealtimeDataColumnHeaders.html'
+                               title='analytics3::RealtimeDataColumnHeaders'>RealtimeDataColumnHeaders</a></td>
+                        <td class='docblock short'><p>Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RealtimeDataProfileInfo.html'
+                               title='analytics3::RealtimeDataProfileInfo'>RealtimeDataProfileInfo</a></td>
+                        <td class='docblock short'><p>Information for the view (profile), for which the real time data was requested.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RealtimeDataQuery.html'
+                               title='analytics3::RealtimeDataQuery'>RealtimeDataQuery</a></td>
+                        <td class='docblock short'><p>Real time data request query parameters.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Segment.html'
+                               title='analytics3::Segment'>Segment</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics segment.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Segments.html'
+                               title='analytics3::Segments'>Segments</a></td>
+                        <td class='docblock short'><p>An segment collection lists Analytics segments that the user has access to. Each resource in the collection corresponds to a single Analytics segment.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementSegmentListMethodBuilder.html">segments.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UnsampledReport.html'
+                               title='analytics3::UnsampledReport'>UnsampledReport</a></td>
+                        <td class='docblock short'><p>JSON template for Analytics unsampled report resource.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementUnsampledReportInsertMethodBuilder.html">unsampledReports.insert</a> (request|response)</li>
+<li><a href="struct.ManagementUnsampledReportGetMethodBuilder.html">unsampledReports.get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UnsampledReportCloudStorageDownloadDetails.html'
+                               title='analytics3::UnsampledReportCloudStorageDownloadDetails'>UnsampledReportCloudStorageDownloadDetails</a></td>
+                        <td class='docblock short'><p>Download details for a file stored in Google Cloud Storage.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UnsampledReportDriveDownloadDetails.html'
+                               title='analytics3::UnsampledReportDriveDownloadDetails'>UnsampledReportDriveDownloadDetails</a></td>
+                        <td class='docblock short'><p>Download details for a file stored in Google Drive.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UnsampledReports.html'
+                               title='analytics3::UnsampledReports'>UnsampledReports</a></td>
+                        <td class='docblock short'><p>An unsampled report collection lists Analytics unsampled reports to which the user has access. Each view (profile) can have a set of unsampled reports. Each resource in the unsampled report collection corresponds to a single Analytics unsampled report.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementUnsampledReportListMethodBuilder.html">unsampledReports.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Upload.html'
+                               title='analytics3::Upload'>Upload</a></td>
+                        <td class='docblock short'><p>Metadata returned for an upload operation.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementUploadGetMethodBuilder.html">uploads.get</a> (response)</li>
+<li><a href="struct.ManagementUploadUploadDataMethodBuilder.html">uploads.uploadData</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Uploads.html'
+                               title='analytics3::Uploads'>Uploads</a></td>
+                        <td class='docblock short'><p>Upload collection lists Analytics uploads to which the user has access. Each custom data source can have a set of uploads. Each resource in the upload collection corresponds to a single Analytics data upload.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementUploadListMethodBuilder.html">uploads.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserRef.html'
+                               title='analytics3::UserRef'>UserRef</a></td>
+                        <td class='docblock short'><p>JSON template for a user reference.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebPropertyRef.html'
+                               title='analytics3::WebPropertyRef'>WebPropertyRef</a></td>
+                        <td class='docblock short'><p>JSON template for a web property reference.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebPropertySummary.html'
+                               title='analytics3::WebPropertySummary'>WebPropertySummary</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics WebPropertySummary. WebPropertySummary returns basic information (i.e., summary) for a web property.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Webproperties.html'
+                               title='analytics3::Webproperties'>Webproperties</a></td>
+                        <td class='docblock short'><p>A web property collection lists Analytics web properties to which the user has access. Each resource in the collection corresponds to a single Analytics web property.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementWebpropertyListMethodBuilder.html">webproperties.list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Webproperty.html'
+                               title='analytics3::Webproperty'>Webproperty</a></td>
+                        <td class='docblock short'><p>JSON template for an Analytics web property.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ManagementWebpropertyInsertMethodBuilder.html">webproperties.insert</a> (request|response)</li>
+<li><a href="struct.ManagementWebpropertyUpdateMethodBuilder.html">webproperties.update</a> (request|response)</li>
+<li><a href="struct.ManagementWebpropertyGetMethodBuilder.html">webproperties.get</a> (response)</li>
+<li><a href="struct.ManagementWebpropertyPatchMethodBuilder.html">webproperties.patch</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebpropertyChildLink.html'
+                               title='analytics3::WebpropertyChildLink'>WebpropertyChildLink</a></td>
+                        <td class='docblock short'><p>Child link for this web property. Points to the list of views (profiles) for this web property.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebpropertyParentLink.html'
+                               title='analytics3::WebpropertyParentLink'>WebpropertyParentLink</a></td>
+                        <td class='docblock short'><p>Parent link for this web property. Points to the account to which this web property belongs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebpropertyPermissions.html'
+                               title='analytics3::WebpropertyPermissions'>WebpropertyPermissions</a></td>
+                        <td class='docblock short'><p>Permissions the user has for this web property.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
+                               title='analytics3::Scope'>Scope</a></td>
+                        <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
+A scope is needed when requesting an
+<a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "analytics3";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

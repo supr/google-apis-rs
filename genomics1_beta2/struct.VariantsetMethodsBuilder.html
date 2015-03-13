@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `VariantsetMethodsBuilder` struct in crate `genomics1_beta2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, VariantsetMethodsBuilder">
+
+    <title>genomics1_beta2::VariantsetMethodsBuilder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>genomics1_beta2</a></p><script>window.sidebarCurrent = {name: 'VariantsetMethodsBuilder', ty: 'struct', relpath: ''};</script><script async src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>genomics1_beta2</a>::<wbr><a class='struct' href=''>VariantsetMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-30373' href='../src/genomics1_beta2/lib.rs.html#4123-4129'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct VariantsetMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+    // some fields omitted
+}</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>variantset</em> resources.
+It is not used directly, but through the <code>Genomics</code> hub.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1>
+<p>Instantiate a resource builder</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>genomics1_beta2</span>;
+ 
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+ 
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Genomics</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// like `delete(...)`, `export(...)`, `get(...)`, `import_variants(...)`, `merge_variants(...)`, `patch(...)`, `search(...)` and `update(...)`</span>
+<span class='comment'>// to build up your call.</span>
+<span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>variantsets</span>();
+</pre>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetMethodsBuilder.html' title='genomics1_beta2::VariantsetMethodsBuilder'>VariantsetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;self, request: &amp;<a class='struct' href='../genomics1_beta2/struct.VariantSet.html' title='genomics1_beta2::VariantSet'>VariantSet</a>, variant_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetUpdateMethodBuilder.html' title='genomics1_beta2::VariantsetUpdateMethodBuilder'>VariantsetUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates a variant set&#39;s metadata. All other modifications are silently ignored.    </p>
+</div><h4 id='method.export' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.export' class='fnname'>export</a>(&amp;self, request: &amp;<a class='struct' href='../genomics1_beta2/struct.ExportVariantSetRequest.html' title='genomics1_beta2::ExportVariantSetRequest'>ExportVariantSetRequest</a>, variant_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetExportMethodBuilder.html' title='genomics1_beta2::VariantsetExportMethodBuilder'>VariantsetExportMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Exports variant set data to an external destination.    </p>
+</div><h4 id='method.patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.patch' class='fnname'>patch</a>(&amp;self, request: &amp;<a class='struct' href='../genomics1_beta2/struct.VariantSet.html' title='genomics1_beta2::VariantSet'>VariantSet</a>, variant_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetPatchMethodBuilder.html' title='genomics1_beta2::VariantsetPatchMethodBuilder'>VariantsetPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates a variant set&#39;s metadata. All other modifications are silently ignored. This method supports patch semantics.    </p>
+</div><h4 id='method.search' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search' class='fnname'>search</a>(&amp;self, request: &amp;<a class='struct' href='../genomics1_beta2/struct.SearchVariantSetsRequest.html' title='genomics1_beta2::SearchVariantSetsRequest'>SearchVariantSetsRequest</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetSearchMethodBuilder.html' title='genomics1_beta2::VariantsetSearchMethodBuilder'>VariantsetSearchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Returns a list of all variant sets matching search criteria.</p>
+
+<p>Implements GlobalAllianceApi.searchVariantSets.</p>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, variant_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetGetMethodBuilder.html' title='genomics1_beta2::VariantsetGetMethodBuilder'>VariantsetGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Gets a variant set by ID.    </p>
+</div><h4 id='method.merge_variants' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.merge_variants' class='fnname'>merge_variants</a>(&amp;self, request: &amp;<a class='struct' href='../genomics1_beta2/struct.MergeVariantsRequest.html' title='genomics1_beta2::MergeVariantsRequest'>MergeVariantsRequest</a>, variant_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetMergeVariantMethodBuilder.html' title='genomics1_beta2::VariantsetMergeVariantMethodBuilder'>VariantsetMergeVariantMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Merges the given variants with existing variants. Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.</p>
+
+<p>When variants are merged, the call information from the new variant is added to the existing variant, and other fields (such as key/value pairs) are discarded.</p>
+</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, variant_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetDeleteMethodBuilder.html' title='genomics1_beta2::VariantsetDeleteMethodBuilder'>VariantsetDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes the contents of a variant set. The variant set object is not deleted.    </p>
+</div><h4 id='method.import_variants' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.import_variants' class='fnname'>import_variants</a>(&amp;self, request: &amp;<a class='struct' href='../genomics1_beta2/struct.ImportVariantsRequest.html' title='genomics1_beta2::ImportVariantsRequest'>ImportVariantsRequest</a>, variant_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../genomics1_beta2/struct.VariantsetImportVariantMethodBuilder.html' title='genomics1_beta2::VariantsetImportVariantMethodBuilder'>VariantsetImportVariantMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Creates variant data by asynchronously importing the provided information.</p>
+
+<p>The variants for import will be merged with any existing data and each other according to the behavior of mergeVariants. In particular, this means for merged VCF variants that have conflicting INFO fields, some data will be arbitrarily discarded. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../genomics1_beta2/cmn/trait.ResourceMethodsBuilder.html' title='genomics1_beta2::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../genomics1_beta2/struct.VariantsetMethodsBuilder.html' title='genomics1_beta2::VariantsetMethodsBuilder'>VariantsetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "genomics1_beta2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

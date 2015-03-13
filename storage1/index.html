@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `storage1` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, storage1">
+
+    <title>storage1 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'storage1', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>storage1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/storage1/lib.rs.html#5-8641'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id="features" class='section-header'><a
+                           href="#features">Features</a></h1>
+<p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Storage.html">hub</a> ... </p>
+
+<ul>
+<li><a href="struct.BucketAccessControl.html">bucket access controls</a> (<a href="struct.BucketAccessControlDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.BucketAccessControlGetMethodBuilder.html"><em>get</em></a>, <a href="struct.BucketAccessControlInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.BucketAccessControlListMethodBuilder.html"><em>list</em></a>, <a href="struct.BucketAccessControlPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.BucketAccessControlUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Bucket.html">buckets</a> (<a href="struct.BucketDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.BucketGetMethodBuilder.html"><em>get</em></a>, <a href="struct.BucketInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.BucketListMethodBuilder.html"><em>list</em></a>, <a href="struct.BucketPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.BucketUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Channel.html">channels</a> (<a href="struct.ChannelStopMethodBuilder.html"><em>stop</em></a>)</li>
+<li>default object access controls (<a href="struct.DefaultObjectAccessControlDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.DefaultObjectAccessControlGetMethodBuilder.html"><em>get</em></a>, <a href="struct.DefaultObjectAccessControlInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.DefaultObjectAccessControlListMethodBuilder.html"><em>list</em></a>, <a href="struct.DefaultObjectAccessControlPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.DefaultObjectAccessControlUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.ObjectAccessControl.html">object access controls</a> (<a href="struct.ObjectAccessControlDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ObjectAccessControlGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ObjectAccessControlInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ObjectAccessControlListMethodBuilder.html"><em>list</em></a>, <a href="struct.ObjectAccessControlPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.ObjectAccessControlUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Object.html">objects</a> (<a href="struct.ObjectComposeMethodBuilder.html"><em>compose</em></a>, <a href="struct.ObjectCopyMethodBuilder.html"><em>copy</em></a>, <a href="struct.ObjectDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ObjectGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ObjectInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ObjectListMethodBuilder.html"><em>list</em></a>, <a href="struct.ObjectPatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.ObjectUpdateMethodBuilder.html"><em>update</em></a> and <a href="struct.ObjectWatchAllMethodBuilder.html"><em>watchall</em></a>)</li>
+</ul>
+
+<p>Everything else about the <em>storage</em> API can be found at the
+<a href="https://developers.google.com/storage/docs/json_api/">official documentation site</a>.</p>
+
+<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+
+<h1 id="structure-of-this-library" class='section-header'><a
+                           href="#structure-of-this-library">Structure of this Library</a></h1>
+<p>The API is structured into the following primary items:</p>
+
+<ul>
+<li><strong><a href="struct.Storage.html">Hub</a></strong>
+
+<ul>
+<li>a central object to maintain state and allow accessing all <em>Activities</em></li>
+</ul></li>
+<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+
+<ul>
+<li>primary types that you can apply <em>Activities</em> to</li>
+<li>a collection of properties and <em>Parts</em></li>
+<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+
+<ul>
+<li>a collection of properties</li>
+<li>never directly used in <em>Activities</em></li>
+</ul></li>
+</ul></li>
+<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+
+<ul>
+<li>operations to apply to <em>Resources</em></li>
+</ul></li>
+</ul>
+
+<p>Generally speaking, you can invoke <em>Activities</em> like this:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>resource</span>().<span class='ident'>activity</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>Or specifically ...</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>object_access_controls</span>().<span class='ident'>get</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>default_object_access_controls</span>().<span class='ident'>patch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>object_access_controls</span>().<span class='ident'>update</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>object_access_controls</span>().<span class='ident'>list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>object_access_controls</span>().<span class='ident'>patch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>default_object_access_controls</span>().<span class='ident'>update</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>default_object_access_controls</span>().<span class='ident'>insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>object_access_controls</span>().<span class='ident'>insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>object_access_controls</span>().<span class='ident'>delete</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>default_object_access_controls</span>().<span class='ident'>get</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>The <code>resource()</code> and <code>activity(...)</code> calls create <a href="http://en.wikipedia.org/wiki/Builder_pattern">builders</a>. The second one dealing with <code>Activities</code> 
+supports various methods to configure the impending operation (not shown here). It is made such that all required arguments have to be 
+specified right away (i.e. <code>(...)</code>), whereas all optional ones can be <a href="http://en.wikipedia.org/wiki/Builder_pattern">build up</a> as desired.
+The <code>doit()</code> method performs the actual communication with the server and returns the respective result.</p>
+
+<h1 id="usage" class='section-header'><a
+                           href="#usage">Usage</a></h1>
+<h2 id="a-complete-example" class='section-header'><a
+                           href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>storage1</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+ 
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
+<span class='comment'>// among other things.</span>
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
+<span class='comment'>// unless you replace  `None` with the desired Flow</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
+<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Storage</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// As the method needs a request, you would usually fill it with the desired information</span>
+<span class='comment'>// into the respective structure. Some of the parts shown here might not be applicable !</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span>: <span class='ident'>ObjectAccessControl</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+ 
+<span class='comment'>// You can configure optional parameters by calling the respective setters at will, and</span>
+<span class='comment'>// execute the final call using `doit()`.</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>object_access_controls</span>().<span class='ident'>update</span>(<span class='kw-2'>&amp;</span><span class='ident'>req</span>, <span class='string'>&quot;bucket&quot;</span>, <span class='string'>&quot;object&quot;</span>, <span class='string'>&quot;entity&quot;</span>)
+             .<span class='ident'>generation</span>(<span class='string'>&quot;accusam&quot;</span>)
+             .<span class='ident'>doit</span>();
+ 
+<span class='kw'>match</span> <span class='ident'>result</span> {
+    <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+}
+</pre>
+
+<h2 id="handling-errors" class='section-header'><a
+                           href="#handling-errors">Handling Errors</a></h2>
+<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+the doit() methods, or handed as possibly intermediate results to either the 
+<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+
+<p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
+makes the system potentially resilient to all kinds of errors.</p>
+
+<h2 id="about-customization/callbacks" class='section-header'><a
+                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
+<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+Respective methods will be called to provide progress information, as well as determine whether the system should 
+retry on failure.</p>
+
+<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+
+<h2 id="about-parts" class='section-header'><a
+                           href="#about-parts">About Parts</a></h2>
+<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
+<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+the server to indicate either the set parts of the request or the desired parts in the response.</p>
+
+<h2 id="about-builder-arguments" class='section-header'><a
+                           href="#about-builder-arguments">About Builder Arguments</a></h2>
+<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+These will always take a single argument, for which the following statements are true.</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
+<li>strings are passed as <code>&amp;str</code></li>
+<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+</ul>
+
+<p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
+                               title='storage1::cmn'>cmn</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.map!.html'
+                               title='storage1::map!'>map!</a></td>
+                        <td class='docblock short'><p>This macro is advertised in the documentation, which is why we deliver it as well</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Bucket.html'
+                               title='storage1::Bucket'>Bucket</a></td>
+                        <td class='docblock short'><p>A bucket.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BucketUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.BucketInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.BucketDeleteMethodBuilder.html">delete</a> (none)</li>
+<li><a href="struct.BucketPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.BucketListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.BucketGetMethodBuilder.html">get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControl.html'
+                               title='storage1::BucketAccessControl'>BucketAccessControl</a></td>
+                        <td class='docblock short'><p>An access-control entry.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BucketAccessControlListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.BucketAccessControlPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.BucketAccessControlDeleteMethodBuilder.html">delete</a> (none)</li>
+<li><a href="struct.BucketAccessControlUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.BucketAccessControlGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.BucketAccessControlInsertMethodBuilder.html">insert</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlDeleteMethodBuilder.html'
+                               title='storage1::BucketAccessControlDeleteMethodBuilder'>BucketAccessControlDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Permanently deletes the ACL entry for the specified entity on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlGetMethodBuilder.html'
+                               title='storage1::BucketAccessControlGetMethodBuilder'>BucketAccessControlGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns the ACL entry for the specified entity on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlInsertMethodBuilder.html'
+                               title='storage1::BucketAccessControlInsertMethodBuilder'>BucketAccessControlInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new ACL entry on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlListMethodBuilder.html'
+                               title='storage1::BucketAccessControlListMethodBuilder'>BucketAccessControlListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves ACL entries on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlMethodsBuilder.html'
+                               title='storage1::BucketAccessControlMethodsBuilder'>BucketAccessControlMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>bucketAccessControl</em> resources.
+It is not used directly, but through the <code>Storage</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlPatchMethodBuilder.html'
+                               title='storage1::BucketAccessControlPatchMethodBuilder'>BucketAccessControlPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an ACL entry on the specified bucket. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlProjectTeam.html'
+                               title='storage1::BucketAccessControlProjectTeam'>BucketAccessControlProjectTeam</a></td>
+                        <td class='docblock short'><p>The project team associated with the entity, if any.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControlUpdateMethodBuilder.html'
+                               title='storage1::BucketAccessControlUpdateMethodBuilder'>BucketAccessControlUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an ACL entry on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketAccessControls.html'
+                               title='storage1::BucketAccessControls'>BucketAccessControls</a></td>
+                        <td class='docblock short'><p>An access-control list.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BucketAccessControlListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketCors.html'
+                               title='storage1::BucketCors'>BucketCors</a></td>
+                        <td class='docblock short'><p>The bucket&#39;s Cross-Origin Resource Sharing (CORS) configuration.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketDeleteMethodBuilder.html'
+                               title='storage1::BucketDeleteMethodBuilder'>BucketDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Permanently deletes an empty bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketGetMethodBuilder.html'
+                               title='storage1::BucketGetMethodBuilder'>BucketGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns metadata for the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketInsertMethodBuilder.html'
+                               title='storage1::BucketInsertMethodBuilder'>BucketInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketLifecycle.html'
+                               title='storage1::BucketLifecycle'>BucketLifecycle</a></td>
+                        <td class='docblock short'><p>The bucket&#39;s lifecycle configuration. See lifecycle management for more information.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketLifecycleRule.html'
+                               title='storage1::BucketLifecycleRule'>BucketLifecycleRule</a></td>
+                        <td class='docblock short'><p>A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketLifecycleRuleAction.html'
+                               title='storage1::BucketLifecycleRuleAction'>BucketLifecycleRuleAction</a></td>
+                        <td class='docblock short'><p>The action to take.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketLifecycleRuleCondition.html'
+                               title='storage1::BucketLifecycleRuleCondition'>BucketLifecycleRuleCondition</a></td>
+                        <td class='docblock short'><p>The condition(s) under which the action will be taken.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketListMethodBuilder.html'
+                               title='storage1::BucketListMethodBuilder'>BucketListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of buckets for a given project.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketLogging.html'
+                               title='storage1::BucketLogging'>BucketLogging</a></td>
+                        <td class='docblock short'><p>The bucket&#39;s logging configuration, which defines the destination bucket and optional name prefix for the current bucket&#39;s logs.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketMethodsBuilder.html'
+                               title='storage1::BucketMethodsBuilder'>BucketMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>bucket</em> resources.
+It is not used directly, but through the <code>Storage</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketOwner.html'
+                               title='storage1::BucketOwner'>BucketOwner</a></td>
+                        <td class='docblock short'><p>The owner of the bucket. This is always the project team&#39;s owner group.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketPatchMethodBuilder.html'
+                               title='storage1::BucketPatchMethodBuilder'>BucketPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a bucket. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketUpdateMethodBuilder.html'
+                               title='storage1::BucketUpdateMethodBuilder'>BucketUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketVersioning.html'
+                               title='storage1::BucketVersioning'>BucketVersioning</a></td>
+                        <td class='docblock short'><p>The bucket&#39;s versioning configuration.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BucketWebsite.html'
+                               title='storage1::BucketWebsite'>BucketWebsite</a></td>
+                        <td class='docblock short'><p>The bucket&#39;s website configuration.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Buckets.html'
+                               title='storage1::Buckets'>Buckets</a></td>
+                        <td class='docblock short'><p>A list of buckets.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BucketListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Channel.html'
+                               title='storage1::Channel'>Channel</a></td>
+                        <td class='docblock short'><p>An notification channel used to watch for resource changes.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ChannelStopMethodBuilder.html">stop</a> (request)</li>
+<li><a href="struct.ObjectWatchAllMethodBuilder.html">watchAll</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChannelMethodsBuilder.html'
+                               title='storage1::ChannelMethodsBuilder'>ChannelMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>channel</em> resources.
+It is not used directly, but through the <code>Storage</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChannelStopMethodBuilder.html'
+                               title='storage1::ChannelStopMethodBuilder'>ChannelStopMethodBuilder</a></td>
+                        <td class='docblock short'><p>Stop watching resources through this channel</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ComposeRequest.html'
+                               title='storage1::ComposeRequest'>ComposeRequest</a></td>
+                        <td class='docblock short'><p>A Compose request.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ObjectComposeMethodBuilder.html">compose</a> (request)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ComposeRequestSourceObjects.html'
+                               title='storage1::ComposeRequestSourceObjects'>ComposeRequestSourceObjects</a></td>
+                        <td class='docblock short'><p>The list of source objects that will be concatenated into a single object.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ComposeRequestSourceObjectsObjectPreconditions.html'
+                               title='storage1::ComposeRequestSourceObjectsObjectPreconditions'>ComposeRequestSourceObjectsObjectPreconditions</a></td>
+                        <td class='docblock short'><p>Conditions that must be met for this operation to execute.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultObjectAccessControlDeleteMethodBuilder.html'
+                               title='storage1::DefaultObjectAccessControlDeleteMethodBuilder'>DefaultObjectAccessControlDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Permanently deletes the default object ACL entry for the specified entity on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultObjectAccessControlGetMethodBuilder.html'
+                               title='storage1::DefaultObjectAccessControlGetMethodBuilder'>DefaultObjectAccessControlGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns the default object ACL entry for the specified entity on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultObjectAccessControlInsertMethodBuilder.html'
+                               title='storage1::DefaultObjectAccessControlInsertMethodBuilder'>DefaultObjectAccessControlInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new default object ACL entry on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultObjectAccessControlListMethodBuilder.html'
+                               title='storage1::DefaultObjectAccessControlListMethodBuilder'>DefaultObjectAccessControlListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves default object ACL entries on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultObjectAccessControlMethodsBuilder.html'
+                               title='storage1::DefaultObjectAccessControlMethodsBuilder'>DefaultObjectAccessControlMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>defaultObjectAccessControl</em> resources.
+It is not used directly, but through the <code>Storage</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultObjectAccessControlPatchMethodBuilder.html'
+                               title='storage1::DefaultObjectAccessControlPatchMethodBuilder'>DefaultObjectAccessControlPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a default object ACL entry on the specified bucket. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultObjectAccessControlUpdateMethodBuilder.html'
+                               title='storage1::DefaultObjectAccessControlUpdateMethodBuilder'>DefaultObjectAccessControlUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a default object ACL entry on the specified bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Object.html'
+                               title='storage1::Object'>Object</a></td>
+                        <td class='docblock short'><p>An object.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ObjectListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.ObjectUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.ObjectCopyMethodBuilder.html">copy</a> (request|response)</li>
+<li><a href="struct.ObjectWatchAllMethodBuilder.html">watchAll</a> (none)</li>
+<li><a href="struct.ObjectGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.ObjectInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.ObjectComposeMethodBuilder.html">compose</a> (response)</li>
+<li><a href="struct.ObjectDeleteMethodBuilder.html">delete</a> (none)</li>
+<li><a href="struct.ObjectPatchMethodBuilder.html">patch</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControl.html'
+                               title='storage1::ObjectAccessControl'>ObjectAccessControl</a></td>
+                        <td class='docblock short'><p>An access-control entry.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ObjectAccessControlGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.DefaultObjectAccessControlPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.ObjectAccessControlPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.DefaultObjectAccessControlUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.DefaultObjectAccessControlInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlDeleteMethodBuilder.html">delete</a> (none)</li>
+<li><a href="struct.DefaultObjectAccessControlGetMethodBuilder.html">get</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlDeleteMethodBuilder.html'
+                               title='storage1::ObjectAccessControlDeleteMethodBuilder'>ObjectAccessControlDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Permanently deletes the ACL entry for the specified entity on the specified object.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlGetMethodBuilder.html'
+                               title='storage1::ObjectAccessControlGetMethodBuilder'>ObjectAccessControlGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns the ACL entry for the specified entity on the specified object.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlInsertMethodBuilder.html'
+                               title='storage1::ObjectAccessControlInsertMethodBuilder'>ObjectAccessControlInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new ACL entry on the specified object.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlListMethodBuilder.html'
+                               title='storage1::ObjectAccessControlListMethodBuilder'>ObjectAccessControlListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves ACL entries on the specified object.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlMethodsBuilder.html'
+                               title='storage1::ObjectAccessControlMethodsBuilder'>ObjectAccessControlMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>objectAccessControl</em> resources.
+It is not used directly, but through the <code>Storage</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlPatchMethodBuilder.html'
+                               title='storage1::ObjectAccessControlPatchMethodBuilder'>ObjectAccessControlPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an ACL entry on the specified object. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlProjectTeam.html'
+                               title='storage1::ObjectAccessControlProjectTeam'>ObjectAccessControlProjectTeam</a></td>
+                        <td class='docblock short'><p>The project team associated with the entity, if any.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControlUpdateMethodBuilder.html'
+                               title='storage1::ObjectAccessControlUpdateMethodBuilder'>ObjectAccessControlUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an ACL entry on the specified object.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectAccessControls.html'
+                               title='storage1::ObjectAccessControls'>ObjectAccessControls</a></td>
+                        <td class='docblock short'><p>An access-control list.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ObjectAccessControlListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.DefaultObjectAccessControlListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectComposeMethodBuilder.html'
+                               title='storage1::ObjectComposeMethodBuilder'>ObjectComposeMethodBuilder</a></td>
+                        <td class='docblock short'><p>Concatenates a list of existing objects into a new object in the same bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectCopyMethodBuilder.html'
+                               title='storage1::ObjectCopyMethodBuilder'>ObjectCopyMethodBuilder</a></td>
+                        <td class='docblock short'><p>Copies an object to a specified location. Optionally overrides metadata.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectDeleteMethodBuilder.html'
+                               title='storage1::ObjectDeleteMethodBuilder'>ObjectDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectGetMethodBuilder.html'
+                               title='storage1::ObjectGetMethodBuilder'>ObjectGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves an object or its metadata.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectInsertMethodBuilder.html'
+                               title='storage1::ObjectInsertMethodBuilder'>ObjectInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Stores a new object and metadata.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectListMethodBuilder.html'
+                               title='storage1::ObjectListMethodBuilder'>ObjectListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of objects matching the criteria.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectMethodsBuilder.html'
+                               title='storage1::ObjectMethodsBuilder'>ObjectMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>object</em> resources.
+It is not used directly, but through the <code>Storage</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectOwner.html'
+                               title='storage1::ObjectOwner'>ObjectOwner</a></td>
+                        <td class='docblock short'><p>The owner of the object. This will always be the uploader of the object.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectPatchMethodBuilder.html'
+                               title='storage1::ObjectPatchMethodBuilder'>ObjectPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an object&#39;s metadata. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectUpdateMethodBuilder.html'
+                               title='storage1::ObjectUpdateMethodBuilder'>ObjectUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an object&#39;s metadata.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ObjectWatchAllMethodBuilder.html'
+                               title='storage1::ObjectWatchAllMethodBuilder'>ObjectWatchAllMethodBuilder</a></td>
+                        <td class='docblock short'><p>Watch for changes on all objects in a bucket.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Objects.html'
+                               title='storage1::Objects'>Objects</a></td>
+                        <td class='docblock short'><p>A list of objects.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ObjectListMethodBuilder.html">list</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Storage.html'
+                               title='storage1::Storage'>Storage</a></td>
+                        <td class='docblock short'><p>Central instance to access all Storage related resource activities</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
+                               title='storage1::Scope'>Scope</a></td>
+                        <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
+A scope is needed when requesting an
+<a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "storage1";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ISlice","A sliced iterator."]]});
