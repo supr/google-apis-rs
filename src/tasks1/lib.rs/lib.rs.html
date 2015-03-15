@@ -3140,6 +3140,13 @@
 <span id="3098">3098</span>
 <span id="3099">3099</span>
 <span id="3100">3100</span>
+<span id="3101">3101</span>
+<span id="3102">3102</span>
+<span id="3103">3103</span>
+<span id="3104">3104</span>
+<span id="3105">3105</span>
+<span id="3106">3106</span>
+<span id="3107">3107</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -3198,6 +3205,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! tasks1 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -3205,19 +3221,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate tasks1;</span>
-<span class='doccomment'>//! # use tasks1::cmn::Result;</span>
+<span class='doccomment'>//! use tasks1::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use tasks1::TasksHub;</span>
+<span class='doccomment'>//! use tasks1::TasksHub;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3377,19 +3394,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate tasks1;</span>
-<span class='doccomment'>/// # use tasks1::cmn::Result;</span>
+<span class='doccomment'>/// use tasks1::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use tasks1::TasksHub;</span>
+<span class='doccomment'>/// use tasks1::TasksHub;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3455,15 +3473,14 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TaskListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.TaskUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.TaskPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [clear](struct.TaskClearMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [move](struct.TaskMoveMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.TaskDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.TaskGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.TaskInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list tasks](struct.TaskListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update tasks](struct.TaskUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch tasks](struct.TaskPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [clear tasks](struct.TaskClearMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [move tasks](struct.TaskMoveMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete tasks](struct.TaskDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get tasks](struct.TaskGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert tasks](struct.TaskInsertMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Task</span> {
@@ -3536,11 +3553,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [update](struct.TasklistUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.TasklistGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [patch](struct.TasklistPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.TasklistInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [update tasklists](struct.TasklistUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get tasklists](struct.TasklistGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [patch tasklists](struct.TasklistPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert tasklists](struct.TasklistInsertMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TaskList</span> {
@@ -3586,8 +3602,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TasklistListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list tasklists](struct.TasklistListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TaskLists</span> {
@@ -3645,8 +3660,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TaskListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list tasks](struct.TaskListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Tasks</span> {
@@ -3684,7 +3698,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use tasks1::TasksHub;</span>
+<span class='doccomment'>/// use tasks1::TasksHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -3854,7 +3868,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use tasks1::TasksHub;</span>
+<span class='doccomment'>/// use tasks1::TasksHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4251,7 +4265,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate tasks1;</span>
-<span class='doccomment'>/// # use tasks1::Task;</span>
+<span class='doccomment'>/// use tasks1::Task;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4417,7 +4431,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate tasks1;</span>
-<span class='doccomment'>/// # use tasks1::Task;</span>
+<span class='doccomment'>/// use tasks1::Task;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5197,7 +5211,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate tasks1;</span>
-<span class='doccomment'>/// # use tasks1::Task;</span>
+<span class='doccomment'>/// use tasks1::Task;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5529,7 +5543,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate tasks1;</span>
-<span class='doccomment'>/// # use tasks1::TaskList;</span>
+<span class='doccomment'>/// use tasks1::TaskList;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5821,7 +5835,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate tasks1;</span>
-<span class='doccomment'>/// # use tasks1::TaskList;</span>
+<span class='doccomment'>/// use tasks1::TaskList;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5975,7 +5989,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate tasks1;</span>
-<span class='doccomment'>/// # use tasks1::TaskList;</span>
+<span class='doccomment'>/// use tasks1::TaskList;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

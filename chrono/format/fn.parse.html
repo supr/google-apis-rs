@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>chrono</a>::<wbr><a href='index.html'>format</a></p><script>window.sidebarCurrent = {name: 'parse', ty: 'fn', relpath: ''};</script><script async src="sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>chrono</a>::<wbr><a href='index.html'>format</a></p><script>window.sidebarCurrent = {name: 'parse', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -43,7 +43,7 @@
     <section id='main' class="content fn">
 <h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>chrono</a>::<wbr><a href='index.html'>format</a>::<wbr><a class='fn' href=''>parse</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-28309' href='../../src/chrono/format/parse.rs.html#207-342'>[src]</a></span></h1>
+        </span><a id='src-27196' href='../../src/chrono/format/parse.rs.html#207-342'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn parse&lt;'a, I&gt;(parsed: &amp;mut <a class='struct' href='../../chrono/format/parsed/struct.Parsed.html' title='chrono::format::parsed::Parsed'>Parsed</a>, s: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, items: I) -&gt; <a class='type' href='../../chrono/format/type.ParseResult.html' title='chrono::format::ParseResult'>ParseResult</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt; <span class='where'>where I: <a class='trait' href='http://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;Item=<a class='enum' href='../../chrono/format/enum.Item.html' title='chrono::format::Item'>Item</a>&lt;'a&gt;&gt;</span></pre><div class='docblock'><p>Tries to parse given string into <code>parsed</code> with given formatting items.
 Returns <code>Ok</code> when the entire string has been parsed (otherwise <code>parsed</code> should not be used).
 There should be no trailing string after parsing; use a stray <code>Item::Space</code> to trim whitespaces.</p>

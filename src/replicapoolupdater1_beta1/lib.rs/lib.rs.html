@@ -2560,6 +2560,13 @@
 <span id="2518">2518</span>
 <span id="2519">2519</span>
 <span id="2520">2520</span>
+<span id="2521">2521</span>
+<span id="2522">2522</span>
+<span id="2523">2523</span>
+<span id="2524">2524</span>
+<span id="2525">2525</span>
+<span id="2526">2526</span>
+<span id="2527">2527</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -2569,7 +2576,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Replicapoolupdater.html) ... </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * [rolling updates](struct.RollingUpdate.html) ([*cancel*](struct.RollingUpdateCancelMethodBuilder.html), [*get*](struct.RollingUpdateGetMethodBuilder.html), [*insert*](struct.RollingUpdateInsertMethodBuilder.html), [*list*](struct.RollingUpdateListMethodBuilder.html), [*listinstanceupdates*](struct.RollingUpdateListInstanceUpdateMethodBuilder.html), [*pause*](struct.RollingUpdatePauseMethodBuilder.html), [*resume*](struct.RollingUpdateResumeMethodBuilder.html) and [*rollback*](struct.RollingUpdateRollbackMethodBuilder.html))</span>
+<span class='doccomment'>//! * [rolling updates](struct.RollingUpdate.html) ([*cancel*](struct.RollingUpdateCancelMethodBuilder.html), [*get*](struct.RollingUpdateGetMethodBuilder.html), [*insert*](struct.RollingUpdateInsertMethodBuilder.html), [*list*](struct.RollingUpdateListMethodBuilder.html), [*list instance updates*](struct.RollingUpdateListInstanceUpdateMethodBuilder.html), [*pause*](struct.RollingUpdatePauseMethodBuilder.html), [*resume*](struct.RollingUpdateResumeMethodBuilder.html) and [*rollback*](struct.RollingUpdateRollbackMethodBuilder.html))</span>
 <span class='doccomment'>//! * zone operations ([*get*](struct.ZoneOperationGetMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *replicapoolupdater* API can be found at the</span>
@@ -2618,6 +2625,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! replicapoolupdater1_beta1 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -2625,19 +2641,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate replicapoolupdater1_beta1;</span>
-<span class='doccomment'>//! # use replicapoolupdater1_beta1::cmn::Result;</span>
+<span class='doccomment'>//! use replicapoolupdater1_beta1::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use replicapoolupdater1_beta1::Replicapoolupdater;</span>
+<span class='doccomment'>//! use replicapoolupdater1_beta1::Replicapoolupdater;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -2795,19 +2812,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate replicapoolupdater1_beta1;</span>
-<span class='doccomment'>/// # use replicapoolupdater1_beta1::cmn::Result;</span>
+<span class='doccomment'>/// use replicapoolupdater1_beta1::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use replicapoolupdater1_beta1::Replicapoolupdater;</span>
+<span class='doccomment'>/// use replicapoolupdater1_beta1::Replicapoolupdater;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -2892,8 +2910,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [listInstanceUpdates](struct.RollingUpdateListInstanceUpdateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list instance updates rolling updates](struct.RollingUpdateListInstanceUpdateMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceUpdateList</span> {
@@ -2949,15 +2966,14 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [pause](struct.RollingUpdatePauseMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [rollback](struct.RollingUpdateRollbackMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.RollingUpdateGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [resume](struct.RollingUpdateResumeMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [list](struct.RollingUpdateListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [insert](struct.RollingUpdateInsertMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [listInstanceUpdates](struct.RollingUpdateListInstanceUpdateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [cancel](struct.RollingUpdateCancelMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [pause rolling updates](struct.RollingUpdatePauseMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [rollback rolling updates](struct.RollingUpdateRollbackMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get rolling updates](struct.RollingUpdateGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [resume rolling updates](struct.RollingUpdateResumeMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [list rolling updates](struct.RollingUpdateListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [insert rolling updates](struct.RollingUpdateInsertMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [list instance updates rolling updates](struct.RollingUpdateListInstanceUpdateMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [cancel rolling updates](struct.RollingUpdateCancelMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>RollingUpdate</span> {
@@ -3188,13 +3204,12 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [pause](struct.RollingUpdatePauseMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [get](struct.ZoneOperationGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [rollback](struct.RollingUpdateRollbackMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [resume](struct.RollingUpdateResumeMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.RollingUpdateInsertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [cancel](struct.RollingUpdateCancelMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [pause rolling updates](struct.RollingUpdatePauseMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [get zone operations](struct.ZoneOperationGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [rollback rolling updates](struct.RollingUpdateRollbackMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [resume rolling updates](struct.RollingUpdateResumeMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert rolling updates](struct.RollingUpdateInsertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [cancel rolling updates](struct.RollingUpdateCancelMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Operation</span> {
@@ -3282,8 +3297,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.RollingUpdateListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list rolling updates](struct.RollingUpdateListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>RollingUpdateList</span> {
@@ -3321,7 +3335,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use replicapoolupdater1_beta1::Replicapoolupdater;</span>
+<span class='doccomment'>/// use replicapoolupdater1_beta1::Replicapoolupdater;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -3491,7 +3505,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use replicapoolupdater1_beta1::Replicapoolupdater;</span>
+<span class='doccomment'>/// use replicapoolupdater1_beta1::Replicapoolupdater;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4404,7 +4418,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate replicapoolupdater1_beta1;</span>
-<span class='doccomment'>/// # use replicapoolupdater1_beta1::RollingUpdate;</span>
+<span class='doccomment'>/// use replicapoolupdater1_beta1::RollingUpdate;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

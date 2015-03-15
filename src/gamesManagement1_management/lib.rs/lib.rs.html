@@ -5081,6 +5081,7 @@
 <span id="5039">5039</span>
 <span id="5040">5040</span>
 <span id="5041">5041</span>
+<span id="5042">5042</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -5090,14 +5091,14 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.GamesManagement.html) ... </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * achievements ([*reset*](struct.AchievementResetMethodBuilder.html), [*resetall*](struct.AchievementResetAllMethodBuilder.html), [*resetallforallplayers*](struct.AchievementResetAllForAllPlayerMethodBuilder.html), [*resetforallplayers*](struct.AchievementResetForAllPlayerMethodBuilder.html) and [*resetmultipleforallplayers*](struct.AchievementResetMultipleForAllPlayerMethodBuilder.html))</span>
-<span class='doccomment'>//! * applications ([*listhidden*](struct.ApplicationListHiddenMethodBuilder.html))</span>
-<span class='doccomment'>//! * events ([*reset*](struct.EventResetMethodBuilder.html), [*resetall*](struct.EventResetAllMethodBuilder.html), [*resetallforallplayers*](struct.EventResetAllForAllPlayerMethodBuilder.html), [*resetforallplayers*](struct.EventResetForAllPlayerMethodBuilder.html) and [*resetmultipleforallplayers*](struct.EventResetMultipleForAllPlayerMethodBuilder.html))</span>
+<span class='doccomment'>//! * achievements ([*reset*](struct.AchievementResetMethodBuilder.html), [*reset all*](struct.AchievementResetAllMethodBuilder.html), [*reset all for all players*](struct.AchievementResetAllForAllPlayerMethodBuilder.html), [*reset for all players*](struct.AchievementResetForAllPlayerMethodBuilder.html) and [*reset multiple for all players*](struct.AchievementResetMultipleForAllPlayerMethodBuilder.html))</span>
+<span class='doccomment'>//! * applications ([*list hidden*](struct.ApplicationListHiddenMethodBuilder.html))</span>
+<span class='doccomment'>//! * events ([*reset*](struct.EventResetMethodBuilder.html), [*reset all*](struct.EventResetAllMethodBuilder.html), [*reset all for all players*](struct.EventResetAllForAllPlayerMethodBuilder.html), [*reset for all players*](struct.EventResetForAllPlayerMethodBuilder.html) and [*reset multiple for all players*](struct.EventResetMultipleForAllPlayerMethodBuilder.html))</span>
 <span class='doccomment'>//! * [players](struct.Player.html) ([*hide*](struct.PlayerHideMethodBuilder.html) and [*unhide*](struct.PlayerUnhideMethodBuilder.html))</span>
-<span class='doccomment'>//! * quests ([*reset*](struct.QuestResetMethodBuilder.html), [*resetall*](struct.QuestResetAllMethodBuilder.html), [*resetallforallplayers*](struct.QuestResetAllForAllPlayerMethodBuilder.html), [*resetforallplayers*](struct.QuestResetForAllPlayerMethodBuilder.html) and [*resetmultipleforallplayers*](struct.QuestResetMultipleForAllPlayerMethodBuilder.html))</span>
-<span class='doccomment'>//! * rooms ([*reset*](struct.RoomResetMethodBuilder.html) and [*resetforallplayers*](struct.RoomResetForAllPlayerMethodBuilder.html))</span>
-<span class='doccomment'>//! * scores ([*reset*](struct.ScoreResetMethodBuilder.html), [*resetall*](struct.ScoreResetAllMethodBuilder.html), [*resetallforallplayers*](struct.ScoreResetAllForAllPlayerMethodBuilder.html), [*resetforallplayers*](struct.ScoreResetForAllPlayerMethodBuilder.html) and [*resetmultipleforallplayers*](struct.ScoreResetMultipleForAllPlayerMethodBuilder.html))</span>
-<span class='doccomment'>//! * turn based matches ([*reset*](struct.TurnBasedMatcheResetMethodBuilder.html) and [*resetforallplayers*](struct.TurnBasedMatcheResetForAllPlayerMethodBuilder.html))</span>
+<span class='doccomment'>//! * quests ([*reset*](struct.QuestResetMethodBuilder.html), [*reset all*](struct.QuestResetAllMethodBuilder.html), [*reset all for all players*](struct.QuestResetAllForAllPlayerMethodBuilder.html), [*reset for all players*](struct.QuestResetForAllPlayerMethodBuilder.html) and [*reset multiple for all players*](struct.QuestResetMultipleForAllPlayerMethodBuilder.html))</span>
+<span class='doccomment'>//! * rooms ([*reset*](struct.RoomResetMethodBuilder.html) and [*reset for all players*](struct.RoomResetForAllPlayerMethodBuilder.html))</span>
+<span class='doccomment'>//! * scores ([*reset*](struct.ScoreResetMethodBuilder.html), [*reset all*](struct.ScoreResetAllMethodBuilder.html), [*reset all for all players*](struct.ScoreResetAllForAllPlayerMethodBuilder.html), [*reset for all players*](struct.ScoreResetForAllPlayerMethodBuilder.html) and [*reset multiple for all players*](struct.ScoreResetMultipleForAllPlayerMethodBuilder.html))</span>
+<span class='doccomment'>//! * turn based matches ([*reset*](struct.TurnBasedMatcheResetMethodBuilder.html) and [*reset for all players*](struct.TurnBasedMatcheResetForAllPlayerMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *Games Management* API can be found at the</span>
 <span class='doccomment'>//! [official documentation site](https://developers.google.com/games/services).</span>
@@ -5139,6 +5140,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! gamesManagement1_management = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -5146,19 +5156,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate gamesManagement1_management;</span>
-<span class='doccomment'>//! # use gamesManagement1_management::cmn::Result;</span>
+<span class='doccomment'>//! use gamesManagement1_management::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>//! use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -5308,19 +5319,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate gamesManagement1_management;</span>
-<span class='doccomment'>/// # use gamesManagement1_management::cmn::Result;</span>
+<span class='doccomment'>/// use gamesManagement1_management::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -5394,8 +5406,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [reset](struct.AchievementResetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset achievements](struct.AchievementResetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AchievementResetResponse</span> {
@@ -5462,8 +5473,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [resetMultipleForAllPlayers](struct.EventResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset multiple for all players events](struct.EventResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>EventsResetMultipleForAllRequest</span> {
@@ -5495,8 +5505,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [resetMultipleForAllPlayers](struct.AchievementResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset multiple for all players achievements](struct.AchievementResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AchievementResetMultipleForAllRequest</span> {
@@ -5545,8 +5554,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [resetAll](struct.ScoreResetAllMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset all scores](struct.ScoreResetAllMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PlayerScoreResetAllResponse</span> {
@@ -5566,9 +5574,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [hide](struct.PlayerHideMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [unhide](struct.PlayerUnhideMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [hide players](struct.PlayerHideMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [unhide players](struct.PlayerUnhideMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Player</span> {
@@ -5602,8 +5609,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [resetMultipleForAllPlayers](struct.QuestResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset multiple for all players quests](struct.QuestResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>QuestsResetMultipleForAllRequest</span> {
@@ -5654,8 +5660,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [listHidden](struct.ApplicationListHiddenMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list hidden applications](struct.ApplicationListHiddenMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>HiddenPlayerList</span> {
@@ -5677,8 +5682,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [resetAll](struct.AchievementResetAllMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset all achievements](struct.AchievementResetAllMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AchievementResetAllResponse</span> {
@@ -5698,8 +5702,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [resetMultipleForAllPlayers](struct.ScoreResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset multiple for all players scores](struct.ScoreResetMultipleForAllPlayerMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ScoresResetMultipleForAllRequest</span> {
@@ -5731,8 +5734,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [reset](struct.ScoreResetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reset scores](struct.ScoreResetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PlayerScoreResetResponse</span> {
@@ -5790,7 +5792,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -5897,7 +5899,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -5969,7 +5971,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -6076,7 +6078,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -6144,7 +6146,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -6203,7 +6205,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -6271,7 +6273,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -6378,7 +6380,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gamesManagement1_management::GamesManagement;</span>
+<span class='doccomment'>/// use gamesManagement1_management::GamesManagement;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -6891,7 +6893,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gamesManagement1_management;</span>
-<span class='doccomment'>/// # use gamesManagement1_management::AchievementResetMultipleForAllRequest;</span>
+<span class='doccomment'>/// use gamesManagement1_management::AchievementResetMultipleForAllRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -7459,7 +7461,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gamesManagement1_management;</span>
-<span class='doccomment'>/// # use gamesManagement1_management::ScoresResetMultipleForAllRequest;</span>
+<span class='doccomment'>/// use gamesManagement1_management::ScoresResetMultipleForAllRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -8923,7 +8925,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gamesManagement1_management;</span>
-<span class='doccomment'>/// # use gamesManagement1_management::QuestsResetMultipleForAllRequest;</span>
+<span class='doccomment'>/// use gamesManagement1_management::QuestsResetMultipleForAllRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -9857,7 +9859,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gamesManagement1_management;</span>
-<span class='doccomment'>/// # use gamesManagement1_management::EventsResetMultipleForAllRequest;</span>
+<span class='doccomment'>/// use gamesManagement1_management::EventsResetMultipleForAllRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

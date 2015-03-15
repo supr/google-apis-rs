@@ -8201,17 +8201,6 @@
 <span id="8159">8159</span>
 <span id="8160">8160</span>
 <span id="8161">8161</span>
-<span id="8162">8162</span>
-<span id="8163">8163</span>
-<span id="8164">8164</span>
-<span id="8165">8165</span>
-<span id="8166">8166</span>
-<span id="8167">8167</span>
-<span id="8168">8168</span>
-<span id="8169">8169</span>
-<span id="8170">8170</span>
-<span id="8171">8171</span>
-<span id="8172">8172</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -8224,7 +8213,7 @@
 <span class='doccomment'>//! * [backup runs](struct.BackupRun.html) ([*get*](struct.BackupRunGetMethodBuilder.html) and [*list*](struct.BackupRunListMethodBuilder.html))</span>
 <span class='doccomment'>//! * [databases](struct.Database.html) ([*delete*](struct.DatabaseDeleteMethodBuilder.html), [*get*](struct.DatabaseGetMethodBuilder.html), [*insert*](struct.DatabaseInsertMethodBuilder.html), [*list*](struct.DatabaseListMethodBuilder.html), [*patch*](struct.DatabasePatchMethodBuilder.html) and [*update*](struct.DatabaseUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * [flags](struct.Flag.html) ([*list*](struct.FlagListMethodBuilder.html))</span>
-<span class='doccomment'>//! * instances ([*clone*](struct.InstanceCloneMethodBuilder.html), [*delete*](struct.InstanceDeleteMethodBuilder.html), [*export*](struct.InstanceExportMethodBuilder.html), [*get*](struct.InstanceGetMethodBuilder.html), [*import*](struct.InstanceImportMethodBuilder.html), [*insert*](struct.InstanceInsertMethodBuilder.html), [*list*](struct.InstanceListMethodBuilder.html), [*patch*](struct.InstancePatchMethodBuilder.html), [*promotereplica*](struct.InstancePromoteReplicaMethodBuilder.html), [*resetsslconfig*](struct.InstanceResetSslConfigMethodBuilder.html), [*restart*](struct.InstanceRestartMethodBuilder.html), [*restorebackup*](struct.InstanceRestoreBackupMethodBuilder.html), [*startreplica*](struct.InstanceStartReplicaMethodBuilder.html), [*stopreplica*](struct.InstanceStopReplicaMethodBuilder.html) and [*update*](struct.InstanceUpdateMethodBuilder.html))</span>
+<span class='doccomment'>//! * instances ([*clone*](struct.InstanceCloneMethodBuilder.html), [*delete*](struct.InstanceDeleteMethodBuilder.html), [*export*](struct.InstanceExportMethodBuilder.html), [*get*](struct.InstanceGetMethodBuilder.html), [*import*](struct.InstanceImportMethodBuilder.html), [*insert*](struct.InstanceInsertMethodBuilder.html), [*list*](struct.InstanceListMethodBuilder.html), [*patch*](struct.InstancePatchMethodBuilder.html), [*promote replica*](struct.InstancePromoteReplicaMethodBuilder.html), [*reset ssl config*](struct.InstanceResetSslConfigMethodBuilder.html), [*restart*](struct.InstanceRestartMethodBuilder.html), [*restore backup*](struct.InstanceRestoreBackupMethodBuilder.html), [*start replica*](struct.InstanceStartReplicaMethodBuilder.html), [*stop replica*](struct.InstanceStopReplicaMethodBuilder.html) and [*update*](struct.InstanceUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * [operations](struct.Operation.html) ([*get*](struct.OperationGetMethodBuilder.html) and [*list*](struct.OperationListMethodBuilder.html))</span>
 <span class='doccomment'>//! * [ssl certs](struct.SslCert.html) ([*delete*](struct.SslCertDeleteMethodBuilder.html), [*get*](struct.SslCertGetMethodBuilder.html), [*insert*](struct.SslCertInsertMethodBuilder.html) and [*list*](struct.SslCertListMethodBuilder.html))</span>
 <span class='doccomment'>//! * [tiers](struct.Tier.html) ([*list*](struct.TierListMethodBuilder.html))</span>
@@ -8291,6 +8280,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! sqladmin1_beta4 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -8298,20 +8296,21 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>//! # use sqladmin1_beta4::User;</span>
-<span class='doccomment'>//! # use sqladmin1_beta4::cmn::Result;</span>
+<span class='doccomment'>//! use sqladmin1_beta4::User;</span>
+<span class='doccomment'>//! use sqladmin1_beta4::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>//! use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -8466,20 +8465,21 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::User;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::cmn::Result;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::User;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -8558,9 +8558,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.BackupRunGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.BackupRunListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get backup runs](struct.BackupRunGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list backup runs](struct.BackupRunListMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BackupRun</span> {
@@ -8613,11 +8612,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [insert](struct.SslCertInsertMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.SslCertGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.SslCertListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [delete](struct.SslCertDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [insert ssl certs](struct.SslCertInsertMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get ssl certs](struct.SslCertGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list ssl certs](struct.SslCertListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [delete ssl certs](struct.SslCertDeleteMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>SslCert</span> {
@@ -8764,8 +8762,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [clone](struct.InstanceCloneMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [clone instances](struct.InstanceCloneMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstancesCloneRequest</span> {
@@ -8794,8 +8791,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [insert](struct.SslCertInsertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [insert ssl certs](struct.SslCertInsertMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>SslCertsInsertResponse</span> {
@@ -8817,8 +8813,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.OperationListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list operations](struct.OperationListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>OperationsListResponse</span> {
@@ -8840,8 +8835,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TierListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list tiers](struct.TierListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TiersListResponse</span> {
@@ -8975,8 +8969,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.BackupRunListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list backup runs](struct.BackupRunListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BackupRunsListResponse</span> {
@@ -8998,13 +8991,12 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.DatabaseGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.DatabaseListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [patch](struct.DatabasePatchMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [insert](struct.DatabaseInsertMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [delete](struct.DatabaseDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.DatabaseUpdateMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get databases](struct.DatabaseGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list databases](struct.DatabaseListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [patch databases](struct.DatabasePatchMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [insert databases](struct.DatabaseInsertMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [delete databases](struct.DatabaseDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update databases](struct.DatabaseUpdateMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Database</span> {
@@ -9138,8 +9130,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.FlagListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list flags](struct.FlagListMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Flag</span> {
@@ -9170,11 +9161,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [delete](struct.UserDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.UserUpdateMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [list](struct.UserListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [insert](struct.UserInsertMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [delete users](struct.UserDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update users](struct.UserUpdateMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [list users](struct.UserListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [insert users](struct.UserInsertMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>User</span> {
@@ -9223,8 +9213,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TierListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list tiers](struct.TierListMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Tier</span> {
@@ -9282,8 +9271,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [restoreBackup](struct.InstanceRestoreBackupMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [restore backup instances](struct.InstanceRestoreBackupMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstancesRestoreBackupRequest</span> {
@@ -9341,8 +9329,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.FlagListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list flags](struct.FlagListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>FlagsListResponse</span> {
@@ -9424,8 +9411,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [insert](struct.SslCertInsertMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [insert ssl certs](struct.SslCertInsertMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>SslCertsInsertRequest</span> {
@@ -9454,8 +9440,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.SslCertListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list ssl certs](struct.SslCertListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>SslCertsListResponse</span> {
@@ -9510,8 +9495,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.InstanceListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list instances](struct.InstanceListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstancesListResponse</span> {
@@ -9549,8 +9533,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [export](struct.InstanceExportMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [export instances](struct.InstanceExportMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstancesExportRequest</span> {
@@ -9579,8 +9562,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.UserListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list users](struct.UserListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UsersListResponse</span> {
@@ -9602,11 +9584,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [patch](struct.InstancePatchMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [insert](struct.InstanceInsertMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [get](struct.InstanceGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.InstanceUpdateMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [patch instances](struct.InstancePatchMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [insert instances](struct.InstanceInsertMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [get instances](struct.InstanceGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update instances](struct.InstanceUpdateMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>DatabaseInstance</span> {
@@ -9694,8 +9675,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [import](struct.InstanceImportMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [import instances](struct.InstanceImportMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstancesImportRequest</span> {
@@ -9724,8 +9704,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.DatabaseListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list databases](struct.DatabaseListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>DatabasesListResponse</span> {
@@ -9776,30 +9755,29 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [delete](struct.SslCertDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.UserDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.DatabaseDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [patch](struct.DatabasePatchMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [resetSslConfig](struct.InstanceResetSslConfigMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [promoteReplica](struct.InstancePromoteReplicaMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.DatabaseUpdateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.OperationListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.UserUpdateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.DatabaseInsertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [patch](struct.InstancePatchMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [clone](struct.InstanceCloneMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.InstanceDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [get](struct.OperationGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [stopReplica](struct.InstanceStopReplicaMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [startReplica](struct.InstanceStartReplicaMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.UserInsertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.InstanceInsertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [import](struct.InstanceImportMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.InstanceUpdateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [restart](struct.InstanceRestartMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [export](struct.InstanceExportMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [restoreBackup](struct.InstanceRestoreBackupMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [delete ssl certs](struct.SslCertDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete users](struct.UserDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete databases](struct.DatabaseDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [patch databases](struct.DatabasePatchMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [reset ssl config instances](struct.InstanceResetSslConfigMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [promote replica instances](struct.InstancePromoteReplicaMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update databases](struct.DatabaseUpdateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list operations](struct.OperationListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update users](struct.UserUpdateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert databases](struct.DatabaseInsertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [patch instances](struct.InstancePatchMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [clone instances](struct.InstanceCloneMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete instances](struct.InstanceDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [get operations](struct.OperationGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [stop replica instances](struct.InstanceStopReplicaMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [start replica instances](struct.InstanceStartReplicaMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert users](struct.UserInsertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert instances](struct.InstanceInsertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [import instances](struct.InstanceImportMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update instances](struct.InstanceUpdateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [restart instances](struct.InstanceRestartMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [export instances](struct.InstanceExportMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [restore backup instances](struct.InstanceRestoreBackupMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Operation</span> {
@@ -9920,7 +9898,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -9994,7 +9972,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10051,7 +10029,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10157,7 +10135,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10418,7 +10396,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10474,7 +10452,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10609,7 +10587,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10712,7 +10690,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SQLAdmin;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SQLAdmin;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11579,7 +11557,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::User;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::User;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11769,7 +11747,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::User;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::User;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12385,7 +12363,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::DatabaseInstance;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::DatabaseInstance;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13151,7 +13129,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::DatabaseInstance;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::DatabaseInstance;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13469,7 +13447,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::InstancesImportRequest;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::InstancesImportRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13635,7 +13613,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::DatabaseInstance;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::DatabaseInstance;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13801,7 +13779,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::InstancesCloneRequest;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::InstancesCloneRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13967,7 +13945,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::InstancesExportRequest;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::InstancesExportRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14133,7 +14111,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::InstancesRestoreBackupRequest;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::InstancesRestoreBackupRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14587,7 +14565,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::Database;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::Database;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14915,7 +14893,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::Database;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::Database;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15243,7 +15221,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::Database;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::Database;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15421,7 +15399,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate sqladmin1_beta4;</span>
-<span class='doccomment'>/// # use sqladmin1_beta4::SslCertsInsertRequest;</span>
+<span class='doccomment'>/// use sqladmin1_beta4::SslCertsInsertRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

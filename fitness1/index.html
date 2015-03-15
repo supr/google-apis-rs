@@ -43,14 +43,14 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>fitness1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/fitness1/lib.rs.html#5-2859'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/fitness1/lib.rs.html#5-2865'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Fitness.html">hub</a> ... </p>
 
 <ul>
-<li>users (<a href="struct.UserDataSourceCreateMethodBuilder.html"><em>create datasources</em></a>, <a href="struct.UserDataSourceDatasetDeleteMethodBuilder.html"><em>delete datasets datasources</em></a>, <a href="struct.UserDataSourceDatasetGetMethodBuilder.html"><em>get datasets datasources</em></a>, <a href="struct.UserDataSourceDatasetPatchMethodBuilder.html"><em>patch datasets datasources</em></a>, <a href="struct.UserDataSourceGetMethodBuilder.html"><em>get datasources</em></a>, <a href="struct.UserDataSourceListMethodBuilder.html"><em>list datasources</em></a>, <a href="struct.UserDataSourcePatchMethodBuilder.html"><em>patch datasources</em></a>, <a href="struct.UserDataSourceUpdateMethodBuilder.html"><em>update datasources</em></a>, <a href="struct.UserSessionDeleteMethodBuilder.html"><em>delete sessions</em></a>, <a href="struct.UserSessionListMethodBuilder.html"><em>list sessions</em></a> and <a href="struct.UserSessionUpdateMethodBuilder.html"><em>update sessions</em></a>)</li>
+<li>users (<a href="struct.UserDataSourceCreateMethodBuilder.html"><em>data sources.create</em></a>, <a href="struct.UserDataSourceDatasetDeleteMethodBuilder.html"><em>data sources.datasets.delete</em></a>, <a href="struct.UserDataSourceDatasetGetMethodBuilder.html"><em>data sources.datasets.get</em></a>, <a href="struct.UserDataSourceDatasetPatchMethodBuilder.html"><em>data sources.datasets.patch</em></a>, <a href="struct.UserDataSourceGetMethodBuilder.html"><em>data sources.get</em></a>, <a href="struct.UserDataSourceListMethodBuilder.html"><em>data sources.list</em></a>, <a href="struct.UserDataSourcePatchMethodBuilder.html"><em>data sources.patch</em></a>, <a href="struct.UserDataSourceUpdateMethodBuilder.html"><em>data sources.update</em></a>, <a href="struct.UserSessionDeleteMethodBuilder.html"><em>sessions.delete</em></a>, <a href="struct.UserSessionListMethodBuilder.html"><em>sessions.list</em></a> and <a href="struct.UserSessionUpdateMethodBuilder.html"><em>sessions.update</em></a>)</li>
 </ul>
 
 <p>Everything else about the <em>fitness</em> API can be found at the
@@ -107,22 +107,34 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+fitness1 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>fitness1</span>;
+<span class='kw'>use</span> <span class='ident'>fitness1</span>::<span class='ident'>DataSource</span>;
+<span class='kw'>use</span> <span class='ident'>fitness1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>fitness1</span>::<span class='ident'>Fitness</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -236,10 +248,10 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserDataSourceGetMethodBuilder.html">dataSources.get</a> (response)</li>
-<li><a href="struct.UserDataSourceUpdateMethodBuilder.html">dataSources.update</a> (request|response)</li>
-<li><a href="struct.UserDataSourceCreateMethodBuilder.html">dataSources.create</a> (request|response)</li>
-<li><a href="struct.UserDataSourcePatchMethodBuilder.html">dataSources.patch</a> (request|response)</li>
+<li><a href="struct.UserDataSourceGetMethodBuilder.html">data sources.get users</a> (response)</li>
+<li><a href="struct.UserDataSourceUpdateMethodBuilder.html">data sources.update users</a> (request|response)</li>
+<li><a href="struct.UserDataSourceCreateMethodBuilder.html">data sources.create users</a> (request|response)</li>
+<li><a href="struct.UserDataSourcePatchMethodBuilder.html">data sources.patch users</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -275,8 +287,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserDataSourceDatasetPatchMethodBuilder.html">dataSources.datasets.patch</a> (request|response)</li>
-<li><a href="struct.UserDataSourceDatasetGetMethodBuilder.html">dataSources.datasets.get</a> (response)</li>
+<li><a href="struct.UserDataSourceDatasetPatchMethodBuilder.html">data sources.datasets.patch users</a> (request|response)</li>
+<li><a href="struct.UserDataSourceDatasetGetMethodBuilder.html">data sources.datasets.get users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -314,7 +326,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserDataSourceListMethodBuilder.html">dataSources.list</a> (response)</li>
+<li><a href="struct.UserDataSourceListMethodBuilder.html">data sources.list users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -330,7 +342,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserSessionListMethodBuilder.html">sessions.list</a> (response)</li>
+<li><a href="struct.UserSessionListMethodBuilder.html">sessions.list users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -346,7 +358,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserSessionUpdateMethodBuilder.html">sessions.update</a> (request|response)</li>
+<li><a href="struct.UserSessionUpdateMethodBuilder.html">sessions.update users</a> (request|response)</li>
 </ul>
 </td>
                     </tr>

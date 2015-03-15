@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>blogger3</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/blogger3/lib.rs.html#5-8317'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/blogger3/lib.rs.html#5-8315'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
@@ -51,12 +51,12 @@
 
 <ul>
 <li><a href="struct.BlogUserInfo.html">blog user infos</a> (<a href="struct.BlogUserInfoGetMethodBuilder.html"><em>get</em></a>)</li>
-<li><a href="struct.Blog.html">blogs</a> (<a href="struct.BlogGetMethodBuilder.html"><em>get</em></a>, <a href="struct.BlogGetByUrlMethodBuilder.html"><em>getbyurl</em></a> and <a href="struct.BlogListByUserMethodBuilder.html"><em>listbyuser</em></a>)</li>
-<li><a href="struct.Comment.html">comments</a> (<a href="struct.CommentApproveMethodBuilder.html"><em>approve</em></a>, <a href="struct.CommentDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.CommentGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CommentListMethodBuilder.html"><em>list</em></a>, <a href="struct.CommentListByBlogMethodBuilder.html"><em>listbyblog</em></a>, <a href="struct.CommentMarkAsSpamMethodBuilder.html"><em>markasspam</em></a> and <a href="struct.CommentRemoveContentMethodBuilder.html"><em>removecontent</em></a>)</li>
+<li><a href="struct.Blog.html">blogs</a> (<a href="struct.BlogGetMethodBuilder.html"><em>get</em></a>, <a href="struct.BlogGetByUrlMethodBuilder.html"><em>get by url</em></a> and <a href="struct.BlogListByUserMethodBuilder.html"><em>list by user</em></a>)</li>
+<li><a href="struct.Comment.html">comments</a> (<a href="struct.CommentApproveMethodBuilder.html"><em>approve</em></a>, <a href="struct.CommentDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.CommentGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CommentListMethodBuilder.html"><em>list</em></a>, <a href="struct.CommentListByBlogMethodBuilder.html"><em>list by blog</em></a>, <a href="struct.CommentMarkAsSpamMethodBuilder.html"><em>mark as spam</em></a> and <a href="struct.CommentRemoveContentMethodBuilder.html"><em>remove content</em></a>)</li>
 <li>page views (<a href="struct.PageViewGetMethodBuilder.html"><em>get</em></a>)</li>
 <li><a href="struct.Page.html">pages</a> (<a href="struct.PageDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.PageGetMethodBuilder.html"><em>get</em></a>, <a href="struct.PageInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.PageListMethodBuilder.html"><em>list</em></a>, <a href="struct.PagePatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.PagePublishMethodBuilder.html"><em>publish</em></a>, <a href="struct.PageRevertMethodBuilder.html"><em>revert</em></a> and <a href="struct.PageUpdateMethodBuilder.html"><em>update</em></a>)</li>
 <li><a href="struct.PostUserInfo.html">post user infos</a> (<a href="struct.PostUserInfoGetMethodBuilder.html"><em>get</em></a> and <a href="struct.PostUserInfoListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Post.html">posts</a> (<a href="struct.PostDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.PostGetMethodBuilder.html"><em>get</em></a>, <a href="struct.PostGetByPathMethodBuilder.html"><em>getbypath</em></a>, <a href="struct.PostInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.PostListMethodBuilder.html"><em>list</em></a>, <a href="struct.PostPatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.PostPublishMethodBuilder.html"><em>publish</em></a>, <a href="struct.PostRevertMethodBuilder.html"><em>revert</em></a>, <a href="struct.PostSearchMethodBuilder.html"><em>search</em></a> and <a href="struct.PostUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Post.html">posts</a> (<a href="struct.PostDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.PostGetMethodBuilder.html"><em>get</em></a>, <a href="struct.PostGetByPathMethodBuilder.html"><em>get by path</em></a>, <a href="struct.PostInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.PostListMethodBuilder.html"><em>list</em></a>, <a href="struct.PostPatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.PostPublishMethodBuilder.html"><em>publish</em></a>, <a href="struct.PostRevertMethodBuilder.html"><em>revert</em></a>, <a href="struct.PostSearchMethodBuilder.html"><em>search</em></a> and <a href="struct.PostUpdateMethodBuilder.html"><em>update</em></a>)</li>
 <li><a href="struct.User.html">users</a> (<a href="struct.UserGetMethodBuilder.html"><em>get</em></a>)</li>
 </ul>
 
@@ -120,22 +120,33 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+blogger3 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>blogger3</span>;
+<span class='kw'>use</span> <span class='ident'>blogger3</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>blogger3</span>::<span class='ident'>Blogger</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -228,9 +239,9 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BlogListByUserMethodBuilder.html">listByUser</a> (none)</li>
-<li><a href="struct.BlogGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.BlogGetByUrlMethodBuilder.html">getByUrl</a> (response)</li>
+<li><a href="struct.BlogListByUserMethodBuilder.html">list by user blogs</a> (none)</li>
+<li><a href="struct.BlogGetMethodBuilder.html">get blogs</a> (response)</li>
+<li><a href="struct.BlogGetByUrlMethodBuilder.html">get by url blogs</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -260,7 +271,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BlogListByUserMethodBuilder.html">listByUser</a> (response)</li>
+<li><a href="struct.BlogListByUserMethodBuilder.html">list by user blogs</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -327,7 +338,7 @@ It is not used directly, but through the <code>Blogger</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BlogUserInfoGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.BlogUserInfoGetMethodBuilder.html">get blog user infos</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -365,13 +376,13 @@ It is not used directly, but through the <code>Blogger</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.CommentListByBlogMethodBuilder.html">listByBlog</a> (none)</li>
-<li><a href="struct.CommentGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.CommentMarkAsSpamMethodBuilder.html">markAsSpam</a> (response)</li>
-<li><a href="struct.CommentListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.CommentRemoveContentMethodBuilder.html">removeContent</a> (response)</li>
-<li><a href="struct.CommentApproveMethodBuilder.html">approve</a> (response)</li>
-<li><a href="struct.CommentDeleteMethodBuilder.html">delete</a> (none)</li>
+<li><a href="struct.CommentListByBlogMethodBuilder.html">list by blog comments</a> (none)</li>
+<li><a href="struct.CommentGetMethodBuilder.html">get comments</a> (response)</li>
+<li><a href="struct.CommentMarkAsSpamMethodBuilder.html">mark as spam comments</a> (response)</li>
+<li><a href="struct.CommentListMethodBuilder.html">list comments</a> (none)</li>
+<li><a href="struct.CommentRemoveContentMethodBuilder.html">remove content comments</a> (response)</li>
+<li><a href="struct.CommentApproveMethodBuilder.html">approve comments</a> (response)</li>
+<li><a href="struct.CommentDeleteMethodBuilder.html">delete comments</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -444,8 +455,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.CommentListByBlogMethodBuilder.html">listByBlog</a> (response)</li>
-<li><a href="struct.CommentListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.CommentListByBlogMethodBuilder.html">list by blog comments</a> (response)</li>
+<li><a href="struct.CommentListMethodBuilder.html">list comments</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -506,14 +517,14 @@ It is not used directly, but through the <code>Blogger</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PageUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.PageGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.PageInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.PagePublishMethodBuilder.html">publish</a> (response)</li>
-<li><a href="struct.PageListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.PagePatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.PageRevertMethodBuilder.html">revert</a> (response)</li>
-<li><a href="struct.PageDeleteMethodBuilder.html">delete</a> (none)</li>
+<li><a href="struct.PageUpdateMethodBuilder.html">update pages</a> (request|response)</li>
+<li><a href="struct.PageGetMethodBuilder.html">get pages</a> (response)</li>
+<li><a href="struct.PageInsertMethodBuilder.html">insert pages</a> (request|response)</li>
+<li><a href="struct.PagePublishMethodBuilder.html">publish pages</a> (response)</li>
+<li><a href="struct.PageListMethodBuilder.html">list pages</a> (none)</li>
+<li><a href="struct.PagePatchMethodBuilder.html">patch pages</a> (request|response)</li>
+<li><a href="struct.PageRevertMethodBuilder.html">revert pages</a> (response)</li>
+<li><a href="struct.PageDeleteMethodBuilder.html">delete pages</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -577,7 +588,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PageListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.PageListMethodBuilder.html">list pages</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -651,7 +662,7 @@ It is not used directly, but through the <code>Blogger</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PageViewGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.PageViewGetMethodBuilder.html">get page views</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -676,16 +687,16 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PostInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.PostPublishMethodBuilder.html">publish</a> (response)</li>
-<li><a href="struct.PostDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.PostRevertMethodBuilder.html">revert</a> (response)</li>
-<li><a href="struct.PostUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.PostGetByPathMethodBuilder.html">getByPath</a> (response)</li>
-<li><a href="struct.PostSearchMethodBuilder.html">search</a> (none)</li>
-<li><a href="struct.PostPatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.PostListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.PostGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.PostInsertMethodBuilder.html">insert posts</a> (request|response)</li>
+<li><a href="struct.PostPublishMethodBuilder.html">publish posts</a> (response)</li>
+<li><a href="struct.PostDeleteMethodBuilder.html">delete posts</a> (none)</li>
+<li><a href="struct.PostRevertMethodBuilder.html">revert posts</a> (response)</li>
+<li><a href="struct.PostUpdateMethodBuilder.html">update posts</a> (request|response)</li>
+<li><a href="struct.PostGetByPathMethodBuilder.html">get by path posts</a> (response)</li>
+<li><a href="struct.PostSearchMethodBuilder.html">search posts</a> (none)</li>
+<li><a href="struct.PostPatchMethodBuilder.html">patch posts</a> (request|response)</li>
+<li><a href="struct.PostListMethodBuilder.html">list posts</a> (none)</li>
+<li><a href="struct.PostGetMethodBuilder.html">get posts</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -765,8 +776,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PostListMethodBuilder.html">list</a> (response)</li>
-<li><a href="struct.PostSearchMethodBuilder.html">search</a> (response)</li>
+<li><a href="struct.PostListMethodBuilder.html">list posts</a> (response)</li>
+<li><a href="struct.PostSearchMethodBuilder.html">search posts</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -859,8 +870,8 @@ It is not used directly, but through the <code>Blogger</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PostUserInfoListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.PostUserInfoGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.PostUserInfoListMethodBuilder.html">list post user infos</a> (none)</li>
+<li><a href="struct.PostUserInfoGetMethodBuilder.html">get post user infos</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -898,7 +909,7 @@ It is not used directly, but through the <code>Blogger</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PostUserInfoListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.PostUserInfoListMethodBuilder.html">list post user infos</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -914,7 +925,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.UserGetMethodBuilder.html">get users</a> (response)</li>
 </ul>
 </td>
                     </tr>

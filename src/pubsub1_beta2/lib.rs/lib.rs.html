@@ -3107,8 +3107,6 @@
 <span id="3065">3065</span>
 <span id="3066">3066</span>
 <span id="3067">3067</span>
-<span id="3068">3068</span>
-<span id="3069">3069</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -3118,7 +3116,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Pubsub.html) ... </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * projects ([*acknowledge subscriptions*](struct.ProjectSubscriptionAcknowledgeMethodBuilder.html), [*create subscriptions*](struct.ProjectSubscriptionCreateMethodBuilder.html), [*delete subscriptions*](struct.ProjectSubscriptionDeleteMethodBuilder.html), [*get subscriptions*](struct.ProjectSubscriptionGetMethodBuilder.html), [*list subscriptions*](struct.ProjectSubscriptionListMethodBuilder.html), [*modifyackdeadline subscriptions*](struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html), [*modifypushconfig subscriptions*](struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html), [*pull subscriptions*](struct.ProjectSubscriptionPullMethodBuilder.html), [*create topics*](struct.ProjectTopicCreateMethodBuilder.html), [*delete topics*](struct.ProjectTopicDeleteMethodBuilder.html), [*get topics*](struct.ProjectTopicGetMethodBuilder.html), [*list topics*](struct.ProjectTopicListMethodBuilder.html), [*publish topics*](struct.ProjectTopicPublishMethodBuilder.html) and [*list subscriptions topics*](struct.ProjectTopicSubscriptionListMethodBuilder.html))</span>
+<span class='doccomment'>//! * projects ([*subscriptions.acknowledge*](struct.ProjectSubscriptionAcknowledgeMethodBuilder.html), [*subscriptions.create*](struct.ProjectSubscriptionCreateMethodBuilder.html), [*subscriptions.delete*](struct.ProjectSubscriptionDeleteMethodBuilder.html), [*subscriptions.get*](struct.ProjectSubscriptionGetMethodBuilder.html), [*subscriptions.list*](struct.ProjectSubscriptionListMethodBuilder.html), [*subscriptions.modify ack deadline*](struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html), [*subscriptions.modify push config*](struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html), [*subscriptions.pull*](struct.ProjectSubscriptionPullMethodBuilder.html), [*topics.create*](struct.ProjectTopicCreateMethodBuilder.html), [*topics.delete*](struct.ProjectTopicDeleteMethodBuilder.html), [*topics.get*](struct.ProjectTopicGetMethodBuilder.html), [*topics.list*](struct.ProjectTopicListMethodBuilder.html), [*topics.publish*](struct.ProjectTopicPublishMethodBuilder.html) and [*topics.subscriptions.list*](struct.ProjectTopicSubscriptionListMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Not what you are looking for ? Find all other google APIs in their Rust [documentation index](../index.html).</span>
@@ -3161,6 +3159,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! pubsub1_beta2 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -3168,20 +3175,21 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate pubsub1_beta2;</span>
-<span class='doccomment'>//! # use pubsub1_beta2::AcknowledgeRequest;</span>
-<span class='doccomment'>//! # use pubsub1_beta2::cmn::Result;</span>
+<span class='doccomment'>//! use pubsub1_beta2::AcknowledgeRequest;</span>
+<span class='doccomment'>//! use pubsub1_beta2::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use pubsub1_beta2::Pubsub;</span>
+<span class='doccomment'>//! use pubsub1_beta2::Pubsub;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3336,20 +3344,21 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::AcknowledgeRequest;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::cmn::Result;</span>
+<span class='doccomment'>/// use pubsub1_beta2::AcknowledgeRequest;</span>
+<span class='doccomment'>/// use pubsub1_beta2::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use pubsub1_beta2::Pubsub;</span>
+<span class='doccomment'>/// use pubsub1_beta2::Pubsub;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3407,8 +3416,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [topics.subscriptions.list](struct.ProjectTopicSubscriptionListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [topics.subscriptions.list projects](struct.ProjectTopicSubscriptionListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListTopicSubscriptionsResponse</span> {
@@ -3444,8 +3452,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.acknowledge](struct.ProjectSubscriptionAcknowledgeMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.acknowledge projects](struct.ProjectSubscriptionAcknowledgeMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AcknowledgeRequest</span> {
@@ -3474,8 +3481,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.modifyAckDeadline](struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.modify ack deadline projects](struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ModifyAckDeadlineRequest</span> {
@@ -3507,8 +3513,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [topics.publish](struct.ProjectTopicPublishMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [topics.publish projects](struct.ProjectTopicPublishMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PublishRequest</span> {
@@ -3537,8 +3542,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.list](struct.ProjectSubscriptionListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.list projects](struct.ProjectSubscriptionListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListSubscriptionsResponse</span> {
@@ -3558,8 +3562,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [topics.list](struct.ProjectTopicListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [topics.list projects](struct.ProjectTopicListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListTopicsResponse</span> {
@@ -3579,8 +3582,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.modifyPushConfig](struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.modify push config projects](struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ModifyPushConfigRequest</span> {
@@ -3609,12 +3611,11 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.acknowledge](struct.ProjectSubscriptionAcknowledgeMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [subscriptions.modifyPushConfig](struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [subscriptions.delete](struct.ProjectSubscriptionDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [topics.delete](struct.ProjectTopicDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [subscriptions.modifyAckDeadline](struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.acknowledge projects](struct.ProjectSubscriptionAcknowledgeMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [subscriptions.modify push config projects](struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [subscriptions.delete projects](struct.ProjectSubscriptionDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [topics.delete projects](struct.ProjectTopicDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [subscriptions.modify ack deadline projects](struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Empty</span>;
@@ -3629,8 +3630,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.pull](struct.ProjectSubscriptionPullMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.pull projects](struct.ProjectSubscriptionPullMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PullRequest</span> {
@@ -3691,9 +3691,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [topics.create](struct.ProjectTopicCreateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [topics.get](struct.ProjectTopicGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [topics.create projects](struct.ProjectTopicCreateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [topics.get projects](struct.ProjectTopicGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Topic</span> {
@@ -3723,8 +3722,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [topics.publish](struct.ProjectTopicPublishMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [topics.publish projects](struct.ProjectTopicPublishMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PublishResponse</span> {
@@ -3742,8 +3740,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.pull](struct.ProjectSubscriptionPullMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.pull projects](struct.ProjectSubscriptionPullMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PullResponse</span> {
@@ -3793,9 +3790,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [subscriptions.create](struct.ProjectSubscriptionCreateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [subscriptions.get](struct.ProjectSubscriptionGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [subscriptions.create projects](struct.ProjectSubscriptionCreateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [subscriptions.get projects](struct.ProjectSubscriptionGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Subscription</span> {
@@ -3848,7 +3844,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use pubsub1_beta2::Pubsub;</span>
+<span class='doccomment'>/// use pubsub1_beta2::Pubsub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4252,7 +4248,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::PullRequest;</span>
+<span class='doccomment'>/// use pubsub1_beta2::PullRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4405,7 +4401,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::Topic;</span>
+<span class='doccomment'>/// use pubsub1_beta2::Topic;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4695,7 +4691,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::ModifyPushConfigRequest;</span>
+<span class='doccomment'>/// use pubsub1_beta2::ModifyPushConfigRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4848,7 +4844,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::PublishRequest;</span>
+<span class='doccomment'>/// use pubsub1_beta2::PublishRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5138,7 +5134,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::ModifyAckDeadlineRequest;</span>
+<span class='doccomment'>/// use pubsub1_beta2::ModifyAckDeadlineRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5291,7 +5287,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::AcknowledgeRequest;</span>
+<span class='doccomment'>/// use pubsub1_beta2::AcknowledgeRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5581,7 +5577,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate pubsub1_beta2;</span>
-<span class='doccomment'>/// # use pubsub1_beta2::Subscription;</span>
+<span class='doccomment'>/// use pubsub1_beta2::Subscription;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

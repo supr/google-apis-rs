@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>pubsub1_beta2</a></p><script>window.sidebarCurrent = {name: 'ProjectSubscriptionPullMethodBuilder', ty: 'struct', relpath: ''};</script><script async src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>pubsub1_beta2</a></p><script>window.sidebarCurrent = {name: 'ProjectSubscriptionPullMethodBuilder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>pubsub1_beta2</a>::<wbr><a class='struct' href=''>ProjectSubscriptionPullMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-4830' href='../src/pubsub1_beta2/lib.rs.html#1166-1177'>[src]</a></span></h1>
+        </span><a id='src-4418' href='../src/pubsub1_beta2/lib.rs.html#1164-1175'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct ProjectSubscriptionPullMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return UNAVAILABLE if there are too many concurrent pull requests pending for the given subscription.</p>
@@ -55,6 +55,7 @@ It is not used directly, but through a <code>ProjectMethodsBuilder</code>.</p>
                            href="#example">Example</a></h1>
 <p>Instantiate a resource method builder</p>
 <pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='ident'>PullRequest</span>;
  
 <span class='comment'>// As the method needs a request, you would usually fill it with the desired information</span>
 <span class='comment'>// into the respective structure. Some of the parts shown here might not be applicable !</span>

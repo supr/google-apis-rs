@@ -111,22 +111,33 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+gan1_beta1 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>gan1_beta1</span>;
+<span class='kw'>use</span> <span class='ident'>gan1_beta1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>gan1_beta1</span>::<span class='ident'>Gan</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -222,8 +233,8 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.AdvertiserListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.AdvertiserGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.AdvertiserListMethodBuilder.html">list advertisers</a> (none)</li>
+<li><a href="struct.AdvertiserGetMethodBuilder.html">get advertisers</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -261,7 +272,7 @@ It is not used directly, but through the <code>Gan</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.AdvertiserListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.AdvertiserListMethodBuilder.html">list advertisers</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -277,7 +288,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.CcOfferListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.CcOfferListMethodBuilder.html">list cc offers</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -335,7 +346,7 @@ It is not used directly, but through the <code>Gan</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.CcOfferListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.CcOfferListMethodBuilder.html">list cc offers</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -351,7 +362,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.EventListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.EventListMethodBuilder.html">list events</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -391,7 +402,7 @@ It is not used directly, but through the <code>Gan</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.EventListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.EventListMethodBuilder.html">list events</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -414,9 +425,9 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.LinkInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.LinkGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.LinkListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.LinkInsertMethodBuilder.html">insert links</a> (request|response)</li>
+<li><a href="struct.LinkGetMethodBuilder.html">get links</a> (response)</li>
+<li><a href="struct.LinkListMethodBuilder.html">list links</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -470,7 +481,7 @@ It is not used directly, but through the <code>Gan</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.LinkListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.LinkListMethodBuilder.html">list links</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -495,8 +506,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PublisherListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.PublisherGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.PublisherListMethodBuilder.html">list publishers</a> (none)</li>
+<li><a href="struct.PublisherGetMethodBuilder.html">get publishers</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -534,7 +545,7 @@ It is not used directly, but through the <code>Gan</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.PublisherListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.PublisherListMethodBuilder.html">list publishers</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -550,7 +561,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ReportGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.ReportGetMethodBuilder.html">get reports</a> (response)</li>
 </ul>
 </td>
                     </tr>

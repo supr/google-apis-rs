@@ -6494,8 +6494,6 @@
 <span id="6452">6452</span>
 <span id="6453">6453</span>
 <span id="6454">6454</span>
-<span id="6455">6455</span>
-<span id="6456">6456</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -6505,7 +6503,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Gmail.html) ... </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * users ([*create drafts*](struct.UserDraftCreateMethodBuilder.html), [*delete drafts*](struct.UserDraftDeleteMethodBuilder.html), [*get drafts*](struct.UserDraftGetMethodBuilder.html), [*list drafts*](struct.UserDraftListMethodBuilder.html), [*send drafts*](struct.UserDraftSendMethodBuilder.html), [*update drafts*](struct.UserDraftUpdateMethodBuilder.html), [*getprofile*](struct.UserGetProfileMethodBuilder.html), [*list history*](struct.UserHistoryListMethodBuilder.html), [*create labels*](struct.UserLabelCreateMethodBuilder.html), [*delete labels*](struct.UserLabelDeleteMethodBuilder.html), [*get labels*](struct.UserLabelGetMethodBuilder.html), [*list labels*](struct.UserLabelListMethodBuilder.html), [*patch labels*](struct.UserLabelPatchMethodBuilder.html), [*update labels*](struct.UserLabelUpdateMethodBuilder.html), [*get attachments messages*](struct.UserMessageAttachmentGetMethodBuilder.html), [*delete messages*](struct.UserMessageDeleteMethodBuilder.html), [*get messages*](struct.UserMessageGetMethodBuilder.html), [*import messages*](struct.UserMessageImportMethodBuilder.html), [*insert messages*](struct.UserMessageInsertMethodBuilder.html), [*list messages*](struct.UserMessageListMethodBuilder.html), [*modify messages*](struct.UserMessageModifyMethodBuilder.html), [*send messages*](struct.UserMessageSendMethodBuilder.html), [*trash messages*](struct.UserMessageTrashMethodBuilder.html), [*untrash messages*](struct.UserMessageUntrashMethodBuilder.html), [*delete threads*](struct.UserThreadDeleteMethodBuilder.html), [*get threads*](struct.UserThreadGetMethodBuilder.html), [*list threads*](struct.UserThreadListMethodBuilder.html), [*modify threads*](struct.UserThreadModifyMethodBuilder.html), [*trash threads*](struct.UserThreadTrashMethodBuilder.html) and [*untrash threads*](struct.UserThreadUntrashMethodBuilder.html))</span>
+<span class='doccomment'>//! * users ([*drafts.create*](struct.UserDraftCreateMethodBuilder.html), [*drafts.delete*](struct.UserDraftDeleteMethodBuilder.html), [*drafts.get*](struct.UserDraftGetMethodBuilder.html), [*drafts.list*](struct.UserDraftListMethodBuilder.html), [*drafts.send*](struct.UserDraftSendMethodBuilder.html), [*drafts.update*](struct.UserDraftUpdateMethodBuilder.html), [*get profile*](struct.UserGetProfileMethodBuilder.html), [*history.list*](struct.UserHistoryListMethodBuilder.html), [*labels.create*](struct.UserLabelCreateMethodBuilder.html), [*labels.delete*](struct.UserLabelDeleteMethodBuilder.html), [*labels.get*](struct.UserLabelGetMethodBuilder.html), [*labels.list*](struct.UserLabelListMethodBuilder.html), [*labels.patch*](struct.UserLabelPatchMethodBuilder.html), [*labels.update*](struct.UserLabelUpdateMethodBuilder.html), [*messages.attachments.get*](struct.UserMessageAttachmentGetMethodBuilder.html), [*messages.delete*](struct.UserMessageDeleteMethodBuilder.html), [*messages.get*](struct.UserMessageGetMethodBuilder.html), [*messages.import*](struct.UserMessageImportMethodBuilder.html), [*messages.insert*](struct.UserMessageInsertMethodBuilder.html), [*messages.list*](struct.UserMessageListMethodBuilder.html), [*messages.modify*](struct.UserMessageModifyMethodBuilder.html), [*messages.send*](struct.UserMessageSendMethodBuilder.html), [*messages.trash*](struct.UserMessageTrashMethodBuilder.html), [*messages.untrash*](struct.UserMessageUntrashMethodBuilder.html), [*threads.delete*](struct.UserThreadDeleteMethodBuilder.html), [*threads.get*](struct.UserThreadGetMethodBuilder.html), [*threads.list*](struct.UserThreadListMethodBuilder.html), [*threads.modify*](struct.UserThreadModifyMethodBuilder.html), [*threads.trash*](struct.UserThreadTrashMethodBuilder.html) and [*threads.untrash*](struct.UserThreadUntrashMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *gmail* API can be found at the</span>
 <span class='doccomment'>//! [official documentation site](https://developers.google.com/gmail/api/).</span>
@@ -6553,6 +6551,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! gmail1 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -6560,21 +6567,22 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate gmail1;</span>
-<span class='doccomment'>//! # use gmail1::Message;</span>
-<span class='doccomment'>//! # use gmail1::cmn::Result;</span>
-<span class='doccomment'>//! # use std::fs;</span>
+<span class='doccomment'>//! use gmail1::Message;</span>
+<span class='doccomment'>//! use gmail1::cmn::Result;</span>
+<span class='doccomment'>//! use std::fs;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use gmail1::Gmail;</span>
+<span class='doccomment'>//! use gmail1::Gmail;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -6741,21 +6749,22 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Message;</span>
-<span class='doccomment'>/// # use gmail1::cmn::Result;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use gmail1::Message;</span>
+<span class='doccomment'>/// use gmail1::cmn::Result;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gmail1::Gmail;</span>
+<span class='doccomment'>/// use gmail1::Gmail;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -6846,8 +6855,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [messages.attachments.get](struct.UserMessageAttachmentGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [messages.attachments.get users](struct.UserMessageAttachmentGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>MessagePartBody</span> {
@@ -6884,11 +6892,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [threads.get](struct.UserThreadGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [threads.untrash](struct.UserThreadUntrashMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [threads.trash](struct.UserThreadTrashMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [threads.modify](struct.UserThreadModifyMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [threads.get users](struct.UserThreadGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [threads.untrash users](struct.UserThreadUntrashMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [threads.trash users](struct.UserThreadTrashMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [threads.modify users](struct.UserThreadModifyMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Thread</span> {
@@ -6926,11 +6933,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [labels.patch](struct.UserLabelPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [labels.get](struct.UserLabelGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [labels.update](struct.UserLabelUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [labels.create](struct.UserLabelCreateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [labels.patch users](struct.UserLabelPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [labels.get users](struct.UserLabelGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [labels.update users](struct.UserLabelUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [labels.create users](struct.UserLabelCreateMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Label</span> {
@@ -6984,8 +6990,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [history.list](struct.UserHistoryListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [history.list users](struct.UserHistoryListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListHistoryResponse</span> {
@@ -7007,11 +7012,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [drafts.get](struct.UserDraftGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [drafts.send](struct.UserDraftSendMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [drafts.create](struct.UserDraftCreateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [drafts.update](struct.UserDraftUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [drafts.get users](struct.UserDraftGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [drafts.send users](struct.UserDraftSendMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [drafts.create users](struct.UserDraftCreateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [drafts.update users](struct.UserDraftUpdateMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Draft</span> {
@@ -7085,8 +7089,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [messages.modify](struct.UserMessageModifyMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [messages.modify users](struct.UserMessageModifyMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ModifyMessageRequest</span> {
@@ -7118,8 +7121,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [drafts.list](struct.UserDraftListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [drafts.list users](struct.UserDraftListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListDraftsResponse</span> {
@@ -7179,8 +7181,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [getProfile](struct.UserGetProfileMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get profile users](struct.UserGetProfileMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Profile</span> {
@@ -7220,8 +7221,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [threads.list](struct.UserThreadListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [threads.list users](struct.UserThreadListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListThreadsResponse</span> {
@@ -7243,8 +7243,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [threads.modify](struct.UserThreadModifyMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [threads.modify users](struct.UserThreadModifyMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ModifyThreadRequest</span> {
@@ -7276,8 +7275,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [messages.list](struct.UserMessageListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [messages.list users](struct.UserMessageListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListMessagesResponse</span> {
@@ -7299,8 +7297,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [labels.list](struct.UserLabelListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [labels.list users](struct.UserLabelListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListLabelsResponse</span> {
@@ -7318,15 +7315,14 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [messages.untrash](struct.UserMessageUntrashMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [messages.get](struct.UserMessageGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [messages.modify](struct.UserMessageModifyMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [messages.import](struct.UserMessageImportMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [messages.insert](struct.UserMessageInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [messages.send](struct.UserMessageSendMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [messages.trash](struct.UserMessageTrashMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [drafts.send](struct.UserDraftSendMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [messages.untrash users](struct.UserMessageUntrashMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [messages.get users](struct.UserMessageGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [messages.modify users](struct.UserMessageModifyMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [messages.import users](struct.UserMessageImportMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [messages.insert users](struct.UserMessageInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [messages.send users](struct.UserMessageSendMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [messages.trash users](struct.UserMessageTrashMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [drafts.send users](struct.UserDraftSendMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Message</span> {
@@ -7411,7 +7407,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use gmail1::Gmail;</span>
+<span class='doccomment'>/// use gmail1::Gmail;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -7905,8 +7901,8 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Message;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use gmail1::Message;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -8331,8 +8327,8 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Draft;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use gmail1::Draft;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -8515,7 +8511,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Label;</span>
+<span class='doccomment'>/// use gmail1::Label;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -9119,8 +9115,8 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Draft;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use gmail1::Draft;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -9741,8 +9737,8 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Draft;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use gmail1::Draft;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10100,7 +10096,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Label;</span>
+<span class='doccomment'>/// use gmail1::Label;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10416,7 +10412,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Label;</span>
+<span class='doccomment'>/// use gmail1::Label;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10935,7 +10931,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::ModifyThreadRequest;</span>
+<span class='doccomment'>/// use gmail1::ModifyThreadRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11413,7 +11409,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::ModifyMessageRequest;</span>
+<span class='doccomment'>/// use gmail1::ModifyMessageRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11893,8 +11889,8 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Message;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use gmail1::Message;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12770,8 +12766,8 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate gmail1;</span>
-<span class='doccomment'>/// # use gmail1::Message;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use gmail1::Message;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

@@ -9186,8 +9186,6 @@
 <span id="9144">9144</span>
 <span id="9145">9145</span>
 <span id="9146">9146</span>
-<span id="9147">9147</span>
-<span id="9148">9148</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -9202,7 +9200,7 @@
 <span class='doccomment'>//! * [calendars](struct.Calendar.html) ([*clear*](struct.CalendarClearMethodBuilder.html), [*delete*](struct.CalendarDeleteMethodBuilder.html), [*get*](struct.CalendarGetMethodBuilder.html), [*insert*](struct.CalendarInsertMethodBuilder.html), [*patch*](struct.CalendarPatchMethodBuilder.html) and [*update*](struct.CalendarUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * [channels](struct.Channel.html) ([*stop*](struct.ChannelStopMethodBuilder.html))</span>
 <span class='doccomment'>//! * colors ([*get*](struct.ColorGetMethodBuilder.html))</span>
-<span class='doccomment'>//! * [events](struct.Event.html) ([*delete*](struct.EventDeleteMethodBuilder.html), [*get*](struct.EventGetMethodBuilder.html), [*import*](struct.EventImportMethodBuilder.html), [*insert*](struct.EventInsertMethodBuilder.html), [*instances*](struct.EventInstanceMethodBuilder.html), [*list*](struct.EventListMethodBuilder.html), [*move*](struct.EventMoveMethodBuilder.html), [*patch*](struct.EventPatchMethodBuilder.html), [*quickadd*](struct.EventQuickAddMethodBuilder.html), [*update*](struct.EventUpdateMethodBuilder.html) and [*watch*](struct.EventWatchMethodBuilder.html))</span>
+<span class='doccomment'>//! * [events](struct.Event.html) ([*delete*](struct.EventDeleteMethodBuilder.html), [*get*](struct.EventGetMethodBuilder.html), [*import*](struct.EventImportMethodBuilder.html), [*insert*](struct.EventInsertMethodBuilder.html), [*instances*](struct.EventInstanceMethodBuilder.html), [*list*](struct.EventListMethodBuilder.html), [*move*](struct.EventMoveMethodBuilder.html), [*patch*](struct.EventPatchMethodBuilder.html), [*quick add*](struct.EventQuickAddMethodBuilder.html), [*update*](struct.EventUpdateMethodBuilder.html) and [*watch*](struct.EventWatchMethodBuilder.html))</span>
 <span class='doccomment'>//! * freebusy ([*query*](struct.FreebusyQueryMethodBuilder.html))</span>
 <span class='doccomment'>//! * [settings](struct.Setting.html) ([*get*](struct.SettingGetMethodBuilder.html), [*list*](struct.SettingListMethodBuilder.html) and [*watch*](struct.SettingWatchMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
@@ -9255,6 +9253,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! calendar3 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -9262,20 +9269,21 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate calendar3;</span>
-<span class='doccomment'>//! # use calendar3::Channel;</span>
-<span class='doccomment'>//! # use calendar3::cmn::Result;</span>
+<span class='doccomment'>//! use calendar3::Channel;</span>
+<span class='doccomment'>//! use calendar3::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use calendar3::CalendarHub;</span>
+<span class='doccomment'>//! use calendar3::CalendarHub;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -9447,20 +9455,21 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Channel;</span>
-<span class='doccomment'>/// # use calendar3::cmn::Result;</span>
+<span class='doccomment'>/// use calendar3::Channel;</span>
+<span class='doccomment'>/// use calendar3::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -9657,8 +9666,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.SettingListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list settings](struct.SettingListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Settings</span> {
@@ -9694,13 +9702,12 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [clear](struct.CalendarClearMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.CalendarGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.CalendarUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.CalendarPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.CalendarInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [delete](struct.CalendarDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [clear calendars](struct.CalendarClearMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get calendars](struct.CalendarGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update calendars](struct.CalendarUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch calendars](struct.CalendarPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert calendars](struct.CalendarInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [delete calendars](struct.CalendarDeleteMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Calendar</span> {
@@ -9749,11 +9756,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.CalendarListGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.CalendarListUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.CalendarListPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.CalendarListInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get calendar list](struct.CalendarListGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update calendar list](struct.CalendarListUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch calendar list](struct.CalendarListPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert calendar list](struct.CalendarListInsertMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CalendarListEntry</span> {
@@ -9914,10 +9920,9 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.SettingListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [watch](struct.SettingWatchMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.SettingGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list settings](struct.SettingListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [watch settings](struct.SettingWatchMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get settings](struct.SettingGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Setting</span> {
@@ -9999,11 +10004,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [patch](struct.AclPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [update](struct.AclUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.AclGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.AclInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [patch acl](struct.AclPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [update acl](struct.AclUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get acl](struct.AclGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert acl](struct.AclInsertMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AclRule</span> {
@@ -10050,8 +10054,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.AclListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list acl](struct.AclListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Acl</span> {
@@ -10077,9 +10080,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [instances](struct.EventInstanceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.EventListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [instances events](struct.EventInstanceMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list events](struct.EventListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Events</span> {
@@ -10122,12 +10124,11 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [stop](struct.ChannelStopMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [watch](struct.SettingWatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [watch](struct.AclWatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [watch](struct.CalendarListWatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [watch](struct.EventWatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [stop channels](struct.ChannelStopMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [watch settings](struct.SettingWatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [watch acl](struct.AclWatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [watch calendar list](struct.CalendarListWatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [watch events](struct.EventWatchMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Channel</span> {
@@ -10290,8 +10291,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.CalendarListListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list calendar list](struct.CalendarListListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CalendarList</span> {
@@ -10373,8 +10373,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [query](struct.FreebusyQueryMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [query freebusy](struct.FreebusyQueryMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>FreeBusyResponse</span> {
@@ -10400,8 +10399,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.ColorGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get colors](struct.ColorGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Colors</span> {
@@ -10425,8 +10423,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [query](struct.FreebusyQueryMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [query freebusy](struct.FreebusyQueryMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>FreeBusyRequest</span> {
@@ -10623,18 +10620,17 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [delete](struct.EventDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [insert](struct.EventInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [instances](struct.EventInstanceMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [quickAdd](struct.EventQuickAddMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [patch](struct.EventPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [import](struct.EventImportMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [move](struct.EventMoveMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.EventUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [watch](struct.EventWatchMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.EventGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.EventListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [delete events](struct.EventDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [insert events](struct.EventInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [instances events](struct.EventInstanceMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [quick add events](struct.EventQuickAddMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [patch events](struct.EventPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [import events](struct.EventImportMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [move events](struct.EventMoveMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update events](struct.EventUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [watch events](struct.EventWatchMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get events](struct.EventGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list events](struct.EventListMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Event</span> {
@@ -10796,7 +10792,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10853,7 +10849,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10941,7 +10937,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11092,7 +11088,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11216,7 +11212,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11367,7 +11363,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11424,7 +11420,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11480,7 +11476,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use calendar3::CalendarHub;</span>
+<span class='doccomment'>/// use calendar3::CalendarHub;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11741,7 +11737,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::FreeBusyRequest;</span>
+<span class='doccomment'>/// use calendar3::FreeBusyRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12051,7 +12047,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Channel;</span>
+<span class='doccomment'>/// use calendar3::Channel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12373,7 +12369,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::CalendarListEntry;</span>
+<span class='doccomment'>/// use calendar3::CalendarListEntry;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13024,7 +13020,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::CalendarListEntry;</span>
+<span class='doccomment'>/// use calendar3::CalendarListEntry;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13179,7 +13175,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::CalendarListEntry;</span>
+<span class='doccomment'>/// use calendar3::CalendarListEntry;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13346,7 +13342,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Channel;</span>
+<span class='doccomment'>/// use calendar3::Channel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13570,7 +13566,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Calendar;</span>
+<span class='doccomment'>/// use calendar3::Calendar;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14138,7 +14134,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Calendar;</span>
+<span class='doccomment'>/// use calendar3::Calendar;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14280,7 +14276,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Calendar;</span>
+<span class='doccomment'>/// use calendar3::Calendar;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14434,7 +14430,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Channel;</span>
+<span class='doccomment'>/// use calendar3::Channel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14643,7 +14639,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::AclRule;</span>
+<span class='doccomment'>/// use calendar3::AclRule;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14797,7 +14793,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::AclRule;</span>
+<span class='doccomment'>/// use calendar3::AclRule;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14963,7 +14959,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::AclRule;</span>
+<span class='doccomment'>/// use calendar3::AclRule;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15622,7 +15618,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Channel;</span>
+<span class='doccomment'>/// use calendar3::Channel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -16053,7 +16049,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Event;</span>
+<span class='doccomment'>/// use calendar3::Event;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -16233,7 +16229,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Event;</span>
+<span class='doccomment'>/// use calendar3::Event;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -17215,7 +17211,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Event;</span>
+<span class='doccomment'>/// use calendar3::Event;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -17595,7 +17591,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Event;</span>
+<span class='doccomment'>/// use calendar3::Event;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -17800,7 +17796,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate calendar3;</span>
-<span class='doccomment'>/// # use calendar3::Channel;</span>
+<span class='doccomment'>/// use calendar3::Channel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

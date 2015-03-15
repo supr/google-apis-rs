@@ -9297,18 +9297,6 @@
 <span id="9255">9255</span>
 <span id="9256">9256</span>
 <span id="9257">9257</span>
-<span id="9258">9258</span>
-<span id="9259">9259</span>
-<span id="9260">9260</span>
-<span id="9261">9261</span>
-<span id="9262">9262</span>
-<span id="9263">9263</span>
-<span id="9264">9264</span>
-<span id="9265">9265</span>
-<span id="9266">9266</span>
-<span id="9267">9267</span>
-<span id="9268">9268</span>
-<span id="9269">9269</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -9320,15 +9308,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [collections](struct.Collection.html) ([*delete*](struct.CollectionDeleteMethodBuilder.html), [*get*](struct.CollectionGetMethodBuilder.html), [*insert*](struct.CollectionInsertMethodBuilder.html), [*list*](struct.CollectionListMethodBuilder.html), [*patch*](struct.CollectionPatchMethodBuilder.html) and [*update*](struct.CollectionUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * collectionviewers ([*delete*](struct.CollectionviewerDeleteMethodBuilder.html), [*get*](struct.CollectionviewerGetMethodBuilder.html), [*list*](struct.CollectionviewerListMethodBuilder.html), [*patch*](struct.CollectionviewerPatchMethodBuilder.html) and [*update*](struct.CollectionviewerUpdateMethodBuilder.html))</span>
-<span class='doccomment'>//! * [devices](struct.Device.html) ([*get*](struct.DeviceGetMethodBuilder.html), [*getstate*](struct.DeviceGetStateMethodBuilder.html), [*list*](struct.DeviceListMethodBuilder.html) and [*setstate*](struct.DeviceSetStateMethodBuilder.html))</span>
-<span class='doccomment'>//! * [enterprises](struct.Enterprise.html) ([*delete*](struct.EnterpriseDeleteMethodBuilder.html), [*enroll*](struct.EnterpriseEnrollMethodBuilder.html), [*get*](struct.EnterpriseGetMethodBuilder.html), [*insert*](struct.EnterpriseInsertMethodBuilder.html), [*list*](struct.EnterpriseListMethodBuilder.html), [*setaccount*](struct.EnterpriseSetAccountMethodBuilder.html) and [*unenroll*](struct.EnterpriseUnenrollMethodBuilder.html))</span>
+<span class='doccomment'>//! * [devices](struct.Device.html) ([*get*](struct.DeviceGetMethodBuilder.html), [*get state*](struct.DeviceGetStateMethodBuilder.html), [*list*](struct.DeviceListMethodBuilder.html) and [*set state*](struct.DeviceSetStateMethodBuilder.html))</span>
+<span class='doccomment'>//! * [enterprises](struct.Enterprise.html) ([*delete*](struct.EnterpriseDeleteMethodBuilder.html), [*enroll*](struct.EnterpriseEnrollMethodBuilder.html), [*get*](struct.EnterpriseGetMethodBuilder.html), [*insert*](struct.EnterpriseInsertMethodBuilder.html), [*list*](struct.EnterpriseListMethodBuilder.html), [*set account*](struct.EnterpriseSetAccountMethodBuilder.html) and [*unenroll*](struct.EnterpriseUnenrollMethodBuilder.html))</span>
 <span class='doccomment'>//! * [entitlements](struct.Entitlement.html) ([*delete*](struct.EntitlementDeleteMethodBuilder.html), [*get*](struct.EntitlementGetMethodBuilder.html), [*list*](struct.EntitlementListMethodBuilder.html), [*patch*](struct.EntitlementPatchMethodBuilder.html) and [*update*](struct.EntitlementUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * grouplicenses ([*get*](struct.GrouplicenseGetMethodBuilder.html) and [*list*](struct.GrouplicenseListMethodBuilder.html))</span>
 <span class='doccomment'>//! * grouplicenseusers ([*list*](struct.GrouplicenseuserListMethodBuilder.html))</span>
 <span class='doccomment'>//! * [installs](struct.Install.html) ([*delete*](struct.InstallDeleteMethodBuilder.html), [*get*](struct.InstallGetMethodBuilder.html), [*list*](struct.InstallListMethodBuilder.html), [*patch*](struct.InstallPatchMethodBuilder.html) and [*update*](struct.InstallUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * [permissions](struct.Permission.html) ([*get*](struct.PermissionGetMethodBuilder.html))</span>
-<span class='doccomment'>//! * [products](struct.Product.html) ([*get*](struct.ProductGetMethodBuilder.html), [*getapprestrictionsschema*](struct.ProductGetAppRestrictionsSchemaMethodBuilder.html), [*getpermissions*](struct.ProductGetPermissionMethodBuilder.html) and [*updatepermissions*](struct.ProductUpdatePermissionMethodBuilder.html))</span>
-<span class='doccomment'>//! * [users](struct.User.html) ([*generatetoken*](struct.UserGenerateTokenMethodBuilder.html), [*get*](struct.UserGetMethodBuilder.html), [*list*](struct.UserListMethodBuilder.html) and [*revoketoken*](struct.UserRevokeTokenMethodBuilder.html))</span>
+<span class='doccomment'>//! * [products](struct.Product.html) ([*get*](struct.ProductGetMethodBuilder.html), [*get app restrictions schema*](struct.ProductGetAppRestrictionsSchemaMethodBuilder.html), [*get permissions*](struct.ProductGetPermissionMethodBuilder.html) and [*update permissions*](struct.ProductUpdatePermissionMethodBuilder.html))</span>
+<span class='doccomment'>//! * [users](struct.User.html) ([*generate token*](struct.UserGenerateTokenMethodBuilder.html), [*get*](struct.UserGetMethodBuilder.html), [*list*](struct.UserListMethodBuilder.html) and [*revoke token*](struct.UserRevokeTokenMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *Android Enterprise* API can be found at the</span>
 <span class='doccomment'>//! [official documentation site](https://developers.google.com/play/enterprise).</span>
@@ -9375,6 +9363,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! androidenterprise1 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -9382,20 +9379,21 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate androidenterprise1;</span>
-<span class='doccomment'>//! # use androidenterprise1::Enterprise;</span>
-<span class='doccomment'>//! # use androidenterprise1::cmn::Result;</span>
+<span class='doccomment'>//! use androidenterprise1::Enterprise;</span>
+<span class='doccomment'>//! use androidenterprise1::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>//! use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -9546,20 +9544,21 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Enterprise;</span>
-<span class='doccomment'>/// # use androidenterprise1::cmn::Result;</span>
+<span class='doccomment'>/// use androidenterprise1::Enterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -9647,8 +9646,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [getAppRestrictionsSchema](struct.ProductGetAppRestrictionsSchemaMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get app restrictions schema products](struct.ProductGetAppRestrictionsSchemaMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AppRestrictionsSchema</span> {
@@ -9714,8 +9712,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.EnterpriseListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list enterprises](struct.EnterpriseListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>EnterprisesListResponse</span> {
@@ -9743,12 +9740,11 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [patch](struct.EntitlementPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [list](struct.EntitlementListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [delete](struct.EntitlementDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.EntitlementUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.EntitlementGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [patch entitlements](struct.EntitlementPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [list entitlements](struct.EntitlementListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [delete entitlements](struct.EntitlementDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update entitlements](struct.EntitlementUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get entitlements](struct.EntitlementGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Entitlement</span> {
@@ -9785,8 +9781,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.InstallListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list installs](struct.InstallListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstallsListResponse</span> {
@@ -9806,8 +9801,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.CollectionviewerListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list collectionviewers](struct.CollectionviewerListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CollectionViewersListResponse</span> {
@@ -9827,8 +9821,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.DeviceListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list devices](struct.DeviceListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>DevicesListResponse</span> {
@@ -9858,12 +9851,11 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [patch](struct.InstallPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [list](struct.InstallListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [delete](struct.InstallDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.InstallUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.InstallGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [patch installs](struct.InstallPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [list installs](struct.InstallListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [delete installs](struct.InstallDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update installs](struct.InstallUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get installs](struct.InstallGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Install</span> {
@@ -9911,14 +9903,13 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [insert](struct.EnterpriseInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [list](struct.EnterpriseListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [unenroll](struct.EnterpriseUnenrollMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [setAccount](struct.EnterpriseSetAccountMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [enroll](struct.EnterpriseEnrollMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [delete](struct.EnterpriseDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.EnterpriseGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [insert enterprises](struct.EnterpriseInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [list enterprises](struct.EnterpriseListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [unenroll enterprises](struct.EnterpriseUnenrollMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [set account enterprises](struct.EnterpriseSetAccountMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [enroll enterprises](struct.EnterpriseEnrollMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [delete enterprises](struct.EnterpriseDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get enterprises](struct.EnterpriseGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Enterprise</span> {
@@ -9958,8 +9949,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [generateToken](struct.UserGenerateTokenMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [generate token users](struct.UserGenerateTokenMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UserToken</span> {
@@ -9981,9 +9971,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [updatePermissions](struct.ProductUpdatePermissionMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [getPermissions](struct.ProductGetPermissionMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [update permissions products](struct.ProductUpdatePermissionMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get permissions products](struct.ProductGetPermissionMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ProductPermissions</span> {
@@ -10019,9 +10008,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [getState](struct.DeviceGetStateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [setState](struct.DeviceSetStateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get state devices](struct.DeviceGetStateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [set state devices](struct.DeviceSetStateMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>DeviceState</span> {
@@ -10087,11 +10075,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.ProductGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [updatePermissions](struct.ProductUpdatePermissionMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [getAppRestrictionsSchema](struct.ProductGetAppRestrictionsSchemaMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [getPermissions](struct.ProductGetPermissionMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get products](struct.ProductGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update permissions products](struct.ProductUpdatePermissionMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get app restrictions schema products](struct.ProductGetAppRestrictionsSchemaMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get permissions products](struct.ProductGetPermissionMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Product</span> {
@@ -10125,8 +10112,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.PermissionGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get permissions](struct.PermissionGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Permission</span> {
@@ -10151,8 +10137,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.EntitlementListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list entitlements](struct.EntitlementListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>EntitlementsListResponse</span> {
@@ -10172,8 +10157,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.UserListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list users](struct.UserListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UsersListResponse</span> {
@@ -10195,13 +10179,12 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.CollectionListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [patch](struct.CollectionPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.CollectionInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.CollectionGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.CollectionDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.CollectionUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list collections](struct.CollectionListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [patch collections](struct.CollectionPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert collections](struct.CollectionInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get collections](struct.CollectionGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete collections](struct.CollectionDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update collections](struct.CollectionUpdateMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Collection</span> {
@@ -10244,8 +10227,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.CollectionListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list collections](struct.CollectionListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CollectionsListResponse</span> {
@@ -10269,14 +10251,13 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [revokeToken](struct.UserRevokeTokenMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [update](struct.CollectionviewerUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.CollectionviewerPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [list](struct.UserListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.CollectionviewerGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [generateToken](struct.UserGenerateTokenMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.UserGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [revoke token users](struct.UserRevokeTokenMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [update collectionviewers](struct.CollectionviewerUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch collectionviewers](struct.CollectionviewerPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [list users](struct.UserListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get collectionviewers](struct.CollectionviewerGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [generate token users](struct.UserGenerateTokenMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get users](struct.UserGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>User</span> {
@@ -10313,8 +10294,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.GrouplicenseuserListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list grouplicenseusers](struct.GrouplicenseuserListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>GroupLicenseUsersListResponse</span> {
@@ -10334,8 +10314,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [setAccount](struct.EnterpriseSetAccountMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [set account enterprises](struct.EnterpriseSetAccountMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>EnterpriseAccount</span> {
@@ -10370,11 +10349,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.DeviceGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [getState](struct.DeviceGetStateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [list](struct.DeviceListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [setState](struct.DeviceSetStateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get devices](struct.DeviceGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [get state devices](struct.DeviceGetStateMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [list devices](struct.DeviceListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [set state devices](struct.DeviceSetStateMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Device</span> {
@@ -10399,8 +10377,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.GrouplicenseGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get grouplicenses](struct.GrouplicenseGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>GroupLicense</span> {
@@ -10429,8 +10406,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.GrouplicenseListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list grouplicenses](struct.GrouplicenseListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>GroupLicensesListResponse</span> {
@@ -10464,7 +10440,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10584,7 +10560,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10684,7 +10660,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10809,7 +10785,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10913,7 +10889,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11051,7 +11027,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11180,7 +11156,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11238,7 +11214,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11360,7 +11336,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11463,7 +11439,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11534,7 +11510,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use androidenterprise1::AndroidEnterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::AndroidEnterprise;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11758,7 +11734,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::User;</span>
+<span class='doccomment'>/// use androidenterprise1::User;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12248,7 +12224,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::User;</span>
+<span class='doccomment'>/// use androidenterprise1::User;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13026,7 +13002,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Install;</span>
+<span class='doccomment'>/// use androidenterprise1::Install;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13726,7 +13702,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Install;</span>
+<span class='doccomment'>/// use androidenterprise1::Install;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13916,7 +13892,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::DeviceState;</span>
+<span class='doccomment'>/// use androidenterprise1::DeviceState;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14706,7 +14682,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Enterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::Enterprise;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15136,7 +15112,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Enterprise;</span>
+<span class='doccomment'>/// use androidenterprise1::Enterprise;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15290,7 +15266,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::EnterpriseAccount;</span>
+<span class='doccomment'>/// use androidenterprise1::EnterpriseAccount;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15582,7 +15558,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Collection;</span>
+<span class='doccomment'>/// use androidenterprise1::Collection;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15736,7 +15712,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Collection;</span>
+<span class='doccomment'>/// use androidenterprise1::Collection;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15902,7 +15878,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Collection;</span>
+<span class='doccomment'>/// use androidenterprise1::Collection;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -16656,7 +16632,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Entitlement;</span>
+<span class='doccomment'>/// use androidenterprise1::Entitlement;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -17159,7 +17135,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::Entitlement;</span>
+<span class='doccomment'>/// use androidenterprise1::Entitlement;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -17988,7 +17964,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate androidenterprise1;</span>
-<span class='doccomment'>/// # use androidenterprise1::ProductPermissions;</span>
+<span class='doccomment'>/// use androidenterprise1::ProductPermissions;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>mirror1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/mirror1/lib.rs.html#5-5358'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/mirror1/lib.rs.html#5-5357'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
@@ -55,7 +55,7 @@
 <li><a href="struct.Location.html">locations</a> (<a href="struct.LocationGetMethodBuilder.html"><em>get</em></a> and <a href="struct.LocationListMethodBuilder.html"><em>list</em></a>)</li>
 <li><a href="struct.Setting.html">settings</a> (<a href="struct.SettingGetMethodBuilder.html"><em>get</em></a>)</li>
 <li><a href="struct.Subscription.html">subscriptions</a> (<a href="struct.SubscriptionDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.SubscriptionInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.SubscriptionListMethodBuilder.html"><em>list</em></a> and <a href="struct.SubscriptionUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li>timeline (<a href="struct.TimelineAttachmentDeleteMethodBuilder.html"><em>delete attachments</em></a>, <a href="struct.TimelineAttachmentGetMethodBuilder.html"><em>get attachments</em></a>, <a href="struct.TimelineAttachmentInsertMethodBuilder.html"><em>insert attachments</em></a>, <a href="struct.TimelineAttachmentListMethodBuilder.html"><em>list attachments</em></a>, <a href="struct.TimelineDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TimelineGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TimelineInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TimelineListMethodBuilder.html"><em>list</em></a>, <a href="struct.TimelinePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.TimelineUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>timeline (<a href="struct.TimelineAttachmentDeleteMethodBuilder.html"><em>attachments.delete</em></a>, <a href="struct.TimelineAttachmentGetMethodBuilder.html"><em>attachments.get</em></a>, <a href="struct.TimelineAttachmentInsertMethodBuilder.html"><em>attachments.insert</em></a>, <a href="struct.TimelineAttachmentListMethodBuilder.html"><em>attachments.list</em></a>, <a href="struct.TimelineDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TimelineGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TimelineInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TimelineListMethodBuilder.html"><em>list</em></a>, <a href="struct.TimelinePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.TimelineUpdateMethodBuilder.html"><em>update</em></a>)</li>
 </ul>
 
 <p>Everything else about the <em>mirror</em> API can be found at the
@@ -114,22 +114,34 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+mirror1 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>mirror1</span>;
+<span class='kw'>use</span> <span class='ident'>mirror1</span>::<span class='ident'>Contact</span>;
+<span class='kw'>use</span> <span class='ident'>mirror1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>mirror1</span>::<span class='ident'>Mirror</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -217,7 +229,7 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.AccountInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.AccountInsertMethodBuilder.html">insert accounts</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -248,8 +260,8 @@ It is not used directly, but through the <code>Mirror</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TimelineAttachmentInsertMethodBuilder.html">attachments.insert</a> (response)</li>
-<li><a href="struct.TimelineAttachmentGetMethodBuilder.html">attachments.get</a> (response)</li>
+<li><a href="struct.TimelineAttachmentInsertMethodBuilder.html">attachments.insert timeline</a> (response)</li>
+<li><a href="struct.TimelineAttachmentGetMethodBuilder.html">attachments.get timeline</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -265,7 +277,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TimelineAttachmentListMethodBuilder.html">attachments.list</a> (response)</li>
+<li><a href="struct.TimelineAttachmentListMethodBuilder.html">attachments.list timeline</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -299,12 +311,12 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ContactInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.ContactDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.ContactListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.ContactUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.ContactPatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.ContactGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.ContactInsertMethodBuilder.html">insert contacts</a> (request|response)</li>
+<li><a href="struct.ContactDeleteMethodBuilder.html">delete contacts</a> (none)</li>
+<li><a href="struct.ContactListMethodBuilder.html">list contacts</a> (none)</li>
+<li><a href="struct.ContactUpdateMethodBuilder.html">update contacts</a> (request|response)</li>
+<li><a href="struct.ContactPatchMethodBuilder.html">patch contacts</a> (request|response)</li>
+<li><a href="struct.ContactGetMethodBuilder.html">get contacts</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -370,7 +382,7 @@ It is not used directly, but through the <code>Mirror</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ContactListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.ContactListMethodBuilder.html">list contacts</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -386,8 +398,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.LocationGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.LocationListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.LocationGetMethodBuilder.html">get locations</a> (response)</li>
+<li><a href="struct.LocationListMethodBuilder.html">list locations</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -425,7 +437,7 @@ It is not used directly, but through the <code>Mirror</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.LocationListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.LocationListMethodBuilder.html">list locations</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -484,7 +496,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SettingGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.SettingGetMethodBuilder.html">get settings</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -515,10 +527,10 @@ It is not used directly, but through the <code>Mirror</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SubscriptionInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.SubscriptionDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.SubscriptionListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.SubscriptionUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.SubscriptionInsertMethodBuilder.html">insert subscriptions</a> (request|response)</li>
+<li><a href="struct.SubscriptionDeleteMethodBuilder.html">delete subscriptions</a> (none)</li>
+<li><a href="struct.SubscriptionListMethodBuilder.html">list subscriptions</a> (none)</li>
+<li><a href="struct.SubscriptionUpdateMethodBuilder.html">update subscriptions</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -570,7 +582,7 @@ It is not used directly, but through the <code>Mirror</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SubscriptionListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.SubscriptionListMethodBuilder.html">list subscriptions</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -635,10 +647,10 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TimelinePatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.TimelineInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.TimelineGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.TimelineUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.TimelinePatchMethodBuilder.html">patch timeline</a> (request|response)</li>
+<li><a href="struct.TimelineInsertMethodBuilder.html">insert timeline</a> (request|response)</li>
+<li><a href="struct.TimelineGetMethodBuilder.html">get timeline</a> (response)</li>
+<li><a href="struct.TimelineUpdateMethodBuilder.html">update timeline</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -661,7 +673,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TimelineListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.TimelineListMethodBuilder.html">list timeline</a> (response)</li>
 </ul>
 </td>
                     </tr>

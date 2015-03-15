@@ -3312,6 +3312,11 @@
 <span id="3270">3270</span>
 <span id="3271">3271</span>
 <span id="3272">3272</span>
+<span id="3273">3273</span>
+<span id="3274">3274</span>
+<span id="3275">3275</span>
+<span id="3276">3276</span>
+<span id="3277">3277</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -3322,7 +3327,7 @@
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Reseller.html) ... </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [customers](struct.Customer.html) ([*get*](struct.CustomerGetMethodBuilder.html), [*insert*](struct.CustomerInsertMethodBuilder.html), [*patch*](struct.CustomerPatchMethodBuilder.html) and [*update*](struct.CustomerUpdateMethodBuilder.html))</span>
-<span class='doccomment'>//! * [subscriptions](struct.Subscription.html) ([*activate*](struct.SubscriptionActivateMethodBuilder.html), [*changeplan*](struct.SubscriptionChangePlanMethodBuilder.html), [*changerenewalsettings*](struct.SubscriptionChangeRenewalSettingMethodBuilder.html), [*changeseats*](struct.SubscriptionChangeSeatMethodBuilder.html), [*delete*](struct.SubscriptionDeleteMethodBuilder.html), [*get*](struct.SubscriptionGetMethodBuilder.html), [*insert*](struct.SubscriptionInsertMethodBuilder.html), [*list*](struct.SubscriptionListMethodBuilder.html), [*startpaidservice*](struct.SubscriptionStartPaidServiceMethodBuilder.html) and [*suspend*](struct.SubscriptionSuspendMethodBuilder.html))</span>
+<span class='doccomment'>//! * [subscriptions](struct.Subscription.html) ([*activate*](struct.SubscriptionActivateMethodBuilder.html), [*change plan*](struct.SubscriptionChangePlanMethodBuilder.html), [*change renewal settings*](struct.SubscriptionChangeRenewalSettingMethodBuilder.html), [*change seats*](struct.SubscriptionChangeSeatMethodBuilder.html), [*delete*](struct.SubscriptionDeleteMethodBuilder.html), [*get*](struct.SubscriptionGetMethodBuilder.html), [*insert*](struct.SubscriptionInsertMethodBuilder.html), [*list*](struct.SubscriptionListMethodBuilder.html), [*start paid service*](struct.SubscriptionStartPaidServiceMethodBuilder.html) and [*suspend*](struct.SubscriptionSuspendMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *reseller* API can be found at the</span>
 <span class='doccomment'>//! [official documentation site](https://developers.google.com/google-apps/reseller/).</span>
@@ -3372,6 +3377,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! reseller1_sandbox = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -3379,19 +3393,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate reseller1_sandbox;</span>
-<span class='doccomment'>//! # use reseller1_sandbox::cmn::Result;</span>
+<span class='doccomment'>//! use reseller1_sandbox::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use reseller1_sandbox::Reseller;</span>
+<span class='doccomment'>//! use reseller1_sandbox::Reseller;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3546,19 +3561,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::cmn::Result;</span>
+<span class='doccomment'>/// use reseller1_sandbox::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Reseller;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Reseller;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3619,11 +3635,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [update](struct.CustomerUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.CustomerPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.CustomerInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.CustomerGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [update customers](struct.CustomerUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch customers](struct.CustomerPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert customers](struct.CustomerInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get customers](struct.CustomerGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Customer</span> {
@@ -3672,8 +3687,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [changeRenewalSettings](struct.SubscriptionChangeRenewalSettingMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [change renewal settings subscriptions](struct.SubscriptionChangeRenewalSettingMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>RenewalSettings</span> {
@@ -3707,8 +3721,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [changeSeats](struct.SubscriptionChangeSeatMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [change seats subscriptions](struct.SubscriptionChangeSeatMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Seats</span> {
@@ -3810,8 +3823,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.SubscriptionListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list subscriptions](struct.SubscriptionListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Subscriptions</span> {
@@ -3833,8 +3845,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [changePlan](struct.SubscriptionChangePlanMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [change plan subscriptions](struct.SubscriptionChangePlanMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ChangePlanRequest</span> {
@@ -3991,17 +4002,16 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [insert](struct.SubscriptionInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [delete](struct.SubscriptionDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.SubscriptionGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.SubscriptionListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [startPaidService](struct.SubscriptionStartPaidServiceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [changeSeats](struct.SubscriptionChangeSeatMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [suspend](struct.SubscriptionSuspendMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [activate](struct.SubscriptionActivateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [changeRenewalSettings](struct.SubscriptionChangeRenewalSettingMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [changePlan](struct.SubscriptionChangePlanMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [insert subscriptions](struct.SubscriptionInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [delete subscriptions](struct.SubscriptionDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get subscriptions](struct.SubscriptionGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list subscriptions](struct.SubscriptionListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [start paid service subscriptions](struct.SubscriptionStartPaidServiceMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [change seats subscriptions](struct.SubscriptionChangeSeatMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [suspend subscriptions](struct.SubscriptionSuspendMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [activate subscriptions](struct.SubscriptionActivateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [change renewal settings subscriptions](struct.SubscriptionChangeRenewalSettingMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [change plan subscriptions](struct.SubscriptionChangePlanMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Subscription</span> {
@@ -4085,7 +4095,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Reseller;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Reseller;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4184,7 +4194,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Reseller;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Reseller;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4380,7 +4390,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Customer;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Customer;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4534,7 +4544,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Customer;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Customer;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4689,7 +4699,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Customer;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Customer;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4981,7 +4991,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Subscription;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Subscription;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5651,7 +5661,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::RenewalSettings;</span>
+<span class='doccomment'>/// use reseller1_sandbox::RenewalSettings;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5967,7 +5977,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::Seats;</span>
+<span class='doccomment'>/// use reseller1_sandbox::Seats;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -6433,7 +6443,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate reseller1_sandbox;</span>
-<span class='doccomment'>/// # use reseller1_sandbox::ChangePlanRequest;</span>
+<span class='doccomment'>/// use reseller1_sandbox::ChangePlanRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

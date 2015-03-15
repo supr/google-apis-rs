@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>storage1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/storage1/lib.rs.html#5-8641'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/storage1/lib.rs.html#5-8642'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
@@ -55,7 +55,7 @@
 <li><a href="struct.Channel.html">channels</a> (<a href="struct.ChannelStopMethodBuilder.html"><em>stop</em></a>)</li>
 <li>default object access controls (<a href="struct.DefaultObjectAccessControlDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.DefaultObjectAccessControlGetMethodBuilder.html"><em>get</em></a>, <a href="struct.DefaultObjectAccessControlInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.DefaultObjectAccessControlListMethodBuilder.html"><em>list</em></a>, <a href="struct.DefaultObjectAccessControlPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.DefaultObjectAccessControlUpdateMethodBuilder.html"><em>update</em></a>)</li>
 <li><a href="struct.ObjectAccessControl.html">object access controls</a> (<a href="struct.ObjectAccessControlDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ObjectAccessControlGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ObjectAccessControlInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ObjectAccessControlListMethodBuilder.html"><em>list</em></a>, <a href="struct.ObjectAccessControlPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.ObjectAccessControlUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Object.html">objects</a> (<a href="struct.ObjectComposeMethodBuilder.html"><em>compose</em></a>, <a href="struct.ObjectCopyMethodBuilder.html"><em>copy</em></a>, <a href="struct.ObjectDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ObjectGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ObjectInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ObjectListMethodBuilder.html"><em>list</em></a>, <a href="struct.ObjectPatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.ObjectUpdateMethodBuilder.html"><em>update</em></a> and <a href="struct.ObjectWatchAllMethodBuilder.html"><em>watchall</em></a>)</li>
+<li><a href="struct.Object.html">objects</a> (<a href="struct.ObjectComposeMethodBuilder.html"><em>compose</em></a>, <a href="struct.ObjectCopyMethodBuilder.html"><em>copy</em></a>, <a href="struct.ObjectDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ObjectGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ObjectInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ObjectListMethodBuilder.html"><em>list</em></a>, <a href="struct.ObjectPatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.ObjectUpdateMethodBuilder.html"><em>update</em></a> and <a href="struct.ObjectWatchAllMethodBuilder.html"><em>watch all</em></a>)</li>
 </ul>
 
 <p>Everything else about the <em>storage</em> API can be found at the
@@ -118,22 +118,34 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+storage1 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>storage1</span>;
+<span class='kw'>use</span> <span class='ident'>storage1</span>::<span class='ident'>ObjectAccessControl</span>;
+<span class='kw'>use</span> <span class='ident'>storage1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>storage1</span>::<span class='ident'>Storage</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -222,12 +234,12 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BucketUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.BucketInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.BucketDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.BucketPatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.BucketListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.BucketGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.BucketUpdateMethodBuilder.html">update buckets</a> (request|response)</li>
+<li><a href="struct.BucketInsertMethodBuilder.html">insert buckets</a> (request|response)</li>
+<li><a href="struct.BucketDeleteMethodBuilder.html">delete buckets</a> (none)</li>
+<li><a href="struct.BucketPatchMethodBuilder.html">patch buckets</a> (request|response)</li>
+<li><a href="struct.BucketListMethodBuilder.html">list buckets</a> (none)</li>
+<li><a href="struct.BucketGetMethodBuilder.html">get buckets</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -243,12 +255,12 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BucketAccessControlListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.BucketAccessControlPatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.BucketAccessControlDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.BucketAccessControlUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.BucketAccessControlGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.BucketAccessControlInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.BucketAccessControlListMethodBuilder.html">list bucket access controls</a> (none)</li>
+<li><a href="struct.BucketAccessControlPatchMethodBuilder.html">patch bucket access controls</a> (request|response)</li>
+<li><a href="struct.BucketAccessControlDeleteMethodBuilder.html">delete bucket access controls</a> (none)</li>
+<li><a href="struct.BucketAccessControlUpdateMethodBuilder.html">update bucket access controls</a> (request|response)</li>
+<li><a href="struct.BucketAccessControlGetMethodBuilder.html">get bucket access controls</a> (response)</li>
+<li><a href="struct.BucketAccessControlInsertMethodBuilder.html">insert bucket access controls</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -323,7 +335,7 @@ It is not used directly, but through the <code>Storage</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BucketAccessControlListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.BucketAccessControlListMethodBuilder.html">list bucket access controls</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -470,7 +482,7 @@ It is not used directly, but through the <code>Storage</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BucketListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.BucketListMethodBuilder.html">list buckets</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -486,8 +498,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ChannelStopMethodBuilder.html">stop</a> (request)</li>
-<li><a href="struct.ObjectWatchAllMethodBuilder.html">watchAll</a> (request|response)</li>
+<li><a href="struct.ChannelStopMethodBuilder.html">stop channels</a> (request)</li>
+<li><a href="struct.ObjectWatchAllMethodBuilder.html">watch all objects</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -518,7 +530,7 @@ It is not used directly, but through the <code>Storage</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ObjectComposeMethodBuilder.html">compose</a> (request)</li>
+<li><a href="struct.ObjectComposeMethodBuilder.html">compose objects</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -602,15 +614,15 @@ It is not used directly, but through the <code>Storage</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ObjectListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.ObjectUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.ObjectCopyMethodBuilder.html">copy</a> (request|response)</li>
-<li><a href="struct.ObjectWatchAllMethodBuilder.html">watchAll</a> (none)</li>
-<li><a href="struct.ObjectGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.ObjectInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.ObjectComposeMethodBuilder.html">compose</a> (response)</li>
-<li><a href="struct.ObjectDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.ObjectPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.ObjectListMethodBuilder.html">list objects</a> (none)</li>
+<li><a href="struct.ObjectUpdateMethodBuilder.html">update objects</a> (request|response)</li>
+<li><a href="struct.ObjectCopyMethodBuilder.html">copy objects</a> (request|response)</li>
+<li><a href="struct.ObjectWatchAllMethodBuilder.html">watch all objects</a> (none)</li>
+<li><a href="struct.ObjectGetMethodBuilder.html">get objects</a> (response)</li>
+<li><a href="struct.ObjectInsertMethodBuilder.html">insert objects</a> (request|response)</li>
+<li><a href="struct.ObjectComposeMethodBuilder.html">compose objects</a> (response)</li>
+<li><a href="struct.ObjectDeleteMethodBuilder.html">delete objects</a> (none)</li>
+<li><a href="struct.ObjectPatchMethodBuilder.html">patch objects</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -626,16 +638,16 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ObjectAccessControlGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.DefaultObjectAccessControlPatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.ObjectAccessControlUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.ObjectAccessControlListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.ObjectAccessControlPatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.DefaultObjectAccessControlUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.DefaultObjectAccessControlInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.ObjectAccessControlInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.ObjectAccessControlDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.DefaultObjectAccessControlGetMethodBuilder.html">get</a> (response)</li>
+<li><a href="struct.ObjectAccessControlGetMethodBuilder.html">get object access controls</a> (response)</li>
+<li><a href="struct.DefaultObjectAccessControlPatchMethodBuilder.html">patch default object access controls</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlUpdateMethodBuilder.html">update object access controls</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlListMethodBuilder.html">list object access controls</a> (none)</li>
+<li><a href="struct.ObjectAccessControlPatchMethodBuilder.html">patch object access controls</a> (request|response)</li>
+<li><a href="struct.DefaultObjectAccessControlUpdateMethodBuilder.html">update default object access controls</a> (request|response)</li>
+<li><a href="struct.DefaultObjectAccessControlInsertMethodBuilder.html">insert default object access controls</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlInsertMethodBuilder.html">insert object access controls</a> (request|response)</li>
+<li><a href="struct.ObjectAccessControlDeleteMethodBuilder.html">delete object access controls</a> (none)</li>
+<li><a href="struct.DefaultObjectAccessControlGetMethodBuilder.html">get default object access controls</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -710,8 +722,8 @@ It is not used directly, but through the <code>Storage</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ObjectAccessControlListMethodBuilder.html">list</a> (response)</li>
-<li><a href="struct.DefaultObjectAccessControlListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.ObjectAccessControlListMethodBuilder.html">list object access controls</a> (response)</li>
+<li><a href="struct.DefaultObjectAccessControlListMethodBuilder.html">list default object access controls</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -807,7 +819,7 @@ It is not used directly, but through the <code>Storage</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ObjectListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.ObjectListMethodBuilder.html">list objects</a> (response)</li>
 </ul>
 </td>
                     </tr>

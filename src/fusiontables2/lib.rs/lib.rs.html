@@ -7255,7 +7255,6 @@
 <span id="7213">7213</span>
 <span id="7214">7214</span>
 <span id="7215">7215</span>
-<span id="7216">7216</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -7266,9 +7265,9 @@
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Fusiontables.html) ... </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [column](struct.Column.html) ([*delete*](struct.ColumnDeleteMethodBuilder.html), [*get*](struct.ColumnGetMethodBuilder.html), [*insert*](struct.ColumnInsertMethodBuilder.html), [*list*](struct.ColumnListMethodBuilder.html), [*patch*](struct.ColumnPatchMethodBuilder.html) and [*update*](struct.ColumnUpdateMethodBuilder.html))</span>
-<span class='doccomment'>//! * query ([*sql*](struct.QuerySqlMethodBuilder.html) and [*sqlget*](struct.QuerySqlGetMethodBuilder.html))</span>
+<span class='doccomment'>//! * query ([*sql*](struct.QuerySqlMethodBuilder.html) and [*sql get*](struct.QuerySqlGetMethodBuilder.html))</span>
 <span class='doccomment'>//! * style ([*delete*](struct.StyleDeleteMethodBuilder.html), [*get*](struct.StyleGetMethodBuilder.html), [*insert*](struct.StyleInsertMethodBuilder.html), [*list*](struct.StyleListMethodBuilder.html), [*patch*](struct.StylePatchMethodBuilder.html) and [*update*](struct.StyleUpdateMethodBuilder.html))</span>
-<span class='doccomment'>//! * [table](struct.Table.html) ([*copy*](struct.TableCopyMethodBuilder.html), [*delete*](struct.TableDeleteMethodBuilder.html), [*get*](struct.TableGetMethodBuilder.html), [*importrows*](struct.TableImportRowMethodBuilder.html), [*importtable*](struct.TableImportTableMethodBuilder.html), [*insert*](struct.TableInsertMethodBuilder.html), [*list*](struct.TableListMethodBuilder.html), [*patch*](struct.TablePatchMethodBuilder.html), [*replacerows*](struct.TableReplaceRowMethodBuilder.html) and [*update*](struct.TableUpdateMethodBuilder.html))</span>
+<span class='doccomment'>//! * [table](struct.Table.html) ([*copy*](struct.TableCopyMethodBuilder.html), [*delete*](struct.TableDeleteMethodBuilder.html), [*get*](struct.TableGetMethodBuilder.html), [*import rows*](struct.TableImportRowMethodBuilder.html), [*import table*](struct.TableImportTableMethodBuilder.html), [*insert*](struct.TableInsertMethodBuilder.html), [*list*](struct.TableListMethodBuilder.html), [*patch*](struct.TablePatchMethodBuilder.html), [*replace rows*](struct.TableReplaceRowMethodBuilder.html) and [*update*](struct.TableUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * [task](struct.Task.html) ([*delete*](struct.TaskDeleteMethodBuilder.html), [*get*](struct.TaskGetMethodBuilder.html) and [*list*](struct.TaskListMethodBuilder.html))</span>
 <span class='doccomment'>//! * [template](struct.Template.html) ([*delete*](struct.TemplateDeleteMethodBuilder.html), [*get*](struct.TemplateGetMethodBuilder.html), [*insert*](struct.TemplateInsertMethodBuilder.html), [*list*](struct.TemplateListMethodBuilder.html), [*patch*](struct.TemplatePatchMethodBuilder.html) and [*update*](struct.TemplateUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
@@ -7316,6 +7315,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! fusiontables2 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -7323,20 +7331,21 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate fusiontables2;</span>
-<span class='doccomment'>//! # use fusiontables2::cmn::Result;</span>
-<span class='doccomment'>//! # use std::fs;</span>
+<span class='doccomment'>//! use fusiontables2::cmn::Result;</span>
+<span class='doccomment'>//! use std::fs;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>//! use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -7488,20 +7497,21 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::cmn::Result;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use fusiontables2::cmn::Result;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>/// use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -7571,9 +7581,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.TaskGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [replaceRows](struct.TableReplaceRowMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get task](struct.TaskGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [replace rows table](struct.TableReplaceRowMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Task</span> {
@@ -7614,11 +7623,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.ColumnGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.ColumnUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.ColumnInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.ColumnPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get column](struct.ColumnGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update column](struct.ColumnUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert column](struct.ColumnInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch column](struct.ColumnPatchMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Column</span> {
@@ -7759,8 +7767,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TaskListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list task](struct.TaskListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TaskList</span> {
@@ -7817,11 +7824,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.TemplateGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.TemplateUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.TemplateInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.TemplatePatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get template](struct.TemplateGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update template](struct.TemplateUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert template](struct.TemplateInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch template](struct.TemplatePatchMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Template</span> {
@@ -7896,8 +7902,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.ColumnListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list column](struct.ColumnListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ColumnList</span> {
@@ -7921,8 +7926,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [importRows](struct.TableImportRowMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [import rows table](struct.TableImportRowMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Import</span> {
@@ -8027,8 +8031,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.StyleListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list style](struct.StyleListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>StyleSettingList</span> {
@@ -8052,9 +8055,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [sqlGet](struct.QuerySqlGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [sql](struct.QuerySqlMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [sql get query](struct.QuerySqlGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [sql query](struct.QuerySqlMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Sqlresponse</span> {
@@ -8105,11 +8107,10 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [patch](struct.StylePatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.StyleGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.StyleUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [insert](struct.StyleInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [patch style](struct.StylePatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get style](struct.StyleGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update style](struct.StyleUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [insert style](struct.StyleInsertMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>StyleSetting</span> {
@@ -8172,8 +8173,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TableListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list table](struct.TableListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TableList</span> {
@@ -8195,8 +8195,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.TemplateListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list template](struct.TemplateListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TemplateList</span> {
@@ -8237,13 +8236,12 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [importTable](struct.TableImportTableMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [patch](struct.TablePatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.TableGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [copy](struct.TableCopyMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.TableInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [update](struct.TableUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [import table table](struct.TableImportTableMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [patch table](struct.TablePatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get table](struct.TableGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [copy table](struct.TableCopyMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert table](struct.TableInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [update table](struct.TableUpdateMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Table</span> {
@@ -8368,7 +8366,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>/// use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -8499,7 +8497,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>/// use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -8587,7 +8585,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>/// use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -8718,7 +8716,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>/// use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -8849,7 +8847,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>/// use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -8923,7 +8921,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use fusiontables2::Fusiontables;</span>
+<span class='doccomment'>/// use fusiontables2::Fusiontables;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -9283,7 +9281,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::StyleSetting;</span>
+<span class='doccomment'>/// use fusiontables2::StyleSetting;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -9449,7 +9447,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::StyleSetting;</span>
+<span class='doccomment'>/// use fusiontables2::StyleSetting;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -9903,7 +9901,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::StyleSetting;</span>
+<span class='doccomment'>/// use fusiontables2::StyleSetting;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10544,7 +10542,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Column;</span>
+<span class='doccomment'>/// use fusiontables2::Column;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10698,7 +10696,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Column;</span>
+<span class='doccomment'>/// use fusiontables2::Column;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11028,7 +11026,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Column;</span>
+<span class='doccomment'>/// use fusiontables2::Column;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11494,7 +11492,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Template;</span>
+<span class='doccomment'>/// use fusiontables2::Template;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11974,7 +11972,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Template;</span>
+<span class='doccomment'>/// use fusiontables2::Template;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12128,7 +12126,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Template;</span>
+<span class='doccomment'>/// use fusiontables2::Template;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12772,7 +12770,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Table;</span>
+<span class='doccomment'>/// use fusiontables2::Table;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12939,7 +12937,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13172,7 +13170,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Table;</span>
+<span class='doccomment'>/// use fusiontables2::Table;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13477,7 +13475,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use fusiontables2::Table;</span>
+<span class='doccomment'>/// use fusiontables2::Table;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -13909,7 +13907,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -14142,7 +14140,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate fusiontables2;</span>
-<span class='doccomment'>/// # use std::fs;</span>
+<span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

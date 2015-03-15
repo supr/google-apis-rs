@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>fusiontables2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/fusiontables2/lib.rs.html#5-7214'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/fusiontables2/lib.rs.html#5-7213'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
@@ -51,9 +51,9 @@
 
 <ul>
 <li><a href="struct.Column.html">column</a> (<a href="struct.ColumnDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ColumnGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ColumnInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ColumnListMethodBuilder.html"><em>list</em></a>, <a href="struct.ColumnPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.ColumnUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li>query (<a href="struct.QuerySqlMethodBuilder.html"><em>sql</em></a> and <a href="struct.QuerySqlGetMethodBuilder.html"><em>sqlget</em></a>)</li>
+<li>query (<a href="struct.QuerySqlMethodBuilder.html"><em>sql</em></a> and <a href="struct.QuerySqlGetMethodBuilder.html"><em>sql get</em></a>)</li>
 <li>style (<a href="struct.StyleDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.StyleGetMethodBuilder.html"><em>get</em></a>, <a href="struct.StyleInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.StyleListMethodBuilder.html"><em>list</em></a>, <a href="struct.StylePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.StyleUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Table.html">table</a> (<a href="struct.TableCopyMethodBuilder.html"><em>copy</em></a>, <a href="struct.TableDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TableGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TableImportRowMethodBuilder.html"><em>importrows</em></a>, <a href="struct.TableImportTableMethodBuilder.html"><em>importtable</em></a>, <a href="struct.TableInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TableListMethodBuilder.html"><em>list</em></a>, <a href="struct.TablePatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.TableReplaceRowMethodBuilder.html"><em>replacerows</em></a> and <a href="struct.TableUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Table.html">table</a> (<a href="struct.TableCopyMethodBuilder.html"><em>copy</em></a>, <a href="struct.TableDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TableGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TableImportRowMethodBuilder.html"><em>import rows</em></a>, <a href="struct.TableImportTableMethodBuilder.html"><em>import table</em></a>, <a href="struct.TableInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TableListMethodBuilder.html"><em>list</em></a>, <a href="struct.TablePatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.TableReplaceRowMethodBuilder.html"><em>replace rows</em></a> and <a href="struct.TableUpdateMethodBuilder.html"><em>update</em></a>)</li>
 <li><a href="struct.Task.html">task</a> (<a href="struct.TaskDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TaskGetMethodBuilder.html"><em>get</em></a> and <a href="struct.TaskListMethodBuilder.html"><em>list</em></a>)</li>
 <li><a href="struct.Template.html">template</a> (<a href="struct.TemplateDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TemplateGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TemplateInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TemplateListMethodBuilder.html"><em>list</em></a>, <a href="struct.TemplatePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.TemplateUpdateMethodBuilder.html"><em>update</em></a>)</li>
 </ul>
@@ -114,22 +114,34 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+fusiontables2 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>fusiontables2</span>;
+<span class='kw'>use</span> <span class='ident'>fusiontables2</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>fusiontables2</span>::<span class='ident'>Fusiontables</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -223,10 +235,10 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ColumnGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.ColumnUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.ColumnInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.ColumnPatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.ColumnGetMethodBuilder.html">get column</a> (response)</li>
+<li><a href="struct.ColumnUpdateMethodBuilder.html">update column</a> (request|response)</li>
+<li><a href="struct.ColumnInsertMethodBuilder.html">insert column</a> (request|response)</li>
+<li><a href="struct.ColumnPatchMethodBuilder.html">patch column</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -272,7 +284,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ColumnListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.ColumnListMethodBuilder.html">list column</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -333,7 +345,7 @@ It is not used directly, but through the <code>Fusiontables</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TableImportRowMethodBuilder.html">importRows</a> (response)</li>
+<li><a href="struct.TableImportRowMethodBuilder.html">import rows table</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -425,8 +437,8 @@ It is not used directly, but through the <code>Fusiontables</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.QuerySqlGetMethodBuilder.html">sqlGet</a> (response)</li>
-<li><a href="struct.QuerySqlMethodBuilder.html">sql</a> (response)</li>
+<li><a href="struct.QuerySqlGetMethodBuilder.html">sql get query</a> (response)</li>
+<li><a href="struct.QuerySqlMethodBuilder.html">sql query</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -512,10 +524,10 @@ It is not used directly, but through the <code>Fusiontables</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.StylePatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.StyleGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.StyleUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.StyleInsertMethodBuilder.html">insert</a> (request|response)</li>
+<li><a href="struct.StylePatchMethodBuilder.html">patch style</a> (request|response)</li>
+<li><a href="struct.StyleGetMethodBuilder.html">get style</a> (response)</li>
+<li><a href="struct.StyleUpdateMethodBuilder.html">update style</a> (request|response)</li>
+<li><a href="struct.StyleInsertMethodBuilder.html">insert style</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -531,7 +543,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.StyleListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.StyleListMethodBuilder.html">list style</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -554,12 +566,12 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TableImportTableMethodBuilder.html">importTable</a> (response)</li>
-<li><a href="struct.TablePatchMethodBuilder.html">patch</a> (request|response)</li>
-<li><a href="struct.TableGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.TableCopyMethodBuilder.html">copy</a> (response)</li>
-<li><a href="struct.TableInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.TableUpdateMethodBuilder.html">update</a> (request|response)</li>
+<li><a href="struct.TableImportTableMethodBuilder.html">import table table</a> (response)</li>
+<li><a href="struct.TablePatchMethodBuilder.html">patch table</a> (request|response)</li>
+<li><a href="struct.TableGetMethodBuilder.html">get table</a> (response)</li>
+<li><a href="struct.TableCopyMethodBuilder.html">copy table</a> (response)</li>
+<li><a href="struct.TableInsertMethodBuilder.html">insert table</a> (request|response)</li>
+<li><a href="struct.TableUpdateMethodBuilder.html">update table</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -617,7 +629,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TableListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.TableListMethodBuilder.html">list table</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -669,8 +681,8 @@ It is not used directly, but through the <code>Fusiontables</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TaskGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.TableReplaceRowMethodBuilder.html">replaceRows</a> (response)</li>
+<li><a href="struct.TaskGetMethodBuilder.html">get task</a> (response)</li>
+<li><a href="struct.TableReplaceRowMethodBuilder.html">replace rows table</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -700,7 +712,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TaskListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.TaskListMethodBuilder.html">list task</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -731,10 +743,10 @@ It is not used directly, but through the <code>Fusiontables</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TemplateGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.TemplateUpdateMethodBuilder.html">update</a> (request|response)</li>
-<li><a href="struct.TemplateInsertMethodBuilder.html">insert</a> (request|response)</li>
-<li><a href="struct.TemplatePatchMethodBuilder.html">patch</a> (request|response)</li>
+<li><a href="struct.TemplateGetMethodBuilder.html">get template</a> (response)</li>
+<li><a href="struct.TemplateUpdateMethodBuilder.html">update template</a> (request|response)</li>
+<li><a href="struct.TemplateInsertMethodBuilder.html">insert template</a> (request|response)</li>
+<li><a href="struct.TemplatePatchMethodBuilder.html">patch template</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -771,7 +783,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TemplateListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.TemplateListMethodBuilder.html">list template</a> (response)</li>
 </ul>
 </td>
                     </tr>

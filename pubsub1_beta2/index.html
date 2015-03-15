@@ -43,14 +43,14 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>pubsub1_beta2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/pubsub1_beta2/lib.rs.html#5-3067'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/pubsub1_beta2/lib.rs.html#5-3065'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Pubsub.html">hub</a> ... </p>
 
 <ul>
-<li>projects (<a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html"><em>acknowledge subscriptions</em></a>, <a href="struct.ProjectSubscriptionCreateMethodBuilder.html"><em>create subscriptions</em></a>, <a href="struct.ProjectSubscriptionDeleteMethodBuilder.html"><em>delete subscriptions</em></a>, <a href="struct.ProjectSubscriptionGetMethodBuilder.html"><em>get subscriptions</em></a>, <a href="struct.ProjectSubscriptionListMethodBuilder.html"><em>list subscriptions</em></a>, <a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html"><em>modifyackdeadline subscriptions</em></a>, <a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html"><em>modifypushconfig subscriptions</em></a>, <a href="struct.ProjectSubscriptionPullMethodBuilder.html"><em>pull subscriptions</em></a>, <a href="struct.ProjectTopicCreateMethodBuilder.html"><em>create topics</em></a>, <a href="struct.ProjectTopicDeleteMethodBuilder.html"><em>delete topics</em></a>, <a href="struct.ProjectTopicGetMethodBuilder.html"><em>get topics</em></a>, <a href="struct.ProjectTopicListMethodBuilder.html"><em>list topics</em></a>, <a href="struct.ProjectTopicPublishMethodBuilder.html"><em>publish topics</em></a> and <a href="struct.ProjectTopicSubscriptionListMethodBuilder.html"><em>list subscriptions topics</em></a>)</li>
+<li>projects (<a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html"><em>subscriptions.acknowledge</em></a>, <a href="struct.ProjectSubscriptionCreateMethodBuilder.html"><em>subscriptions.create</em></a>, <a href="struct.ProjectSubscriptionDeleteMethodBuilder.html"><em>subscriptions.delete</em></a>, <a href="struct.ProjectSubscriptionGetMethodBuilder.html"><em>subscriptions.get</em></a>, <a href="struct.ProjectSubscriptionListMethodBuilder.html"><em>subscriptions.list</em></a>, <a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html"><em>subscriptions.modify ack deadline</em></a>, <a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html"><em>subscriptions.modify push config</em></a>, <a href="struct.ProjectSubscriptionPullMethodBuilder.html"><em>subscriptions.pull</em></a>, <a href="struct.ProjectTopicCreateMethodBuilder.html"><em>topics.create</em></a>, <a href="struct.ProjectTopicDeleteMethodBuilder.html"><em>topics.delete</em></a>, <a href="struct.ProjectTopicGetMethodBuilder.html"><em>topics.get</em></a>, <a href="struct.ProjectTopicListMethodBuilder.html"><em>topics.list</em></a>, <a href="struct.ProjectTopicPublishMethodBuilder.html"><em>topics.publish</em></a> and <a href="struct.ProjectTopicSubscriptionListMethodBuilder.html"><em>topics.subscriptions.list</em></a>)</li>
 </ul>
 
 <p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
@@ -105,22 +105,34 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+pubsub1_beta2 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>pubsub1_beta2</span>;
+<span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='ident'>AcknowledgeRequest</span>;
+<span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='ident'>Pubsub</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -208,7 +220,7 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html">subscriptions.acknowledge</a> (request)</li>
+<li><a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html">subscriptions.acknowledge projects</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -224,11 +236,11 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html">subscriptions.acknowledge</a> (response)</li>
-<li><a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html">subscriptions.modifyPushConfig</a> (response)</li>
-<li><a href="struct.ProjectSubscriptionDeleteMethodBuilder.html">subscriptions.delete</a> (response)</li>
-<li><a href="struct.ProjectTopicDeleteMethodBuilder.html">topics.delete</a> (response)</li>
-<li><a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html">subscriptions.modifyAckDeadline</a> (response)</li>
+<li><a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html">subscriptions.acknowledge projects</a> (response)</li>
+<li><a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html">subscriptions.modify push config projects</a> (response)</li>
+<li><a href="struct.ProjectSubscriptionDeleteMethodBuilder.html">subscriptions.delete projects</a> (response)</li>
+<li><a href="struct.ProjectTopicDeleteMethodBuilder.html">topics.delete projects</a> (response)</li>
+<li><a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html">subscriptions.modify ack deadline projects</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -244,7 +256,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionListMethodBuilder.html">subscriptions.list</a> (response)</li>
+<li><a href="struct.ProjectSubscriptionListMethodBuilder.html">subscriptions.list projects</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -260,7 +272,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectTopicSubscriptionListMethodBuilder.html">topics.subscriptions.list</a> (response)</li>
+<li><a href="struct.ProjectTopicSubscriptionListMethodBuilder.html">topics.subscriptions.list projects</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -276,7 +288,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectTopicListMethodBuilder.html">topics.list</a> (response)</li>
+<li><a href="struct.ProjectTopicListMethodBuilder.html">topics.list projects</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -292,7 +304,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html">subscriptions.modifyAckDeadline</a> (request)</li>
+<li><a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html">subscriptions.modify ack deadline projects</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -308,7 +320,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html">subscriptions.modifyPushConfig</a> (request)</li>
+<li><a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html">subscriptions.modify push config projects</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -430,7 +442,7 @@ It is not used directly, but through the <code>Pubsub</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectTopicPublishMethodBuilder.html">topics.publish</a> (request)</li>
+<li><a href="struct.ProjectTopicPublishMethodBuilder.html">topics.publish projects</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -446,7 +458,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectTopicPublishMethodBuilder.html">topics.publish</a> (response)</li>
+<li><a href="struct.ProjectTopicPublishMethodBuilder.html">topics.publish projects</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -478,7 +490,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionPullMethodBuilder.html">subscriptions.pull</a> (request)</li>
+<li><a href="struct.ProjectSubscriptionPullMethodBuilder.html">subscriptions.pull projects</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -494,7 +506,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionPullMethodBuilder.html">subscriptions.pull</a> (response)</li>
+<li><a href="struct.ProjectSubscriptionPullMethodBuilder.html">subscriptions.pull projects</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -528,8 +540,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectSubscriptionCreateMethodBuilder.html">subscriptions.create</a> (request|response)</li>
-<li><a href="struct.ProjectSubscriptionGetMethodBuilder.html">subscriptions.get</a> (response)</li>
+<li><a href="struct.ProjectSubscriptionCreateMethodBuilder.html">subscriptions.create projects</a> (request|response)</li>
+<li><a href="struct.ProjectSubscriptionGetMethodBuilder.html">subscriptions.get projects</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -545,8 +557,8 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.ProjectTopicCreateMethodBuilder.html">topics.create</a> (request|response)</li>
-<li><a href="struct.ProjectTopicGetMethodBuilder.html">topics.get</a> (response)</li>
+<li><a href="struct.ProjectTopicCreateMethodBuilder.html">topics.create projects</a> (request|response)</li>
+<li><a href="struct.ProjectTopicGetMethodBuilder.html">topics.get projects</a> (response)</li>
 </ul>
 </td>
                     </tr>

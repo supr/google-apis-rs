@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>sqladmin1_beta4</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/sqladmin1_beta4/lib.rs.html#5-8170'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/sqladmin1_beta4/lib.rs.html#5-8159'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
@@ -53,7 +53,7 @@
 <li><a href="struct.BackupRun.html">backup runs</a> (<a href="struct.BackupRunGetMethodBuilder.html"><em>get</em></a> and <a href="struct.BackupRunListMethodBuilder.html"><em>list</em></a>)</li>
 <li><a href="struct.Database.html">databases</a> (<a href="struct.DatabaseDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.DatabaseGetMethodBuilder.html"><em>get</em></a>, <a href="struct.DatabaseInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.DatabaseListMethodBuilder.html"><em>list</em></a>, <a href="struct.DatabasePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.DatabaseUpdateMethodBuilder.html"><em>update</em></a>)</li>
 <li><a href="struct.Flag.html">flags</a> (<a href="struct.FlagListMethodBuilder.html"><em>list</em></a>)</li>
-<li>instances (<a href="struct.InstanceCloneMethodBuilder.html"><em>clone</em></a>, <a href="struct.InstanceDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.InstanceExportMethodBuilder.html"><em>export</em></a>, <a href="struct.InstanceGetMethodBuilder.html"><em>get</em></a>, <a href="struct.InstanceImportMethodBuilder.html"><em>import</em></a>, <a href="struct.InstanceInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.InstanceListMethodBuilder.html"><em>list</em></a>, <a href="struct.InstancePatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.InstancePromoteReplicaMethodBuilder.html"><em>promotereplica</em></a>, <a href="struct.InstanceResetSslConfigMethodBuilder.html"><em>resetsslconfig</em></a>, <a href="struct.InstanceRestartMethodBuilder.html"><em>restart</em></a>, <a href="struct.InstanceRestoreBackupMethodBuilder.html"><em>restorebackup</em></a>, <a href="struct.InstanceStartReplicaMethodBuilder.html"><em>startreplica</em></a>, <a href="struct.InstanceStopReplicaMethodBuilder.html"><em>stopreplica</em></a> and <a href="struct.InstanceUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>instances (<a href="struct.InstanceCloneMethodBuilder.html"><em>clone</em></a>, <a href="struct.InstanceDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.InstanceExportMethodBuilder.html"><em>export</em></a>, <a href="struct.InstanceGetMethodBuilder.html"><em>get</em></a>, <a href="struct.InstanceImportMethodBuilder.html"><em>import</em></a>, <a href="struct.InstanceInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.InstanceListMethodBuilder.html"><em>list</em></a>, <a href="struct.InstancePatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.InstancePromoteReplicaMethodBuilder.html"><em>promote replica</em></a>, <a href="struct.InstanceResetSslConfigMethodBuilder.html"><em>reset ssl config</em></a>, <a href="struct.InstanceRestartMethodBuilder.html"><em>restart</em></a>, <a href="struct.InstanceRestoreBackupMethodBuilder.html"><em>restore backup</em></a>, <a href="struct.InstanceStartReplicaMethodBuilder.html"><em>start replica</em></a>, <a href="struct.InstanceStopReplicaMethodBuilder.html"><em>stop replica</em></a> and <a href="struct.InstanceUpdateMethodBuilder.html"><em>update</em></a>)</li>
 <li><a href="struct.Operation.html">operations</a> (<a href="struct.OperationGetMethodBuilder.html"><em>get</em></a> and <a href="struct.OperationListMethodBuilder.html"><em>list</em></a>)</li>
 <li><a href="struct.SslCert.html">ssl certs</a> (<a href="struct.SslCertDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.SslCertGetMethodBuilder.html"><em>get</em></a>, <a href="struct.SslCertInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.SslCertListMethodBuilder.html"><em>list</em></a>)</li>
 <li><a href="struct.Tier.html">tiers</a> (<a href="struct.TierListMethodBuilder.html"><em>list</em></a>)</li>
@@ -133,22 +133,34 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+sqladmin1_beta4 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>sqladmin1_beta4</span>;
+<span class='kw'>use</span> <span class='ident'>sqladmin1_beta4</span>::<span class='ident'>User</span>;
+<span class='kw'>use</span> <span class='ident'>sqladmin1_beta4</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>sqladmin1_beta4</span>::<span class='ident'>SQLAdmin</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -254,8 +266,8 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BackupRunGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.BackupRunListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.BackupRunGetMethodBuilder.html">get backup runs</a> (response)</li>
+<li><a href="struct.BackupRunListMethodBuilder.html">list backup runs</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -293,7 +305,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.BackupRunListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.BackupRunListMethodBuilder.html">list backup runs</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -327,12 +339,12 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.DatabaseGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.DatabaseListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.DatabasePatchMethodBuilder.html">patch</a> (request)</li>
-<li><a href="struct.DatabaseInsertMethodBuilder.html">insert</a> (request)</li>
-<li><a href="struct.DatabaseDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.DatabaseUpdateMethodBuilder.html">update</a> (request)</li>
+<li><a href="struct.DatabaseGetMethodBuilder.html">get databases</a> (response)</li>
+<li><a href="struct.DatabaseListMethodBuilder.html">list databases</a> (none)</li>
+<li><a href="struct.DatabasePatchMethodBuilder.html">patch databases</a> (request)</li>
+<li><a href="struct.DatabaseInsertMethodBuilder.html">insert databases</a> (request)</li>
+<li><a href="struct.DatabaseDeleteMethodBuilder.html">delete databases</a> (none)</li>
+<li><a href="struct.DatabaseUpdateMethodBuilder.html">update databases</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -378,10 +390,10 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.InstancePatchMethodBuilder.html">patch</a> (request)</li>
-<li><a href="struct.InstanceInsertMethodBuilder.html">insert</a> (request)</li>
-<li><a href="struct.InstanceGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.InstanceUpdateMethodBuilder.html">update</a> (request)</li>
+<li><a href="struct.InstancePatchMethodBuilder.html">patch instances</a> (request)</li>
+<li><a href="struct.InstanceInsertMethodBuilder.html">insert instances</a> (request)</li>
+<li><a href="struct.InstanceGetMethodBuilder.html">get instances</a> (response)</li>
+<li><a href="struct.InstanceUpdateMethodBuilder.html">update instances</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -426,7 +438,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.DatabaseListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.DatabaseListMethodBuilder.html">list databases</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -469,7 +481,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.FlagListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.FlagListMethodBuilder.html">list flags</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -500,7 +512,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.FlagListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.FlagListMethodBuilder.html">list flags</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -647,7 +659,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.InstanceCloneMethodBuilder.html">clone</a> (request)</li>
+<li><a href="struct.InstanceCloneMethodBuilder.html">clone instances</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -663,7 +675,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.InstanceExportMethodBuilder.html">export</a> (request)</li>
+<li><a href="struct.InstanceExportMethodBuilder.html">export instances</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -679,7 +691,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.InstanceImportMethodBuilder.html">import</a> (request)</li>
+<li><a href="struct.InstanceImportMethodBuilder.html">import instances</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -695,7 +707,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.InstanceListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.InstanceListMethodBuilder.html">list instances</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -711,7 +723,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.InstanceRestoreBackupMethodBuilder.html">restoreBackup</a> (request)</li>
+<li><a href="struct.InstanceRestoreBackupMethodBuilder.html">restore backup instances</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -754,29 +766,29 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SslCertDeleteMethodBuilder.html">delete</a> (response)</li>
-<li><a href="struct.UserDeleteMethodBuilder.html">delete</a> (response)</li>
-<li><a href="struct.DatabaseDeleteMethodBuilder.html">delete</a> (response)</li>
-<li><a href="struct.DatabasePatchMethodBuilder.html">patch</a> (response)</li>
-<li><a href="struct.InstanceResetSslConfigMethodBuilder.html">resetSslConfig</a> (response)</li>
-<li><a href="struct.InstancePromoteReplicaMethodBuilder.html">promoteReplica</a> (response)</li>
-<li><a href="struct.DatabaseUpdateMethodBuilder.html">update</a> (response)</li>
-<li><a href="struct.OperationListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.UserUpdateMethodBuilder.html">update</a> (response)</li>
-<li><a href="struct.DatabaseInsertMethodBuilder.html">insert</a> (response)</li>
-<li><a href="struct.InstancePatchMethodBuilder.html">patch</a> (response)</li>
-<li><a href="struct.InstanceCloneMethodBuilder.html">clone</a> (response)</li>
-<li><a href="struct.InstanceDeleteMethodBuilder.html">delete</a> (response)</li>
-<li><a href="struct.OperationGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.InstanceStopReplicaMethodBuilder.html">stopReplica</a> (response)</li>
-<li><a href="struct.InstanceStartReplicaMethodBuilder.html">startReplica</a> (response)</li>
-<li><a href="struct.UserInsertMethodBuilder.html">insert</a> (response)</li>
-<li><a href="struct.InstanceInsertMethodBuilder.html">insert</a> (response)</li>
-<li><a href="struct.InstanceImportMethodBuilder.html">import</a> (response)</li>
-<li><a href="struct.InstanceUpdateMethodBuilder.html">update</a> (response)</li>
-<li><a href="struct.InstanceRestartMethodBuilder.html">restart</a> (response)</li>
-<li><a href="struct.InstanceExportMethodBuilder.html">export</a> (response)</li>
-<li><a href="struct.InstanceRestoreBackupMethodBuilder.html">restoreBackup</a> (response)</li>
+<li><a href="struct.SslCertDeleteMethodBuilder.html">delete ssl certs</a> (response)</li>
+<li><a href="struct.UserDeleteMethodBuilder.html">delete users</a> (response)</li>
+<li><a href="struct.DatabaseDeleteMethodBuilder.html">delete databases</a> (response)</li>
+<li><a href="struct.DatabasePatchMethodBuilder.html">patch databases</a> (response)</li>
+<li><a href="struct.InstanceResetSslConfigMethodBuilder.html">reset ssl config instances</a> (response)</li>
+<li><a href="struct.InstancePromoteReplicaMethodBuilder.html">promote replica instances</a> (response)</li>
+<li><a href="struct.DatabaseUpdateMethodBuilder.html">update databases</a> (response)</li>
+<li><a href="struct.OperationListMethodBuilder.html">list operations</a> (none)</li>
+<li><a href="struct.UserUpdateMethodBuilder.html">update users</a> (response)</li>
+<li><a href="struct.DatabaseInsertMethodBuilder.html">insert databases</a> (response)</li>
+<li><a href="struct.InstancePatchMethodBuilder.html">patch instances</a> (response)</li>
+<li><a href="struct.InstanceCloneMethodBuilder.html">clone instances</a> (response)</li>
+<li><a href="struct.InstanceDeleteMethodBuilder.html">delete instances</a> (response)</li>
+<li><a href="struct.OperationGetMethodBuilder.html">get operations</a> (response)</li>
+<li><a href="struct.InstanceStopReplicaMethodBuilder.html">stop replica instances</a> (response)</li>
+<li><a href="struct.InstanceStartReplicaMethodBuilder.html">start replica instances</a> (response)</li>
+<li><a href="struct.UserInsertMethodBuilder.html">insert users</a> (response)</li>
+<li><a href="struct.InstanceInsertMethodBuilder.html">insert instances</a> (response)</li>
+<li><a href="struct.InstanceImportMethodBuilder.html">import instances</a> (response)</li>
+<li><a href="struct.InstanceUpdateMethodBuilder.html">update instances</a> (response)</li>
+<li><a href="struct.InstanceRestartMethodBuilder.html">restart instances</a> (response)</li>
+<li><a href="struct.InstanceExportMethodBuilder.html">export instances</a> (response)</li>
+<li><a href="struct.InstanceRestoreBackupMethodBuilder.html">restore backup instances</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -832,7 +844,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.OperationListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.OperationListMethodBuilder.html">list operations</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -873,10 +885,10 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SslCertInsertMethodBuilder.html">insert</a> (none)</li>
-<li><a href="struct.SslCertGetMethodBuilder.html">get</a> (response)</li>
-<li><a href="struct.SslCertListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.SslCertDeleteMethodBuilder.html">delete</a> (none)</li>
+<li><a href="struct.SslCertInsertMethodBuilder.html">insert ssl certs</a> (none)</li>
+<li><a href="struct.SslCertGetMethodBuilder.html">get ssl certs</a> (response)</li>
+<li><a href="struct.SslCertListMethodBuilder.html">list ssl certs</a> (none)</li>
+<li><a href="struct.SslCertDeleteMethodBuilder.html">delete ssl certs</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -937,7 +949,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SslCertInsertMethodBuilder.html">insert</a> (request)</li>
+<li><a href="struct.SslCertInsertMethodBuilder.html">insert ssl certs</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -953,7 +965,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SslCertInsertMethodBuilder.html">insert</a> (response)</li>
+<li><a href="struct.SslCertInsertMethodBuilder.html">insert ssl certs</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -969,7 +981,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.SslCertListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.SslCertListMethodBuilder.html">list ssl certs</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -985,7 +997,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TierListMethodBuilder.html">list</a> (none)</li>
+<li><a href="struct.TierListMethodBuilder.html">list tiers</a> (none)</li>
 </ul>
 </td>
                     </tr>
@@ -1016,7 +1028,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.TierListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.TierListMethodBuilder.html">list tiers</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -1032,10 +1044,10 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserDeleteMethodBuilder.html">delete</a> (none)</li>
-<li><a href="struct.UserUpdateMethodBuilder.html">update</a> (request)</li>
-<li><a href="struct.UserListMethodBuilder.html">list</a> (none)</li>
-<li><a href="struct.UserInsertMethodBuilder.html">insert</a> (request)</li>
+<li><a href="struct.UserDeleteMethodBuilder.html">delete users</a> (none)</li>
+<li><a href="struct.UserUpdateMethodBuilder.html">update users</a> (request)</li>
+<li><a href="struct.UserListMethodBuilder.html">list users</a> (none)</li>
+<li><a href="struct.UserInsertMethodBuilder.html">insert users</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -1087,7 +1099,7 @@ It is not used directly, but through the <code>SQLAdmin</code> hub.</p>
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserListMethodBuilder.html">list</a> (response)</li>
+<li><a href="struct.UserListMethodBuilder.html">list users</a> (response)</li>
 </ul>
 </td>
                     </tr>

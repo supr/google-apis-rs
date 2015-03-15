@@ -8357,8 +8357,6 @@
 <span id="8315">8315</span>
 <span id="8316">8316</span>
 <span id="8317">8317</span>
-<span id="8318">8318</span>
-<span id="8319">8319</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -8369,12 +8367,12 @@
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Blogger.html) ... </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [blog user infos](struct.BlogUserInfo.html) ([*get*](struct.BlogUserInfoGetMethodBuilder.html))</span>
-<span class='doccomment'>//! * [blogs](struct.Blog.html) ([*get*](struct.BlogGetMethodBuilder.html), [*getbyurl*](struct.BlogGetByUrlMethodBuilder.html) and [*listbyuser*](struct.BlogListByUserMethodBuilder.html))</span>
-<span class='doccomment'>//! * [comments](struct.Comment.html) ([*approve*](struct.CommentApproveMethodBuilder.html), [*delete*](struct.CommentDeleteMethodBuilder.html), [*get*](struct.CommentGetMethodBuilder.html), [*list*](struct.CommentListMethodBuilder.html), [*listbyblog*](struct.CommentListByBlogMethodBuilder.html), [*markasspam*](struct.CommentMarkAsSpamMethodBuilder.html) and [*removecontent*](struct.CommentRemoveContentMethodBuilder.html))</span>
+<span class='doccomment'>//! * [blogs](struct.Blog.html) ([*get*](struct.BlogGetMethodBuilder.html), [*get by url*](struct.BlogGetByUrlMethodBuilder.html) and [*list by user*](struct.BlogListByUserMethodBuilder.html))</span>
+<span class='doccomment'>//! * [comments](struct.Comment.html) ([*approve*](struct.CommentApproveMethodBuilder.html), [*delete*](struct.CommentDeleteMethodBuilder.html), [*get*](struct.CommentGetMethodBuilder.html), [*list*](struct.CommentListMethodBuilder.html), [*list by blog*](struct.CommentListByBlogMethodBuilder.html), [*mark as spam*](struct.CommentMarkAsSpamMethodBuilder.html) and [*remove content*](struct.CommentRemoveContentMethodBuilder.html))</span>
 <span class='doccomment'>//! * page views ([*get*](struct.PageViewGetMethodBuilder.html))</span>
 <span class='doccomment'>//! * [pages](struct.Page.html) ([*delete*](struct.PageDeleteMethodBuilder.html), [*get*](struct.PageGetMethodBuilder.html), [*insert*](struct.PageInsertMethodBuilder.html), [*list*](struct.PageListMethodBuilder.html), [*patch*](struct.PagePatchMethodBuilder.html), [*publish*](struct.PagePublishMethodBuilder.html), [*revert*](struct.PageRevertMethodBuilder.html) and [*update*](struct.PageUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * [post user infos](struct.PostUserInfo.html) ([*get*](struct.PostUserInfoGetMethodBuilder.html) and [*list*](struct.PostUserInfoListMethodBuilder.html))</span>
-<span class='doccomment'>//! * [posts](struct.Post.html) ([*delete*](struct.PostDeleteMethodBuilder.html), [*get*](struct.PostGetMethodBuilder.html), [*getbypath*](struct.PostGetByPathMethodBuilder.html), [*insert*](struct.PostInsertMethodBuilder.html), [*list*](struct.PostListMethodBuilder.html), [*patch*](struct.PostPatchMethodBuilder.html), [*publish*](struct.PostPublishMethodBuilder.html), [*revert*](struct.PostRevertMethodBuilder.html), [*search*](struct.PostSearchMethodBuilder.html) and [*update*](struct.PostUpdateMethodBuilder.html))</span>
+<span class='doccomment'>//! * [posts](struct.Post.html) ([*delete*](struct.PostDeleteMethodBuilder.html), [*get*](struct.PostGetMethodBuilder.html), [*get by path*](struct.PostGetByPathMethodBuilder.html), [*insert*](struct.PostInsertMethodBuilder.html), [*list*](struct.PostListMethodBuilder.html), [*patch*](struct.PostPatchMethodBuilder.html), [*publish*](struct.PostPublishMethodBuilder.html), [*revert*](struct.PostRevertMethodBuilder.html), [*search*](struct.PostSearchMethodBuilder.html) and [*update*](struct.PostUpdateMethodBuilder.html))</span>
 <span class='doccomment'>//! * [users](struct.User.html) ([*get*](struct.UserGetMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *blogger* API can be found at the</span>
@@ -8425,6 +8423,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! blogger3 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -8432,19 +8439,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate blogger3;</span>
-<span class='doccomment'>//! # use blogger3::cmn::Result;</span>
+<span class='doccomment'>//! use blogger3::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use blogger3::Blogger;</span>
+<span class='doccomment'>//! use blogger3::Blogger;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -8604,19 +8612,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate blogger3;</span>
-<span class='doccomment'>/// # use blogger3::cmn::Result;</span>
+<span class='doccomment'>/// use blogger3::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -8776,10 +8785,9 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [listByUser](struct.BlogListByUserMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.BlogGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [getByUrl](struct.BlogGetByUrlMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list by user blogs](struct.BlogListByUserMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get blogs](struct.BlogGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [get by url blogs](struct.BlogGetByUrlMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Blog</span> {
@@ -8822,8 +8830,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.PostUserInfoListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list post user infos](struct.PostUserInfoListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PostUserInfosList</span> {
@@ -8845,8 +8852,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.BlogUserInfoGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get blog user infos](struct.BlogUserInfoGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BlogUserInfo</span> {
@@ -9057,8 +9063,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [listByUser](struct.BlogListByUserMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list by user blogs](struct.BlogListByUserMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BlogList</span> {
@@ -9080,8 +9085,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.UserGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get users](struct.UserGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>User</span> {
@@ -9144,17 +9148,16 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [insert](struct.PostInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [publish](struct.PostPublishMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.PostDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [revert](struct.PostRevertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.PostUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [getByPath](struct.PostGetByPathMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [search](struct.PostSearchMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [patch](struct.PostPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [list](struct.PostListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.PostGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [insert posts](struct.PostInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [publish posts](struct.PostPublishMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete posts](struct.PostDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [revert posts](struct.PostRevertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update posts](struct.PostUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get by path posts](struct.PostGetByPathMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [search posts](struct.PostSearchMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [patch posts](struct.PostPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [list posts](struct.PostListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get posts](struct.PostGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Post</span> {
@@ -9314,9 +9317,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [listByBlog](struct.CommentListByBlogMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.CommentListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list by blog comments](struct.CommentListByBlogMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list comments](struct.CommentListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CommentList</span> {
@@ -9368,9 +9370,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.PostListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [search](struct.PostSearchMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list posts](struct.PostListMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [search posts](struct.PostSearchMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PostList</span> {
@@ -9458,15 +9459,14 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [update](struct.PageUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [get](struct.PageGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.PageInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [publish](struct.PagePublishMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.PageListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [patch](struct.PagePatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [revert](struct.PageRevertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.PageDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [update pages](struct.PageUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [get pages](struct.PageGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert pages](struct.PageInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [publish pages](struct.PagePublishMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list pages](struct.PageListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [patch pages](struct.PagePatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [revert pages](struct.PageRevertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete pages](struct.PageDeleteMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Page</span> {
@@ -9530,14 +9530,13 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [listByBlog](struct.CommentListByBlogMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.CommentGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [markAsSpam](struct.CommentMarkAsSpamMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [list](struct.CommentListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [removeContent](struct.CommentRemoveContentMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [approve](struct.CommentApproveMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.CommentDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list by blog comments](struct.CommentListByBlogMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get comments](struct.CommentGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [mark as spam comments](struct.CommentMarkAsSpamMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list comments](struct.CommentListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [remove content comments](struct.CommentRemoveContentMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [approve comments](struct.CommentApproveMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete comments](struct.CommentDeleteMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Comment</span> {
@@ -9599,9 +9598,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.PostUserInfoListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.PostUserInfoGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list post user infos](struct.PostUserInfoListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get post user infos](struct.PostUserInfoGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PostUserInfo</span> {
@@ -9624,8 +9622,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.PageViewGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get page views](struct.PageViewGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Pageviews</span> {
@@ -9684,8 +9681,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.PageListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list pages](struct.PageListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PageList</span> {
@@ -9817,7 +9813,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -9875,7 +9871,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -9932,7 +9928,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10022,7 +10018,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10239,7 +10235,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10399,7 +10395,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10482,7 +10478,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -10541,7 +10537,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use blogger3::Blogger;</span>
+<span class='doccomment'>/// use blogger3::Blogger;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -11506,7 +11502,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate blogger3;</span>
-<span class='doccomment'>/// # use blogger3::Post;</span>
+<span class='doccomment'>/// use blogger3::Post;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12115,7 +12111,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate blogger3;</span>
-<span class='doccomment'>/// # use blogger3::Post;</span>
+<span class='doccomment'>/// use blogger3::Post;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -12947,7 +12943,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate blogger3;</span>
-<span class='doccomment'>/// # use blogger3::Post;</span>
+<span class='doccomment'>/// use blogger3::Post;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -15842,7 +15838,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate blogger3;</span>
-<span class='doccomment'>/// # use blogger3::Page;</span>
+<span class='doccomment'>/// use blogger3::Page;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -16009,7 +16005,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate blogger3;</span>
-<span class='doccomment'>/// # use blogger3::Page;</span>
+<span class='doccomment'>/// use blogger3::Page;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -16351,7 +16347,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate blogger3;</span>
-<span class='doccomment'>/// # use blogger3::Page;</span>
+<span class='doccomment'>/// use blogger3::Page;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

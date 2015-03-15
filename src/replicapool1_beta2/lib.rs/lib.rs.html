@@ -3162,6 +3162,8 @@
 <span id="3120">3120</span>
 <span id="3121">3121</span>
 <span id="3122">3122</span>
+<span id="3123">3123</span>
+<span id="3124">3124</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -3171,7 +3173,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Replicapool.html) ... </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * [instance group managers](struct.InstanceGroupManager.html) ([*abandoninstances*](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html), [*delete*](struct.InstanceGroupManagerDeleteMethodBuilder.html), [*deleteinstances*](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html), [*get*](struct.InstanceGroupManagerGetMethodBuilder.html), [*insert*](struct.InstanceGroupManagerInsertMethodBuilder.html), [*list*](struct.InstanceGroupManagerListMethodBuilder.html), [*recreateinstances*](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html), [*resize*](struct.InstanceGroupManagerResizeMethodBuilder.html), [*setinstancetemplate*](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) and [*settargetpools*](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html))</span>
+<span class='doccomment'>//! * [instance group managers](struct.InstanceGroupManager.html) ([*abandon instances*](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html), [*delete*](struct.InstanceGroupManagerDeleteMethodBuilder.html), [*delete instances*](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html), [*get*](struct.InstanceGroupManagerGetMethodBuilder.html), [*insert*](struct.InstanceGroupManagerInsertMethodBuilder.html), [*list*](struct.InstanceGroupManagerListMethodBuilder.html), [*recreate instances*](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html), [*resize*](struct.InstanceGroupManagerResizeMethodBuilder.html), [*set instance template*](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) and [*set target pools*](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html))</span>
 <span class='doccomment'>//! * zone operations ([*get*](struct.ZoneOperationGetMethodBuilder.html) and [*list*](struct.ZoneOperationListMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *replicapool* API can be found at the</span>
@@ -3222,6 +3224,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! replicapool1_beta2 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -3229,19 +3240,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate replicapool1_beta2;</span>
-<span class='doccomment'>//! # use replicapool1_beta2::cmn::Result;</span>
+<span class='doccomment'>//! use replicapool1_beta2::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use replicapool1_beta2::Replicapool;</span>
+<span class='doccomment'>//! use replicapool1_beta2::Replicapool;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3398,19 +3410,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate replicapool1_beta2;</span>
-<span class='doccomment'>/// # use replicapool1_beta2::cmn::Result;</span>
+<span class='doccomment'>/// use replicapool1_beta2::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use replicapool1_beta2::Replicapool;</span>
+<span class='doccomment'>/// use replicapool1_beta2::Replicapool;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3486,8 +3499,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [recreateInstances](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [recreate instances instance group managers](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceGroupManagersRecreateInstancesRequest</span> {
@@ -3536,8 +3548,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.ZoneOperationListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list zone operations](struct.ZoneOperationListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>OperationList</span> {
@@ -3563,8 +3574,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [setInstanceTemplate](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [set instance template instance group managers](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceGroupManagersSetInstanceTemplateRequest</span> {
@@ -3612,8 +3622,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.InstanceGroupManagerListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list instance group managers](struct.InstanceGroupManagerListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceGroupManagerList</span> {
@@ -3654,17 +3663,16 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [setTargetPools](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [list](struct.InstanceGroupManagerListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [insert](struct.InstanceGroupManagerInsertMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// * [get](struct.InstanceGroupManagerGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [abandonInstances](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [recreateInstances](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [delete](struct.InstanceGroupManagerDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [setInstanceTemplate](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [resize](struct.InstanceGroupManagerResizeMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [deleteInstances](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [set target pools instance group managers](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [list instance group managers](struct.InstanceGroupManagerListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [insert instance group managers](struct.InstanceGroupManagerInsertMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [get instance group managers](struct.InstanceGroupManagerGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [abandon instances instance group managers](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [recreate instances instance group managers](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [delete instance group managers](struct.InstanceGroupManagerDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [set instance template instance group managers](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [resize instance group managers](struct.InstanceGroupManagerResizeMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [delete instances instance group managers](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceGroupManager</span> {
@@ -3731,8 +3739,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [setTargetPools](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [set target pools instance group managers](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceGroupManagersSetTargetPoolsRequest</span> {
@@ -3764,8 +3771,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [abandonInstances](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [abandon instances instance group managers](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceGroupManagersAbandonInstancesRequest</span> {
@@ -3795,8 +3801,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [deleteInstances](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [delete instances instance group managers](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InstanceGroupManagersDeleteInstancesRequest</span> {
@@ -3827,16 +3832,15 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [setTargetPools](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.InstanceGroupManagerInsertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [abandonInstances](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [recreateInstances](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.InstanceGroupManagerDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [setInstanceTemplate](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [get](struct.ZoneOperationGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [resize](struct.InstanceGroupManagerResizeMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [deleteInstances](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [set target pools instance group managers](struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert instance group managers](struct.InstanceGroupManagerInsertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [abandon instances instance group managers](struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [recreate instances instance group managers](struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete instance group managers](struct.InstanceGroupManagerDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [set instance template instance group managers](struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [get zone operations](struct.ZoneOperationGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [resize instance group managers](struct.InstanceGroupManagerResizeMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete instances instance group managers](struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Operation</span> {
@@ -3910,7 +3914,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use replicapool1_beta2::Replicapool;</span>
+<span class='doccomment'>/// use replicapool1_beta2::Replicapool;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -3986,7 +3990,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use replicapool1_beta2::Replicapool;</span>
+<span class='doccomment'>/// use replicapool1_beta2::Replicapool;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4544,7 +4548,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate replicapool1_beta2;</span>
-<span class='doccomment'>/// # use replicapool1_beta2::InstanceGroupManagersSetTargetPoolsRequest;</span>
+<span class='doccomment'>/// use replicapool1_beta2::InstanceGroupManagersSetTargetPoolsRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4911,7 +4915,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate replicapool1_beta2;</span>
-<span class='doccomment'>/// # use replicapool1_beta2::InstanceGroupManager;</span>
+<span class='doccomment'>/// use replicapool1_beta2::InstanceGroupManager;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5251,7 +5255,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate replicapool1_beta2;</span>
-<span class='doccomment'>/// # use replicapool1_beta2::InstanceGroupManagersAbandonInstancesRequest;</span>
+<span class='doccomment'>/// use replicapool1_beta2::InstanceGroupManagersAbandonInstancesRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5429,7 +5433,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate replicapool1_beta2;</span>
-<span class='doccomment'>/// # use replicapool1_beta2::InstanceGroupManagersRecreateInstancesRequest;</span>
+<span class='doccomment'>/// use replicapool1_beta2::InstanceGroupManagersRecreateInstancesRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5769,7 +5773,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate replicapool1_beta2;</span>
-<span class='doccomment'>/// # use replicapool1_beta2::InstanceGroupManagersSetInstanceTemplateRequest;</span>
+<span class='doccomment'>/// use replicapool1_beta2::InstanceGroupManagersSetInstanceTemplateRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -6121,7 +6125,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate replicapool1_beta2;</span>
-<span class='doccomment'>/// # use replicapool1_beta2::InstanceGroupManagersDeleteInstancesRequest;</span>
+<span class='doccomment'>/// use replicapool1_beta2::InstanceGroupManagersDeleteInstancesRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

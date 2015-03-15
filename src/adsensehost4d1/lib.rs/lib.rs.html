@@ -5966,8 +5966,6 @@
 <span id="5924">5924</span>
 <span id="5925">5925</span>
 <span id="5926">5926</span>
-<span id="5927">5927</span>
-<span id="5928">5928</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -5977,7 +5975,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.AdSenseHost.html) ... </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * [accounts](struct.Account.html) ([*get adclients*](struct.AccountAdclientGetMethodBuilder.html), [*list adclients*](struct.AccountAdclientListMethodBuilder.html), [*delete adunits*](struct.AccountAdunitDeleteMethodBuilder.html), [*get adunits*](struct.AccountAdunitGetMethodBuilder.html), [*getadcode adunits*](struct.AccountAdunitGetAdCodeMethodBuilder.html), [*insert adunits*](struct.AccountAdunitInsertMethodBuilder.html), [*list adunits*](struct.AccountAdunitListMethodBuilder.html), [*patch adunits*](struct.AccountAdunitPatchMethodBuilder.html), [*update adunits*](struct.AccountAdunitUpdateMethodBuilder.html), [*get*](struct.AccountGetMethodBuilder.html), [*list*](struct.AccountListMethodBuilder.html) and [*generate reports*](struct.AccountReportGenerateMethodBuilder.html))</span>
+<span class='doccomment'>//! * [accounts](struct.Account.html) ([*adclients.get*](struct.AccountAdclientGetMethodBuilder.html), [*adclients.list*](struct.AccountAdclientListMethodBuilder.html), [*adunits.delete*](struct.AccountAdunitDeleteMethodBuilder.html), [*adunits.get*](struct.AccountAdunitGetMethodBuilder.html), [*adunits.get ad code*](struct.AccountAdunitGetAdCodeMethodBuilder.html), [*adunits.insert*](struct.AccountAdunitInsertMethodBuilder.html), [*adunits.list*](struct.AccountAdunitListMethodBuilder.html), [*adunits.patch*](struct.AccountAdunitPatchMethodBuilder.html), [*adunits.update*](struct.AccountAdunitUpdateMethodBuilder.html), [*get*](struct.AccountGetMethodBuilder.html), [*list*](struct.AccountListMethodBuilder.html) and [*reports.generate*](struct.AccountReportGenerateMethodBuilder.html))</span>
 <span class='doccomment'>//! * adclients ([*get*](struct.AdclientGetMethodBuilder.html) and [*list*](struct.AdclientListMethodBuilder.html))</span>
 <span class='doccomment'>//! * associationsessions ([*start*](struct.AssociationsessionStartMethodBuilder.html) and [*verify*](struct.AssociationsessionVerifyMethodBuilder.html))</span>
 <span class='doccomment'>//! * customchannels ([*delete*](struct.CustomchannelDeleteMethodBuilder.html), [*get*](struct.CustomchannelGetMethodBuilder.html), [*insert*](struct.CustomchannelInsertMethodBuilder.html), [*list*](struct.CustomchannelListMethodBuilder.html), [*patch*](struct.CustomchannelPatchMethodBuilder.html) and [*update*](struct.CustomchannelUpdateMethodBuilder.html))</span>
@@ -6034,6 +6032,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! adsensehost4d1 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -6041,19 +6048,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate adsensehost4d1;</span>
-<span class='doccomment'>//! # use adsensehost4d1::cmn::Result;</span>
+<span class='doccomment'>//! use adsensehost4d1::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>//! use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -6206,19 +6214,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::cmn::Result;</span>
+<span class='doccomment'>/// use adsensehost4d1::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -6293,8 +6302,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.UrlchannelListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list urlchannels](struct.UrlchannelListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UrlChannels</span> {
@@ -6338,19 +6346,18 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [adunits.get](struct.AccountAdunitGetMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.AccountGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [adunits.list](struct.AccountAdunitListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adunits.getAdCode](struct.AccountAdunitGetAdCodeMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [reports.generate](struct.AccountReportGenerateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adunits.delete](struct.AccountAdunitDeleteMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adunits.update](struct.AccountAdunitUpdateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adunits.patch](struct.AccountAdunitPatchMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adunits.insert](struct.AccountAdunitInsertMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [list](struct.AccountListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adclients.list](struct.AccountAdclientListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adclients.get](struct.AccountAdclientGetMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [adunits.get accounts](struct.AccountAdunitGetMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get accounts](struct.AccountGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [adunits.list accounts](struct.AccountAdunitListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adunits.get ad code accounts](struct.AccountAdunitGetAdCodeMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [reports.generate accounts](struct.AccountReportGenerateMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adunits.delete accounts](struct.AccountAdunitDeleteMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adunits.update accounts](struct.AccountAdunitUpdateMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adunits.patch accounts](struct.AccountAdunitPatchMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adunits.insert accounts](struct.AccountAdunitInsertMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [list accounts](struct.AccountListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adclients.list accounts](struct.AccountAdclientListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adclients.get accounts](struct.AccountAdclientGetMethodBuilder.html) (none)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Account</span> {
@@ -6375,8 +6382,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [adunits.list](struct.AccountAdunitListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [adunits.list accounts](struct.AccountAdunitListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AdUnits</span> {
@@ -6400,9 +6406,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.AdclientListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [adclients.list](struct.AccountAdclientListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list adclients](struct.AdclientListMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [adclients.list accounts](struct.AccountAdclientListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AdClients</span> {
@@ -6536,8 +6541,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [adunits.getAdCode](struct.AccountAdunitGetAdCodeMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [adunits.get ad code accounts](struct.AccountAdunitGetAdCodeMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AdCode</span> {
@@ -6557,12 +6561,11 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [adunits.get](struct.AccountAdunitGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [adunits.patch](struct.AccountAdunitPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [adunits.update](struct.AccountAdunitUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [adunits.delete](struct.AccountAdunitDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [adunits.insert](struct.AccountAdunitInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [adunits.get accounts](struct.AccountAdunitGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [adunits.patch accounts](struct.AccountAdunitPatchMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [adunits.update accounts](struct.AccountAdunitUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [adunits.delete accounts](struct.AccountAdunitDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [adunits.insert accounts](struct.AccountAdunitInsertMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AdUnit</span> {
@@ -6618,9 +6621,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [delete](struct.UrlchannelDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.UrlchannelInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [delete urlchannels](struct.UrlchannelDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert urlchannels](struct.UrlchannelInsertMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UrlChannel</span> {
@@ -6657,9 +6659,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.AdclientGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [adclients.get](struct.AccountAdclientGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get adclients](struct.AdclientGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [adclients.get accounts](struct.AccountAdclientGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AdClient</span> {
@@ -6719,9 +6720,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [verify](struct.AssociationsessionVerifyMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [start](struct.AssociationsessionStartMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [verify associationsessions](struct.AssociationsessionVerifyMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [start associationsessions](struct.AssociationsessionStartMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AssociationSession</span> {
@@ -6756,8 +6756,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.AccountListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list accounts](struct.AccountListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Accounts</span> {
@@ -6842,9 +6841,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [reports.generate](struct.AccountReportGenerateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [generate](struct.ReportGenerateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reports.generate accounts](struct.AccountReportGenerateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [generate reports](struct.ReportGenerateMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Report</span> {
@@ -6875,12 +6873,11 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.CustomchannelGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [update](struct.CustomchannelUpdateMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [delete](struct.CustomchannelDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.CustomchannelInsertMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// * [patch](struct.CustomchannelPatchMethodBuilder.html) (request|response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get customchannels](struct.CustomchannelGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [update customchannels](struct.CustomchannelUpdateMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [delete customchannels](struct.CustomchannelDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert customchannels](struct.CustomchannelInsertMethodBuilder.html) (request|response)</span>
+<span class='doccomment'>/// * [patch customchannels](struct.CustomchannelPatchMethodBuilder.html) (request|response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CustomChannel</span> {
@@ -6920,8 +6917,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.CustomchannelListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list customchannels](struct.CustomchannelListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CustomChannels</span> {
@@ -6959,7 +6955,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -7046,7 +7042,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -7117,7 +7113,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -7190,7 +7186,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -7255,7 +7251,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -7485,7 +7481,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdSenseHost;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdSenseHost;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -7619,7 +7615,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::UrlChannel;</span>
+<span class='doccomment'>/// use adsensehost4d1::UrlChannel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10013,7 +10009,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdUnit;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdUnit;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10479,7 +10475,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdUnit;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdUnit;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -10807,7 +10803,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::AdUnit;</span>
+<span class='doccomment'>/// use adsensehost4d1::AdUnit;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11273,7 +11269,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::CustomChannel;</span>
+<span class='doccomment'>/// use adsensehost4d1::CustomChannel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11591,7 +11587,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::CustomChannel;</span>
+<span class='doccomment'>/// use adsensehost4d1::CustomChannel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -11757,7 +11753,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate adsensehost4d1;</span>
-<span class='doccomment'>/// # use adsensehost4d1::CustomChannel;</span>
+<span class='doccomment'>/// use adsensehost4d1::CustomChannel;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>

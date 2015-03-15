@@ -43,14 +43,14 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>gmail1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/gmail1/lib.rs.html#5-6454'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/gmail1/lib.rs.html#5-6452'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Gmail.html">hub</a> ... </p>
 
 <ul>
-<li>users (<a href="struct.UserDraftCreateMethodBuilder.html"><em>create drafts</em></a>, <a href="struct.UserDraftDeleteMethodBuilder.html"><em>delete drafts</em></a>, <a href="struct.UserDraftGetMethodBuilder.html"><em>get drafts</em></a>, <a href="struct.UserDraftListMethodBuilder.html"><em>list drafts</em></a>, <a href="struct.UserDraftSendMethodBuilder.html"><em>send drafts</em></a>, <a href="struct.UserDraftUpdateMethodBuilder.html"><em>update drafts</em></a>, <a href="struct.UserGetProfileMethodBuilder.html"><em>getprofile</em></a>, <a href="struct.UserHistoryListMethodBuilder.html"><em>list history</em></a>, <a href="struct.UserLabelCreateMethodBuilder.html"><em>create labels</em></a>, <a href="struct.UserLabelDeleteMethodBuilder.html"><em>delete labels</em></a>, <a href="struct.UserLabelGetMethodBuilder.html"><em>get labels</em></a>, <a href="struct.UserLabelListMethodBuilder.html"><em>list labels</em></a>, <a href="struct.UserLabelPatchMethodBuilder.html"><em>patch labels</em></a>, <a href="struct.UserLabelUpdateMethodBuilder.html"><em>update labels</em></a>, <a href="struct.UserMessageAttachmentGetMethodBuilder.html"><em>get attachments messages</em></a>, <a href="struct.UserMessageDeleteMethodBuilder.html"><em>delete messages</em></a>, <a href="struct.UserMessageGetMethodBuilder.html"><em>get messages</em></a>, <a href="struct.UserMessageImportMethodBuilder.html"><em>import messages</em></a>, <a href="struct.UserMessageInsertMethodBuilder.html"><em>insert messages</em></a>, <a href="struct.UserMessageListMethodBuilder.html"><em>list messages</em></a>, <a href="struct.UserMessageModifyMethodBuilder.html"><em>modify messages</em></a>, <a href="struct.UserMessageSendMethodBuilder.html"><em>send messages</em></a>, <a href="struct.UserMessageTrashMethodBuilder.html"><em>trash messages</em></a>, <a href="struct.UserMessageUntrashMethodBuilder.html"><em>untrash messages</em></a>, <a href="struct.UserThreadDeleteMethodBuilder.html"><em>delete threads</em></a>, <a href="struct.UserThreadGetMethodBuilder.html"><em>get threads</em></a>, <a href="struct.UserThreadListMethodBuilder.html"><em>list threads</em></a>, <a href="struct.UserThreadModifyMethodBuilder.html"><em>modify threads</em></a>, <a href="struct.UserThreadTrashMethodBuilder.html"><em>trash threads</em></a> and <a href="struct.UserThreadUntrashMethodBuilder.html"><em>untrash threads</em></a>)</li>
+<li>users (<a href="struct.UserDraftCreateMethodBuilder.html"><em>drafts.create</em></a>, <a href="struct.UserDraftDeleteMethodBuilder.html"><em>drafts.delete</em></a>, <a href="struct.UserDraftGetMethodBuilder.html"><em>drafts.get</em></a>, <a href="struct.UserDraftListMethodBuilder.html"><em>drafts.list</em></a>, <a href="struct.UserDraftSendMethodBuilder.html"><em>drafts.send</em></a>, <a href="struct.UserDraftUpdateMethodBuilder.html"><em>drafts.update</em></a>, <a href="struct.UserGetProfileMethodBuilder.html"><em>get profile</em></a>, <a href="struct.UserHistoryListMethodBuilder.html"><em>history.list</em></a>, <a href="struct.UserLabelCreateMethodBuilder.html"><em>labels.create</em></a>, <a href="struct.UserLabelDeleteMethodBuilder.html"><em>labels.delete</em></a>, <a href="struct.UserLabelGetMethodBuilder.html"><em>labels.get</em></a>, <a href="struct.UserLabelListMethodBuilder.html"><em>labels.list</em></a>, <a href="struct.UserLabelPatchMethodBuilder.html"><em>labels.patch</em></a>, <a href="struct.UserLabelUpdateMethodBuilder.html"><em>labels.update</em></a>, <a href="struct.UserMessageAttachmentGetMethodBuilder.html"><em>messages.attachments.get</em></a>, <a href="struct.UserMessageDeleteMethodBuilder.html"><em>messages.delete</em></a>, <a href="struct.UserMessageGetMethodBuilder.html"><em>messages.get</em></a>, <a href="struct.UserMessageImportMethodBuilder.html"><em>messages.import</em></a>, <a href="struct.UserMessageInsertMethodBuilder.html"><em>messages.insert</em></a>, <a href="struct.UserMessageListMethodBuilder.html"><em>messages.list</em></a>, <a href="struct.UserMessageModifyMethodBuilder.html"><em>messages.modify</em></a>, <a href="struct.UserMessageSendMethodBuilder.html"><em>messages.send</em></a>, <a href="struct.UserMessageTrashMethodBuilder.html"><em>messages.trash</em></a>, <a href="struct.UserMessageUntrashMethodBuilder.html"><em>messages.untrash</em></a>, <a href="struct.UserThreadDeleteMethodBuilder.html"><em>threads.delete</em></a>, <a href="struct.UserThreadGetMethodBuilder.html"><em>threads.get</em></a>, <a href="struct.UserThreadListMethodBuilder.html"><em>threads.list</em></a>, <a href="struct.UserThreadModifyMethodBuilder.html"><em>threads.modify</em></a>, <a href="struct.UserThreadTrashMethodBuilder.html"><em>threads.trash</em></a> and <a href="struct.UserThreadUntrashMethodBuilder.html"><em>threads.untrash</em></a>)</li>
 </ul>
 
 <p>Everything else about the <em>gmail</em> API can be found at the
@@ -111,22 +111,35 @@ The <code>doit()</code> method performs the actual communication with the server
 
 <h1 id="usage" class='section-header'><a
                            href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+gmail1 = &quot;0.0.1&quot;
+</code></pre>
+
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>gmail1</span>;
+<span class='kw'>use</span> <span class='ident'>gmail1</span>::<span class='ident'>Message</span>;
+<span class='kw'>use</span> <span class='ident'>gmail1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>gmail1</span>::<span class='ident'>Gmail</span>;
  
-<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='comment'>// among other things.</span>
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
 <span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
 <span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='comment'>// unless you replace  `None` with the desired Flow</span>
-<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='comment'>// You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
 <span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
@@ -218,10 +231,10 @@ These will always take a single argument, for which the following statements are
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserDraftGetMethodBuilder.html">drafts.get</a> (response)</li>
-<li><a href="struct.UserDraftSendMethodBuilder.html">drafts.send</a> (request)</li>
-<li><a href="struct.UserDraftCreateMethodBuilder.html">drafts.create</a> (request|response)</li>
-<li><a href="struct.UserDraftUpdateMethodBuilder.html">drafts.update</a> (request|response)</li>
+<li><a href="struct.UserDraftGetMethodBuilder.html">drafts.get users</a> (response)</li>
+<li><a href="struct.UserDraftSendMethodBuilder.html">drafts.send users</a> (request)</li>
+<li><a href="struct.UserDraftCreateMethodBuilder.html">drafts.create users</a> (request|response)</li>
+<li><a href="struct.UserDraftUpdateMethodBuilder.html">drafts.update users</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -289,10 +302,10 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserLabelPatchMethodBuilder.html">labels.patch</a> (request|response)</li>
-<li><a href="struct.UserLabelGetMethodBuilder.html">labels.get</a> (response)</li>
-<li><a href="struct.UserLabelUpdateMethodBuilder.html">labels.update</a> (request|response)</li>
-<li><a href="struct.UserLabelCreateMethodBuilder.html">labels.create</a> (request|response)</li>
+<li><a href="struct.UserLabelPatchMethodBuilder.html">labels.patch users</a> (request|response)</li>
+<li><a href="struct.UserLabelGetMethodBuilder.html">labels.get users</a> (response)</li>
+<li><a href="struct.UserLabelUpdateMethodBuilder.html">labels.update users</a> (request|response)</li>
+<li><a href="struct.UserLabelCreateMethodBuilder.html">labels.create users</a> (request|response)</li>
 </ul>
 </td>
                     </tr>
@@ -308,7 +321,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserDraftListMethodBuilder.html">drafts.list</a> (response)</li>
+<li><a href="struct.UserDraftListMethodBuilder.html">drafts.list users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -324,7 +337,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserHistoryListMethodBuilder.html">history.list</a> (response)</li>
+<li><a href="struct.UserHistoryListMethodBuilder.html">history.list users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -340,7 +353,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserLabelListMethodBuilder.html">labels.list</a> (response)</li>
+<li><a href="struct.UserLabelListMethodBuilder.html">labels.list users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -356,7 +369,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserMessageListMethodBuilder.html">messages.list</a> (response)</li>
+<li><a href="struct.UserMessageListMethodBuilder.html">messages.list users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -372,7 +385,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserThreadListMethodBuilder.html">threads.list</a> (response)</li>
+<li><a href="struct.UserThreadListMethodBuilder.html">threads.list users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -388,14 +401,14 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserMessageUntrashMethodBuilder.html">messages.untrash</a> (response)</li>
-<li><a href="struct.UserMessageGetMethodBuilder.html">messages.get</a> (response)</li>
-<li><a href="struct.UserMessageModifyMethodBuilder.html">messages.modify</a> (response)</li>
-<li><a href="struct.UserMessageImportMethodBuilder.html">messages.import</a> (request|response)</li>
-<li><a href="struct.UserMessageInsertMethodBuilder.html">messages.insert</a> (request|response)</li>
-<li><a href="struct.UserMessageSendMethodBuilder.html">messages.send</a> (request|response)</li>
-<li><a href="struct.UserMessageTrashMethodBuilder.html">messages.trash</a> (response)</li>
-<li><a href="struct.UserDraftSendMethodBuilder.html">drafts.send</a> (response)</li>
+<li><a href="struct.UserMessageUntrashMethodBuilder.html">messages.untrash users</a> (response)</li>
+<li><a href="struct.UserMessageGetMethodBuilder.html">messages.get users</a> (response)</li>
+<li><a href="struct.UserMessageModifyMethodBuilder.html">messages.modify users</a> (response)</li>
+<li><a href="struct.UserMessageImportMethodBuilder.html">messages.import users</a> (request|response)</li>
+<li><a href="struct.UserMessageInsertMethodBuilder.html">messages.insert users</a> (request|response)</li>
+<li><a href="struct.UserMessageSendMethodBuilder.html">messages.send users</a> (request|response)</li>
+<li><a href="struct.UserMessageTrashMethodBuilder.html">messages.trash users</a> (response)</li>
+<li><a href="struct.UserDraftSendMethodBuilder.html">drafts.send users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -420,7 +433,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserMessageAttachmentGetMethodBuilder.html">messages.attachments.get</a> (response)</li>
+<li><a href="struct.UserMessageAttachmentGetMethodBuilder.html">messages.attachments.get users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -445,7 +458,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserMessageModifyMethodBuilder.html">messages.modify</a> (request)</li>
+<li><a href="struct.UserMessageModifyMethodBuilder.html">messages.modify users</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -461,7 +474,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserThreadModifyMethodBuilder.html">threads.modify</a> (request)</li>
+<li><a href="struct.UserThreadModifyMethodBuilder.html">threads.modify users</a> (request)</li>
 </ul>
 </td>
                     </tr>
@@ -477,7 +490,7 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserGetProfileMethodBuilder.html">getProfile</a> (response)</li>
+<li><a href="struct.UserGetProfileMethodBuilder.html">get profile users</a> (response)</li>
 </ul>
 </td>
                     </tr>
@@ -493,10 +506,10 @@ The list links the activity name, along with information about where it is used 
 The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
 
 <ul>
-<li><a href="struct.UserThreadGetMethodBuilder.html">threads.get</a> (response)</li>
-<li><a href="struct.UserThreadUntrashMethodBuilder.html">threads.untrash</a> (response)</li>
-<li><a href="struct.UserThreadTrashMethodBuilder.html">threads.trash</a> (response)</li>
-<li><a href="struct.UserThreadModifyMethodBuilder.html">threads.modify</a> (response)</li>
+<li><a href="struct.UserThreadGetMethodBuilder.html">threads.get users</a> (response)</li>
+<li><a href="struct.UserThreadUntrashMethodBuilder.html">threads.untrash users</a> (response)</li>
+<li><a href="struct.UserThreadTrashMethodBuilder.html">threads.trash users</a> (response)</li>
+<li><a href="struct.UserThreadModifyMethodBuilder.html">threads.modify users</a> (response)</li>
 </ul>
 </td>
                     </tr>

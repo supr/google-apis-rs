@@ -3360,7 +3360,6 @@
 <span id="3318">3318</span>
 <span id="3319">3319</span>
 <span id="3320">3320</span>
-<span id="3321">3321</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -3370,7 +3369,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.AdExchangeSeller.html) ... </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * [accounts](struct.Account.html) ([*list adclients*](struct.AccountAdclientListMethodBuilder.html), [*list alerts*](struct.AccountAlertListMethodBuilder.html), [*get customchannels*](struct.AccountCustomchannelGetMethodBuilder.html), [*list customchannels*](struct.AccountCustomchannelListMethodBuilder.html), [*get*](struct.AccountGetMethodBuilder.html), [*list*](struct.AccountListMethodBuilder.html), [*list dimensions metadata*](struct.AccountMetadataDimensionListMethodBuilder.html), [*list metrics metadata*](struct.AccountMetadataMetricListMethodBuilder.html), [*get preferreddeals*](struct.AccountPreferreddealGetMethodBuilder.html), [*list preferreddeals*](struct.AccountPreferreddealListMethodBuilder.html), [*generate reports*](struct.AccountReportGenerateMethodBuilder.html), [*generate saved reports*](struct.AccountReportSavedGenerateMethodBuilder.html), [*list saved reports*](struct.AccountReportSavedListMethodBuilder.html) and [*list urlchannels*](struct.AccountUrlchannelListMethodBuilder.html))</span>
+<span class='doccomment'>//! * [accounts](struct.Account.html) ([*adclients.list*](struct.AccountAdclientListMethodBuilder.html), [*alerts.list*](struct.AccountAlertListMethodBuilder.html), [*customchannels.get*](struct.AccountCustomchannelGetMethodBuilder.html), [*customchannels.list*](struct.AccountCustomchannelListMethodBuilder.html), [*get*](struct.AccountGetMethodBuilder.html), [*list*](struct.AccountListMethodBuilder.html), [*metadata.dimensions.list*](struct.AccountMetadataDimensionListMethodBuilder.html), [*metadata.metrics.list*](struct.AccountMetadataMetricListMethodBuilder.html), [*preferreddeals.get*](struct.AccountPreferreddealGetMethodBuilder.html), [*preferreddeals.list*](struct.AccountPreferreddealListMethodBuilder.html), [*reports.generate*](struct.AccountReportGenerateMethodBuilder.html), [*reports.saved.generate*](struct.AccountReportSavedGenerateMethodBuilder.html), [*reports.saved.list*](struct.AccountReportSavedListMethodBuilder.html) and [*urlchannels.list*](struct.AccountUrlchannelListMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *Ad Exchange Seller* API can be found at the</span>
 <span class='doccomment'>//! [official documentation site](https://developers.google.com/ad-exchange/seller-rest/).</span>
@@ -3424,6 +3423,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! adexchangeseller2 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -3431,19 +3439,20 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate adexchangeseller2;</span>
-<span class='doccomment'>//! # use adexchangeseller2::cmn::Result;</span>
+<span class='doccomment'>//! use adexchangeseller2::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use adexchangeseller2::AdExchangeSeller;</span>
+<span class='doccomment'>//! use adexchangeseller2::AdExchangeSeller;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3600,19 +3609,20 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate adexchangeseller2;</span>
-<span class='doccomment'>/// # use adexchangeseller2::cmn::Result;</span>
+<span class='doccomment'>/// use adexchangeseller2::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adexchangeseller2::AdExchangeSeller;</span>
+<span class='doccomment'>/// use adexchangeseller2::AdExchangeSeller;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3672,8 +3682,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [urlchannels.list](struct.AccountUrlchannelListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [urlchannels.list accounts](struct.AccountUrlchannelListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UrlChannels</span> {
@@ -3697,21 +3706,20 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [reports.saved.generate](struct.AccountReportSavedGenerateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [metadata.metrics.list](struct.AccountMetadataMetricListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [reports.generate](struct.AccountReportGenerateMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [urlchannels.list](struct.AccountUrlchannelListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [reports.saved.list](struct.AccountReportSavedListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [preferreddeals.get](struct.AccountPreferreddealGetMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [adclients.list](struct.AccountAdclientListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [metadata.dimensions.list](struct.AccountMetadataDimensionListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [customchannels.get](struct.AccountCustomchannelGetMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [customchannels.list](struct.AccountCustomchannelListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [list](struct.AccountListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [alerts.list](struct.AccountAlertListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [preferreddeals.list](struct.AccountPreferreddealListMethodBuilder.html) (none)</span>
-<span class='doccomment'>/// * [get](struct.AccountGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reports.saved.generate accounts](struct.AccountReportSavedGenerateMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [metadata.metrics.list accounts](struct.AccountMetadataMetricListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [reports.generate accounts](struct.AccountReportGenerateMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [urlchannels.list accounts](struct.AccountUrlchannelListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [reports.saved.list accounts](struct.AccountReportSavedListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [preferreddeals.get accounts](struct.AccountPreferreddealGetMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [adclients.list accounts](struct.AccountAdclientListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [metadata.dimensions.list accounts](struct.AccountMetadataDimensionListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [customchannels.get accounts](struct.AccountCustomchannelGetMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [customchannels.list accounts](struct.AccountCustomchannelListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [list accounts](struct.AccountListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [alerts.list accounts](struct.AccountAlertListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [preferreddeals.list accounts](struct.AccountPreferreddealListMethodBuilder.html) (none)</span>
+<span class='doccomment'>/// * [get accounts](struct.AccountGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Account</span> {
@@ -3734,8 +3742,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [customchannels.list](struct.AccountCustomchannelListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [customchannels.list accounts](struct.AccountCustomchannelListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CustomChannels</span> {
@@ -3759,8 +3766,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [alerts.list](struct.AccountAlertListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [alerts.list accounts](struct.AccountAlertListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Alerts</span> {
@@ -3820,8 +3826,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [preferreddeals.list](struct.AccountPreferreddealListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [preferreddeals.list accounts](struct.AccountPreferreddealListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PreferredDeals</span> {
@@ -3888,9 +3893,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [metadata.dimensions.list](struct.AccountMetadataDimensionListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [metadata.metrics.list](struct.AccountMetadataMetricListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [metadata.dimensions.list accounts](struct.AccountMetadataDimensionListMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [metadata.metrics.list accounts](struct.AccountMetadataMetricListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Metadata</span> {
@@ -3928,8 +3932,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [adclients.list](struct.AccountAdclientListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [adclients.list accounts](struct.AccountAdclientListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>AdClients</span> {
@@ -3953,8 +3956,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [preferreddeals.get](struct.AccountPreferreddealGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [preferreddeals.get accounts](struct.AccountPreferreddealGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PreferredDeal</span> {
@@ -3986,8 +3988,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [reports.saved.list](struct.AccountReportSavedListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reports.saved.list accounts](struct.AccountReportSavedListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>SavedReports</span> {
@@ -4052,8 +4053,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.AccountListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list accounts](struct.AccountListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Accounts</span> {
@@ -4077,9 +4077,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [reports.saved.generate](struct.AccountReportSavedGenerateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [reports.generate](struct.AccountReportGenerateMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [reports.saved.generate accounts](struct.AccountReportSavedGenerateMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [reports.generate accounts](struct.AccountReportGenerateMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Report</span> {
@@ -4109,8 +4108,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [customchannels.get](struct.AccountCustomchannelGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [customchannels.get accounts](struct.AccountCustomchannelGetMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CustomChannel</span> {
@@ -4150,7 +4148,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use adexchangeseller2::AdExchangeSeller;</span>
+<span class='doccomment'>/// use adexchangeseller2::AdExchangeSeller;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>

@@ -3045,6 +3045,8 @@
 <span id="3003">3003</span>
 <span id="3004">3004</span>
 <span id="3005">3005</span>
+<span id="3006">3006</span>
+<span id="3007">3007</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -3055,7 +3057,7 @@
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Resourceviews.html) ... </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * zone operations ([*get*](struct.ZoneOperationGetMethodBuilder.html) and [*list*](struct.ZoneOperationListMethodBuilder.html))</span>
-<span class='doccomment'>//! * zone views ([*addresources*](struct.ZoneViewAddResourceMethodBuilder.html), [*delete*](struct.ZoneViewDeleteMethodBuilder.html), [*get*](struct.ZoneViewGetMethodBuilder.html), [*getservice*](struct.ZoneViewGetServiceMethodBuilder.html), [*insert*](struct.ZoneViewInsertMethodBuilder.html), [*list*](struct.ZoneViewListMethodBuilder.html), [*listresources*](struct.ZoneViewListResourceMethodBuilder.html), [*removeresources*](struct.ZoneViewRemoveResourceMethodBuilder.html) and [*setservice*](struct.ZoneViewSetServiceMethodBuilder.html))</span>
+<span class='doccomment'>//! * zone views ([*add resources*](struct.ZoneViewAddResourceMethodBuilder.html), [*delete*](struct.ZoneViewDeleteMethodBuilder.html), [*get*](struct.ZoneViewGetMethodBuilder.html), [*get service*](struct.ZoneViewGetServiceMethodBuilder.html), [*insert*](struct.ZoneViewInsertMethodBuilder.html), [*list*](struct.ZoneViewListMethodBuilder.html), [*list resources*](struct.ZoneViewListResourceMethodBuilder.html), [*remove resources*](struct.ZoneViewRemoveResourceMethodBuilder.html) and [*set service*](struct.ZoneViewSetServiceMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *resourceviews* API can be found at the</span>
 <span class='doccomment'>//! [official documentation site](https://developers.google.com/compute/).</span>
@@ -3101,6 +3103,15 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Usage</span>
 <span class='doccomment'>//! </span>
+<span class='doccomment'>//! ## Setting up your Project</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! To use this library, you would put the following lines into your `Cargo.toml` file:</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! ```toml</span>
+<span class='doccomment'>//! [dependencies]</span>
+<span class='doccomment'>//! resourceviews1_beta2 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```test_harness,no_run</span>
@@ -3108,20 +3119,21 @@
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>//! extern crate resourceviews1_beta2;</span>
-<span class='doccomment'>//! # use resourceviews1_beta2::ZoneViewsRemoveResourcesRequest;</span>
-<span class='doccomment'>//! # use resourceviews1_beta2::cmn::Result;</span>
+<span class='doccomment'>//! use resourceviews1_beta2::ZoneViewsRemoveResourcesRequest;</span>
+<span class='doccomment'>//! use resourceviews1_beta2::cmn::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>//! # use resourceviews1_beta2::Resourceviews;</span>
+<span class='doccomment'>//! use resourceviews1_beta2::Resourceviews;</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>//! // among other things.</span>
+<span class='doccomment'>//! // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>//! // `client_secret`, among other things.</span>
 <span class='doccomment'>//! let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>//! // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>//! // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>//! // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>//! // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>//! // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>//! // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>//! // retrieve them from storage.</span>
 <span class='doccomment'>//! let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>//!                               hyper::Client::new(),</span>
 <span class='doccomment'>//!                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3288,20 +3300,21 @@
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// extern crate resourceviews1_beta2;</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::ZoneViewsRemoveResourcesRequest;</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::cmn::Result;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::ZoneViewsRemoveResourcesRequest;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::cmn::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::Resourceviews;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::Resourceviews;</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and `client_secret`, </span>
-<span class='doccomment'>/// // among other things.</span>
+<span class='doccomment'>/// // Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='doccomment'>/// // `client_secret`, among other things.</span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// // Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
-<span class='doccomment'>/// // unless you replace  `None` with the desired Flow</span>
-<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about what&#39;s going on</span>
-<span class='doccomment'>/// // You probably want to bring in your own `TokenStorage` to persist tokens and retrieve them from storage.</span>
+<span class='doccomment'>/// // unless you replace  `None` with the desired Flow.</span>
+<span class='doccomment'>/// // Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='doccomment'>/// // what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='doccomment'>/// // retrieve them from storage.</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
@@ -3362,8 +3375,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [listResources](struct.ZoneViewListResourceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list resources zone views](struct.ZoneViewListResourceMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ZoneViewsListResourcesResponse</span> {
@@ -3385,8 +3397,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.ZoneViewListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list zone views](struct.ZoneViewListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ZoneViewsList</span> {
@@ -3410,8 +3421,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [removeResources](struct.ZoneViewRemoveResourceMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [remove resources zone views](struct.ZoneViewRemoveResourceMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ZoneViewsRemoveResourcesRequest</span> {
@@ -3440,8 +3450,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [addResources](struct.ZoneViewAddResourceMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [add resources zone views](struct.ZoneViewAddResourceMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ZoneViewsAddResourcesRequest</span> {
@@ -3489,8 +3498,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list](struct.ZoneOperationListMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [list zone operations](struct.ZoneOperationListMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>OperationList</span> {
@@ -3516,9 +3524,8 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [get](struct.ZoneViewGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.ZoneViewInsertMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get zone views](struct.ZoneViewGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert zone views](struct.ZoneViewInsertMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResourceView</span> {
@@ -3660,8 +3667,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [setService](struct.ZoneViewSetServiceMethodBuilder.html) (request)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [set service zone views](struct.ZoneViewSetServiceMethodBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ZoneViewsSetServiceRequest</span> {
@@ -3696,8 +3702,7 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [getService](struct.ZoneViewGetServiceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [get service zone views](struct.ZoneViewGetServiceMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ZoneViewsGetServiceResponse</span> {
@@ -3717,13 +3722,12 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [removeResources](struct.ZoneViewRemoveResourceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [addResources](struct.ZoneViewAddResourceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [delete](struct.ZoneViewDeleteMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [get](struct.ZoneOperationGetMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [insert](struct.ZoneViewInsertMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// * [setService](struct.ZoneViewSetServiceMethodBuilder.html) (response)</span>
-<span class='doccomment'>/// </span>
+<span class='doccomment'>/// * [remove resources zone views](struct.ZoneViewRemoveResourceMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [add resources zone views](struct.ZoneViewAddResourceMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [delete zone views](struct.ZoneViewDeleteMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [get zone operations](struct.ZoneOperationGetMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [insert zone views](struct.ZoneViewInsertMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [set service zone views](struct.ZoneViewSetServiceMethodBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Operation</span> {
@@ -3843,7 +3847,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::Resourceviews;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::Resourceviews;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4032,7 +4036,7 @@
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::Resourceviews;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::Resourceviews;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// let secret: ApplicationSecret = Default::default();</span>
 <span class='doccomment'>/// let auth = Authenticator::new(&amp;secret, DefaultAuthenticatorDelegate,</span>
@@ -4112,7 +4116,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate resourceviews1_beta2;</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::ZoneViewsRemoveResourcesRequest;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::ZoneViewsRemoveResourcesRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -4290,7 +4294,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate resourceviews1_beta2;</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::ZoneViewsAddResourcesRequest;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::ZoneViewsAddResourcesRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5033,7 +5037,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate resourceviews1_beta2;</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::ResourceView;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::ResourceView;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -5361,7 +5365,7 @@
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
 <span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
 <span class='doccomment'>/// # extern crate resourceviews1_beta2;</span>
-<span class='doccomment'>/// # use resourceviews1_beta2::ZoneViewsSetServiceRequest;</span>
+<span class='doccomment'>/// use resourceviews1_beta2::ZoneViewsSetServiceRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
 <span class='doccomment'>/// # use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
