@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `GamesManagement` struct in crate `gamesManagement1_management`.">
+    <meta name="description" content="API documentation for the Rust `GamesManagement` struct in crate `gamesmanagement1_management`.">
     <meta name="keywords" content="rust, rustlang, rust-lang, GamesManagement">
 
-    <title>gamesManagement1_management::GamesManagement - Rust</title>
+    <title>gamesmanagement1_management::GamesManagement - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../main.css">
 
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>gamesManagement1_management</a></p><script>window.sidebarCurrent = {name: 'GamesManagement', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>gamesmanagement1_management</a></p><script>window.sidebarCurrent = {name: 'GamesManagement', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -41,9 +41,9 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gamesManagement1_management</a>::<wbr><a class='struct' href=''>GamesManagement</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gamesmanagement1_management</a>::<wbr><a class='struct' href=''>GamesManagement</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-395' href='../src/gamesManagement1_management/lib.rs.html#268-272'>[src]</a></span></h1>
+        </span><a id='src-395' href='../src/gamesmanagement1_management/lib.rs.html#268-272'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct GamesManagement&lt;C, NC, A&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Central instance to access all GamesManagement related resource activities</p>
@@ -55,11 +55,11 @@
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>gamesManagement1_management</span>;
-<span class='kw'>use</span> <span class='ident'>gamesManagement1_management</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>gamesmanagement1_management</span>;
+<span class='kw'>use</span> <span class='ident'>gamesmanagement1_management</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
-<span class='kw'>use</span> <span class='ident'>gamesManagement1_management</span>::<span class='ident'>GamesManagement</span>;
+<span class='kw'>use</span> <span class='ident'>gamesmanagement1_management</span>::<span class='ident'>GamesManagement</span>;
  
 <span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
 <span class='comment'>// `client_secret`, among other things.</span>
@@ -85,16 +85,16 @@
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
 }
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../gamesManagement1_management/struct.GamesManagement.html' title='gamesManagement1_management::GamesManagement'>GamesManagement</a>&lt;C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(client: C, authenticator: A) -&gt; <a class='struct' href='../gamesManagement1_management/struct.GamesManagement.html' title='gamesManagement1_management::GamesManagement'>GamesManagement</a>&lt;C, NC, A&gt;</code></h4>
-<h4 id='method.achievements' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.achievements' class='fnname'>achievements</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.AchievementMethodsBuilder.html' title='gamesManagement1_management::AchievementMethodsBuilder'>AchievementMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.applications' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.applications' class='fnname'>applications</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.ApplicationMethodsBuilder.html' title='gamesManagement1_management::ApplicationMethodsBuilder'>ApplicationMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.events' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.events' class='fnname'>events</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.EventMethodsBuilder.html' title='gamesManagement1_management::EventMethodsBuilder'>EventMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.players' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.players' class='fnname'>players</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.PlayerMethodsBuilder.html' title='gamesManagement1_management::PlayerMethodsBuilder'>PlayerMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.quests' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.quests' class='fnname'>quests</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.QuestMethodsBuilder.html' title='gamesManagement1_management::QuestMethodsBuilder'>QuestMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.rooms' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.rooms' class='fnname'>rooms</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.RoomMethodsBuilder.html' title='gamesManagement1_management::RoomMethodsBuilder'>RoomMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.scores' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.scores' class='fnname'>scores</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.ScoreMethodsBuilder.html' title='gamesManagement1_management::ScoreMethodsBuilder'>ScoreMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.turn_based_matches' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.turn_based_matches' class='fnname'>turn_based_matches</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesManagement1_management/struct.TurnBasedMatcheMethodsBuilder.html' title='gamesManagement1_management::TurnBasedMatcheMethodsBuilder'>TurnBasedMatcheMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../gamesManagement1_management/cmn/trait.Hub.html' title='gamesManagement1_management::cmn::Hub'>Hub</a> for <a class='struct' href='../gamesManagement1_management/struct.GamesManagement.html' title='gamesManagement1_management::GamesManagement'>GamesManagement</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../gamesmanagement1_management/struct.GamesManagement.html' title='gamesmanagement1_management::GamesManagement'>GamesManagement</a>&lt;C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(client: C, authenticator: A) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.GamesManagement.html' title='gamesmanagement1_management::GamesManagement'>GamesManagement</a>&lt;C, NC, A&gt;</code></h4>
+<h4 id='method.achievements' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.achievements' class='fnname'>achievements</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.AchievementMethodsBuilder.html' title='gamesmanagement1_management::AchievementMethodsBuilder'>AchievementMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.applications' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.applications' class='fnname'>applications</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.ApplicationMethodsBuilder.html' title='gamesmanagement1_management::ApplicationMethodsBuilder'>ApplicationMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.events' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.events' class='fnname'>events</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.EventMethodsBuilder.html' title='gamesmanagement1_management::EventMethodsBuilder'>EventMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.players' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.players' class='fnname'>players</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.PlayerMethodsBuilder.html' title='gamesmanagement1_management::PlayerMethodsBuilder'>PlayerMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.quests' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.quests' class='fnname'>quests</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.QuestMethodsBuilder.html' title='gamesmanagement1_management::QuestMethodsBuilder'>QuestMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.rooms' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.rooms' class='fnname'>rooms</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.RoomMethodsBuilder.html' title='gamesmanagement1_management::RoomMethodsBuilder'>RoomMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.scores' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.scores' class='fnname'>scores</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.ScoreMethodsBuilder.html' title='gamesmanagement1_management::ScoreMethodsBuilder'>ScoreMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.turn_based_matches' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.turn_based_matches' class='fnname'>turn_based_matches</a>(&amp;'a self) -&gt; <a class='struct' href='../gamesmanagement1_management/struct.TurnBasedMatcheMethodsBuilder.html' title='gamesmanagement1_management::TurnBasedMatcheMethodsBuilder'>TurnBasedMatcheMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../gamesmanagement1_management/cmn/trait.Hub.html' title='gamesmanagement1_management::cmn::Hub'>Hub</a> for <a class='struct' href='../gamesmanagement1_management/struct.GamesManagement.html' title='gamesmanagement1_management::GamesManagement'>GamesManagement</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -134,7 +134,7 @@
 
     <script>
         window.rootPath = "../";
-        window.currentCrate = "gamesManagement1_management";
+        window.currentCrate = "gamesmanagement1_management";
         window.playgroundUrl = "";
     </script>
     <script src="../jquery.js"></script>

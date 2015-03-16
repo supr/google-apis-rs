@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `PlusDomains` struct in crate `plusDomains1`.">
+    <meta name="description" content="API documentation for the Rust `PlusDomains` struct in crate `plusdomains1`.">
     <meta name="keywords" content="rust, rustlang, rust-lang, PlusDomains">
 
-    <title>plusDomains1::PlusDomains - Rust</title>
+    <title>plusdomains1::PlusDomains - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../main.css">
 
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>plusDomains1</a></p><script>window.sidebarCurrent = {name: 'PlusDomains', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>plusdomains1</a></p><script>window.sidebarCurrent = {name: 'PlusDomains', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -41,9 +41,9 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>plusDomains1</a>::<wbr><a class='struct' href=''>PlusDomains</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>plusdomains1</a>::<wbr><a class='struct' href=''>PlusDomains</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-707' href='../src/plusDomains1/lib.rs.html#308-312'>[src]</a></span></h1>
+        </span><a id='src-707' href='../src/plusdomains1/lib.rs.html#308-312'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct PlusDomains&lt;C, NC, A&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Central instance to access all PlusDomains related resource activities</p>
@@ -55,11 +55,11 @@
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>plusDomains1</span>;
-<span class='kw'>use</span> <span class='ident'>plusDomains1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>plusdomains1</span>;
+<span class='kw'>use</span> <span class='ident'>plusdomains1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
-<span class='kw'>use</span> <span class='ident'>plusDomains1</span>::<span class='ident'>PlusDomains</span>;
+<span class='kw'>use</span> <span class='ident'>plusdomains1</span>::<span class='ident'>PlusDomains</span>;
  
 <span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
 <span class='comment'>// `client_secret`, among other things.</span>
@@ -87,14 +87,14 @@
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
 }
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../plusDomains1/struct.PlusDomains.html' title='plusDomains1::PlusDomains'>PlusDomains</a>&lt;C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(client: C, authenticator: A) -&gt; <a class='struct' href='../plusDomains1/struct.PlusDomains.html' title='plusDomains1::PlusDomains'>PlusDomains</a>&lt;C, NC, A&gt;</code></h4>
-<h4 id='method.activities' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.activities' class='fnname'>activities</a>(&amp;'a self) -&gt; <a class='struct' href='../plusDomains1/struct.ActivityMethodsBuilder.html' title='plusDomains1::ActivityMethodsBuilder'>ActivityMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.audiences' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.audiences' class='fnname'>audiences</a>(&amp;'a self) -&gt; <a class='struct' href='../plusDomains1/struct.AudienceMethodsBuilder.html' title='plusDomains1::AudienceMethodsBuilder'>AudienceMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.circles' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.circles' class='fnname'>circles</a>(&amp;'a self) -&gt; <a class='struct' href='../plusDomains1/struct.CircleMethodsBuilder.html' title='plusDomains1::CircleMethodsBuilder'>CircleMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.comments' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.comments' class='fnname'>comments</a>(&amp;'a self) -&gt; <a class='struct' href='../plusDomains1/struct.CommentMethodsBuilder.html' title='plusDomains1::CommentMethodsBuilder'>CommentMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.media' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.media' class='fnname'>media</a>(&amp;'a self) -&gt; <a class='struct' href='../plusDomains1/struct.MediaMethodsBuilder.html' title='plusDomains1::MediaMethodsBuilder'>MediaMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<h4 id='method.people' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.people' class='fnname'>people</a>(&amp;'a self) -&gt; <a class='struct' href='../plusDomains1/struct.PeopleMethodsBuilder.html' title='plusDomains1::PeopleMethodsBuilder'>PeopleMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../plusDomains1/cmn/trait.Hub.html' title='plusDomains1::cmn::Hub'>Hub</a> for <a class='struct' href='../plusDomains1/struct.PlusDomains.html' title='plusDomains1::PlusDomains'>PlusDomains</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../plusdomains1/struct.PlusDomains.html' title='plusdomains1::PlusDomains'>PlusDomains</a>&lt;C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(client: C, authenticator: A) -&gt; <a class='struct' href='../plusdomains1/struct.PlusDomains.html' title='plusdomains1::PlusDomains'>PlusDomains</a>&lt;C, NC, A&gt;</code></h4>
+<h4 id='method.activities' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.activities' class='fnname'>activities</a>(&amp;'a self) -&gt; <a class='struct' href='../plusdomains1/struct.ActivityMethodsBuilder.html' title='plusdomains1::ActivityMethodsBuilder'>ActivityMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.audiences' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.audiences' class='fnname'>audiences</a>(&amp;'a self) -&gt; <a class='struct' href='../plusdomains1/struct.AudienceMethodsBuilder.html' title='plusdomains1::AudienceMethodsBuilder'>AudienceMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.circles' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.circles' class='fnname'>circles</a>(&amp;'a self) -&gt; <a class='struct' href='../plusdomains1/struct.CircleMethodsBuilder.html' title='plusdomains1::CircleMethodsBuilder'>CircleMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.comments' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.comments' class='fnname'>comments</a>(&amp;'a self) -&gt; <a class='struct' href='../plusdomains1/struct.CommentMethodsBuilder.html' title='plusdomains1::CommentMethodsBuilder'>CommentMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.media' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.media' class='fnname'>media</a>(&amp;'a self) -&gt; <a class='struct' href='../plusdomains1/struct.MediaMethodsBuilder.html' title='plusdomains1::MediaMethodsBuilder'>MediaMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.people' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.people' class='fnname'>people</a>(&amp;'a self) -&gt; <a class='struct' href='../plusdomains1/struct.PeopleMethodsBuilder.html' title='plusdomains1::PeopleMethodsBuilder'>PeopleMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../plusdomains1/cmn/trait.Hub.html' title='plusdomains1::cmn::Hub'>Hub</a> for <a class='struct' href='../plusdomains1/struct.PlusDomains.html' title='plusdomains1::PlusDomains'>PlusDomains</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -134,7 +134,7 @@
 
     <script>
         window.rootPath = "../";
-        window.currentCrate = "plusDomains1";
+        window.currentCrate = "plusdomains1";
         window.playgroundUrl = "";
     </script>
     <script src="../jquery.js"></script>
