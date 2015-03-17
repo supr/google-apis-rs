@@ -43,8 +43,10 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>blogger3</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/blogger3/lib.rs.html#5-8315'>[src]</a></span></h1>
-<div class='docblock'>
+        </span><a id='src-0' href='../src/blogger3/lib.rs.html#5-10708'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>blogger</em> crate version <em>0.0.1</em>.
+The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/blogger3">on github</a>.</p>
+
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Blogger.html">hub</a> ... </p>
@@ -60,7 +62,7 @@
 <li><a href="struct.User.html">users</a> (<a href="struct.UserGetMethodBuilder.html"><em>get</em></a>)</li>
 </ul>
 
-<p>Everything else about the <em>blogger</em> API can be found at the
+<p>Everything else about the <em>blogger</em> <em>v3</em> API can be found at the
 <a href="https://developers.google.com/blogger/docs/3.0/getting_started">official documentation site</a>.</p>
 
 <p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
@@ -156,7 +158,7 @@ blogger3 = &quot;0.0.1&quot;
 <span class='comment'>// Values shown here are possibly random and not representative !</span>
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>posts</span>().<span class='ident'>list</span>(<span class='string'>&quot;blogId&quot;</span>)
              .<span class='ident'>view</span>(<span class='string'>&quot;labore&quot;</span>)
-             .<span class='ident'>status</span>(<span class='string'>&quot;sea&quot;</span>)
+             .<span class='ident'>add_status</span>(<span class='string'>&quot;sea&quot;</span>)
              .<span class='ident'>start_date</span>(<span class='string'>&quot;nonumy&quot;</span>)
              .<span class='ident'>page_token</span>(<span class='string'>&quot;dolores&quot;</span>)
              .<span class='ident'>order_by</span>(<span class='string'>&quot;gubergren&quot;</span>)
@@ -169,8 +171,11 @@ blogger3 = &quot;0.0.1&quot;
  
 <span class='kw'>match</span> <span class='ident'>result</span> {
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
 

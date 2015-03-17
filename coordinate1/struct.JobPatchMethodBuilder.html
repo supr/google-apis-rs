@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>coordinate1</a>::<wbr><a class='struct' href=''>JobPatchMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-7745' href='../src/coordinate1/lib.rs.html#1820-1842'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct JobPatchMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-8724' href='../src/coordinate1/lib.rs.html#1970-1990'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct JobPatchMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Updates a job. Fields that are set in the job state will be updated. This method supports patch semantics.</p>
 
@@ -73,12 +73,12 @@ It is not used directly, but through a <code>JobMethodsBuilder</code>.</p>
              .<span class='ident'>lat</span>(<span class='number'>0.77599682643</span>)
              .<span class='ident'>customer_phone_number</span>(<span class='string'>&quot;consetetur&quot;</span>)
              .<span class='ident'>customer_name</span>(<span class='string'>&quot;ut&quot;</span>)
-             .<span class='ident'>custom_field</span>(<span class='string'>&quot;ea&quot;</span>)
+             .<span class='ident'>add_custom_field</span>(<span class='string'>&quot;ea&quot;</span>)
              .<span class='ident'>assignee</span>(<span class='string'>&quot;sed&quot;</span>)
              .<span class='ident'>address</span>(<span class='string'>&quot;dolor&quot;</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../coordinate1/struct.JobPatchMethodBuilder.html' title='coordinate1::JobPatchMethodBuilder'>JobPatchMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../coordinate1/cmn/enum.Result.html' title='coordinate1::cmn::Result'>Result</a>&lt;<a class='struct' href='../coordinate1/struct.Job.html' title='coordinate1::Job'>Job</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../coordinate1/struct.JobPatchMethodBuilder.html' title='coordinate1::JobPatchMethodBuilder'>JobPatchMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../coordinate1/cmn/enum.Result.html' title='coordinate1::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../coordinate1/struct.Job.html' title='coordinate1::Job'>Job</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
 </div><h4 id='method.request' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.request' class='fnname'>request</a>(self, new_value: &amp;<a class='struct' href='../coordinate1/struct.Job.html' title='coordinate1::Job'>Job</a>) -&gt; <a class='struct' href='../coordinate1/struct.JobPatchMethodBuilder.html' title='coordinate1::JobPatchMethodBuilder'>JobPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>request</em> property to the given value.</p>
@@ -127,8 +127,9 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>customer name</em> query property to the given value.</p>
 
 <p>Customer name    </p>
-</div><h4 id='method.custom_field' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.custom_field' class='fnname'>custom_field</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../coordinate1/struct.JobPatchMethodBuilder.html' title='coordinate1::JobPatchMethodBuilder'>JobPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>custom field</em> query property to the given value.</p>
+</div><h4 id='method.add_custom_field' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_custom_field' class='fnname'>add_custom_field</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../coordinate1/struct.JobPatchMethodBuilder.html' title='coordinate1::JobPatchMethodBuilder'>JobPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>custom field</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Sets the value of custom fields. To set a custom field, pass the field id (from /team/teamId/custom_fields), a URL escaped &#39;=&#39; character, and the desired value as a parameter. For example, customField=12%3DAlice. Repeat the parameter for each custom field. Note that &#39;=&#39; cannot appear in the parameter value. Specifying an invalid, or inactive enum field will result in an error 500.    </p>
 </div><h4 id='method.assignee' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.assignee' class='fnname'>assignee</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../coordinate1/struct.JobPatchMethodBuilder.html' title='coordinate1::JobPatchMethodBuilder'>JobPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>

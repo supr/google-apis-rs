@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>dfareporting2</a>::<wbr><a class='struct' href=''>AdListMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-113198' href='../src/dfareporting2/lib.rs.html#20562-20596'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct AdListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-135439' href='../src/dfareporting2/lib.rs.html#24152-24184'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct AdListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Retrieves a list of ads, possibly filtered.</p>
 
@@ -60,33 +60,33 @@ It is not used directly, but through a <code>AdMethodsBuilder</code>.</p>
 <span class='comment'>// execute the final call using `doit()`.</span>
 <span class='comment'>// Values shown here are possibly random and not representative !</span>
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>ads</span>().<span class='ident'>list</span>(<span class='string'>&quot;profileId&quot;</span>)
-             .<span class='ident'>type_</span>(<span class='string'>&quot;diam&quot;</span>)
+             .<span class='ident'>add_type</span>(<span class='string'>&quot;diam&quot;</span>)
              .<span class='ident'>ssl_required</span>(<span class='boolval'>true</span>)
              .<span class='ident'>ssl_compliant</span>(<span class='boolval'>true</span>)
              .<span class='ident'>sort_order</span>(<span class='string'>&quot;amet.&quot;</span>)
              .<span class='ident'>sort_field</span>(<span class='string'>&quot;ipsum&quot;</span>)
-             .<span class='ident'>size_ids</span>(<span class='string'>&quot;ut&quot;</span>)
+             .<span class='ident'>add_size_ids</span>(<span class='string'>&quot;ut&quot;</span>)
              .<span class='ident'>search_string</span>(<span class='string'>&quot;dolor&quot;</span>)
-             .<span class='ident'>remarketing_list_ids</span>(<span class='string'>&quot;sea&quot;</span>)
-             .<span class='ident'>placement_ids</span>(<span class='string'>&quot;ut&quot;</span>)
+             .<span class='ident'>add_remarketing_list_ids</span>(<span class='string'>&quot;sea&quot;</span>)
+             .<span class='ident'>add_placement_ids</span>(<span class='string'>&quot;ut&quot;</span>)
              .<span class='ident'>page_token</span>(<span class='string'>&quot;eirmod&quot;</span>)
              .<span class='ident'>overridden_event_tag_id</span>(<span class='string'>&quot;sanctus&quot;</span>)
              .<span class='ident'>max_results</span>(<span class='op'>-</span><span class='number'>27</span>)
-             .<span class='ident'>landing_page_ids</span>(<span class='string'>&quot;dolor&quot;</span>)
-             .<span class='ident'>ids</span>(<span class='string'>&quot;et&quot;</span>)
+             .<span class='ident'>add_landing_page_ids</span>(<span class='string'>&quot;dolor&quot;</span>)
+             .<span class='ident'>add_ids</span>(<span class='string'>&quot;et&quot;</span>)
              .<span class='ident'>dynamic_click_tracker</span>(<span class='boolval'>false</span>)
              .<span class='ident'>creative_type</span>(<span class='string'>&quot;vero&quot;</span>)
-             .<span class='ident'>creative_optimization_configuration_ids</span>(<span class='string'>&quot;ut&quot;</span>)
-             .<span class='ident'>creative_ids</span>(<span class='string'>&quot;sed&quot;</span>)
+             .<span class='ident'>add_creative_optimization_configuration_ids</span>(<span class='string'>&quot;ut&quot;</span>)
+             .<span class='ident'>add_creative_ids</span>(<span class='string'>&quot;sed&quot;</span>)
              .<span class='ident'>compatibility</span>(<span class='string'>&quot;et&quot;</span>)
-             .<span class='ident'>campaign_ids</span>(<span class='string'>&quot;ipsum&quot;</span>)
-             .<span class='ident'>audience_segment_ids</span>(<span class='string'>&quot;justo&quot;</span>)
+             .<span class='ident'>add_campaign_ids</span>(<span class='string'>&quot;ipsum&quot;</span>)
+             .<span class='ident'>add_audience_segment_ids</span>(<span class='string'>&quot;justo&quot;</span>)
              .<span class='ident'>archived</span>(<span class='boolval'>true</span>)
              .<span class='ident'>advertiser_id</span>(<span class='string'>&quot;vero&quot;</span>)
              .<span class='ident'>active</span>(<span class='boolval'>false</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a class='struct' href='../dfareporting2/struct.AdsListResponse.html' title='dfareporting2::AdsListResponse'>AdsListResponse</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../dfareporting2/struct.AdsListResponse.html' title='dfareporting2::AdsListResponse'>AdsListResponse</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
 </div><h4 id='method.profile_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.profile_id' class='fnname'>profile_id</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>profile id</em> path property to the given value.</p>
@@ -95,8 +95,9 @@ It is not used directly, but through a <code>AdMethodsBuilder</code>.</p>
 we provide this method for API completeness.</p>
 
 <p>User profile ID associated with this request.    </p>
-</div><h4 id='method.type_' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.type_' class='fnname'>type_</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>type</em> query property to the given value.</p>
+</div><h4 id='method.add_type' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_type' class='fnname'>add_type</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>type</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these types.    </p>
 </div><h4 id='method.ssl_required' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ssl_required' class='fnname'>ssl_required</a>(self, new_value: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
@@ -115,20 +116,23 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>sort field</em> query property to the given value.</p>
 
 <p>Field by which to sort the list.    </p>
-</div><h4 id='method.size_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.size_ids' class='fnname'>size_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>size ids</em> query property to the given value.</p>
+</div><h4 id='method.add_size_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_size_ids' class='fnname'>add_size_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>size ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these size IDs.    </p>
 </div><h4 id='method.search_string' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search_string' class='fnname'>search_string</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>search string</em> query property to the given value.</p>
 
 <p>Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, &quot;ad*2015&quot; will return objects with names like &quot;ad June 2015&quot;, &quot;ad April 2015&quot; or simply &quot;ad 2015&quot;. Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of &quot;ad&quot; will match objects with name &quot;my ad&quot;, &quot;ad 2015&quot; or simply &quot;ad&quot;.    </p>
-</div><h4 id='method.remarketing_list_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.remarketing_list_ids' class='fnname'>remarketing_list_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>remarketing list ids</em> query property to the given value.</p>
+</div><h4 id='method.add_remarketing_list_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_remarketing_list_ids' class='fnname'>add_remarketing_list_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>remarketing list ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads whose list targeting expression use these remarketing list IDs.    </p>
-</div><h4 id='method.placement_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.placement_ids' class='fnname'>placement_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>placement ids</em> query property to the given value.</p>
+</div><h4 id='method.add_placement_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_placement_ids' class='fnname'>add_placement_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>placement ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these placement IDs assigned.    </p>
 </div><h4 id='method.page_token' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.page_token' class='fnname'>page_token</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
@@ -143,12 +147,14 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>max results</em> query property to the given value.</p>
 
 <p>Maximum number of results to return.    </p>
-</div><h4 id='method.landing_page_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.landing_page_ids' class='fnname'>landing_page_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>landing page ids</em> query property to the given value.</p>
+</div><h4 id='method.add_landing_page_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_landing_page_ids' class='fnname'>add_landing_page_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>landing page ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these landing page IDs.    </p>
-</div><h4 id='method.ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ids' class='fnname'>ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>ids</em> query property to the given value.</p>
+</div><h4 id='method.add_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_ids' class='fnname'>add_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these IDs.    </p>
 </div><h4 id='method.dynamic_click_tracker' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.dynamic_click_tracker' class='fnname'>dynamic_click_tracker</a>(self, new_value: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
@@ -159,24 +165,28 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>creative type</em> query property to the given value.</p>
 
 <p>Select only ads with the specified creativeType.    </p>
-</div><h4 id='method.creative_optimization_configuration_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.creative_optimization_configuration_ids' class='fnname'>creative_optimization_configuration_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>creative optimization configuration ids</em> query property to the given value.</p>
+</div><h4 id='method.add_creative_optimization_configuration_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_creative_optimization_configuration_ids' class='fnname'>add_creative_optimization_configuration_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>creative optimization configuration ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these creative optimization configuration IDs.    </p>
-</div><h4 id='method.creative_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.creative_ids' class='fnname'>creative_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>creative ids</em> query property to the given value.</p>
+</div><h4 id='method.add_creative_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_creative_ids' class='fnname'>add_creative_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>creative ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these creative IDs assigned.    </p>
 </div><h4 id='method.compatibility' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.compatibility' class='fnname'>compatibility</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>compatibility</em> query property to the given value.</p>
 
 <p>Select default ads with the specified compatibility. Applicable when type is AD_SERVING_DEFAULT_AD. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering an in-stream video ads developed with the VAST standard.    </p>
-</div><h4 id='method.campaign_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.campaign_ids' class='fnname'>campaign_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>campaign ids</em> query property to the given value.</p>
+</div><h4 id='method.add_campaign_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_campaign_ids' class='fnname'>add_campaign_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>campaign ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these campaign IDs.    </p>
-</div><h4 id='method.audience_segment_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.audience_segment_ids' class='fnname'>audience_segment_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>audience segment ids</em> query property to the given value.</p>
+</div><h4 id='method.add_audience_segment_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_audience_segment_ids' class='fnname'>add_audience_segment_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>audience segment ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only ads with these audience segment IDs.    </p>
 </div><h4 id='method.archived' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.archived' class='fnname'>archived</a>(self, new_value: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../dfareporting2/struct.AdListMethodBuilder.html' title='dfareporting2::AdListMethodBuilder'>AdListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>

@@ -43,17 +43,20 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>oauth2_v2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/oauth2_v2/lib.rs.html#5-718'>[src]</a></span></h1>
-<div class='docblock'>
+        </span><a id='src-0' href='../src/oauth2_v2/lib.rs.html#5-1268'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>oauth2</em> crate version <em>0.0.1</em>.
+The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/oauth2_v2">on github</a>.</p>
+
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Oauth2.html">hub</a> ... </p>
 
 <ul>
+<li>methods (<a href="struct.MethodGetCertForOpenIdConnectMethodBuilder.html"><em>get cert for open id connect</em></a> and <a href="struct.MethodTokeninfoMethodBuilder.html"><em>tokeninfo</em></a>)</li>
 <li>userinfo (<a href="struct.UserinfoGetMethodBuilder.html"><em>get</em></a> and <a href="struct.UserinfoV2MeGetMethodBuilder.html"><em>v2.me.get</em></a>)</li>
 </ul>
 
-<p>Everything else about the <em>oauth2</em> API can be found at the
+<p>Everything else about the <em>oauth2</em> <em>v2</em> API can be found at the
 <a href="https://developers.google.com/accounts/docs/OAuth2">official documentation site</a>.</p>
 
 <p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
@@ -144,8 +147,11 @@ oauth2_v2 = &quot;0.0.1&quot;
  
 <span class='kw'>match</span> <span class='ident'>result</span> {
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
 
@@ -208,7 +214,14 @@ These will always take a single argument, for which the following statements are
                                title='oauth2_v2::Jwk'>Jwk</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
 
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MethodGetCertForOpenIdConnectMethodBuilder.html">get cert for open id connect methods</a> (response)</li>
+</ul>
 </td>
                     </tr>
                 
@@ -218,6 +231,30 @@ These will always take a single argument, for which the following statements are
                         <td class='docblock short'><p>There is no detailed description.</p>
 
 <p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodGetCertForOpenIdConnectMethodBuilder.html'
+                               title='oauth2_v2::MethodGetCertForOpenIdConnectMethodBuilder'>MethodGetCertForOpenIdConnectMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>getCertForOpenIdConnect</em> method supported by a <em>method</em> resource.
+It is not used directly, but through a <code>MethodMethodsBuilder</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodMethodsBuilder.html'
+                               title='oauth2_v2::MethodMethodsBuilder'>MethodMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>method</em> resources.
+It is not used directly, but through the <code>Oauth2</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodTokeninfoMethodBuilder.html'
+                               title='oauth2_v2::MethodTokeninfoMethodBuilder'>MethodTokeninfoMethodBuilder</a></td>
+                        <td class='docblock short'><p>A builder for the <em>tokeninfo</em> method supported by a <em>method</em> resource.
+It is not used directly, but through a <code>MethodMethodsBuilder</code>.</p>
 </td>
                     </tr>
                 
@@ -233,7 +270,14 @@ These will always take a single argument, for which the following statements are
                                title='oauth2_v2::Tokeninfo'>Tokeninfo</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
 
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MethodTokeninfoMethodBuilder.html">tokeninfo methods</a> (response)</li>
+</ul>
 </td>
                     </tr>
                 

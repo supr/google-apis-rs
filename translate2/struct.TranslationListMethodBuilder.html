@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>translate2</a>::<wbr><a class='struct' href=''>TranslationListMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-2116' href='../src/translate2/lib.rs.html#855-868'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct TranslationListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-2630' href='../src/translate2/lib.rs.html#959-970'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct TranslationListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Returns text translations from one language to another.</p>
 
@@ -62,13 +62,14 @@ It is not used directly, but through a <code>TranslationMethodsBuilder</code>.</
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>translations</span>().<span class='ident'>list</span>(<span class='string'>&quot;q&quot;</span>, <span class='string'>&quot;target&quot;</span>)
              .<span class='ident'>source</span>(<span class='string'>&quot;accusam&quot;</span>)
              .<span class='ident'>format</span>(<span class='string'>&quot;takimata&quot;</span>)
-             .<span class='ident'>cid</span>(<span class='string'>&quot;justo&quot;</span>)
+             .<span class='ident'>add_cid</span>(<span class='string'>&quot;justo&quot;</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../translate2/struct.TranslationListMethodBuilder.html' title='translate2::TranslationListMethodBuilder'>TranslationListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../translate2/cmn/enum.Result.html' title='translate2::cmn::Result'>Result</a>&lt;<a class='struct' href='../translate2/struct.TranslationsListResponse.html' title='translate2::TranslationsListResponse'>TranslationsListResponse</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../translate2/struct.TranslationListMethodBuilder.html' title='translate2::TranslationListMethodBuilder'>TranslationListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../translate2/cmn/enum.Result.html' title='translate2::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../translate2/struct.TranslationsListResponse.html' title='translate2::TranslationsListResponse'>TranslationsListResponse</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
-</div><h4 id='method.q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.q' class='fnname'>q</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../translate2/struct.TranslationListMethodBuilder.html' title='translate2::TranslationListMethodBuilder'>TranslationListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>q</em> query property to the given value.</p>
+</div><h4 id='method.add_q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_q' class='fnname'>add_q</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../translate2/struct.TranslationListMethodBuilder.html' title='translate2::TranslationListMethodBuilder'>TranslationListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>q</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Even though the property as already been set when instantiating this call, 
 we provide this method for API completeness.</p>
@@ -89,8 +90,9 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>format</em> query property to the given value.</p>
 
 <p>The format of the text    </p>
-</div><h4 id='method.cid' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.cid' class='fnname'>cid</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../translate2/struct.TranslationListMethodBuilder.html' title='translate2::TranslationListMethodBuilder'>TranslationListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>cid</em> query property to the given value.</p>
+</div><h4 id='method.add_cid' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_cid' class='fnname'>add_cid</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../translate2/struct.TranslationListMethodBuilder.html' title='translate2::TranslationListMethodBuilder'>TranslationListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>cid</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>The customization id for translate    </p>
 </div><h4 id='method.delegate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delegate' class='fnname'>delegate</a>(self, new_value: &amp;'a mut <a class='trait' href='../translate2/cmn/trait.Delegate.html' title='translate2::cmn::Delegate'>Delegate</a>) -&gt; <a class='struct' href='../translate2/struct.TranslationListMethodBuilder.html' title='translate2::TranslationListMethodBuilder'>TranslationListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>

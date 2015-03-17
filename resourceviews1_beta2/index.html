@@ -43,8 +43,10 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>resourceviews1_beta2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/resourceviews1_beta2/lib.rs.html#5-3005'>[src]</a></span></h1>
-<div class='docblock'>
+        </span><a id='src-0' href='../src/resourceviews1_beta2/lib.rs.html#5-3812'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>resourceviews</em> crate version <em>0.0.1</em>.
+The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/resourceviews1_beta2">on github</a>.</p>
+
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Resourceviews.html">hub</a> ... </p>
@@ -54,7 +56,7 @@
 <li>zone views (<a href="struct.ZoneViewAddResourceMethodBuilder.html"><em>add resources</em></a>, <a href="struct.ZoneViewDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ZoneViewGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ZoneViewGetServiceMethodBuilder.html"><em>get service</em></a>, <a href="struct.ZoneViewInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ZoneViewListMethodBuilder.html"><em>list</em></a>, <a href="struct.ZoneViewListResourceMethodBuilder.html"><em>list resources</em></a>, <a href="struct.ZoneViewRemoveResourceMethodBuilder.html"><em>remove resources</em></a> and <a href="struct.ZoneViewSetServiceMethodBuilder.html"><em>set service</em></a>)</li>
 </ul>
 
-<p>Everything else about the <em>resourceviews</em> API can be found at the
+<p>Everything else about the <em>resourceviews</em> <em>v1_beta2</em> API can be found at the
 <a href="https://developers.google.com/compute/">official documentation site</a>.</p>
 
 <p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
@@ -155,8 +157,11 @@ resourceviews1_beta2 = &quot;0.0.1&quot;
  
 <span class='kw'>match</span> <span class='ident'>result</span> {
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
 

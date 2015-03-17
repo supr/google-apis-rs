@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>dfareporting2</a>::<wbr><a class='struct' href=''>PlacementGroupListMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-131048' href='../src/dfareporting2/lib.rs.html#28006-28031'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct PlacementGroupListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-172895' href='../src/dfareporting2/lib.rs.html#34824-34847'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct PlacementGroupListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Retrieves a list of placement groups, possibly filtered.</p>
 
@@ -62,22 +62,22 @@ It is not used directly, but through a <code>PlacementGroupMethodsBuilder</code>
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>placement_groups</span>().<span class='ident'>list</span>(<span class='string'>&quot;profileId&quot;</span>)
              .<span class='ident'>sort_order</span>(<span class='string'>&quot;dolores&quot;</span>)
              .<span class='ident'>sort_field</span>(<span class='string'>&quot;kasd&quot;</span>)
-             .<span class='ident'>site_ids</span>(<span class='string'>&quot;et&quot;</span>)
+             .<span class='ident'>add_site_ids</span>(<span class='string'>&quot;et&quot;</span>)
              .<span class='ident'>search_string</span>(<span class='string'>&quot;clita&quot;</span>)
-             .<span class='ident'>pricing_types</span>(<span class='string'>&quot;sed&quot;</span>)
-             .<span class='ident'>placement_strategy_ids</span>(<span class='string'>&quot;dolores&quot;</span>)
+             .<span class='ident'>add_pricing_types</span>(<span class='string'>&quot;sed&quot;</span>)
+             .<span class='ident'>add_placement_strategy_ids</span>(<span class='string'>&quot;dolores&quot;</span>)
              .<span class='ident'>placement_group_type</span>(<span class='string'>&quot;clita&quot;</span>)
              .<span class='ident'>page_token</span>(<span class='string'>&quot;eos&quot;</span>)
              .<span class='ident'>max_results</span>(<span class='op'>-</span><span class='number'>47</span>)
-             .<span class='ident'>ids</span>(<span class='string'>&quot;sed&quot;</span>)
-             .<span class='ident'>directory_site_ids</span>(<span class='string'>&quot;takimata&quot;</span>)
-             .<span class='ident'>content_category_ids</span>(<span class='string'>&quot;sit&quot;</span>)
-             .<span class='ident'>campaign_ids</span>(<span class='string'>&quot;labore&quot;</span>)
+             .<span class='ident'>add_ids</span>(<span class='string'>&quot;sed&quot;</span>)
+             .<span class='ident'>add_directory_site_ids</span>(<span class='string'>&quot;takimata&quot;</span>)
+             .<span class='ident'>add_content_category_ids</span>(<span class='string'>&quot;sit&quot;</span>)
+             .<span class='ident'>add_campaign_ids</span>(<span class='string'>&quot;labore&quot;</span>)
              .<span class='ident'>archived</span>(<span class='boolval'>false</span>)
-             .<span class='ident'>advertiser_ids</span>(<span class='string'>&quot;erat&quot;</span>)
+             .<span class='ident'>add_advertiser_ids</span>(<span class='string'>&quot;erat&quot;</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a class='struct' href='../dfareporting2/struct.PlacementGroupsListResponse.html' title='dfareporting2::PlacementGroupsListResponse'>PlacementGroupsListResponse</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../dfareporting2/struct.PlacementGroupsListResponse.html' title='dfareporting2::PlacementGroupsListResponse'>PlacementGroupsListResponse</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
 </div><h4 id='method.profile_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.profile_id' class='fnname'>profile_id</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>profile id</em> path property to the given value.</p>
@@ -94,20 +94,23 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>sort field</em> query property to the given value.</p>
 
 <p>Field by which to sort the list.    </p>
-</div><h4 id='method.site_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.site_ids' class='fnname'>site_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>site ids</em> query property to the given value.</p>
+</div><h4 id='method.add_site_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_site_ids' class='fnname'>add_site_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>site ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups that are associated with these sites.    </p>
 </div><h4 id='method.search_string' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search_string' class='fnname'>search_string</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>search string</em> query property to the given value.</p>
 
 <p>Allows searching for placement groups by name or ID. Wildcards (*) are allowed. For example, &quot;placement*2015&quot; will return placement groups with names like &quot;placement group June 2015&quot;, &quot;placement group May 2015&quot; or simply &quot;placements 2015&quot;. Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of &quot;placementgroup&quot; will match placement groups with name &quot;my placementgroup&quot;, &quot;placementgroup 2015&quot; or simply &quot;placementgroup&quot;.    </p>
-</div><h4 id='method.pricing_types' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.pricing_types' class='fnname'>pricing_types</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>pricing types</em> query property to the given value.</p>
+</div><h4 id='method.add_pricing_types' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_pricing_types' class='fnname'>add_pricing_types</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>pricing types</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups with these pricing types.    </p>
-</div><h4 id='method.placement_strategy_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.placement_strategy_ids' class='fnname'>placement_strategy_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>placement strategy ids</em> query property to the given value.</p>
+</div><h4 id='method.add_placement_strategy_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_placement_strategy_ids' class='fnname'>add_placement_strategy_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>placement strategy ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups that are associated with these placement strategies.    </p>
 </div><h4 id='method.placement_group_type' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.placement_group_type' class='fnname'>placement_group_type</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
@@ -122,28 +125,33 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>max results</em> query property to the given value.</p>
 
 <p>Maximum number of results to return.    </p>
-</div><h4 id='method.ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ids' class='fnname'>ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>ids</em> query property to the given value.</p>
+</div><h4 id='method.add_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_ids' class='fnname'>add_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups with these IDs.    </p>
-</div><h4 id='method.directory_site_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.directory_site_ids' class='fnname'>directory_site_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>directory site ids</em> query property to the given value.</p>
+</div><h4 id='method.add_directory_site_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_directory_site_ids' class='fnname'>add_directory_site_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>directory site ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups that are associated with these directory sites.    </p>
-</div><h4 id='method.content_category_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.content_category_ids' class='fnname'>content_category_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>content category ids</em> query property to the given value.</p>
+</div><h4 id='method.add_content_category_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_content_category_ids' class='fnname'>add_content_category_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>content category ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups that are associated with these content categories.    </p>
-</div><h4 id='method.campaign_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.campaign_ids' class='fnname'>campaign_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>campaign ids</em> query property to the given value.</p>
+</div><h4 id='method.add_campaign_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_campaign_ids' class='fnname'>add_campaign_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>campaign ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups that belong to these campaigns.    </p>
 </div><h4 id='method.archived' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.archived' class='fnname'>archived</a>(self, new_value: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>archived</em> query property to the given value.</p>
 
 <p>Select only archived placements. Don&#39;t set this field to select both archived and non-archived placements.    </p>
-</div><h4 id='method.advertiser_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.advertiser_ids' class='fnname'>advertiser_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>advertiser ids</em> query property to the given value.</p>
+</div><h4 id='method.add_advertiser_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_advertiser_ids' class='fnname'>add_advertiser_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>advertiser ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only placement groups that belong to these advertisers.    </p>
 </div><h4 id='method.delegate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delegate' class='fnname'>delegate</a>(self, new_value: &amp;'a mut <a class='trait' href='../dfareporting2/cmn/trait.Delegate.html' title='dfareporting2::cmn::Delegate'>Delegate</a>) -&gt; <a class='struct' href='../dfareporting2/struct.PlacementGroupListMethodBuilder.html' title='dfareporting2::PlacementGroupListMethodBuilder'>PlacementGroupListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>

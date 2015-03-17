@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>translate2</a>::<wbr><a class='struct' href=''>DetectionMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-1394' href='../src/translate2/lib.rs.html#485-491'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct DetectionMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-1448' href='../src/translate2/lib.rs.html#494-498'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct DetectionMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>detection</em> resources.
 It is not used directly, but through the <code>Translate</code> hub.</p>
@@ -72,7 +72,7 @@ It is not used directly, but through the <code>Translate</code> hub.</p>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>detections</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../translate2/struct.DetectionMethodsBuilder.html' title='translate2::DetectionMethodsBuilder'>DetectionMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self, q: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../translate2/struct.DetectionListMethodBuilder.html' title='translate2::DetectionListMethodBuilder'>DetectionListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../translate2/struct.DetectionMethodsBuilder.html' title='translate2::DetectionMethodsBuilder'>DetectionMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self, q: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;) -&gt; <a class='struct' href='../translate2/struct.DetectionListMethodBuilder.html' title='translate2::DetectionListMethodBuilder'>DetectionListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Detect the language of text.    </p>

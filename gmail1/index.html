@@ -43,8 +43,10 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>gmail1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/gmail1/lib.rs.html#5-6452'>[src]</a></span></h1>
-<div class='docblock'>
+        </span><a id='src-0' href='../src/gmail1/lib.rs.html#5-8661'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>gmail</em> crate version <em>0.0.1</em>.
+The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/gmail1">on github</a>.</p>
+
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Gmail.html">hub</a> ... </p>
@@ -53,7 +55,7 @@
 <li>users (<a href="struct.UserDraftCreateMethodBuilder.html"><em>drafts.create</em></a>, <a href="struct.UserDraftDeleteMethodBuilder.html"><em>drafts.delete</em></a>, <a href="struct.UserDraftGetMethodBuilder.html"><em>drafts.get</em></a>, <a href="struct.UserDraftListMethodBuilder.html"><em>drafts.list</em></a>, <a href="struct.UserDraftSendMethodBuilder.html"><em>drafts.send</em></a>, <a href="struct.UserDraftUpdateMethodBuilder.html"><em>drafts.update</em></a>, <a href="struct.UserGetProfileMethodBuilder.html"><em>get profile</em></a>, <a href="struct.UserHistoryListMethodBuilder.html"><em>history.list</em></a>, <a href="struct.UserLabelCreateMethodBuilder.html"><em>labels.create</em></a>, <a href="struct.UserLabelDeleteMethodBuilder.html"><em>labels.delete</em></a>, <a href="struct.UserLabelGetMethodBuilder.html"><em>labels.get</em></a>, <a href="struct.UserLabelListMethodBuilder.html"><em>labels.list</em></a>, <a href="struct.UserLabelPatchMethodBuilder.html"><em>labels.patch</em></a>, <a href="struct.UserLabelUpdateMethodBuilder.html"><em>labels.update</em></a>, <a href="struct.UserMessageAttachmentGetMethodBuilder.html"><em>messages.attachments.get</em></a>, <a href="struct.UserMessageDeleteMethodBuilder.html"><em>messages.delete</em></a>, <a href="struct.UserMessageGetMethodBuilder.html"><em>messages.get</em></a>, <a href="struct.UserMessageImportMethodBuilder.html"><em>messages.import</em></a>, <a href="struct.UserMessageInsertMethodBuilder.html"><em>messages.insert</em></a>, <a href="struct.UserMessageListMethodBuilder.html"><em>messages.list</em></a>, <a href="struct.UserMessageModifyMethodBuilder.html"><em>messages.modify</em></a>, <a href="struct.UserMessageSendMethodBuilder.html"><em>messages.send</em></a>, <a href="struct.UserMessageTrashMethodBuilder.html"><em>messages.trash</em></a>, <a href="struct.UserMessageUntrashMethodBuilder.html"><em>messages.untrash</em></a>, <a href="struct.UserThreadDeleteMethodBuilder.html"><em>threads.delete</em></a>, <a href="struct.UserThreadGetMethodBuilder.html"><em>threads.get</em></a>, <a href="struct.UserThreadListMethodBuilder.html"><em>threads.list</em></a>, <a href="struct.UserThreadModifyMethodBuilder.html"><em>threads.modify</em></a>, <a href="struct.UserThreadTrashMethodBuilder.html"><em>threads.trash</em></a> and <a href="struct.UserThreadUntrashMethodBuilder.html"><em>threads.untrash</em></a>)</li>
 </ul>
 
-<p>Everything else about the <em>gmail</em> API can be found at the
+<p>Everything else about the <em>gmail</em> <em>v1</em> API can be found at the
 <a href="https://developers.google.com/gmail/api/">official documentation site</a>.</p>
 
 <p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
@@ -161,8 +163,11 @@ gmail1 = &quot;0.0.1&quot;
  
 <span class='kw'>match</span> <span class='ident'>result</span> {
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
 

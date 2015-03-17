@@ -541,18 +541,100 @@
 <span id="499">499</span>
 <span id="500">500</span>
 <span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+<span id="512">512</span>
+<span id="513">513</span>
+<span id="514">514</span>
+<span id="515">515</span>
+<span id="516">516</span>
+<span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
 <span class='comment'>// DO NOT EDIT !</span>
 
+<span class='doccomment'>//! This documentation was generated from *Groups Migration* crate version *0.0.1*.</span>
+<span class='doccomment'>//! The original source code can be found [on github](https://github.com/Byron/google-apis-rs/tree/master/gen/groupsmigration1).</span>
 <span class='doccomment'>//! # Features</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.GroupsMigration.html) ... </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * archive ([*insert*](struct.ArchiveInsertMethodBuilder.html))</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Everything else about the *Groups Migration* API can be found at the</span>
+<span class='doccomment'>//! Everything else about the *Groups Migration* *v1* API can be found at the</span>
 <span class='doccomment'>//! [official documentation site](https://developers.google.com/google-apps/groups-migration/).</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Not what you are looking for ? Find all other google APIs in their Rust [documentation index](../index.html).</span>
@@ -634,8 +716,11 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! match result {</span>
 <span class='doccomment'>//!     Result::HttpError(err) =&gt; println!(&quot;HTTPERROR: {:?}&quot;, err),</span>
+<span class='doccomment'>//!     Result::MissingAPIKey =&gt; println!(&quot;Missing API Key&quot;),</span>
+<span class='doccomment'>//!     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
+<span class='doccomment'>//!     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//!     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
-<span class='doccomment'>//!     Result::Success(value) =&gt; println!(&quot;Result Value: {:?}&quot;, value),</span>
+<span class='doccomment'>//!     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! # }</span>
 <span class='doccomment'>//! ```</span>
@@ -680,9 +765,9 @@
 <span class='doccomment'>//! [google-go-api]: https://github.com/google/google-api-go-client</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>core</span>,<span class='ident'>io</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>core</span>,<span class='ident'>io</span>, <span class='ident'>old_io</span>)]</span>
 <span class='comment'>// DEBUG !! TODO: Remove this</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>, <span class='ident'>deprecated</span>)]</span>
 <span class='comment'>// We don&#39;t warn about this, as depending on the API, some data structures or facilities are never used.</span>
 <span class='comment'>// Instead of pre-determining this, we just disable the lint. It&#39;s manually tuned to not have any </span>
 <span class='comment'>// unused imports in fully featured APIs. Same with unused_mut ... .</span>
@@ -698,13 +783,15 @@
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>cmn</span>;
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>borrow</span>::<span class='ident'>BorrowMut</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>RefCell</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>borrow</span>::<span class='ident'>BorrowMut</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
+<span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::<span class='ident'>timer</span>::<span class='ident'>sleep</span>;
 
 <span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>};
 
@@ -772,27 +859,31 @@
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// match result {</span>
 <span class='doccomment'>///     Result::HttpError(err) =&gt; println!(&quot;HTTPERROR: {:?}&quot;, err),</span>
+<span class='doccomment'>///     Result::MissingAPIKey =&gt; println!(&quot;Missing API Key&quot;),</span>
+<span class='doccomment'>///     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
+<span class='doccomment'>///     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>///     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
-<span class='doccomment'>///     Result::Success(value) =&gt; println!(&quot;Result Value: {:?}&quot;, value),</span>
+<span class='doccomment'>///     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>/// }</span>
 <span class='doccomment'>/// # }</span>
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>GroupsMigration</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
     <span class='ident'>client</span>: <span class='ident'>RefCell</span><span class='op'>&lt;</span><span class='ident'>C</span><span class='op'>&gt;</span>,
     <span class='ident'>auth</span>: <span class='ident'>RefCell</span><span class='op'>&lt;</span><span class='ident'>A</span><span class='op'>&gt;</span>,
+
     <span class='ident'>_m</span>: <span class='ident'>PhantomData</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;</span>
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>Hub</span> <span class='kw'>for</span> <span class='ident'>GroupsMigration</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>GroupsMigration</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
-    <span class='kw'>where</span>  <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span> <span class='op'>+</span> <span class='lifetime'>&#39;a</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
+    <span class='kw'>where</span>  <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>client</span>: <span class='ident'>C</span>, <span class='ident'>authenticator</span>: <span class='ident'>A</span>) <span class='op'>-&gt;</span> <span class='ident'>GroupsMigration</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='ident'>GroupsMigration</span> {
             <span class='ident'>client</span>: <span class='ident'>RefCell</span>::<span class='ident'>new</span>(<span class='ident'>client</span>),
             <span class='ident'>auth</span>: <span class='ident'>RefCell</span>::<span class='ident'>new</span>(<span class='ident'>authenticator</span>),
-            <span class='ident'>_m</span>: <span class='ident'>PhantomData</span>,
+            <span class='ident'>_m</span>: <span class='ident'>PhantomData</span>
         }
     }
 
@@ -860,9 +951,7 @@
 <span class='doccomment'>/// # }</span>
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ArchiveMethodsBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
-    <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='lifetime'>&#39;a</span>,
-           <span class='ident'>C</span>: <span class='lifetime'>&#39;a</span>,
-           <span class='ident'>A</span>: <span class='lifetime'>&#39;a</span>, {
+    <span class='kw'>where</span> <span class='ident'>C</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>NC</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>A</span>: <span class='lifetime'>&#39;a</span> {
 
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>GroupsMigration</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
 }
@@ -879,7 +968,7 @@
             <span class='ident'>hub</span>: <span class='self'>self</span>.<span class='ident'>hub</span>,
             <span class='ident'>_group_id</span>: <span class='ident'>group_id</span>.<span class='ident'>to_string</span>(),
             <span class='ident'>_delegate</span>: <span class='ident'>Default</span>::<span class='ident'>default</span>(),
-                        <span class='ident'>_additional_params</span>: <span class='ident'>Default</span>::<span class='ident'>default</span>(),
+            <span class='ident'>_additional_params</span>: <span class='ident'>Default</span>::<span class='ident'>default</span>(),
         }
     }
 }
@@ -925,9 +1014,7 @@
 <span class='doccomment'>/// # }</span>
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ArchiveInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
-    <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='lifetime'>&#39;a</span>,
-           <span class='ident'>C</span>: <span class='lifetime'>&#39;a</span>,
-           <span class='ident'>A</span>: <span class='lifetime'>&#39;a</span>, {
+    <span class='kw'>where</span> <span class='ident'>C</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>NC</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>A</span>: <span class='lifetime'>&#39;a</span> {
 
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>GroupsMigration</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
     <span class='ident'>_group_id</span>: <span class='ident'>String</span>,
@@ -937,11 +1024,12 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>MethodBuilder</span> <span class='kw'>for</span> <span class='ident'>ArchiveInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ArchiveInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span> <span class='op'>+</span> <span class='lifetime'>&#39;a</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ArchiveInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
 
 
     <span class='doccomment'>/// Perform the operation you have build so far.</span>
-    <span class='kw'>fn</span> <span class='ident'>doit</span><span class='op'>&lt;</span><span class='ident'>R</span>, <span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>R</span>, <span class='ident'>u64</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>, <span class='ident'>resumeable_stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>RS</span>, <span class='ident'>u64</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Groups</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>R</span>: <span class='ident'>io</span>::<span class='ident'>Read</span>, <span class='ident'>RS</span>: <span class='ident'>ReadSeek</span> {
+    <span class='kw'>fn</span> <span class='ident'>doit</span><span class='op'>&lt;</span><span class='ident'>R</span>, <span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>R</span>, <span class='ident'>u64</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>, <span class='ident'>resumeable_stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>RS</span>, <span class='ident'>u64</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span>, <span class='ident'>Groups</span>)<span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>R</span>: <span class='ident'>io</span>::<span class='ident'>Read</span>, <span class='ident'>RS</span>: <span class='ident'>ReadSeek</span> {
+        <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::<span class='ident'>Read</span>;
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>(<span class='number'>2</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>());
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;groupId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_group_id</span>.<span class='ident'>to_string</span>()));
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;groupId&quot;</span>].<span class='ident'>iter</span>() {
@@ -953,23 +1041,95 @@
             <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='kw-2'>&amp;</span><span class='ident'>name</span>, <span class='ident'>value</span>.<span class='ident'>clone</span>()));
         }
 
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>stream</span>.<span class='ident'>is_some</span>() {
-                <span class='string'>&quot;https://www.googleapis.com/upload/groups/v1/groups/{groupId}/archive&quot;</span>.<span class='ident'>to_string</span>()
+        <span class='kw'>let</span> (<span class='kw-2'>mut</span> <span class='ident'>url</span>, <span class='ident'>protocol</span>) <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>stream</span>.<span class='ident'>is_some</span>() {
+                (<span class='string'>&quot;https://www.googleapis.com/upload/groups/v1/groups/{groupId}/archive&quot;</span>.<span class='ident'>to_string</span>(), <span class='string'>&quot;simple&quot;</span>)
             } <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>resumeable_stream</span>.<span class='ident'>is_some</span>() {
-                <span class='string'>&quot;https://www.googleapis.com/resumable/upload/groups/v1/groups/{groupId}/archive&quot;</span>.<span class='ident'>to_string</span>()
+                (<span class='string'>&quot;https://www.googleapis.com/resumable/upload/groups/v1/groups/{groupId}/archive&quot;</span>.<span class='ident'>to_string</span>(), <span class='string'>&quot;resumable&quot;</span>)
             } <span class='kw'>else</span> { 
                 <span class='macro'>unreachable</span><span class='macro'>!</span>() 
         };
+        <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;uploadType&quot;</span>, <span class='ident'>protocol</span>.<span class='ident'>to_string</span>()));
+        
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() <span class='op'>&amp;&amp;</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>api_key</span>();
+        }
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_some</span>() {
+            <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>key</span>.<span class='ident'>unwrap</span>()));
+        } <span class='kw'>else</span> {
+            <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+        }
 
-        <span class='ident'>url</span>.<span class='ident'>push</span>(<span class='string'>&#39;?&#39;</span>);
-        <span class='ident'>url</span>.<span class='ident'>push_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>url</span>::<span class='ident'>form_urlencoded</span>::<span class='ident'>serialize</span>(<span class='ident'>params</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>t</span><span class='op'>|</span> (<span class='ident'>t</span>.<span class='number'>0</span>, <span class='ident'>t</span>.<span class='number'>1</span>.<span class='ident'>as_slice</span>()))));
+        <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{groupId}&quot;</span>, <span class='string'>&quot;groupId&quot;</span>)].<span class='ident'>iter</span>() {
+                        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>replace_with</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='prelude-val'>None</span>;
+            <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>name</span>, <span class='kw-2'>ref</span> <span class='ident'>value</span>) <span class='kw'>in</span> <span class='ident'>params</span>.<span class='ident'>iter</span>() {
+                <span class='kw'>if</span> <span class='ident'>name</span> <span class='op'>==</span> <span class='ident'>param_name</span> {
+                    <span class='ident'>replace_with</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>value</span>);
+                    <span class='kw'>break</span>;
+                }
+            }
+            <span class='ident'>url</span> <span class='op'>=</span> <span class='ident'>url</span>.<span class='ident'>replace</span>(<span class='ident'>find_this</span>, <span class='ident'>replace_with</span>.<span class='ident'>expect</span>(<span class='string'>&quot;to find substitution value in params&quot;</span>));
+        }
+        {
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>indices_for_removal</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>usize</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>(<span class='number'>1</span>);
+            <span class='kw'>for</span> <span class='ident'>param_name</span> <span class='kw'>in</span> [<span class='string'>&quot;groupId&quot;</span>].<span class='ident'>iter</span>() {
+                <span class='kw'>for</span> (<span class='ident'>index</span>, <span class='kw-2'>&amp;</span>(<span class='kw-2'>ref</span> <span class='ident'>name</span>, _)) <span class='kw'>in</span> <span class='ident'>params</span>.<span class='ident'>iter</span>().<span class='ident'>rev</span>().<span class='ident'>enumerate</span>() {
+                    <span class='kw'>if</span> <span class='ident'>name</span> <span class='op'>==</span> <span class='ident'>param_name</span> {
+                        <span class='ident'>indices_for_removal</span>.<span class='ident'>push</span>(<span class='ident'>params</span>.<span class='ident'>len</span>() <span class='op'>-</span> <span class='ident'>index</span> <span class='op'>-</span> <span class='number'>1</span>);
+                        <span class='kw'>break</span>;
+                    }
+                }
+            }
+            <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>index</span> <span class='kw'>in</span> <span class='ident'>indices_for_removal</span>.<span class='ident'>iter</span>() {
+                <span class='ident'>params</span>.<span class='ident'>remove</span>(<span class='ident'>index</span>);
+            }
+        }
+        
+        <span class='kw'>if</span> <span class='ident'>params</span>.<span class='ident'>len</span>() <span class='op'>&gt;</span> <span class='number'>0</span> {
+            <span class='ident'>url</span>.<span class='ident'>push</span>(<span class='string'>&#39;?&#39;</span>);
+            <span class='ident'>url</span>.<span class='ident'>push_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>url</span>::<span class='ident'>form_urlencoded</span>::<span class='ident'>serialize</span>(<span class='ident'>params</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>t</span><span class='op'>|</span> (<span class='ident'>t</span>.<span class='number'>0</span>, <span class='ident'>t</span>.<span class='number'>1</span>.<span class='ident'>as_slice</span>()))));
+        }
 
-        <span class='kw'>let</span> <span class='ident'>response</span>: <span class='ident'>Groups</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
-
-
-
-
-        <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>response</span>)
+        <span class='kw'>loop</span> {
+            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
+                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;groupsmigration.archive.insert&quot;</span>);
+            }
+            <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;POST&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+               .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
+               .<span class='ident'>send</span>() {
+                <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
+                    <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
+                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
+                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
+                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                                <span class='kw'>continue</span>;
+                            }
+                        }
+                    } <span class='kw'>else</span> {
+                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
+                    }
+                }
+                <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
+                    <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
+                        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
+                            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+                            <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>ok</span>();
+                            <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                                <span class='kw'>continue</span>;
+                            }
+                        }
+                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
+                    }
+                    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_response</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+                    <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>ok</span>();
+                    <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>());
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
+                }
+            }
+        }
     }
 
     <span class='doccomment'>/// Upload media all at once.</span>
@@ -978,7 +1138,7 @@
     <span class='doccomment'>/// * *max size*: 16MB</span>
     <span class='doccomment'>/// * *multipart*: yes</span>
     <span class='doccomment'>/// * *valid mime types*: &#39;message/rfc822&#39;</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload</span><span class='op'>&lt;</span><span class='ident'>R</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>stream</span>: <span class='ident'>R</span>, <span class='ident'>size</span>: <span class='ident'>u64</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Groups</span><span class='op'>&gt;</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload</span><span class='op'>&lt;</span><span class='ident'>R</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>stream</span>: <span class='ident'>R</span>, <span class='ident'>size</span>: <span class='ident'>u64</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span>, <span class='ident'>Groups</span>)<span class='op'>&gt;</span>
                 <span class='kw'>where</span> <span class='ident'>R</span>: <span class='ident'>io</span>::<span class='ident'>Read</span> {
         <span class='self'>self</span>.<span class='ident'>doit</span>(<span class='prelude-val'>Some</span>((<span class='ident'>stream</span>, <span class='ident'>size</span>, <span class='ident'>mime_type</span>)), <span class='prelude-val'>None</span>::<span class='op'>&lt;</span>(<span class='ident'>fs</span>::<span class='ident'>File</span>, <span class='ident'>u64</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>, )
     }
@@ -991,7 +1151,7 @@
     <span class='doccomment'>/// * *max size*: 16MB</span>
     <span class='doccomment'>/// * *multipart*: yes</span>
     <span class='doccomment'>/// * *valid mime types*: &#39;message/rfc822&#39;</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload_resumable</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>resumeable_stream</span>: <span class='ident'>RS</span>, <span class='ident'>size</span>: <span class='ident'>u64</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Groups</span><span class='op'>&gt;</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload_resumable</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>resumeable_stream</span>: <span class='ident'>RS</span>, <span class='ident'>size</span>: <span class='ident'>u64</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span>, <span class='ident'>Groups</span>)<span class='op'>&gt;</span>
                 <span class='kw'>where</span> <span class='ident'>RS</span>: <span class='ident'>ReadSeek</span> {
         <span class='self'>self</span>.<span class='ident'>doit</span>(<span class='prelude-val'>None</span>::<span class='op'>&lt;</span>(<span class='ident'>fs</span>::<span class='ident'>File</span>, <span class='ident'>u64</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>, <span class='prelude-val'>Some</span>((<span class='ident'>resumeable_stream</span>, <span class='ident'>size</span>, <span class='ident'>mime_type</span>)), )
     }

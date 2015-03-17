@@ -43,8 +43,10 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>reseller1_sandbox</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/reseller1_sandbox/lib.rs.html#5-3275'>[src]</a></span></h1>
-<div class='docblock'>
+        </span><a id='src-0' href='../src/reseller1_sandbox/lib.rs.html#5-4254'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>reseller</em> crate version <em>0.0.1</em>.
+The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/reseller1_sandbox">on github</a>.</p>
+
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Reseller.html">hub</a> ... </p>
@@ -54,7 +56,7 @@
 <li><a href="struct.Subscription.html">subscriptions</a> (<a href="struct.SubscriptionActivateMethodBuilder.html"><em>activate</em></a>, <a href="struct.SubscriptionChangePlanMethodBuilder.html"><em>change plan</em></a>, <a href="struct.SubscriptionChangeRenewalSettingMethodBuilder.html"><em>change renewal settings</em></a>, <a href="struct.SubscriptionChangeSeatMethodBuilder.html"><em>change seats</em></a>, <a href="struct.SubscriptionDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.SubscriptionGetMethodBuilder.html"><em>get</em></a>, <a href="struct.SubscriptionInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.SubscriptionListMethodBuilder.html"><em>list</em></a>, <a href="struct.SubscriptionStartPaidServiceMethodBuilder.html"><em>start paid service</em></a> and <a href="struct.SubscriptionSuspendMethodBuilder.html"><em>suspend</em></a>)</li>
 </ul>
 
-<p>Everything else about the <em>reseller</em> API can be found at the
+<p>Everything else about the <em>reseller</em> <em>v1_sandbox</em> API can be found at the
 <a href="https://developers.google.com/google-apps/reseller/">official documentation site</a>.</p>
 
 <p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
@@ -158,8 +160,11 @@ reseller1_sandbox = &quot;0.0.1&quot;
  
 <span class='kw'>match</span> <span class='ident'>result</span> {
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Result Value: {:?}&quot;</span>, <span class='ident'>value</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
 

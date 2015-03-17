@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>dfareporting2</a>::<wbr><a class='struct' href=''>EventTagListMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-142625' href='../src/dfareporting2/lib.rs.html#32808-32828'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct EventTagListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-197122' href='../src/dfareporting2/lib.rs.html#41693-41711'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct EventTagListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Retrieves a list of event tags, possibly filtered.</p>
 
@@ -63,8 +63,8 @@ It is not used directly, but through a <code>EventTagMethodsBuilder</code>.</p>
              .<span class='ident'>sort_order</span>(<span class='string'>&quot;consetetur&quot;</span>)
              .<span class='ident'>sort_field</span>(<span class='string'>&quot;et&quot;</span>)
              .<span class='ident'>search_string</span>(<span class='string'>&quot;justo&quot;</span>)
-             .<span class='ident'>ids</span>(<span class='string'>&quot;kasd&quot;</span>)
-             .<span class='ident'>event_tag_types</span>(<span class='string'>&quot;kasd&quot;</span>)
+             .<span class='ident'>add_ids</span>(<span class='string'>&quot;kasd&quot;</span>)
+             .<span class='ident'>add_event_tag_types</span>(<span class='string'>&quot;kasd&quot;</span>)
              .<span class='ident'>enabled</span>(<span class='boolval'>true</span>)
              .<span class='ident'>definitions_only</span>(<span class='boolval'>true</span>)
              .<span class='ident'>campaign_id</span>(<span class='string'>&quot;nonumy&quot;</span>)
@@ -72,7 +72,7 @@ It is not used directly, but through a <code>EventTagMethodsBuilder</code>.</p>
              .<span class='ident'>ad_id</span>(<span class='string'>&quot;voluptua.&quot;</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a class='struct' href='../dfareporting2/struct.EventTagsListResponse.html' title='dfareporting2::EventTagsListResponse'>EventTagsListResponse</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../dfareporting2/struct.EventTagsListResponse.html' title='dfareporting2::EventTagsListResponse'>EventTagsListResponse</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
 </div><h4 id='method.profile_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.profile_id' class='fnname'>profile_id</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>profile id</em> path property to the given value.</p>
@@ -93,12 +93,14 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>search string</em> query property to the given value.</p>
 
 <p>Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, &quot;eventtag*2015&quot; will return objects with names like &quot;eventtag June 2015&quot;, &quot;eventtag April 2015&quot; or simply &quot;eventtag 2015&quot;. Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of &quot;eventtag&quot; will match objects with name &quot;my eventtag&quot;, &quot;eventtag 2015&quot; or simply &quot;eventtag&quot;.    </p>
-</div><h4 id='method.ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ids' class='fnname'>ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>ids</em> query property to the given value.</p>
+</div><h4 id='method.add_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_ids' class='fnname'>add_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only event tags with these IDs.    </p>
-</div><h4 id='method.event_tag_types' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.event_tag_types' class='fnname'>event_tag_types</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>event tag types</em> query property to the given value.</p>
+</div><h4 id='method.add_event_tag_types' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_event_tag_types' class='fnname'>add_event_tag_types</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>event tag types</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only event tags with the specified event tag types. Event tag types can be used to specify whether to use a third-party pixel, a third-party JavaScript URL, or a third-party click-through URL for either impression or click tracking.    </p>
 </div><h4 id='method.enabled' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.enabled' class='fnname'>enabled</a>(self, new_value: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../dfareporting2/struct.EventTagListMethodBuilder.html' title='dfareporting2::EventTagListMethodBuilder'>EventTagListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>

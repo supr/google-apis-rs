@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>books1</a>::<wbr><a class='struct' href=''>MyconfigSyncVolumeLicenseMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-35543' href='../src/books1/lib.rs.html#8449-8465'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct MyconfigSyncVolumeLicenseMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-43533' href='../src/books1/lib.rs.html#9891-9905'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MyconfigSyncVolumeLicenseMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Request downloaded content access for specified volumes on the My eBooks shelf.</p>
 
@@ -60,13 +60,13 @@ It is not used directly, but through a <code>MyconfigMethodsBuilder</code>.</p>
 <span class='comment'>// execute the final call using `doit()`.</span>
 <span class='comment'>// Values shown here are possibly random and not representative !</span>
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>myconfig</span>().<span class='ident'>sync_volume_licenses</span>(<span class='string'>&quot;source&quot;</span>, <span class='string'>&quot;nonce&quot;</span>, <span class='string'>&quot;cpksver&quot;</span>)
-             .<span class='ident'>volume_ids</span>(<span class='string'>&quot;vero&quot;</span>)
+             .<span class='ident'>add_volume_ids</span>(<span class='string'>&quot;vero&quot;</span>)
              .<span class='ident'>show_preorders</span>(<span class='boolval'>false</span>)
              .<span class='ident'>locale</span>(<span class='string'>&quot;takimata&quot;</span>)
-             .<span class='ident'>features</span>(<span class='string'>&quot;et&quot;</span>)
+             .<span class='ident'>add_features</span>(<span class='string'>&quot;et&quot;</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../books1/cmn/enum.Result.html' title='books1::cmn::Result'>Result</a>&lt;<a class='struct' href='../books1/struct.Volumes.html' title='books1::Volumes'>Volumes</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../books1/cmn/enum.Result.html' title='books1::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../books1/struct.Volumes.html' title='books1::Volumes'>Volumes</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
 </div><h4 id='method.source' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.source' class='fnname'>source</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>source</em> query property to the given value.</p>
@@ -89,8 +89,9 @@ we provide this method for API completeness.</p>
 we provide this method for API completeness.</p>
 
 <p>The device/version ID from which to release the restriction.    </p>
-</div><h4 id='method.volume_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.volume_ids' class='fnname'>volume_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>volume ids</em> query property to the given value.</p>
+</div><h4 id='method.add_volume_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_volume_ids' class='fnname'>add_volume_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>volume ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>The volume(s) to request download restrictions for.    </p>
 </div><h4 id='method.show_preorders' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.show_preorders' class='fnname'>show_preorders</a>(self, new_value: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
@@ -101,8 +102,9 @@ we provide this method for API completeness.</p>
 <div class='docblock'><p>Sets the <em>locale</em> query property to the given value.</p>
 
 <p>ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.    </p>
-</div><h4 id='method.features' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.features' class='fnname'>features</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>features</em> query property to the given value.</p>
+</div><h4 id='method.add_features' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_features' class='fnname'>add_features</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>features</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>List of features supported by the client, i.e., &#39;RENTALS&#39;    </p>
 </div><h4 id='method.delegate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delegate' class='fnname'>delegate</a>(self, new_value: &amp;'a mut <a class='trait' href='../books1/cmn/trait.Delegate.html' title='books1::cmn::Delegate'>Delegate</a>) -&gt; <a class='struct' href='../books1/struct.MyconfigSyncVolumeLicenseMethodBuilder.html' title='books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>

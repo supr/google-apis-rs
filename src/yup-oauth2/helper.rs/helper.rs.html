@@ -378,6 +378,17 @@
 <span id="336">336</span>
 <span id="337">337</span>
 <span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::<span class='ident'>IntoIterator</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>borrow</span>::<span class='ident'>BorrowMut</span>;
@@ -462,10 +473,14 @@
 }
 
 <span class='doccomment'>/// A provider for authorization tokens, yielding tokens valid for a given scope.</span>
+<span class='doccomment'>/// The `api_key()` method is an alternative in case there are no scopes or</span>
+<span class='doccomment'>/// if no user is involved.</span>
 <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>GetToken</span> {
     <span class='kw'>fn</span> <span class='ident'>token</span><span class='op'>&lt;</span><span class='lifetime'>&#39;b</span>, <span class='ident'>I</span>, <span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>scopes</span>: <span class='ident'>I</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Token</span><span class='op'>&gt;</span>
         <span class='kw'>where</span>   <span class='ident'>T</span>: <span class='ident'>Str</span> <span class='op'>+</span> <span class='ident'>Ord</span>,
                 <span class='ident'>I</span>: <span class='ident'>IntoIterator</span><span class='op'>&lt;</span><span class='ident'>Item</span><span class='op'>=</span><span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='ident'>T</span><span class='op'>&gt;</span>;
+
+    <span class='kw'>fn</span> <span class='ident'>api_key</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>;
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>D</span>, <span class='ident'>S</span>, <span class='ident'>C</span>, <span class='ident'>NC</span><span class='op'>&gt;</span> <span class='ident'>Authenticator</span><span class='op'>&lt;</span><span class='ident'>D</span>, <span class='ident'>S</span>, <span class='ident'>C</span>, <span class='ident'>NC</span><span class='op'>&gt;</span>
@@ -625,6 +640,13 @@
                 <span class='ident'>ot</span>
             },
         }
+    }
+
+    <span class='kw'>fn</span> <span class='ident'>api_key</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> {
+        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>secret</span>.<span class='ident'>client_id</span>.<span class='ident'>len</span>() <span class='op'>==</span> <span class='number'>0</span> {
+            <span class='kw'>return</span> <span class='prelude-val'>None</span>
+        }
+        <span class='prelude-val'>Some</span>(<span class='self'>self</span>.<span class='ident'>secret</span>.<span class='ident'>client_id</span>.<span class='ident'>clone</span>())
     }
 }
 

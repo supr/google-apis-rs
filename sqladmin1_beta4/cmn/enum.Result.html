@@ -43,15 +43,22 @@
     <section id='main' class="content enum">
 <h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>sqladmin1_beta4</a>::<wbr><a href='index.html'>cmn</a>::<wbr><a class='enum' href=''>Result</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-147' href='../../src/sqladmin1_beta4/cmn.rs.html#73-82'>[src]</a></span></h1>
+        </span><a id='src-195' href='../../src/sqladmin1_beta4/cmn.rs.html#100-119'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Result&lt;T = <a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt; {
     HttpError(<a class='enum' href='../../hyper/enum.HttpError.html' title='hyper::HttpError'>HttpError</a>),
+    MissingAPIKey,
+    MissingToken,
     FieldClash(&amp;'static <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>),
+    Failure(<a class='struct' href='../../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>),
     Success(T),
 }</pre><div class='docblock'><p>A universal result type used as return for all action method results.</p>
 </div><h2 class='variants'>Variants</h2>
 <table><tr><td id='variant.HttpError'><a class='stability Unmarked' title='No stability level'></a><code>HttpError</code></td><td><div class='docblock'><p>The http connection failed</p>
+</div></td></tr><tr><td id='variant.MissingAPIKey'><a class='stability Unmarked' title='No stability level'></a><code>MissingAPIKey</code></td><td><div class='docblock'><p>We needed an API key for authentication, but didn&#39;t obtain one.
+Neither through the authenticator, nor through the Delegate.</p>
+</div></td></tr><tr><td id='variant.MissingToken'><a class='stability Unmarked' title='No stability level'></a><code>MissingToken</code></td><td><div class='docblock'><p>We required a Token, but didn&#39;t get one from the Authenticator</p>
 </div></td></tr><tr><td id='variant.FieldClash'><a class='stability Unmarked' title='No stability level'></a><code>FieldClash</code></td><td><div class='docblock'><p>An additional, free form field clashed with one of the built-in optional ones</p>
+</div></td></tr><tr><td id='variant.Failure'><a class='stability Unmarked' title='No stability level'></a><code>Failure</code></td><td><div class='docblock'><p>Indicates an HTTP repsonse with a non-success status code</p>
 </div></td></tr><tr><td id='variant.Success'><a class='stability Unmarked' title='No stability level'></a><code>Success</code></td><td><div class='docblock'><p>It worked !</p>
 </div></td></tr></table></section>
     <section id='search' class="content hidden"></section>

@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>calendar3</a>::<wbr><a class='struct' href=''>EventListMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-28391' href='../src/calendar3/lib.rs.html#7687-7714'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct EventListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-40119' href='../src/calendar3/lib.rs.html#9718-9743'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct EventListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Returns events on the specified calendar.</p>
 
@@ -68,9 +68,9 @@ It is not used directly, but through a <code>EventMethodsBuilder</code>.</p>
              .<span class='ident'>single_events</span>(<span class='boolval'>true</span>)
              .<span class='ident'>show_hidden_invitations</span>(<span class='boolval'>false</span>)
              .<span class='ident'>show_deleted</span>(<span class='boolval'>true</span>)
-             .<span class='ident'>shared_extended_property</span>(<span class='string'>&quot;sed&quot;</span>)
+             .<span class='ident'>add_shared_extended_property</span>(<span class='string'>&quot;sed&quot;</span>)
              .<span class='ident'>q</span>(<span class='string'>&quot;aliquyam&quot;</span>)
-             .<span class='ident'>private_extended_property</span>(<span class='string'>&quot;ea&quot;</span>)
+             .<span class='ident'>add_private_extended_property</span>(<span class='string'>&quot;ea&quot;</span>)
              .<span class='ident'>page_token</span>(<span class='string'>&quot;ea&quot;</span>)
              .<span class='ident'>order_by</span>(<span class='string'>&quot;et&quot;</span>)
              .<span class='ident'>max_results</span>(<span class='op'>-</span><span class='number'>48</span>)
@@ -79,7 +79,7 @@ It is not used directly, but through a <code>EventMethodsBuilder</code>.</p>
              .<span class='ident'>always_include_email</span>(<span class='boolval'>false</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../calendar3/cmn/enum.Result.html' title='calendar3::cmn::Result'>Result</a>&lt;<a class='struct' href='../calendar3/struct.Events.html' title='calendar3::Events'>Events</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../calendar3/cmn/enum.Result.html' title='calendar3::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../calendar3/struct.Events.html' title='calendar3::Events'>Events</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
 </div><h4 id='method.calendar_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.calendar_id' class='fnname'>calendar_id</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>calendar id</em> path property to the given value.</p>
@@ -133,16 +133,18 @@ Optional. The default is to return all entries.</p>
 <div class='docblock'><p>Sets the <em>show deleted</em> query property to the given value.</p>
 
 <p>Whether to include deleted events (with status equals &quot;cancelled&quot;) in the result. Cancelled instances of recurring events (but not the underlying recurring event) will still be included if showDeleted and singleEvents are both False. If showDeleted and singleEvents are both True, only single instances of deleted events (but not the underlying recurring events) are returned. Optional. The default is False.    </p>
-</div><h4 id='method.shared_extended_property' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.shared_extended_property' class='fnname'>shared_extended_property</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>shared extended property</em> query property to the given value.</p>
+</div><h4 id='method.add_shared_extended_property' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_shared_extended_property' class='fnname'>add_shared_extended_property</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>shared extended property</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Extended properties constraint specified as propertyName=value. Matches only shared properties. This parameter might be repeated multiple times to return events that match all given constraints.    </p>
 </div><h4 id='method.q' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.q' class='fnname'>q</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>q</em> query property to the given value.</p>
 
 <p>Free text search terms to find events that match these terms in any field, except for extended properties. Optional.    </p>
-</div><h4 id='method.private_extended_property' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.private_extended_property' class='fnname'>private_extended_property</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>private extended property</em> query property to the given value.</p>
+</div><h4 id='method.add_private_extended_property' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_private_extended_property' class='fnname'>add_private_extended_property</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>private extended property</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Extended properties constraint specified as propertyName=value. Matches only private properties. This parameter might be repeated multiple times to return events that match all given constraints.    </p>
 </div><h4 id='method.page_token' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.page_token' class='fnname'>page_token</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../calendar3/struct.EventListMethodBuilder.html' title='calendar3::EventListMethodBuilder'>EventListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>

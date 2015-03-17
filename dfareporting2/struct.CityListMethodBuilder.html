@@ -43,8 +43,8 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>dfareporting2</a>::<wbr><a class='struct' href=''>CityListMethodBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-144759' href='../src/dfareporting2/lib.rs.html#33694-33708'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct CityListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where NC: 'a, C: 'a, A: 'a</span> {
+        </span><a id='src-201541' href='../src/dfareporting2/lib.rs.html#42955-42967'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct CityListMethodBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>Retrieves a list of cities, possibly filtered.</p>
 
@@ -60,13 +60,13 @@ It is not used directly, but through a <code>CityMethodsBuilder</code>.</p>
 <span class='comment'>// execute the final call using `doit()`.</span>
 <span class='comment'>// Values shown here are possibly random and not representative !</span>
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>cities</span>().<span class='ident'>list</span>(<span class='string'>&quot;profileId&quot;</span>)
-             .<span class='ident'>region_dart_ids</span>(<span class='string'>&quot;amet&quot;</span>)
+             .<span class='ident'>add_region_dart_ids</span>(<span class='string'>&quot;amet&quot;</span>)
              .<span class='ident'>name_prefix</span>(<span class='string'>&quot;Lorem&quot;</span>)
-             .<span class='ident'>dart_ids</span>(<span class='string'>&quot;eirmod&quot;</span>)
-             .<span class='ident'>country_dart_ids</span>(<span class='string'>&quot;elitr&quot;</span>)
+             .<span class='ident'>add_dart_ids</span>(<span class='string'>&quot;eirmod&quot;</span>)
+             .<span class='ident'>add_country_dart_ids</span>(<span class='string'>&quot;elitr&quot;</span>)
              .<span class='ident'>doit</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt; + 'a, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a class='struct' href='../dfareporting2/struct.CitiesListResponse.html' title='dfareporting2::CitiesListResponse'>CitiesListResponse</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.doit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.doit' class='fnname'>doit</a>(self) -&gt; <a class='enum' href='../dfareporting2/cmn/enum.Result.html' title='dfareporting2::cmn::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../dfareporting2/struct.CitiesListResponse.html' title='dfareporting2::CitiesListResponse'>CitiesListResponse</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Perform the operation you have build so far.</p>
 </div><h4 id='method.profile_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.profile_id' class='fnname'>profile_id</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>profile id</em> path property to the given value.</p>
@@ -75,20 +75,23 @@ It is not used directly, but through a <code>CityMethodsBuilder</code>.</p>
 we provide this method for API completeness.</p>
 
 <p>User profile ID associated with this request.    </p>
-</div><h4 id='method.region_dart_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.region_dart_ids' class='fnname'>region_dart_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>region dart ids</em> query property to the given value.</p>
+</div><h4 id='method.add_region_dart_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_region_dart_ids' class='fnname'>add_region_dart_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>region dart ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only cities from these regions.    </p>
 </div><h4 id='method.name_prefix' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.name_prefix' class='fnname'>name_prefix</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Sets the <em>name prefix</em> query property to the given value.</p>
 
 <p>Select only cities with names starting with this prefix.    </p>
-</div><h4 id='method.dart_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.dart_ids' class='fnname'>dart_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>dart ids</em> query property to the given value.</p>
+</div><h4 id='method.add_dart_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_dart_ids' class='fnname'>add_dart_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>dart ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only cities with these DART IDs.    </p>
-</div><h4 id='method.country_dart_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.country_dart_ids' class='fnname'>country_dart_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-<div class='docblock'><p>Sets the <em>country dart ids</em> query property to the given value.</p>
+</div><h4 id='method.add_country_dart_ids' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_country_dart_ids' class='fnname'>add_country_dart_ids</a>(self, new_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Append the given value to the <em>country dart ids</em> query property.
+Each appended value will retain its original ordering and be &#39;/&#39;-separated in the URL&#39;s parameters.</p>
 
 <p>Select only cities from these countries.    </p>
 </div><h4 id='method.delegate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delegate' class='fnname'>delegate</a>(self, new_value: &amp;'a mut <a class='trait' href='../dfareporting2/cmn/trait.Delegate.html' title='dfareporting2::cmn::Delegate'>Delegate</a>) -&gt; <a class='struct' href='../dfareporting2/struct.CityListMethodBuilder.html' title='dfareporting2::CityListMethodBuilder'>CityListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
