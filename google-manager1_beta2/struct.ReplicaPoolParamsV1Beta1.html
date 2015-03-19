@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ReplicaPoolParamsV1Beta1` struct in crate `google-manager1_beta2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ReplicaPoolParamsV1Beta1">
+
+    <title>google-manager1_beta2::ReplicaPoolParamsV1Beta1 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>google-manager1_beta2</a></p><script>window.sidebarCurrent = {name: 'ReplicaPoolParamsV1Beta1', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-manager1_beta2</a>::<wbr><a class='struct' href=''>ReplicaPoolParamsV1Beta1</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-8105' href='../src/google-manager1_beta2/lib.rs.html#964-993'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ReplicaPoolParamsV1Beta1 {
+    pub disks_to_create: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../google-manager1_beta2/struct.NewDisk.html' title='google-manager1_beta2::NewDisk'>NewDisk</a>&gt;,
+    pub auto_restart: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+    pub can_ip_forward: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>&gt;,
+    pub description: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+    pub zone: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+    pub tags: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../google-manager1_beta2/struct.Tag.html' title='google-manager1_beta2::Tag'>Tag</a>&gt;,
+    pub on_host_maintenance: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+    pub disks_to_attach: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../google-manager1_beta2/struct.ExistingDisk.html' title='google-manager1_beta2::ExistingDisk'>ExistingDisk</a>&gt;,
+    pub machine_type: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+    pub base_instance_name: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+    pub init_action: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
+    pub metadata: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../google-manager1_beta2/struct.Metadata.html' title='google-manager1_beta2::Metadata'>Metadata</a>&gt;,
+    pub service_accounts: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../google-manager1_beta2/struct.ServiceAccount.html' title='google-manager1_beta2::ServiceAccount'>ServiceAccount</a>&gt;,
+    pub network_interfaces: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../google-manager1_beta2/struct.NetworkInterface.html' title='google-manager1_beta2::NetworkInterface'>NetworkInterface</a>&gt;,
+}</pre><div class='docblock'><p>Configuration information for a ReplicaPools v1beta1 API resource. Directly maps to ReplicaPool InitTemplate.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.disks_to_create'><a class='stability Unmarked' title='No stability level'></a><code>disks_to_create</code></td><td><div class='docblock'><p>A list of Disk resources to create and attach to each Replica in the Pool. Currently, you can only define one disk and it must be a root persistent disk. Note that Replica Pool will create a root persistent disk for each replica.</p>
+</div></td></tr><tr><td id='structfield.auto_restart'><a class='stability Unmarked' title='No stability level'></a><code>auto_restart</code></td><td><div class='docblock'><p>Whether these replicas should be restarted if they experience a failure. The default value is true.</p>
+</div></td></tr><tr><td id='structfield.can_ip_forward'><a class='stability Unmarked' title='No stability level'></a><code>can_ip_forward</code></td><td><div class='docblock'><p>Enables IP Forwarding</p>
+</div></td></tr><tr><td id='structfield.description'><a class='stability Unmarked' title='No stability level'></a><code>description</code></td><td><div class='docblock'><p>An optional textual description of the resource.</p>
+</div></td></tr><tr><td id='structfield.zone'><a class='stability Unmarked' title='No stability level'></a><code>zone</code></td><td><div class='docblock'><p>The zone for this ReplicaPool.</p>
+</div></td></tr><tr><td id='structfield.tags'><a class='stability Unmarked' title='No stability level'></a><code>tags</code></td><td><div class='docblock'><p>A list of tags to apply to the Google Compute Engine instance to identify resources.</p>
+</div></td></tr><tr><td id='structfield.on_host_maintenance'><a class='stability Unmarked' title='No stability level'></a><code>on_host_maintenance</code></td><td><div class='docblock'><p>no description provided</p>
+</div></td></tr><tr><td id='structfield.disks_to_attach'><a class='stability Unmarked' title='No stability level'></a><code>disks_to_attach</code></td><td><div class='docblock'><p>A list of existing Persistent Disk resources to attach to each replica in the pool. Each disk will be attached in read-only mode to every replica.</p>
+</div></td></tr><tr><td id='structfield.machine_type'><a class='stability Unmarked' title='No stability level'></a><code>machine_type</code></td><td><div class='docblock'><p>The machine type for this instance. Either a complete URL, or the resource name (e.g. n1-standard-1).</p>
+</div></td></tr><tr><td id='structfield.base_instance_name'><a class='stability Unmarked' title='No stability level'></a><code>base_instance_name</code></td><td><div class='docblock'><p>The base name for instances within this ReplicaPool.</p>
+</div></td></tr><tr><td id='structfield.init_action'><a class='stability Unmarked' title='No stability level'></a><code>init_action</code></td><td><div class='docblock'><p>Name of the Action to be run during initialization of a ReplicaPoolModule.</p>
+</div></td></tr><tr><td id='structfield.metadata'><a class='stability Unmarked' title='No stability level'></a><code>metadata</code></td><td><div class='docblock'><p>The metadata key/value pairs assigned to this instance.</p>
+</div></td></tr><tr><td id='structfield.service_accounts'><a class='stability Unmarked' title='No stability level'></a><code>service_accounts</code></td><td><div class='docblock'><p>A list of Service Accounts to enable for this instance.</p>
+</div></td></tr><tr><td id='structfield.network_interfaces'><a class='stability Unmarked' title='No stability level'></a><code>network_interfaces</code></td><td><div class='docblock'><p>A list of network interfaces for the instance. Currently only one interface is supported by Google Compute Engine.</p>
+</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-manager1_beta2/cmn/trait.Part.html' title='google-manager1_beta2::cmn::Part'>Part</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-manager1_beta2/cmn/trait.RequestValue.html' title='google-manager1_beta2::cmn::RequestValue'>RequestValue</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-manager1_beta2/cmn/trait.ResponseResult.html' title='google-manager1_beta2::cmn::ResponseResult'>ResponseResult</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-manager1_beta2/cmn/trait.Resource.html' title='google-manager1_beta2::cmn::Resource'>Resource</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'></div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../rustc-serialize/serialize/trait.Decodable.html' title='rustc-serialize::serialize::Decodable'>Decodable</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'><h4 id='method.decode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.decode' class='fnname'>decode</a>&lt;__D: <a class='trait' href='../rustc-serialize/serialize/trait.Decoder.html' title='rustc-serialize::serialize::Decoder'>Decoder</a>&gt;(__arg_0: &amp;mut __D) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a>, Error&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../rustc-serialize/serialize/trait.Encodable.html' title='rustc-serialize::serialize::Encodable'>Encodable</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'><h4 id='method.encode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.encode' class='fnname'>encode</a>&lt;__S: <a class='trait' href='../rustc-serialize/serialize/trait.Encoder.html' title='rustc-serialize::serialize::Encoder'>Encoder</a>&gt;(&amp;self, __arg_0: &amp;mut __S) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, Error&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h4>
+<h4 id='method.clone_from' class='tymethod'><a class='stability Unstable' title='Unstable: this function is rarely used'></a><code>fn <a href='#tymethod.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a> for <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h3><div class='impl-items'><h4 id='method.default' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.default' class='fnname'>default</a>() -&gt; <a class='struct' href='../google-manager1_beta2/struct.ReplicaPoolParamsV1Beta1.html' title='google-manager1_beta2::ReplicaPoolParamsV1Beta1'>ReplicaPoolParamsV1Beta1</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "google-manager1_beta2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

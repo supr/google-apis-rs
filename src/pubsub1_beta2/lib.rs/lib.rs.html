@@ -4138,62 +4138,6 @@
 <span id="4096">4096</span>
 <span id="4097">4097</span>
 <span id="4098">4098</span>
-<span id="4099">4099</span>
-<span id="4100">4100</span>
-<span id="4101">4101</span>
-<span id="4102">4102</span>
-<span id="4103">4103</span>
-<span id="4104">4104</span>
-<span id="4105">4105</span>
-<span id="4106">4106</span>
-<span id="4107">4107</span>
-<span id="4108">4108</span>
-<span id="4109">4109</span>
-<span id="4110">4110</span>
-<span id="4111">4111</span>
-<span id="4112">4112</span>
-<span id="4113">4113</span>
-<span id="4114">4114</span>
-<span id="4115">4115</span>
-<span id="4116">4116</span>
-<span id="4117">4117</span>
-<span id="4118">4118</span>
-<span id="4119">4119</span>
-<span id="4120">4120</span>
-<span id="4121">4121</span>
-<span id="4122">4122</span>
-<span id="4123">4123</span>
-<span id="4124">4124</span>
-<span id="4125">4125</span>
-<span id="4126">4126</span>
-<span id="4127">4127</span>
-<span id="4128">4128</span>
-<span id="4129">4129</span>
-<span id="4130">4130</span>
-<span id="4131">4131</span>
-<span id="4132">4132</span>
-<span id="4133">4133</span>
-<span id="4134">4134</span>
-<span id="4135">4135</span>
-<span id="4136">4136</span>
-<span id="4137">4137</span>
-<span id="4138">4138</span>
-<span id="4139">4139</span>
-<span id="4140">4140</span>
-<span id="4141">4141</span>
-<span id="4142">4142</span>
-<span id="4143">4143</span>
-<span id="4144">4144</span>
-<span id="4145">4145</span>
-<span id="4146">4146</span>
-<span id="4147">4147</span>
-<span id="4148">4148</span>
-<span id="4149">4149</span>
-<span id="4150">4150</span>
-<span id="4151">4151</span>
-<span id="4152">4152</span>
-<span id="4153">4153</span>
-<span id="4154">4154</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -4379,20 +4323,6 @@
 <span class='comment'>// ##############</span>
 <span class='comment'>// UTILITIES ###</span>
 <span class='comment'>// ############</span>
-
-<span class='doccomment'>/// This macro is advertised in the documentation, which is why we deliver it as well</span>
-<span class='attribute'>#[<span class='ident'>macro_export</span>]</span>
-<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>map</span>(
-    { $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>key</span>:<span class='ident'>expr</span> <span class='op'>=&gt;</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>value</span>:<span class='ident'>expr</span>),<span class='op'>+</span> } <span class='op'>=&gt;</span> {
-        {
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>m</span> <span class='op'>=</span> ::<span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>::<span class='ident'>new</span>();
-            $(
-                <span class='ident'>m</span>.<span class='ident'>insert</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>key</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>value</span>);
-            )<span class='op'>+</span>
-            <span class='ident'>m</span>
-        }
-     };
-);
 
 <span class='doccomment'>/// Identifies the an OAuth2 authorization scope.</span>
 <span class='doccomment'>/// A scope is needed when requesting an</span>
@@ -5287,8 +5217,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.list&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.list&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -5296,16 +5227,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -5521,8 +5448,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.pull&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.pull&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;POST&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -5532,16 +5460,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -5752,8 +5676,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.create&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.create&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;PUT&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -5763,16 +5688,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -5976,8 +5897,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.delete&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.delete&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;DELETE&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -5985,16 +5907,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -6196,8 +6114,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.modifyPushConfig&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.modifyPushConfig&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;POST&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -6207,16 +6126,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -6427,8 +6342,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.publish&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.publish&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;POST&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -6438,16 +6354,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -6651,8 +6563,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.get&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.get&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -6660,16 +6573,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -6871,8 +6780,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.modifyAckDeadline&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.modifyAckDeadline&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;POST&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -6882,16 +6792,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -7102,8 +7008,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.acknowledge&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.acknowledge&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;POST&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -7113,16 +7020,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -7326,8 +7229,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.delete&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.delete&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;DELETE&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -7335,16 +7239,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -7546,8 +7446,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.create&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.create&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;PUT&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -7557,16 +7458,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -7770,8 +7667,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.get&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.get&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -7779,16 +7677,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -7993,8 +7887,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.subscriptions.list&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.topics.subscriptions.list&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -8002,16 +7897,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
@@ -8230,8 +8121,9 @@
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
-            <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.list&quot;</span>);
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;pubsub.projects.subscriptions.list&quot;</span>),
+                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
             }
             <span class='kw'>match</span> (<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>()).<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                .<span class='ident'>header</span>(<span class='ident'>hyper</span>::<span class='ident'>header</span>::<span class='ident'>UserAgent</span>(<span class='string'>&quot;google-api-rust-client/0.0.1&quot;</span>.<span class='ident'>to_string</span>()))
@@ -8239,16 +8131,12 @@
                .<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>is_some</span>() {
-                        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>Abort</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>),
-                            <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                    } <span class='kw'>else</span> {
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>);
                     }
+                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {

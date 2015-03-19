@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RollingUpdatePolicy` struct in crate `google-replicapoolupdater1_beta1`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RollingUpdatePolicy">
+
+    <title>google-replicapoolupdater1_beta1::RollingUpdatePolicy - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>google-replicapoolupdater1_beta1</a></p><script>window.sidebarCurrent = {name: 'RollingUpdatePolicy', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-replicapoolupdater1_beta1</a>::<wbr><a class='struct' href=''>RollingUpdatePolicy</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-3515' href='../src/google-replicapoolupdater1_beta1/lib.rs.html#542-555'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RollingUpdatePolicy {
+    pub sleep_after_instance_restart_sec: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+    pub instance_startup_timeout_sec: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+    pub max_num_concurrent_instances: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+    pub min_instance_update_time_sec: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+    pub auto_pause_after_instances: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+    pub max_num_failed_instances: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;,
+}</pre><div class='docblock'><p>Parameters of the update process.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.sleep_after_instance_restart_sec'><a class='stability Unmarked' title='No stability level'></a><code>sleep_after_instance_restart_sec</code></td><td><div class='docblock'><p>Time period after the instance has been restarted but before marking the update of this instance as done. This field is deprecated and ignored by Rolling Updater.</p>
+</div></td></tr><tr><td id='structfield.instance_startup_timeout_sec'><a class='stability Unmarked' title='No stability level'></a><code>instance_startup_timeout_sec</code></td><td><div class='docblock'><p>Maximum amount of time we will wait after finishing all steps until we receive HEALTHY state for instance. If this deadline is exceeded instance update is considered as failed.</p>
+</div></td></tr><tr><td id='structfield.max_num_concurrent_instances'><a class='stability Unmarked' title='No stability level'></a><code>max_num_concurrent_instances</code></td><td><div class='docblock'><p>Maximum number of instances that can be updated simultaneously (concurrently). An update of an instance starts when the instance is about to be restarted and finishes after the instance has been restarted and the sleep period (defined by sleepAfterInstanceRestartSec) has passed.</p>
+</div></td></tr><tr><td id='structfield.min_instance_update_time_sec'><a class='stability Unmarked' title='No stability level'></a><code>min_instance_update_time_sec</code></td><td><div class='docblock'><p>Specifies minimum amount of time we will spend on updating single instance, measuring at the start of the first update action (e.g. Recreate call on Instance Group Manager or Stop call on Instance resource). If actual instance update takes less time we will simply sleep before proceeding with next instance.</p>
+</div></td></tr><tr><td id='structfield.auto_pause_after_instances'><a class='stability Unmarked' title='No stability level'></a><code>auto_pause_after_instances</code></td><td><div class='docblock'><p>Number of instances updated before the update gets automatically paused.</p>
+</div></td></tr><tr><td id='structfield.max_num_failed_instances'><a class='stability Unmarked' title='No stability level'></a><code>max_num_failed_instances</code></td><td><div class='docblock'><p>Maximum number of instance updates that can fail without failing the group update. Instance update is considered failed if any of it&#39;s update actions (e.g. Stop call on Instance resource in Rolling Reboot) failed with permanent failure, or if after finishing all update actions this instance is in UNHEALTHY state.</p>
+</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-replicapoolupdater1_beta1/cmn/trait.NestedType.html' title='google-replicapoolupdater1_beta1::cmn::NestedType'>NestedType</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-replicapoolupdater1_beta1/cmn/trait.Part.html' title='google-replicapoolupdater1_beta1::cmn::Part'>Part</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-replicapoolupdater1_beta1/cmn/trait.RequestValue.html' title='google-replicapoolupdater1_beta1::cmn::RequestValue'>RequestValue</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-replicapoolupdater1_beta1/cmn/trait.ResponseResult.html' title='google-replicapoolupdater1_beta1::cmn::ResponseResult'>ResponseResult</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../google-replicapoolupdater1_beta1/cmn/trait.Resource.html' title='google-replicapoolupdater1_beta1::cmn::Resource'>Resource</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'></div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../rustc-serialize/serialize/trait.Decodable.html' title='rustc-serialize::serialize::Decodable'>Decodable</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'><h4 id='method.decode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.decode' class='fnname'>decode</a>&lt;__D: <a class='trait' href='../rustc-serialize/serialize/trait.Decoder.html' title='rustc-serialize::serialize::Decoder'>Decoder</a>&gt;(__arg_0: &amp;mut __D) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a>, Error&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../rustc-serialize/serialize/trait.Encodable.html' title='rustc-serialize::serialize::Encodable'>Encodable</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'><h4 id='method.encode' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.encode' class='fnname'>encode</a>&lt;__S: <a class='trait' href='../rustc-serialize/serialize/trait.Encoder.html' title='rustc-serialize::serialize::Encoder'>Encoder</a>&gt;(&amp;self, __arg_0: &amp;mut __S) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, Error&gt;</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h4>
+<h4 id='method.clone_from' class='tymethod'><a class='stability Unstable' title='Unstable: this function is rarely used'></a><code>fn <a href='#tymethod.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a> for <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h3><div class='impl-items'><h4 id='method.default' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.default' class='fnname'>default</a>() -&gt; <a class='struct' href='../google-replicapoolupdater1_beta1/struct.RollingUpdatePolicy.html' title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "google-replicapoolupdater1_beta1";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

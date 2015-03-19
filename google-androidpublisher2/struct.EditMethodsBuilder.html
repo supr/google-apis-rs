@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `EditMethodsBuilder` struct in crate `google-androidpublisher2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, EditMethodsBuilder">
+
+    <title>google-androidpublisher2::EditMethodsBuilder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>google-androidpublisher2</a></p><script>window.sidebarCurrent = {name: 'EditMethodsBuilder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-androidpublisher2</a>::<wbr><a class='struct' href=''>EditMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-12026' href='../src/google-androidpublisher2/lib.rs.html#1667-1671'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct EditMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
+    // some fields omitted
+}</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>edit</em> resources.
+It is not used directly, but through the <code>AndroidPublisher</code> hub.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1>
+<p>Instantiate a resource builder</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-androidpublisher2&quot;</span> <span class='kw'>as</span> <span class='ident'>androidpublisher2</span>;
+ 
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>androidpublisher2</span>::<span class='ident'>AndroidPublisher</span>;
+ 
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>AndroidPublisher</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// like `apklistings_delete(...)`, `apklistings_deleteall(...)`, `apklistings_get(...)`, `apklistings_list(...)`, `apklistings_patch(...)`, `apklistings_update(...)`, `apks_addexternallyhosted(...)`, `apks_list(...)`, `apks_upload(...)`, `commit(...)`, `delete(...)`, `details_get(...)`, `details_patch(...)`, `details_update(...)`, `expansionfiles_get(...)`, `expansionfiles_patch(...)`, `expansionfiles_update(...)`, `expansionfiles_upload(...)`, `get(...)`, `images_delete(...)`, `images_deleteall(...)`, `images_list(...)`, `images_upload(...)`, `insert(...)`, `listings_delete(...)`, `listings_deleteall(...)`, `listings_get(...)`, `listings_list(...)`, `listings_patch(...)`, `listings_update(...)`, `testers_get(...)`, `testers_patch(...)`, `testers_update(...)`, `tracks_get(...)`, `tracks_list(...)`, `tracks_patch(...)`, `tracks_update(...)` and `validate(...)`</span>
+<span class='comment'>// to build up your call.</span>
+<span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>edits</span>();
+</pre>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-androidpublisher2/struct.EditMethodsBuilder.html' title='google-androidpublisher2::EditMethodsBuilder'>EditMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.images_upload' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.images_upload' class='fnname'>images_upload</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, image_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditImageUploadMethodBuilder.html' title='google-androidpublisher2::EditImageUploadMethodBuilder'>EditImageUploadMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Uploads a new image and adds it to the list of images for the specified language and image type.    </p>
+</div><h4 id='method.expansionfiles_update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.expansionfiles_update' class='fnname'>expansionfiles_update</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.ExpansionFile.html' title='google-androidpublisher2::ExpansionFile'>ExpansionFile</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, expansion_file_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditExpansionfileUpdateMethodBuilder.html' title='google-androidpublisher2::EditExpansionfileUpdateMethodBuilder'>EditExpansionfileUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates the APK&#39;s Expansion File configuration to reference another APK&#39;s Expansion Files. To add a new Expansion File use the Upload method.    </p>
+</div><h4 id='method.details_get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.details_get' class='fnname'>details_get</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditDetailGetMethodBuilder.html' title='google-androidpublisher2::EditDetailGetMethodBuilder'>EditDetailGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Fetches app details for this edit. This includes the default language and developer support contact information.    </p>
+</div><h4 id='method.apklistings_delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apklistings_delete' class='fnname'>apklistings_delete</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApklistingDeleteMethodBuilder.html' title='google-androidpublisher2::EditApklistingDeleteMethodBuilder'>EditApklistingDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes the APK-specific localized listing for a specified APK and language code.    </p>
+</div><h4 id='method.listings_deleteall' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listings_deleteall' class='fnname'>listings_deleteall</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditListingDeleteallMethodBuilder.html' title='google-androidpublisher2::EditListingDeleteallMethodBuilder'>EditListingDeleteallMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes all localized listings from an edit.    </p>
+</div><h4 id='method.apks_addexternallyhosted' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apks_addexternallyhosted' class='fnname'>apks_addexternallyhosted</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.ApksAddExternallyHostedRequest.html' title='google-androidpublisher2::ApksAddExternallyHostedRequest'>ApksAddExternallyHostedRequest</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApkAddexternallyhostedMethodBuilder.html' title='google-androidpublisher2::EditApkAddexternallyhostedMethodBuilder'>EditApkAddexternallyhostedMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to enterprises using Google Play for work whose application is configured to restrict distribution to the enterprise domain.    </p>
+</div><h4 id='method.apklistings_deleteall' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apklistings_deleteall' class='fnname'>apklistings_deleteall</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApklistingDeleteallMethodBuilder.html' title='google-androidpublisher2::EditApklistingDeleteallMethodBuilder'>EditApklistingDeleteallMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes all the APK-specific localized listings for a specified APK.    </p>
+</div><h4 id='method.details_update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.details_update' class='fnname'>details_update</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.AppDetails.html' title='google-androidpublisher2::AppDetails'>AppDetails</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditDetailUpdateMethodBuilder.html' title='google-androidpublisher2::EditDetailUpdateMethodBuilder'>EditDetailUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates app details for this edit.    </p>
+</div><h4 id='method.tracks_get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tracks_get' class='fnname'>tracks_get</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, track: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditTrackGetMethodBuilder.html' title='google-androidpublisher2::EditTrackGetMethodBuilder'>EditTrackGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Fetches the track configuration for the specified track type. Includes the APK version codes that are in this track.    </p>
+</div><h4 id='method.expansionfiles_patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.expansionfiles_patch' class='fnname'>expansionfiles_patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.ExpansionFile.html' title='google-androidpublisher2::ExpansionFile'>ExpansionFile</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, expansion_file_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditExpansionfilePatchMethodBuilder.html' title='google-androidpublisher2::EditExpansionfilePatchMethodBuilder'>EditExpansionfilePatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates the APK&#39;s Expansion File configuration to reference another APK&#39;s Expansion Files. To add a new Expansion File use the Upload method. This method supports patch semantics.    </p>
+</div><h4 id='method.images_list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.images_list' class='fnname'>images_list</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, image_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditImageListMethodBuilder.html' title='google-androidpublisher2::EditImageListMethodBuilder'>EditImageListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Lists all images for the specified language and image type.    </p>
+</div><h4 id='method.tracks_update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tracks_update' class='fnname'>tracks_update</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.Track.html' title='google-androidpublisher2::Track'>Track</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, track: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditTrackUpdateMethodBuilder.html' title='google-androidpublisher2::EditTrackUpdateMethodBuilder'>EditTrackUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new APKs will cause it to resume.    </p>
+</div><h4 id='method.listings_patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listings_patch' class='fnname'>listings_patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.Listing.html' title='google-androidpublisher2::Listing'>Listing</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditListingPatchMethodBuilder.html' title='google-androidpublisher2::EditListingPatchMethodBuilder'>EditListingPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Creates or updates a localized store listing. This method supports patch semantics.    </p>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditGetMethodBuilder.html' title='google-androidpublisher2::EditGetMethodBuilder'>EditGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Returns information about the edit specified. Calls will fail if the edit is no long active (e.g. has been deleted, superseded or expired).    </p>
+</div><h4 id='method.images_delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.images_delete' class='fnname'>images_delete</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, image_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, image_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditImageDeleteMethodBuilder.html' title='google-androidpublisher2::EditImageDeleteMethodBuilder'>EditImageDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes the image (specified by id) from the edit.    </p>
+</div><h4 id='method.apks_upload' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apks_upload' class='fnname'>apks_upload</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApkUploadMethodBuilder.html' title='google-androidpublisher2::EditApkUploadMethodBuilder'>EditApkUploadMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.apklistings_update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apklistings_update' class='fnname'>apklistings_update</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.ApkListing.html' title='google-androidpublisher2::ApkListing'>ApkListing</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApklistingUpdateMethodBuilder.html' title='google-androidpublisher2::EditApklistingUpdateMethodBuilder'>EditApklistingUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates or creates the APK-specific localized listing for a specified APK and language code.    </p>
+</div><h4 id='method.apks_list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apks_list' class='fnname'>apks_list</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApkListMethodBuilder.html' title='google-androidpublisher2::EditApkListMethodBuilder'>EditApkListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.apklistings_patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apklistings_patch' class='fnname'>apklistings_patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.ApkListing.html' title='google-androidpublisher2::ApkListing'>ApkListing</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApklistingPatchMethodBuilder.html' title='google-androidpublisher2::EditApklistingPatchMethodBuilder'>EditApklistingPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates or creates the APK-specific localized listing for a specified APK and language code. This method supports patch semantics.    </p>
+</div><h4 id='method.listings_get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listings_get' class='fnname'>listings_get</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditListingGetMethodBuilder.html' title='google-androidpublisher2::EditListingGetMethodBuilder'>EditListingGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Fetches information about a localized store listing.    </p>
+</div><h4 id='method.testers_get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.testers_get' class='fnname'>testers_get</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, track: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditTesterGetMethodBuilder.html' title='google-androidpublisher2::EditTesterGetMethodBuilder'>EditTesterGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditDeleteMethodBuilder.html' title='google-androidpublisher2::EditDeleteMethodBuilder'>EditDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes an edit for an app. Creating a new edit will automatically delete any of your previous edits so this method need only be called if you want to preemptively abandon an edit.    </p>
+</div><h4 id='method.expansionfiles_upload' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.expansionfiles_upload' class='fnname'>expansionfiles_upload</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, expansion_file_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditExpansionfileUploadMethodBuilder.html' title='google-androidpublisher2::EditExpansionfileUploadMethodBuilder'>EditExpansionfileUploadMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Uploads and attaches a new Expansion File to the APK specified.    </p>
+</div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.AppEdit.html' title='google-androidpublisher2::AppEdit'>AppEdit</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditInsertMethodBuilder.html' title='google-androidpublisher2::EditInsertMethodBuilder'>EditInsertMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Creates a new edit for an app, populated with the app&#39;s current state.    </p>
+</div><h4 id='method.listings_list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listings_list' class='fnname'>listings_list</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditListingListMethodBuilder.html' title='google-androidpublisher2::EditListingListMethodBuilder'>EditListingListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Returns all of the localized store listings attached to this edit.    </p>
+</div><h4 id='method.testers_patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.testers_patch' class='fnname'>testers_patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.Testers.html' title='google-androidpublisher2::Testers'>Testers</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, track: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditTesterPatchMethodBuilder.html' title='google-androidpublisher2::EditTesterPatchMethodBuilder'>EditTesterPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.commit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.commit' class='fnname'>commit</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditCommitMethodBuilder.html' title='google-androidpublisher2::EditCommitMethodBuilder'>EditCommitMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Commits/applies the changes made in this edit back to the app.    </p>
+</div><h4 id='method.tracks_list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tracks_list' class='fnname'>tracks_list</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditTrackListMethodBuilder.html' title='google-androidpublisher2::EditTrackListMethodBuilder'>EditTrackListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Lists all the track configurations for this edit.    </p>
+</div><h4 id='method.validate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.validate' class='fnname'>validate</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditValidateMethodBuilder.html' title='google-androidpublisher2::EditValidateMethodBuilder'>EditValidateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Checks that the edit can be successfully committed. The edit&#39;s changes are not applied to the live app.    </p>
+</div><h4 id='method.listings_update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listings_update' class='fnname'>listings_update</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.Listing.html' title='google-androidpublisher2::Listing'>Listing</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditListingUpdateMethodBuilder.html' title='google-androidpublisher2::EditListingUpdateMethodBuilder'>EditListingUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Creates or updates a localized store listing.    </p>
+</div><h4 id='method.expansionfiles_get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.expansionfiles_get' class='fnname'>expansionfiles_get</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, expansion_file_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditExpansionfileGetMethodBuilder.html' title='google-androidpublisher2::EditExpansionfileGetMethodBuilder'>EditExpansionfileGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Fetches the Expansion File configuration for the APK specified.    </p>
+</div><h4 id='method.images_deleteall' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.images_deleteall' class='fnname'>images_deleteall</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, image_type: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditImageDeleteallMethodBuilder.html' title='google-androidpublisher2::EditImageDeleteallMethodBuilder'>EditImageDeleteallMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes all images for the specified language and image type.    </p>
+</div><h4 id='method.details_patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.details_patch' class='fnname'>details_patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.AppDetails.html' title='google-androidpublisher2::AppDetails'>AppDetails</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditDetailPatchMethodBuilder.html' title='google-androidpublisher2::EditDetailPatchMethodBuilder'>EditDetailPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates app details for this edit. This method supports patch semantics.    </p>
+</div><h4 id='method.tracks_patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.tracks_patch' class='fnname'>tracks_patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.Track.html' title='google-androidpublisher2::Track'>Track</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, track: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditTrackPatchMethodBuilder.html' title='google-androidpublisher2::EditTrackPatchMethodBuilder'>EditTrackPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new APKs will cause it to resume. This method supports patch semantics.    </p>
+</div><h4 id='method.listings_delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listings_delete' class='fnname'>listings_delete</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditListingDeleteMethodBuilder.html' title='google-androidpublisher2::EditListingDeleteMethodBuilder'>EditListingDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Deletes the specified localized store listing from an edit.    </p>
+</div><h4 id='method.apklistings_get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apklistings_get' class='fnname'>apklistings_get</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, language: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApklistingGetMethodBuilder.html' title='google-androidpublisher2::EditApklistingGetMethodBuilder'>EditApklistingGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Fetches the APK-specific localized listing for a specified APK and language code.    </p>
+</div><h4 id='method.testers_update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.testers_update' class='fnname'>testers_update</a>(&amp;self, request: &amp;<a class='struct' href='../google-androidpublisher2/struct.Testers.html' title='google-androidpublisher2::Testers'>Testers</a>, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, track: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditTesterUpdateMethodBuilder.html' title='google-androidpublisher2::EditTesterUpdateMethodBuilder'>EditTesterUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<h4 id='method.apklistings_list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.apklistings_list' class='fnname'>apklistings_list</a>(&amp;self, package_name: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, edit_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, apk_version_code: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='struct' href='../google-androidpublisher2/struct.EditApklistingListMethodBuilder.html' title='google-androidpublisher2::EditApklistingListMethodBuilder'>EditApklistingListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+<div class='docblock'><p>Create a builder to help you perform the following task:</p>
+
+<p>Lists all the APK-specific localized listings for a specified APK.    </p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-androidpublisher2/cmn/trait.ResourceMethodsBuilder.html' title='google-androidpublisher2::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-androidpublisher2/struct.EditMethodsBuilder.html' title='google-androidpublisher2::EditMethodsBuilder'>EditMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "google-androidpublisher2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

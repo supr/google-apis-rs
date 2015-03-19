@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>groupsmigration1</a>::<wbr><a class='struct' href=''>GroupsMigration</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-234' href='../src/groupsmigration1/lib.rs.html#246-251'>[src]</a></span></h1>
+        </span><a id='src-783' href='../src/groupsmigration1/lib.rs.html#232-238'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct GroupsMigration&lt;C, NC, A&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Central instance to access all GroupsMigration related resource activities</p>
@@ -78,7 +78,7 @@
 <span class='comment'>// execute the final call using `upload(...)`.</span>
 <span class='comment'>// Values shown here are possibly random and not representative !</span>
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>archive</span>().<span class='ident'>insert</span>(<span class='string'>&quot;groupId&quot;</span>)
-             .<span class='ident'>upload</span>(<span class='ident'>fs</span>::<span class='ident'>File</span>::<span class='ident'>open</span>(<span class='string'>&quot;file.ext&quot;</span>).<span class='ident'>unwrap</span>(), <span class='number'>282</span>, <span class='string'>&quot;application/octet-stream&quot;</span>.<span class='ident'>parse</span>().<span class='ident'>unwrap</span>());
+             .<span class='ident'>upload</span>(<span class='ident'>fs</span>::<span class='ident'>File</span>::<span class='ident'>open</span>(<span class='string'>&quot;file.ext&quot;</span>).<span class='ident'>unwrap</span>(), <span class='string'>&quot;application/octet-stream&quot;</span>.<span class='ident'>parse</span>().<span class='ident'>unwrap</span>());
  
 <span class='kw'>match</span> <span class='ident'>result</span> {
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
@@ -91,7 +91,12 @@
 </pre>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../groupsmigration1/struct.GroupsMigration.html' title='groupsmigration1::GroupsMigration'>GroupsMigration</a>&lt;C, NC, A&gt; <span class='where'>where NC: <a class='trait' href='../hyper/net/trait.NetworkConnector.html' title='hyper::net::NetworkConnector'>NetworkConnector</a>, C: <a class='trait' href='http://doc.rust-lang.org/nightly/collections/borrow/trait.BorrowMut.html' title='collections::borrow::BorrowMut'>BorrowMut</a>&lt;<a class='struct' href='../hyper/client/struct.Client.html' title='hyper::client::Client'>Client</a>&lt;NC&gt;&gt;, A: <a class='trait' href='../yup-oauth2/helper/trait.GetToken.html' title='yup-oauth2::helper::GetToken'>GetToken</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(client: C, authenticator: A) -&gt; <a class='struct' href='../groupsmigration1/struct.GroupsMigration.html' title='groupsmigration1::GroupsMigration'>GroupsMigration</a>&lt;C, NC, A&gt;</code></h4>
 <h4 id='method.archive' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.archive' class='fnname'>archive</a>(&amp;'a self) -&gt; <a class='struct' href='../groupsmigration1/struct.ArchiveMethodsBuilder.html' title='groupsmigration1::ArchiveMethodsBuilder'>ArchiveMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
-</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../groupsmigration1/cmn/trait.Hub.html' title='groupsmigration1::cmn::Hub'>Hub</a> for <a class='struct' href='../groupsmigration1/struct.GroupsMigration.html' title='groupsmigration1::GroupsMigration'>GroupsMigration</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+<h4 id='method.user_agent' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.user_agent' class='fnname'>user_agent</a>(&amp;mut self, agent_name: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Set the user-agent header field to use in all requests to the server.
+It defaults to <code>google-api-rust-client/0.0.1</code>.</p>
+
+<p>Returns the previously set user-agent.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../groupsmigration1/cmn/trait.Hub.html' title='groupsmigration1::cmn::Hub'>Hub</a> for <a class='struct' href='../groupsmigration1/struct.GroupsMigration.html' title='groupsmigration1::GroupsMigration'>GroupsMigration</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

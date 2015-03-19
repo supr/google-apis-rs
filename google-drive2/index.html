@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `google-drive2` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, google-drive2">
+
+    <title>google-drive2 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'google-drive2', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-drive2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/google-drive2/lib.rs.html#5-18276'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>drive</em> crate version <em>0.0.1</em>.
+The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/drive2">on github</a>.</p>
+
+<h1 id="features" class='section-header'><a
+                           href="#features">Features</a></h1>
+<p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Drive.html">hub</a> ... </p>
+
+<ul>
+<li><a href="struct.About.html">about</a> (<a href="struct.AboutGetMethodBuilder.html"><em>get</em></a>)</li>
+<li><a href="struct.App.html">apps</a> (<a href="struct.AppGetMethodBuilder.html"><em>get</em></a> and <a href="struct.AppListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.Change.html">changes</a> (<a href="struct.ChangeGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ChangeListMethodBuilder.html"><em>list</em></a> and <a href="struct.ChangeWatchMethodBuilder.html"><em>watch</em></a>)</li>
+<li><a href="struct.Channel.html">channels</a> (<a href="struct.ChannelStopMethodBuilder.html"><em>stop</em></a>)</li>
+<li>children (<a href="struct.ChildrenDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ChildrenGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ChildrenInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.ChildrenListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.Comment.html">comments</a> (<a href="struct.CommentDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.CommentGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CommentInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.CommentListMethodBuilder.html"><em>list</em></a>, <a href="struct.CommentPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.CommentUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.File.html">files</a> (<a href="struct.FileCopyMethodBuilder.html"><em>copy</em></a>, <a href="struct.FileDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.FileEmptyTrashMethodBuilder.html"><em>empty trash</em></a>, <a href="struct.FileGetMethodBuilder.html"><em>get</em></a>, <a href="struct.FileInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.FileListMethodBuilder.html"><em>list</em></a>, <a href="struct.FilePatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.FileTouchMethodBuilder.html"><em>touch</em></a>, <a href="struct.FileTrashMethodBuilder.html"><em>trash</em></a>, <a href="struct.FileUntrashMethodBuilder.html"><em>untrash</em></a>, <a href="struct.FileUpdateMethodBuilder.html"><em>update</em></a> and <a href="struct.FileWatchMethodBuilder.html"><em>watch</em></a>)</li>
+<li>parents (<a href="struct.ParentDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ParentGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ParentInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.ParentListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.Permission.html">permissions</a> (<a href="struct.PermissionDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.PermissionGetMethodBuilder.html"><em>get</em></a>, <a href="struct.PermissionGetIdForEmailMethodBuilder.html"><em>get id for email</em></a>, <a href="struct.PermissionInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.PermissionListMethodBuilder.html"><em>list</em></a>, <a href="struct.PermissionPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.PermissionUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Property.html">properties</a> (<a href="struct.PropertyDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.PropertyGetMethodBuilder.html"><em>get</em></a>, <a href="struct.PropertyInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.PropertyListMethodBuilder.html"><em>list</em></a>, <a href="struct.PropertyPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.PropertyUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>realtime (<a href="struct.RealtimeGetMethodBuilder.html"><em>get</em></a> and <a href="struct.RealtimeUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>replies (<a href="struct.ReplyDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ReplyGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ReplyInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.ReplyListMethodBuilder.html"><em>list</em></a>, <a href="struct.ReplyPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.ReplyUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Revision.html">revisions</a> (<a href="struct.RevisionDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.RevisionGetMethodBuilder.html"><em>get</em></a>, <a href="struct.RevisionListMethodBuilder.html"><em>list</em></a>, <a href="struct.RevisionPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.RevisionUpdateMethodBuilder.html"><em>update</em></a>)</li>
+</ul>
+
+<p>Upload supported by ...</p>
+
+<ul>
+<li><a href="struct.FileInsertMethodBuilder.html"><em>insert files</em></a></li>
+<li><a href="struct.RealtimeUpdateMethodBuilder.html"><em>update realtime</em></a></li>
+<li><a href="struct.FileUpdateMethodBuilder.html"><em>update files</em></a></li>
+</ul>
+
+<p>Download supported by ...</p>
+
+<ul>
+<li><a href="struct.FileWatchMethodBuilder.html"><em>watch files</em></a></li>
+<li><a href="struct.FileGetMethodBuilder.html"><em>get files</em></a></li>
+<li><a href="struct.RealtimeGetMethodBuilder.html"><em>get realtime</em></a></li>
+</ul>
+
+<p>Subscription supported by ...</p>
+
+<ul>
+<li><a href="struct.FileWatchMethodBuilder.html"><em>watch files</em></a></li>
+<li><a href="struct.FileGetMethodBuilder.html"><em>get files</em></a></li>
+<li><a href="struct.ChangeWatchMethodBuilder.html"><em>watch changes</em></a></li>
+<li><a href="struct.FileInsertMethodBuilder.html"><em>insert files</em></a></li>
+<li><a href="struct.ChangeListMethodBuilder.html"><em>list changes</em></a></li>
+</ul>
+
+<p>Everything else about the <em>drive</em> <em>v2</em> API can be found at the
+<a href="https://developers.google.com/drive/">official documentation site</a>.</p>
+
+<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+
+<h1 id="structure-of-this-library" class='section-header'><a
+                           href="#structure-of-this-library">Structure of this Library</a></h1>
+<p>The API is structured into the following primary items:</p>
+
+<ul>
+<li><strong><a href="struct.Drive.html">Hub</a></strong>
+
+<ul>
+<li>a central object to maintain state and allow accessing all <em>Activities</em></li>
+</ul></li>
+<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+
+<ul>
+<li>primary types that you can apply <em>Activities</em> to</li>
+<li>a collection of properties and <em>Parts</em></li>
+<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+
+<ul>
+<li>a collection of properties</li>
+<li>never directly used in <em>Activities</em></li>
+</ul></li>
+</ul></li>
+<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+
+<ul>
+<li>operations to apply to <em>Resources</em></li>
+</ul></li>
+</ul>
+
+<p>Generally speaking, you can invoke <em>Activities</em> like this:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>resource</span>().<span class='ident'>activity</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>Or specifically ...</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>watch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>empty_trash</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>copy</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>delete</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>patch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>update</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>insert</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>untrash</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>trash</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>touch</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>get</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>The <code>resource()</code> and <code>activity(...)</code> calls create <a href="http://en.wikipedia.org/wiki/Builder_pattern">builders</a>. The second one dealing with <code>Activities</code> 
+supports various methods to configure the impending operation (not shown here). It is made such that all required arguments have to be 
+specified right away (i.e. <code>(...)</code>), whereas all optional ones can be <a href="http://en.wikipedia.org/wiki/Builder_pattern">build up</a> as desired.
+The <code>doit()</code> method performs the actual communication with the server and returns the respective result.</p>
+
+<h1 id="usage" class='section-header'><a
+                           href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+google-drive2 = &quot;0.0.1&quot;
+</code></pre>
+
+<h2 id="a-complete-example" class='section-header'><a
+                           href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-drive2&quot;</span> <span class='kw'>as</span> <span class='ident'>drive2</span>;
+<span class='kw'>use</span> <span class='ident'>drive2</span>::<span class='ident'>File</span>;
+<span class='kw'>use</span> <span class='ident'>drive2</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>drive2</span>::<span class='ident'>Drive</span>;
+ 
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Drive</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// As the method needs a request, you would usually fill it with the desired information</span>
+<span class='comment'>// into the respective structure. Some of the parts shown here might not be applicable !</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span>: <span class='ident'>File</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+ 
+<span class='comment'>// You can configure optional parameters by calling the respective setters at will, and</span>
+<span class='comment'>// execute the final call using `doit()`.</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>files</span>().<span class='ident'>patch</span>(<span class='kw-2'>&amp;</span><span class='ident'>req</span>, <span class='string'>&quot;fileId&quot;</span>)
+             .<span class='ident'>use_content_as_indexable_text</span>(<span class='boolval'>false</span>)
+             .<span class='ident'>update_viewed_date</span>(<span class='boolval'>true</span>)
+             .<span class='ident'>timed_text_track_name</span>(<span class='string'>&quot;gubergren&quot;</span>)
+             .<span class='ident'>timed_text_language</span>(<span class='string'>&quot;sadipscing&quot;</span>)
+             .<span class='ident'>set_modified_date</span>(<span class='boolval'>true</span>)
+             .<span class='ident'>remove_parents</span>(<span class='string'>&quot;ea&quot;</span>)
+             .<span class='ident'>pinned</span>(<span class='boolval'>false</span>)
+             .<span class='ident'>ocr_language</span>(<span class='string'>&quot;justo&quot;</span>)
+             .<span class='ident'>ocr</span>(<span class='boolval'>true</span>)
+             .<span class='ident'>new_revision</span>(<span class='boolval'>true</span>)
+             .<span class='ident'>convert</span>(<span class='boolval'>true</span>)
+             .<span class='ident'>add_parents</span>(<span class='string'>&quot;diam&quot;</span>)
+             .<span class='ident'>doit</span>();
+ 
+<span class='kw'>match</span> <span class='ident'>result</span> {
+    <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
+}
+</pre>
+
+<h2 id="handling-errors" class='section-header'><a
+                           href="#handling-errors">Handling Errors</a></h2>
+<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+the doit() methods, or handed as possibly intermediate results to either the 
+<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+
+<p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
+makes the system potentially resilient to all kinds of errors.</p>
+
+<h2 id="about-uploads-and-downlods" class='section-header'><a
+                           href="#about-uploads-and-downlods">About Uploads and Downlods</a></h2>
+<p>If a method supports downloads, the response body, which is part of the <a href="cmn/enum.Result.html">Result</a>, should be
+read by you to obtain the media.
+If such a method also supports a <a href="cmn/trait.ResponseResult.html">Response Result</a>, it will return that by default.
+You can see it as meta-data for the actual media. To trigger a media download, you will have to set up the builder by making
+this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
+
+<p>Methods supporting uploads can do so using up to 2 different protocols: 
+<em>simple</em> and <em>resumable</em>. The distinctiveness of each is represented by customized 
+<code>doit(...)</code> methods, which are then named <code>upload(...)</code> and <code>upload_resumable(...)</code> respectively.</p>
+
+<h2 id="about-customization/callbacks" class='section-header'><a
+                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
+<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+Respective methods will be called to provide progress information, as well as determine whether the system should 
+retry on failure.</p>
+
+<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+
+<h2 id="about-parts" class='section-header'><a
+                           href="#about-parts">About Parts</a></h2>
+<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
+<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+the server to indicate either the set parts of the request or the desired parts in the response.</p>
+
+<h2 id="about-builder-arguments" class='section-header'><a
+                           href="#about-builder-arguments">About Builder Arguments</a></h2>
+<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+These will always take a single argument, for which the following statements are true.</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
+<li>strings are passed as <code>&amp;str</code></li>
+<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+</ul>
+
+<p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
+                               title='google-drive2::cmn'>cmn</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.About.html'
+                               title='google-drive2::About'>About</a></td>
+                        <td class='docblock short'><p>An item with user information and settings.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AboutGetMethodBuilder.html">get about</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutAdditionalRoleInfo.html'
+                               title='google-drive2::AboutAdditionalRoleInfo'>AboutAdditionalRoleInfo</a></td>
+                        <td class='docblock short'><p>Information about supported additional roles per file type. The most specific type takes precedence.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutAdditionalRoleInfoRoleSets.html'
+                               title='google-drive2::AboutAdditionalRoleInfoRoleSets'>AboutAdditionalRoleInfoRoleSets</a></td>
+                        <td class='docblock short'><p>The supported additional roles per primary role.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutExportFormats.html'
+                               title='google-drive2::AboutExportFormats'>AboutExportFormats</a></td>
+                        <td class='docblock short'><p>The allowable export formats.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutFeatures.html'
+                               title='google-drive2::AboutFeatures'>AboutFeatures</a></td>
+                        <td class='docblock short'><p>List of additional features enabled on this account.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutGetMethodBuilder.html'
+                               title='google-drive2::AboutGetMethodBuilder'>AboutGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the information about the current user along with Drive API settings</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutImportFormats.html'
+                               title='google-drive2::AboutImportFormats'>AboutImportFormats</a></td>
+                        <td class='docblock short'><p>The allowable import formats.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutMaxUploadSizes.html'
+                               title='google-drive2::AboutMaxUploadSizes'>AboutMaxUploadSizes</a></td>
+                        <td class='docblock short'><p>List of max upload sizes for each file type. The most specific type takes precedence.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutMethodsBuilder.html'
+                               title='google-drive2::AboutMethodsBuilder'>AboutMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>about</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AboutQuotaBytesByService.html'
+                               title='google-drive2::AboutQuotaBytesByService'>AboutQuotaBytesByService</a></td>
+                        <td class='docblock short'><p>The amount of storage quota used by different Google services.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.App.html'
+                               title='google-drive2::App'>App</a></td>
+                        <td class='docblock short'><p>The apps resource provides a list of the apps that a user has installed, with information about each app&#39;s supported MIME types, file extensions, and other details.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AppGetMethodBuilder.html">get apps</a> (response)</li>
+<li><a href="struct.AppListMethodBuilder.html">list apps</a> (none)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AppGetMethodBuilder.html'
+                               title='google-drive2::AppGetMethodBuilder'>AppGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a specific app.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AppIcons.html'
+                               title='google-drive2::AppIcons'>AppIcons</a></td>
+                        <td class='docblock short'><p>The various icons for the app.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AppList.html'
+                               title='google-drive2::AppList'>AppList</a></td>
+                        <td class='docblock short'><p>A list of third-party applications which the user has installed or given access to Google Drive.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.AppListMethodBuilder.html">list apps</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AppListMethodBuilder.html'
+                               title='google-drive2::AppListMethodBuilder'>AppListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists a user&#39;s installed apps.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AppMethodsBuilder.html'
+                               title='google-drive2::AppMethodsBuilder'>AppMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>app</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Change.html'
+                               title='google-drive2::Change'>Change</a></td>
+                        <td class='docblock short'><p>Representation of a change to a file.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ChangeListMethodBuilder.html">list changes</a> (none)</li>
+<li><a href="struct.ChangeWatchMethodBuilder.html">watch changes</a> (none)</li>
+<li><a href="struct.ChangeGetMethodBuilder.html">get changes</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeGetMethodBuilder.html'
+                               title='google-drive2::ChangeGetMethodBuilder'>ChangeGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a specific change.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeList.html'
+                               title='google-drive2::ChangeList'>ChangeList</a></td>
+                        <td class='docblock short'><p>A list of changes for a user.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ChangeListMethodBuilder.html">list changes</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeListMethodBuilder.html'
+                               title='google-drive2::ChangeListMethodBuilder'>ChangeListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists the changes for a user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeMethodsBuilder.html'
+                               title='google-drive2::ChangeMethodsBuilder'>ChangeMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>change</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeWatchMethodBuilder.html'
+                               title='google-drive2::ChangeWatchMethodBuilder'>ChangeWatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Subscribe to changes for a user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Channel.html'
+                               title='google-drive2::Channel'>Channel</a></td>
+                        <td class='docblock short'><p>An notification channel used to watch for resource changes.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ChangeWatchMethodBuilder.html">watch changes</a> (request|response)</li>
+<li><a href="struct.FileWatchMethodBuilder.html">watch files</a> (request|response)</li>
+<li><a href="struct.ChannelStopMethodBuilder.html">stop channels</a> (request)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChannelMethodsBuilder.html'
+                               title='google-drive2::ChannelMethodsBuilder'>ChannelMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>channel</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChannelStopMethodBuilder.html'
+                               title='google-drive2::ChannelStopMethodBuilder'>ChannelStopMethodBuilder</a></td>
+                        <td class='docblock short'><p>Stop watching resources through this channel</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChildList.html'
+                               title='google-drive2::ChildList'>ChildList</a></td>
+                        <td class='docblock short'><p>A list of children of a file.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ChildrenListMethodBuilder.html">list children</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChildReference.html'
+                               title='google-drive2::ChildReference'>ChildReference</a></td>
+                        <td class='docblock short'><p>A reference to a folder&#39;s child.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ChildrenInsertMethodBuilder.html">insert children</a> (request|response)</li>
+<li><a href="struct.ChildrenGetMethodBuilder.html">get children</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChildrenDeleteMethodBuilder.html'
+                               title='google-drive2::ChildrenDeleteMethodBuilder'>ChildrenDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Removes a child from a folder.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChildrenGetMethodBuilder.html'
+                               title='google-drive2::ChildrenGetMethodBuilder'>ChildrenGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a specific child reference.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChildrenInsertMethodBuilder.html'
+                               title='google-drive2::ChildrenInsertMethodBuilder'>ChildrenInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Inserts a file into a folder.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChildrenListMethodBuilder.html'
+                               title='google-drive2::ChildrenListMethodBuilder'>ChildrenListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists a folder&#39;s children.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChildrenMethodsBuilder.html'
+                               title='google-drive2::ChildrenMethodsBuilder'>ChildrenMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>children</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Comment.html'
+                               title='google-drive2::Comment'>Comment</a></td>
+                        <td class='docblock short'><p>A JSON representation of a comment on a file in Google Drive.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.CommentUpdateMethodBuilder.html">update comments</a> (request|response)</li>
+<li><a href="struct.CommentInsertMethodBuilder.html">insert comments</a> (request|response)</li>
+<li><a href="struct.CommentDeleteMethodBuilder.html">delete comments</a> (none)</li>
+<li><a href="struct.CommentPatchMethodBuilder.html">patch comments</a> (request|response)</li>
+<li><a href="struct.CommentGetMethodBuilder.html">get comments</a> (response)</li>
+<li><a href="struct.CommentListMethodBuilder.html">list comments</a> (none)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentContext.html'
+                               title='google-drive2::CommentContext'>CommentContext</a></td>
+                        <td class='docblock short'><p>The context of the file which is being commented on.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentDeleteMethodBuilder.html'
+                               title='google-drive2::CommentDeleteMethodBuilder'>CommentDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes a comment.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentGetMethodBuilder.html'
+                               title='google-drive2::CommentGetMethodBuilder'>CommentGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a comment by ID.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentInsertMethodBuilder.html'
+                               title='google-drive2::CommentInsertMethodBuilder'>CommentInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new comment on the given file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentList.html'
+                               title='google-drive2::CommentList'>CommentList</a></td>
+                        <td class='docblock short'><p>A JSON representation of a list of comments on a file in Google Drive.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.CommentListMethodBuilder.html">list comments</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentListMethodBuilder.html'
+                               title='google-drive2::CommentListMethodBuilder'>CommentListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists a file&#39;s comments.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentMethodsBuilder.html'
+                               title='google-drive2::CommentMethodsBuilder'>CommentMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>comment</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentPatchMethodBuilder.html'
+                               title='google-drive2::CommentPatchMethodBuilder'>CommentPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing comment. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentReply.html'
+                               title='google-drive2::CommentReply'>CommentReply</a></td>
+                        <td class='docblock short'><p>A JSON representation of a reply to a comment on a file in Google Drive.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ReplyPatchMethodBuilder.html">patch replies</a> (request|response)</li>
+<li><a href="struct.ReplyInsertMethodBuilder.html">insert replies</a> (request|response)</li>
+<li><a href="struct.ReplyGetMethodBuilder.html">get replies</a> (response)</li>
+<li><a href="struct.ReplyUpdateMethodBuilder.html">update replies</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentReplyList.html'
+                               title='google-drive2::CommentReplyList'>CommentReplyList</a></td>
+                        <td class='docblock short'><p>A JSON representation of a list of replies to a comment on a file in Google Drive.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ReplyListMethodBuilder.html">list replies</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentUpdateMethodBuilder.html'
+                               title='google-drive2::CommentUpdateMethodBuilder'>CommentUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing comment.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Drive.html'
+                               title='google-drive2::Drive'>Drive</a></td>
+                        <td class='docblock short'><p>Central instance to access all Drive related resource activities</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.File.html'
+                               title='google-drive2::File'>File</a></td>
+                        <td class='docblock short'><p>The metadata for a file.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.FileWatchMethodBuilder.html">watch files</a> (none)</li>
+<li><a href="struct.FileEmptyTrashMethodBuilder.html">empty trash files</a> (none)</li>
+<li><a href="struct.FileCopyMethodBuilder.html">copy files</a> (request|response)</li>
+<li><a href="struct.FileListMethodBuilder.html">list files</a> (none)</li>
+<li><a href="struct.FileDeleteMethodBuilder.html">delete files</a> (none)</li>
+<li><a href="struct.FilePatchMethodBuilder.html">patch files</a> (request|response)</li>
+<li><a href="struct.FileUpdateMethodBuilder.html">update files</a> (request|response)</li>
+<li><a href="struct.FileInsertMethodBuilder.html">insert files</a> (request|response)</li>
+<li><a href="struct.FileUntrashMethodBuilder.html">untrash files</a> (response)</li>
+<li><a href="struct.FileTrashMethodBuilder.html">trash files</a> (response)</li>
+<li><a href="struct.FileTouchMethodBuilder.html">touch files</a> (response)</li>
+<li><a href="struct.FileGetMethodBuilder.html">get files</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileCopyMethodBuilder.html'
+                               title='google-drive2::FileCopyMethodBuilder'>FileCopyMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a copy of the specified file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileDeleteMethodBuilder.html'
+                               title='google-drive2::FileDeleteMethodBuilder'>FileDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileEmptyTrashMethodBuilder.html'
+                               title='google-drive2::FileEmptyTrashMethodBuilder'>FileEmptyTrashMethodBuilder</a></td>
+                        <td class='docblock short'><p>Permanently deletes all of the user&#39;s trashed files.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileGetMethodBuilder.html'
+                               title='google-drive2::FileGetMethodBuilder'>FileGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a file&#39;s metadata by ID.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileImageMediaMetadata.html'
+                               title='google-drive2::FileImageMediaMetadata'>FileImageMediaMetadata</a></td>
+                        <td class='docblock short'><p>Metadata about image media. This will only be present for image types, and its contents will depend on what can be parsed from the image content.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileImageMediaMetadataLocation.html'
+                               title='google-drive2::FileImageMediaMetadataLocation'>FileImageMediaMetadataLocation</a></td>
+                        <td class='docblock short'><p>Geographic location information stored in the image.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileIndexableText.html'
+                               title='google-drive2::FileIndexableText'>FileIndexableText</a></td>
+                        <td class='docblock short'><p>Indexable text attributes for the file (can only be written)</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileInsertMethodBuilder.html'
+                               title='google-drive2::FileInsertMethodBuilder'>FileInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Insert a new file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileLabels.html'
+                               title='google-drive2::FileLabels'>FileLabels</a></td>
+                        <td class='docblock short'><p>A group of labels for the file.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileList.html'
+                               title='google-drive2::FileList'>FileList</a></td>
+                        <td class='docblock short'><p>A list of files.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.FileListMethodBuilder.html">list files</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileListMethodBuilder.html'
+                               title='google-drive2::FileListMethodBuilder'>FileListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists the user&#39;s files.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileMethodsBuilder.html'
+                               title='google-drive2::FileMethodsBuilder'>FileMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>file</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FilePatchMethodBuilder.html'
+                               title='google-drive2::FilePatchMethodBuilder'>FilePatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates file metadata and/or content. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileThumbnail.html'
+                               title='google-drive2::FileThumbnail'>FileThumbnail</a></td>
+                        <td class='docblock short'><p>Thumbnail for the file. Only accepted on upload and for files that are not already thumbnailed by Google.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileTouchMethodBuilder.html'
+                               title='google-drive2::FileTouchMethodBuilder'>FileTouchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Set the file&#39;s updated time to the current server time.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileTrashMethodBuilder.html'
+                               title='google-drive2::FileTrashMethodBuilder'>FileTrashMethodBuilder</a></td>
+                        <td class='docblock short'><p>Moves a file to the trash.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileUntrashMethodBuilder.html'
+                               title='google-drive2::FileUntrashMethodBuilder'>FileUntrashMethodBuilder</a></td>
+                        <td class='docblock short'><p>Restores a file from the trash.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileUpdateMethodBuilder.html'
+                               title='google-drive2::FileUpdateMethodBuilder'>FileUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates file metadata and/or content.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileVideoMediaMetadata.html'
+                               title='google-drive2::FileVideoMediaMetadata'>FileVideoMediaMetadata</a></td>
+                        <td class='docblock short'><p>Metadata about video media. This will only be present for video types.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FileWatchMethodBuilder.html'
+                               title='google-drive2::FileWatchMethodBuilder'>FileWatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Subscribe to changes on a file</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ParentDeleteMethodBuilder.html'
+                               title='google-drive2::ParentDeleteMethodBuilder'>ParentDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Removes a parent from a file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ParentGetMethodBuilder.html'
+                               title='google-drive2::ParentGetMethodBuilder'>ParentGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a specific parent reference.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ParentInsertMethodBuilder.html'
+                               title='google-drive2::ParentInsertMethodBuilder'>ParentInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Adds a parent folder for a file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ParentList.html'
+                               title='google-drive2::ParentList'>ParentList</a></td>
+                        <td class='docblock short'><p>A list of a file&#39;s parents.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ParentListMethodBuilder.html">list parents</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ParentListMethodBuilder.html'
+                               title='google-drive2::ParentListMethodBuilder'>ParentListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists a file&#39;s parents.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ParentMethodsBuilder.html'
+                               title='google-drive2::ParentMethodsBuilder'>ParentMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>parent</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ParentReference.html'
+                               title='google-drive2::ParentReference'>ParentReference</a></td>
+                        <td class='docblock short'><p>A reference to a file&#39;s parent.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.ParentGetMethodBuilder.html">get parents</a> (response)</li>
+<li><a href="struct.ParentInsertMethodBuilder.html">insert parents</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Permission.html'
+                               title='google-drive2::Permission'>Permission</a></td>
+                        <td class='docblock short'><p>A permission for a file.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PermissionPatchMethodBuilder.html">patch permissions</a> (request|response)</li>
+<li><a href="struct.PermissionListMethodBuilder.html">list permissions</a> (none)</li>
+<li><a href="struct.PermissionInsertMethodBuilder.html">insert permissions</a> (request|response)</li>
+<li><a href="struct.PermissionGetMethodBuilder.html">get permissions</a> (response)</li>
+<li><a href="struct.PermissionGetIdForEmailMethodBuilder.html">get id for email permissions</a> (none)</li>
+<li><a href="struct.PermissionDeleteMethodBuilder.html">delete permissions</a> (none)</li>
+<li><a href="struct.PermissionUpdateMethodBuilder.html">update permissions</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionDeleteMethodBuilder.html'
+                               title='google-drive2::PermissionDeleteMethodBuilder'>PermissionDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes a permission from a file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionGetIdForEmailMethodBuilder.html'
+                               title='google-drive2::PermissionGetIdForEmailMethodBuilder'>PermissionGetIdForEmailMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns the permission ID for an email address.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionGetMethodBuilder.html'
+                               title='google-drive2::PermissionGetMethodBuilder'>PermissionGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a permission by ID.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionId.html'
+                               title='google-drive2::PermissionId'>PermissionId</a></td>
+                        <td class='docblock short'><p>An ID for a user or group as seen in Permission items.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PermissionGetIdForEmailMethodBuilder.html">get id for email permissions</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionInsertMethodBuilder.html'
+                               title='google-drive2::PermissionInsertMethodBuilder'>PermissionInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Inserts a permission for a file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionList.html'
+                               title='google-drive2::PermissionList'>PermissionList</a></td>
+                        <td class='docblock short'><p>A list of permissions associated with a file.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PermissionListMethodBuilder.html">list permissions</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionListMethodBuilder.html'
+                               title='google-drive2::PermissionListMethodBuilder'>PermissionListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists a file&#39;s permissions.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionMethodsBuilder.html'
+                               title='google-drive2::PermissionMethodsBuilder'>PermissionMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>permission</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionPatchMethodBuilder.html'
+                               title='google-drive2::PermissionPatchMethodBuilder'>PermissionPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a permission. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PermissionUpdateMethodBuilder.html'
+                               title='google-drive2::PermissionUpdateMethodBuilder'>PermissionUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a permission.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Property.html'
+                               title='google-drive2::Property'>Property</a></td>
+                        <td class='docblock short'><p>A key-value pair that is either public or private to an application.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PropertyInsertMethodBuilder.html">insert properties</a> (request|response)</li>
+<li><a href="struct.PropertyGetMethodBuilder.html">get properties</a> (response)</li>
+<li><a href="struct.PropertyPatchMethodBuilder.html">patch properties</a> (request|response)</li>
+<li><a href="struct.PropertyUpdateMethodBuilder.html">update properties</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyDeleteMethodBuilder.html'
+                               title='google-drive2::PropertyDeleteMethodBuilder'>PropertyDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes a property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyGetMethodBuilder.html'
+                               title='google-drive2::PropertyGetMethodBuilder'>PropertyGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a property by its key.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyInsertMethodBuilder.html'
+                               title='google-drive2::PropertyInsertMethodBuilder'>PropertyInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Adds a property to a file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyList.html'
+                               title='google-drive2::PropertyList'>PropertyList</a></td>
+                        <td class='docblock short'><p>A collection of properties, key-value pairs that are either public or private to an application.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PropertyListMethodBuilder.html">list properties</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyListMethodBuilder.html'
+                               title='google-drive2::PropertyListMethodBuilder'>PropertyListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists a file&#39;s properties.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyMethodsBuilder.html'
+                               title='google-drive2::PropertyMethodsBuilder'>PropertyMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>property</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyPatchMethodBuilder.html'
+                               title='google-drive2::PropertyPatchMethodBuilder'>PropertyPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a property. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PropertyUpdateMethodBuilder.html'
+                               title='google-drive2::PropertyUpdateMethodBuilder'>PropertyUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a property.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RealtimeGetMethodBuilder.html'
+                               title='google-drive2::RealtimeGetMethodBuilder'>RealtimeGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Exports the contents of the Realtime API data model associated with this file as JSON.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RealtimeMethodsBuilder.html'
+                               title='google-drive2::RealtimeMethodsBuilder'>RealtimeMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>realtime</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RealtimeUpdateMethodBuilder.html'
+                               title='google-drive2::RealtimeUpdateMethodBuilder'>RealtimeUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Overwrites the Realtime API data model associated with this file with the provided JSON data model.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReplyDeleteMethodBuilder.html'
+                               title='google-drive2::ReplyDeleteMethodBuilder'>ReplyDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes a reply.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReplyGetMethodBuilder.html'
+                               title='google-drive2::ReplyGetMethodBuilder'>ReplyGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a reply.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReplyInsertMethodBuilder.html'
+                               title='google-drive2::ReplyInsertMethodBuilder'>ReplyInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Creates a new reply to the given comment.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReplyListMethodBuilder.html'
+                               title='google-drive2::ReplyListMethodBuilder'>ReplyListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists all of the replies to a comment.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReplyMethodsBuilder.html'
+                               title='google-drive2::ReplyMethodsBuilder'>ReplyMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>reply</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReplyPatchMethodBuilder.html'
+                               title='google-drive2::ReplyPatchMethodBuilder'>ReplyPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing reply. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReplyUpdateMethodBuilder.html'
+                               title='google-drive2::ReplyUpdateMethodBuilder'>ReplyUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing reply.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Revision.html'
+                               title='google-drive2::Revision'>Revision</a></td>
+                        <td class='docblock short'><p>A revision of a file.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.RevisionDeleteMethodBuilder.html">delete revisions</a> (none)</li>
+<li><a href="struct.RevisionUpdateMethodBuilder.html">update revisions</a> (request|response)</li>
+<li><a href="struct.RevisionPatchMethodBuilder.html">patch revisions</a> (request|response)</li>
+<li><a href="struct.RevisionListMethodBuilder.html">list revisions</a> (none)</li>
+<li><a href="struct.RevisionGetMethodBuilder.html">get revisions</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RevisionDeleteMethodBuilder.html'
+                               title='google-drive2::RevisionDeleteMethodBuilder'>RevisionDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Removes a revision.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RevisionGetMethodBuilder.html'
+                               title='google-drive2::RevisionGetMethodBuilder'>RevisionGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets a specific revision.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RevisionList.html'
+                               title='google-drive2::RevisionList'>RevisionList</a></td>
+                        <td class='docblock short'><p>A list of revisions of a file.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.RevisionListMethodBuilder.html">list revisions</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RevisionListMethodBuilder.html'
+                               title='google-drive2::RevisionListMethodBuilder'>RevisionListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Lists a file&#39;s revisions.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RevisionMethodsBuilder.html'
+                               title='google-drive2::RevisionMethodsBuilder'>RevisionMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>revision</em> resources.
+It is not used directly, but through the <code>Drive</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RevisionPatchMethodBuilder.html'
+                               title='google-drive2::RevisionPatchMethodBuilder'>RevisionPatchMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a revision. This method supports patch semantics.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RevisionUpdateMethodBuilder.html'
+                               title='google-drive2::RevisionUpdateMethodBuilder'>RevisionUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates a revision.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.User.html'
+                               title='google-drive2::User'>User</a></td>
+                        <td class='docblock short'><p>The JSON template for a user.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserPicture.html'
+                               title='google-drive2::UserPicture'>UserPicture</a></td>
+                        <td class='docblock short'><p>The user&#39;s profile picture.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
+                               title='google-drive2::Scope'>Scope</a></td>
+                        <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
+A scope is needed when requesting an
+<a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "google-drive2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

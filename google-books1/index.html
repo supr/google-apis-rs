@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `google-books1` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, google-books1">
+
+    <title>google-books1 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'google-books1', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-books1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/google-books1/lib.rs.html#5-14832'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>books</em> crate version <em>0.0.1</em>.
+The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/books1">on github</a>.</p>
+
+<h1 id="features" class='section-header'><a
+                           href="#features">Features</a></h1>
+<p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Books.html">hub</a> ... </p>
+
+<ul>
+<li>bookshelves (<a href="struct.BookshelveGetMethodBuilder.html"><em>get</em></a>, <a href="struct.BookshelveListMethodBuilder.html"><em>list</em></a> and <a href="struct.BookshelveVolumeListMethodBuilder.html"><em>volumes.list</em></a>)</li>
+<li>cloudloading (<a href="struct.CloudloadingAddBookMethodBuilder.html"><em>add book</em></a>, <a href="struct.CloudloadingDeleteBookMethodBuilder.html"><em>delete book</em></a> and <a href="struct.CloudloadingUpdateBookMethodBuilder.html"><em>update book</em></a>)</li>
+<li>dictionary (<a href="struct.DictionaryListOfflineMetadataMethodBuilder.html"><em>list offline metadata</em></a>)</li>
+<li>layers (<a href="struct.LayerAnnotationDataGetMethodBuilder.html"><em>annotation data.get</em></a>, <a href="struct.LayerAnnotationDataListMethodBuilder.html"><em>annotation data.list</em></a>, <a href="struct.LayerGetMethodBuilder.html"><em>get</em></a>, <a href="struct.LayerListMethodBuilder.html"><em>list</em></a>, <a href="struct.LayerVolumeAnnotationGetMethodBuilder.html"><em>volume annotations.get</em></a> and <a href="struct.LayerVolumeAnnotationListMethodBuilder.html"><em>volume annotations.list</em></a>)</li>
+<li>myconfig (<a href="struct.MyconfigGetUserSettingMethodBuilder.html"><em>get user settings</em></a>, <a href="struct.MyconfigReleaseDownloadAccesMethodBuilder.html"><em>release download access</em></a>, <a href="struct.MyconfigRequestAccesMethodBuilder.html"><em>request access</em></a>, <a href="struct.MyconfigSyncVolumeLicenseMethodBuilder.html"><em>sync volume licenses</em></a> and <a href="struct.MyconfigUpdateUserSettingMethodBuilder.html"><em>update user settings</em></a>)</li>
+<li>mylibrary (<a href="struct.MylibraryAnnotationDeleteMethodBuilder.html"><em>annotations.delete</em></a>, <a href="struct.MylibraryAnnotationInsertMethodBuilder.html"><em>annotations.insert</em></a>, <a href="struct.MylibraryAnnotationListMethodBuilder.html"><em>annotations.list</em></a>, <a href="struct.MylibraryAnnotationSummaryMethodBuilder.html"><em>annotations.summary</em></a>, <a href="struct.MylibraryAnnotationUpdateMethodBuilder.html"><em>annotations.update</em></a>, <a href="struct.MylibraryBookshelveAddVolumeMethodBuilder.html"><em>bookshelves.add volume</em></a>, <a href="struct.MylibraryBookshelveClearVolumeMethodBuilder.html"><em>bookshelves.clear volumes</em></a>, <a href="struct.MylibraryBookshelveGetMethodBuilder.html"><em>bookshelves.get</em></a>, <a href="struct.MylibraryBookshelveListMethodBuilder.html"><em>bookshelves.list</em></a>, <a href="struct.MylibraryBookshelveMoveVolumeMethodBuilder.html"><em>bookshelves.move volume</em></a>, <a href="struct.MylibraryBookshelveRemoveVolumeMethodBuilder.html"><em>bookshelves.remove volume</em></a>, <a href="struct.MylibraryBookshelveVolumeListMethodBuilder.html"><em>bookshelves.volumes.list</em></a>, <a href="struct.MylibraryReadingpositionGetMethodBuilder.html"><em>readingpositions.get</em></a> and <a href="struct.MylibraryReadingpositionSetPositionMethodBuilder.html"><em>readingpositions.set position</em></a>)</li>
+<li>onboarding (<a href="struct.OnboardingListCategoryMethodBuilder.html"><em>list categories</em></a> and <a href="struct.OnboardingListCategoryVolumeMethodBuilder.html"><em>list category volumes</em></a>)</li>
+<li>promooffer (<a href="struct.PromoofferAcceptMethodBuilder.html"><em>accept</em></a>, <a href="struct.PromoofferDismisMethodBuilder.html"><em>dismiss</em></a> and <a href="struct.PromoofferGetMethodBuilder.html"><em>get</em></a>)</li>
+<li><a href="struct.Volume.html">volumes</a> (<a href="struct.VolumeAssociatedListMethodBuilder.html"><em>associated.list</em></a>, <a href="struct.VolumeGetMethodBuilder.html"><em>get</em></a>, <a href="struct.VolumeListMethodBuilder.html"><em>list</em></a>, <a href="struct.VolumeMybookListMethodBuilder.html"><em>mybooks.list</em></a>, <a href="struct.VolumeRecommendedListMethodBuilder.html"><em>recommended.list</em></a>, <a href="struct.VolumeRecommendedRateMethodBuilder.html"><em>recommended.rate</em></a> and <a href="struct.VolumeUseruploadedListMethodBuilder.html"><em>useruploaded.list</em></a>)</li>
+</ul>
+
+<p>Everything else about the <em>books</em> <em>v1</em> API can be found at the
+<a href="https://developers.google.com/books/docs/v1/getting_started">official documentation site</a>.</p>
+
+<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+
+<h1 id="structure-of-this-library" class='section-header'><a
+                           href="#structure-of-this-library">Structure of this Library</a></h1>
+<p>The API is structured into the following primary items:</p>
+
+<ul>
+<li><strong><a href="struct.Books.html">Hub</a></strong>
+
+<ul>
+<li>a central object to maintain state and allow accessing all <em>Activities</em></li>
+</ul></li>
+<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+
+<ul>
+<li>primary types that you can apply <em>Activities</em> to</li>
+<li>a collection of properties and <em>Parts</em></li>
+<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+
+<ul>
+<li>a collection of properties</li>
+<li>never directly used in <em>Activities</em></li>
+</ul></li>
+</ul></li>
+<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+
+<ul>
+<li>operations to apply to <em>Resources</em></li>
+</ul></li>
+</ul>
+
+<p>Generally speaking, you can invoke <em>Activities</em> like this:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>resource</span>().<span class='ident'>activity</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>Or specifically ...</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>volumes</span>().<span class='ident'>useruploaded_list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>myconfig</span>().<span class='ident'>sync_volume_licenses</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>volumes</span>().<span class='ident'>list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>volumes</span>().<span class='ident'>associated_list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>bookshelves</span>().<span class='ident'>volumes_list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>volumes</span>().<span class='ident'>recommended_list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>mylibrary</span>().<span class='ident'>bookshelves_volumes_list</span>(...).<span class='ident'>doit</span>()
+<span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>volumes</span>().<span class='ident'>mybooks_list</span>(...).<span class='ident'>doit</span>()
+</pre>
+
+<p>The <code>resource()</code> and <code>activity(...)</code> calls create <a href="http://en.wikipedia.org/wiki/Builder_pattern">builders</a>. The second one dealing with <code>Activities</code> 
+supports various methods to configure the impending operation (not shown here). It is made such that all required arguments have to be 
+specified right away (i.e. <code>(...)</code>), whereas all optional ones can be <a href="http://en.wikipedia.org/wiki/Builder_pattern">build up</a> as desired.
+The <code>doit()</code> method performs the actual communication with the server and returns the respective result.</p>
+
+<h1 id="usage" class='section-header'><a
+                           href="#usage">Usage</a></h1>
+<h2 id="setting-up-your-project" class='section-header'><a
+                           href="#setting-up-your-project">Setting up your Project</a></h2>
+<p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
+
+<pre><code class="language-toml">[dependencies]
+google-books1 = &quot;0.0.1&quot;
+</code></pre>
+
+<h2 id="a-complete-example" class='section-header'><a
+                           href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-books1&quot;</span> <span class='kw'>as</span> <span class='ident'>books1</span>;
+<span class='kw'>use</span> <span class='ident'>books1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
+<span class='kw'>use</span> <span class='ident'>books1</span>::<span class='ident'>Books</span>;
+ 
+<span class='comment'>// Get an ApplicationSecret instance by some means. It contains the `client_id` and </span>
+<span class='comment'>// `client_secret`, among other things.</span>
+<span class='kw'>let</span> <span class='ident'>secret</span>: <span class='ident'>ApplicationSecret</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+<span class='comment'>// Instantiate the authenticator. It will choose a suitable authentication flow for you, </span>
+<span class='comment'>// unless you replace  `None` with the desired Flow.</span>
+<span class='comment'>// Provide your own `AuthenticatorDelegate` to adjust the way it operates and get feedback about </span>
+<span class='comment'>// what&#39;s going on. You probably want to bring in your own `TokenStorage` to persist tokens and</span>
+<span class='comment'>// retrieve them from storage.</span>
+<span class='kw'>let</span> <span class='ident'>auth</span> <span class='op'>=</span> <span class='ident'>Authenticator</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>secret</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>,
+                              <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
+                              <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Books</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
+<span class='comment'>// You can configure optional parameters by calling the respective setters at will, and</span>
+<span class='comment'>// execute the final call using `doit()`.</span>
+<span class='comment'>// Values shown here are possibly random and not representative !</span>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>volumes</span>().<span class='ident'>list</span>(<span class='string'>&quot;q&quot;</span>)
+             .<span class='ident'>start_index</span>(<span class='number'>11</span>)
+             .<span class='ident'>source</span>(<span class='string'>&quot;dolores&quot;</span>)
+             .<span class='ident'>show_preorders</span>(<span class='boolval'>false</span>)
+             .<span class='ident'>projection</span>(<span class='string'>&quot;sadipscing&quot;</span>)
+             .<span class='ident'>print_type</span>(<span class='string'>&quot;aliquyam&quot;</span>)
+             .<span class='ident'>partner</span>(<span class='string'>&quot;ea&quot;</span>)
+             .<span class='ident'>order_by</span>(<span class='string'>&quot;no&quot;</span>)
+             .<span class='ident'>max_results</span>(<span class='number'>80</span>)
+             .<span class='ident'>library_restrict</span>(<span class='string'>&quot;justo&quot;</span>)
+             .<span class='ident'>lang_restrict</span>(<span class='string'>&quot;et&quot;</span>)
+             .<span class='ident'>filter</span>(<span class='string'>&quot;et&quot;</span>)
+             .<span class='ident'>download</span>(<span class='string'>&quot;diam&quot;</span>)
+             .<span class='ident'>doit</span>();
+ 
+<span class='kw'>match</span> <span class='ident'>result</span> {
+    <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
+}
+</pre>
+
+<h2 id="handling-errors" class='section-header'><a
+                           href="#handling-errors">Handling Errors</a></h2>
+<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+the doit() methods, or handed as possibly intermediate results to either the 
+<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+
+<p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
+makes the system potentially resilient to all kinds of errors.</p>
+
+<h2 id="about-uploads-and-downlods" class='section-header'><a
+                           href="#about-uploads-and-downlods">About Uploads and Downlods</a></h2>
+<p>If a method supports downloads, the response body, which is part of the <a href="cmn/enum.Result.html">Result</a>, should be
+read by you to obtain the media.
+If such a method also supports a <a href="cmn/trait.ResponseResult.html">Response Result</a>, it will return that by default.
+You can see it as meta-data for the actual media. To trigger a media download, you will have to set up the builder by making
+this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
+
+<p>Methods supporting uploads can do so using up to 2 different protocols: 
+<em>simple</em> and <em>resumable</em>. The distinctiveness of each is represented by customized 
+<code>doit(...)</code> methods, which are then named <code>upload(...)</code> and <code>upload_resumable(...)</code> respectively.</p>
+
+<h2 id="about-customization/callbacks" class='section-header'><a
+                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
+<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+Respective methods will be called to provide progress information, as well as determine whether the system should 
+retry on failure.</p>
+
+<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+
+<h2 id="about-parts" class='section-header'><a
+                           href="#about-parts">About Parts</a></h2>
+<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
+<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+the server to indicate either the set parts of the request or the desired parts in the response.</p>
+
+<h2 id="about-builder-arguments" class='section-header'><a
+                           href="#about-builder-arguments">About Builder Arguments</a></h2>
+<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+These will always take a single argument, for which the following statements are true.</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
+<li>strings are passed as <code>&amp;str</code></li>
+<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+</ul>
+
+<p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
+                               title='google-books1::cmn'>cmn</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Annotation.html'
+                               title='google-books1::Annotation'>Annotation</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MylibraryAnnotationInsertMethodBuilder.html">annotations insert mylibrary</a> (request|response)</li>
+<li><a href="struct.MylibraryAnnotationUpdateMethodBuilder.html">annotations update mylibrary</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnnotationClientVersionRanges.html'
+                               title='google-books1::AnnotationClientVersionRanges'>AnnotationClientVersionRanges</a></td>
+                        <td class='docblock short'><p>Selection ranges sent from the client.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnnotationCurrentVersionRanges.html'
+                               title='google-books1::AnnotationCurrentVersionRanges'>AnnotationCurrentVersionRanges</a></td>
+                        <td class='docblock short'><p>Selection ranges for the most recent content version.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnnotationLayerSummary.html'
+                               title='google-books1::AnnotationLayerSummary'>AnnotationLayerSummary</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Annotationdata.html'
+                               title='google-books1::Annotationdata'>Annotationdata</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.LayerAnnotationDataGetMethodBuilder.html">annotation data get layers</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Annotations.html'
+                               title='google-books1::Annotations'>Annotations</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MylibraryAnnotationListMethodBuilder.html">annotations list mylibrary</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnnotationsSummary.html'
+                               title='google-books1::AnnotationsSummary'>AnnotationsSummary</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MylibraryAnnotationSummaryMethodBuilder.html">annotations summary mylibrary</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnnotationsSummaryLayers.html'
+                               title='google-books1::AnnotationsSummaryLayers'>AnnotationsSummaryLayers</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Annotationsdata.html'
+                               title='google-books1::Annotationsdata'>Annotationsdata</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.LayerAnnotationDataListMethodBuilder.html">annotation data list layers</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Books.html'
+                               title='google-books1::Books'>Books</a></td>
+                        <td class='docblock short'><p>Central instance to access all Books related resource activities</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BooksAnnotationsRange.html'
+                               title='google-books1::BooksAnnotationsRange'>BooksAnnotationsRange</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BooksCloudloadingResource.html'
+                               title='google-books1::BooksCloudloadingResource'>BooksCloudloadingResource</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.CloudloadingUpdateBookMethodBuilder.html">update book cloudloading</a> (request|response)</li>
+<li><a href="struct.CloudloadingAddBookMethodBuilder.html">add book cloudloading</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BooksVolumesRecommendedRateResponse.html'
+                               title='google-books1::BooksVolumesRecommendedRateResponse'>BooksVolumesRecommendedRateResponse</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.VolumeRecommendedRateMethodBuilder.html">recommended rate volumes</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Bookshelf.html'
+                               title='google-books1::Bookshelf'>Bookshelf</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.BookshelveGetMethodBuilder.html">get bookshelves</a> (response)</li>
+<li><a href="struct.MylibraryBookshelveGetMethodBuilder.html">bookshelves get mylibrary</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BookshelveGetMethodBuilder.html'
+                               title='google-books1::BookshelveGetMethodBuilder'>BookshelveGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves metadata for a specific bookshelf for the specified user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BookshelveListMethodBuilder.html'
+                               title='google-books1::BookshelveListMethodBuilder'>BookshelveListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of public bookshelves for the specified user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BookshelveMethodsBuilder.html'
+                               title='google-books1::BookshelveMethodsBuilder'>BookshelveMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>bookshelve</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BookshelveVolumeListMethodBuilder.html'
+                               title='google-books1::BookshelveVolumeListMethodBuilder'>BookshelveVolumeListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves volumes in a specific bookshelf for the specified user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Bookshelves.html'
+                               title='google-books1::Bookshelves'>Bookshelves</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MylibraryBookshelveListMethodBuilder.html">bookshelves list mylibrary</a> (response)</li>
+<li><a href="struct.BookshelveListMethodBuilder.html">list bookshelves</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Category.html'
+                               title='google-books1::Category'>Category</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.OnboardingListCategoryMethodBuilder.html">list categories onboarding</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CategoryItems.html'
+                               title='google-books1::CategoryItems'>CategoryItems</a></td>
+                        <td class='docblock short'><p>A list of onboarding categories.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CloudloadingAddBookMethodBuilder.html'
+                               title='google-books1::CloudloadingAddBookMethodBuilder'>CloudloadingAddBookMethodBuilder</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CloudloadingDeleteBookMethodBuilder.html'
+                               title='google-books1::CloudloadingDeleteBookMethodBuilder'>CloudloadingDeleteBookMethodBuilder</a></td>
+                        <td class='docblock short'><p>Remove the book and its contents</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CloudloadingMethodsBuilder.html'
+                               title='google-books1::CloudloadingMethodsBuilder'>CloudloadingMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>cloudloading</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CloudloadingUpdateBookMethodBuilder.html'
+                               title='google-books1::CloudloadingUpdateBookMethodBuilder'>CloudloadingUpdateBookMethodBuilder</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ConcurrentAccessRestriction.html'
+                               title='google-books1::ConcurrentAccessRestriction'>ConcurrentAccessRestriction</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictionaryListOfflineMetadataMethodBuilder.html'
+                               title='google-books1::DictionaryListOfflineMetadataMethodBuilder'>DictionaryListOfflineMetadataMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns a list of offline dictionary meatadata available</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictionaryMethodsBuilder.html'
+                               title='google-books1::DictionaryMethodsBuilder'>DictionaryMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>dictionary</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Dictlayerdata.html'
+                               title='google-books1::Dictlayerdata'>Dictlayerdata</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataCommon.html'
+                               title='google-books1::DictlayerdataCommon'>DictlayerdataCommon</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDict.html'
+                               title='google-books1::DictlayerdataDict'>DictlayerdataDict</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictSource.html'
+                               title='google-books1::DictlayerdataDictSource'>DictlayerdataDictSource</a></td>
+                        <td class='docblock short'><p>The source, url and attribution for this dictionary data.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWords.html'
+                               title='google-books1::DictlayerdataDictWords'>DictlayerdataDictWords</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsDerivatives.html'
+                               title='google-books1::DictlayerdataDictWordsDerivatives'>DictlayerdataDictWordsDerivatives</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsDerivativesSource.html'
+                               title='google-books1::DictlayerdataDictWordsDerivativesSource'>DictlayerdataDictWordsDerivativesSource</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsExamples.html'
+                               title='google-books1::DictlayerdataDictWordsExamples'>DictlayerdataDictWordsExamples</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsExamplesSource.html'
+                               title='google-books1::DictlayerdataDictWordsExamplesSource'>DictlayerdataDictWordsExamplesSource</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSenses.html'
+                               title='google-books1::DictlayerdataDictWordsSenses'>DictlayerdataDictWordsSenses</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSensesConjugations.html'
+                               title='google-books1::DictlayerdataDictWordsSensesConjugations'>DictlayerdataDictWordsSensesConjugations</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSensesDefinitions.html'
+                               title='google-books1::DictlayerdataDictWordsSensesDefinitions'>DictlayerdataDictWordsSensesDefinitions</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSensesDefinitionsExamples.html'
+                               title='google-books1::DictlayerdataDictWordsSensesDefinitionsExamples'>DictlayerdataDictWordsSensesDefinitionsExamples</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSensesDefinitionsExamplesSource.html'
+                               title='google-books1::DictlayerdataDictWordsSensesDefinitionsExamplesSource'>DictlayerdataDictWordsSensesDefinitionsExamplesSource</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSensesSource.html'
+                               title='google-books1::DictlayerdataDictWordsSensesSource'>DictlayerdataDictWordsSensesSource</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSensesSynonyms.html'
+                               title='google-books1::DictlayerdataDictWordsSensesSynonyms'>DictlayerdataDictWordsSensesSynonyms</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSensesSynonymsSource.html'
+                               title='google-books1::DictlayerdataDictWordsSensesSynonymsSource'>DictlayerdataDictWordsSensesSynonymsSource</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DictlayerdataDictWordsSource.html'
+                               title='google-books1::DictlayerdataDictWordsSource'>DictlayerdataDictWordsSource</a></td>
+                        <td class='docblock short'><p>The words with different meanings but not related words, e.g. &quot;go&quot; (game) and &quot;go&quot; (verb).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DownloadAccessRestriction.html'
+                               title='google-books1::DownloadAccessRestriction'>DownloadAccessRestriction</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DownloadAccesses.html'
+                               title='google-books1::DownloadAccesses'>DownloadAccesses</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MyconfigReleaseDownloadAccesMethodBuilder.html">release download access myconfig</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Geolayerdata.html'
+                               title='google-books1::Geolayerdata'>Geolayerdata</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeolayerdataCommon.html'
+                               title='google-books1::GeolayerdataCommon'>GeolayerdataCommon</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeolayerdataGeo.html'
+                               title='google-books1::GeolayerdataGeo'>GeolayerdataGeo</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeolayerdataGeoBoundary.html'
+                               title='google-books1::GeolayerdataGeoBoundary'>GeolayerdataGeoBoundary</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeolayerdataGeoViewport.html'
+                               title='google-books1::GeolayerdataGeoViewport'>GeolayerdataGeoViewport</a></td>
+                        <td class='docblock short'><p>The viewport for showing this location. This is a latitude, longitude rectangle.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeolayerdataGeoViewportHi.html'
+                               title='google-books1::GeolayerdataGeoViewportHi'>GeolayerdataGeoViewportHi</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeolayerdataGeoViewportLo.html'
+                               title='google-books1::GeolayerdataGeoViewportLo'>GeolayerdataGeoViewportLo</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LayerAnnotationDataGetMethodBuilder.html'
+                               title='google-books1::LayerAnnotationDataGetMethodBuilder'>LayerAnnotationDataGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the annotation data.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LayerAnnotationDataListMethodBuilder.html'
+                               title='google-books1::LayerAnnotationDataListMethodBuilder'>LayerAnnotationDataListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the annotation data for a volume and layer.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LayerGetMethodBuilder.html'
+                               title='google-books1::LayerGetMethodBuilder'>LayerGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the layer summary for a volume.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LayerListMethodBuilder.html'
+                               title='google-books1::LayerListMethodBuilder'>LayerListMethodBuilder</a></td>
+                        <td class='docblock short'><p>List the layer summaries for a volume.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LayerMethodsBuilder.html'
+                               title='google-books1::LayerMethodsBuilder'>LayerMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>layer</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LayerVolumeAnnotationGetMethodBuilder.html'
+                               title='google-books1::LayerVolumeAnnotationGetMethodBuilder'>LayerVolumeAnnotationGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the volume annotation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LayerVolumeAnnotationListMethodBuilder.html'
+                               title='google-books1::LayerVolumeAnnotationListMethodBuilder'>LayerVolumeAnnotationListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the volume annotations for a volume and layer.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Layersummaries.html'
+                               title='google-books1::Layersummaries'>Layersummaries</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.LayerListMethodBuilder.html">list layers</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Layersummary.html'
+                               title='google-books1::Layersummary'>Layersummary</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.LayerGetMethodBuilder.html">get layers</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Metadata.html'
+                               title='google-books1::Metadata'>Metadata</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.DictionaryListOfflineMetadataMethodBuilder.html">list offline metadata dictionary</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetadataItems.html'
+                               title='google-books1::MetadataItems'>MetadataItems</a></td>
+                        <td class='docblock short'><p>A list of offline dictionary metadata.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MyconfigGetUserSettingMethodBuilder.html'
+                               title='google-books1::MyconfigGetUserSettingMethodBuilder'>MyconfigGetUserSettingMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the current settings for the user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MyconfigMethodsBuilder.html'
+                               title='google-books1::MyconfigMethodsBuilder'>MyconfigMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>myconfig</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MyconfigReleaseDownloadAccesMethodBuilder.html'
+                               title='google-books1::MyconfigReleaseDownloadAccesMethodBuilder'>MyconfigReleaseDownloadAccesMethodBuilder</a></td>
+                        <td class='docblock short'><p>Release downloaded content access restriction.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MyconfigRequestAccesMethodBuilder.html'
+                               title='google-books1::MyconfigRequestAccesMethodBuilder'>MyconfigRequestAccesMethodBuilder</a></td>
+                        <td class='docblock short'><p>Request concurrent and download access restrictions.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MyconfigSyncVolumeLicenseMethodBuilder.html'
+                               title='google-books1::MyconfigSyncVolumeLicenseMethodBuilder'>MyconfigSyncVolumeLicenseMethodBuilder</a></td>
+                        <td class='docblock short'><p>Request downloaded content access for specified volumes on the My eBooks shelf.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MyconfigUpdateUserSettingMethodBuilder.html'
+                               title='google-books1::MyconfigUpdateUserSettingMethodBuilder'>MyconfigUpdateUserSettingMethodBuilder</a></td>
+                        <td class='docblock short'><p>Sets the settings for the user. Unspecified sub-objects will retain the existing value.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryAnnotationDeleteMethodBuilder.html'
+                               title='google-books1::MylibraryAnnotationDeleteMethodBuilder'>MylibraryAnnotationDeleteMethodBuilder</a></td>
+                        <td class='docblock short'><p>Deletes an annotation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryAnnotationInsertMethodBuilder.html'
+                               title='google-books1::MylibraryAnnotationInsertMethodBuilder'>MylibraryAnnotationInsertMethodBuilder</a></td>
+                        <td class='docblock short'><p>Inserts a new annotation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryAnnotationListMethodBuilder.html'
+                               title='google-books1::MylibraryAnnotationListMethodBuilder'>MylibraryAnnotationListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of annotations, possibly filtered.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryAnnotationSummaryMethodBuilder.html'
+                               title='google-books1::MylibraryAnnotationSummaryMethodBuilder'>MylibraryAnnotationSummaryMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets the summary of specified layers.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryAnnotationUpdateMethodBuilder.html'
+                               title='google-books1::MylibraryAnnotationUpdateMethodBuilder'>MylibraryAnnotationUpdateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Updates an existing annotation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryBookshelveAddVolumeMethodBuilder.html'
+                               title='google-books1::MylibraryBookshelveAddVolumeMethodBuilder'>MylibraryBookshelveAddVolumeMethodBuilder</a></td>
+                        <td class='docblock short'><p>Adds a volume to a bookshelf.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryBookshelveClearVolumeMethodBuilder.html'
+                               title='google-books1::MylibraryBookshelveClearVolumeMethodBuilder'>MylibraryBookshelveClearVolumeMethodBuilder</a></td>
+                        <td class='docblock short'><p>Clears all volumes from a bookshelf.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryBookshelveGetMethodBuilder.html'
+                               title='google-books1::MylibraryBookshelveGetMethodBuilder'>MylibraryBookshelveGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves metadata for a specific bookshelf belonging to the authenticated user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryBookshelveListMethodBuilder.html'
+                               title='google-books1::MylibraryBookshelveListMethodBuilder'>MylibraryBookshelveListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves a list of bookshelves belonging to the authenticated user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryBookshelveMoveVolumeMethodBuilder.html'
+                               title='google-books1::MylibraryBookshelveMoveVolumeMethodBuilder'>MylibraryBookshelveMoveVolumeMethodBuilder</a></td>
+                        <td class='docblock short'><p>Moves a volume within a bookshelf.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryBookshelveRemoveVolumeMethodBuilder.html'
+                               title='google-books1::MylibraryBookshelveRemoveVolumeMethodBuilder'>MylibraryBookshelveRemoveVolumeMethodBuilder</a></td>
+                        <td class='docblock short'><p>Removes a volume from a bookshelf.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryBookshelveVolumeListMethodBuilder.html'
+                               title='google-books1::MylibraryBookshelveVolumeListMethodBuilder'>MylibraryBookshelveVolumeListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets volume information for volumes on a bookshelf.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryMethodsBuilder.html'
+                               title='google-books1::MylibraryMethodsBuilder'>MylibraryMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>mylibrary</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryReadingpositionGetMethodBuilder.html'
+                               title='google-books1::MylibraryReadingpositionGetMethodBuilder'>MylibraryReadingpositionGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Retrieves my reading position information for a volume.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MylibraryReadingpositionSetPositionMethodBuilder.html'
+                               title='google-books1::MylibraryReadingpositionSetPositionMethodBuilder'>MylibraryReadingpositionSetPositionMethodBuilder</a></td>
+                        <td class='docblock short'><p>Sets my reading position information for a volume.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Offers.html'
+                               title='google-books1::Offers'>Offers</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.PromoofferGetMethodBuilder.html">get promooffer</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OffersItems.html'
+                               title='google-books1::OffersItems'>OffersItems</a></td>
+                        <td class='docblock short'><p>A list of offers.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OffersItemsItems.html'
+                               title='google-books1::OffersItemsItems'>OffersItemsItems</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OnboardingListCategoryMethodBuilder.html'
+                               title='google-books1::OnboardingListCategoryMethodBuilder'>OnboardingListCategoryMethodBuilder</a></td>
+                        <td class='docblock short'><p>List categories for onboarding experience.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OnboardingListCategoryVolumeMethodBuilder.html'
+                               title='google-books1::OnboardingListCategoryVolumeMethodBuilder'>OnboardingListCategoryVolumeMethodBuilder</a></td>
+                        <td class='docblock short'><p>List available volumes under categories for onboarding experience.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OnboardingMethodsBuilder.html'
+                               title='google-books1::OnboardingMethodsBuilder'>OnboardingMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>onboarding</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PromoofferAcceptMethodBuilder.html'
+                               title='google-books1::PromoofferAcceptMethodBuilder'>PromoofferAcceptMethodBuilder</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PromoofferDismisMethodBuilder.html'
+                               title='google-books1::PromoofferDismisMethodBuilder'>PromoofferDismisMethodBuilder</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PromoofferGetMethodBuilder.html'
+                               title='google-books1::PromoofferGetMethodBuilder'>PromoofferGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Returns a list of promo offers available to the user</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PromoofferMethodsBuilder.html'
+                               title='google-books1::PromoofferMethodsBuilder'>PromoofferMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>promooffer</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReadingPosition.html'
+                               title='google-books1::ReadingPosition'>ReadingPosition</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MylibraryReadingpositionGetMethodBuilder.html">readingpositions get mylibrary</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RequestAccess.html'
+                               title='google-books1::RequestAccess'>RequestAccess</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MyconfigRequestAccesMethodBuilder.html">request access myconfig</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Review.html'
+                               title='google-books1::Review'>Review</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReviewAuthor.html'
+                               title='google-books1::ReviewAuthor'>ReviewAuthor</a></td>
+                        <td class='docblock short'><p>Author of this review.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReviewSource.html'
+                               title='google-books1::ReviewSource'>ReviewSource</a></td>
+                        <td class='docblock short'><p>Information regarding the source of this review, when the review is not from a Google Books user.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Usersettings.html'
+                               title='google-books1::Usersettings'>Usersettings</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.MyconfigGetUserSettingMethodBuilder.html">get user settings myconfig</a> (response)</li>
+<li><a href="struct.MyconfigUpdateUserSettingMethodBuilder.html">update user settings myconfig</a> (request|response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UsersettingsNotesExport.html'
+                               title='google-books1::UsersettingsNotesExport'>UsersettingsNotesExport</a></td>
+                        <td class='docblock short'><p>User settings in sub-objects, each for different purposes.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Volume.html'
+                               title='google-books1::Volume'>Volume</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.VolumeUseruploadedListMethodBuilder.html">useruploaded list volumes</a> (none)</li>
+<li><a href="struct.VolumeRecommendedRateMethodBuilder.html">recommended rate volumes</a> (none)</li>
+<li><a href="struct.VolumeListMethodBuilder.html">list volumes</a> (none)</li>
+<li><a href="struct.VolumeAssociatedListMethodBuilder.html">associated list volumes</a> (none)</li>
+<li><a href="struct.VolumeGetMethodBuilder.html">get volumes</a> (response)</li>
+<li><a href="struct.VolumeRecommendedListMethodBuilder.html">recommended list volumes</a> (none)</li>
+<li><a href="struct.VolumeMybookListMethodBuilder.html">mybooks list volumes</a> (none)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Volume2.html'
+                               title='google-books1::Volume2'>Volume2</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.OnboardingListCategoryVolumeMethodBuilder.html">list category volumes onboarding</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeAccessInfo.html'
+                               title='google-books1::VolumeAccessInfo'>VolumeAccessInfo</a></td>
+                        <td class='docblock short'><p>Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in one country but not in another, e.g.).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeAccessInfoEpub.html'
+                               title='google-books1::VolumeAccessInfoEpub'>VolumeAccessInfoEpub</a></td>
+                        <td class='docblock short'><p>Information about epub content. (In LITE projection.)</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeAccessInfoPdf.html'
+                               title='google-books1::VolumeAccessInfoPdf'>VolumeAccessInfoPdf</a></td>
+                        <td class='docblock short'><p>Information about pdf content. (In LITE projection.)</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeAssociatedListMethodBuilder.html'
+                               title='google-books1::VolumeAssociatedListMethodBuilder'>VolumeAssociatedListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Return a list of associated books.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeGetMethodBuilder.html'
+                               title='google-books1::VolumeGetMethodBuilder'>VolumeGetMethodBuilder</a></td>
+                        <td class='docblock short'><p>Gets volume information for a single volume.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeLayerInfo.html'
+                               title='google-books1::VolumeLayerInfo'>VolumeLayerInfo</a></td>
+                        <td class='docblock short'><p>What layers exist in this volume and high level information about them.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeLayerInfoLayers.html'
+                               title='google-books1::VolumeLayerInfoLayers'>VolumeLayerInfoLayers</a></td>
+                        <td class='docblock short'><p>A layer should appear here if and only if the layer exists for this book.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeListMethodBuilder.html'
+                               title='google-books1::VolumeListMethodBuilder'>VolumeListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Performs a book search.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeMethodsBuilder.html'
+                               title='google-books1::VolumeMethodsBuilder'>VolumeMethodsBuilder</a></td>
+                        <td class='docblock short'><p>A builder providing access to all methods supported on <em>volume</em> resources.
+It is not used directly, but through the <code>Books</code> hub.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeMybookListMethodBuilder.html'
+                               title='google-books1::VolumeMybookListMethodBuilder'>VolumeMybookListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Return a list of books in My Library.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeRecommendedInfo.html'
+                               title='google-books1::VolumeRecommendedInfo'>VolumeRecommendedInfo</a></td>
+                        <td class='docblock short'><p>Recommendation related information for this volume.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeRecommendedListMethodBuilder.html'
+                               title='google-books1::VolumeRecommendedListMethodBuilder'>VolumeRecommendedListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Return a list of recommended books for the current user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeRecommendedRateMethodBuilder.html'
+                               title='google-books1::VolumeRecommendedRateMethodBuilder'>VolumeRecommendedRateMethodBuilder</a></td>
+                        <td class='docblock short'><p>Rate a recommended book for the current user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSaleInfo.html'
+                               title='google-books1::VolumeSaleInfo'>VolumeSaleInfo</a></td>
+                        <td class='docblock short'><p>Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSaleInfoListPrice.html'
+                               title='google-books1::VolumeSaleInfoListPrice'>VolumeSaleInfoListPrice</a></td>
+                        <td class='docblock short'><p>Suggested retail price. (In LITE projection.)</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSaleInfoOffers.html'
+                               title='google-books1::VolumeSaleInfoOffers'>VolumeSaleInfoOffers</a></td>
+                        <td class='docblock short'><p>Offers available for this volume (sales and rentals).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSaleInfoOffersListPrice.html'
+                               title='google-books1::VolumeSaleInfoOffersListPrice'>VolumeSaleInfoOffersListPrice</a></td>
+                        <td class='docblock short'><p>Offer list (=undiscounted) price in Micros.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSaleInfoOffersRentalDuration.html'
+                               title='google-books1::VolumeSaleInfoOffersRentalDuration'>VolumeSaleInfoOffersRentalDuration</a></td>
+                        <td class='docblock short'><p>The rental duration (for rental offers only).</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSaleInfoOffersRetailPrice.html'
+                               title='google-books1::VolumeSaleInfoOffersRetailPrice'>VolumeSaleInfoOffersRetailPrice</a></td>
+                        <td class='docblock short'><p>Offer retail (=discounted) price in Micros</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSaleInfoRetailPrice.html'
+                               title='google-books1::VolumeSaleInfoRetailPrice'>VolumeSaleInfoRetailPrice</a></td>
+                        <td class='docblock short'><p>The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.)</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeSearchInfo.html'
+                               title='google-books1::VolumeSearchInfo'>VolumeSearchInfo</a></td>
+                        <td class='docblock short'><p>Search result information related to this volume.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeUserInfo.html'
+                               title='google-books1::VolumeUserInfo'>VolumeUserInfo</a></td>
+                        <td class='docblock short'><p>User specific information related to this volume. (e.g. page this user last read or whether they purchased this book)</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeUserInfoCopy.html'
+                               title='google-books1::VolumeUserInfoCopy'>VolumeUserInfoCopy</a></td>
+                        <td class='docblock short'><p>Copy/Paste accounting information.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeUserInfoRentalPeriod.html'
+                               title='google-books1::VolumeUserInfoRentalPeriod'>VolumeUserInfoRentalPeriod</a></td>
+                        <td class='docblock short'><p>Period during this book is/was a valid rental.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeUserInfoUserUploadedVolumeInfo.html'
+                               title='google-books1::VolumeUserInfoUserUploadedVolumeInfo'>VolumeUserInfoUserUploadedVolumeInfo</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeUseruploadedListMethodBuilder.html'
+                               title='google-books1::VolumeUseruploadedListMethodBuilder'>VolumeUseruploadedListMethodBuilder</a></td>
+                        <td class='docblock short'><p>Return a list of books uploaded by the current user.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeVolumeInfo.html'
+                               title='google-books1::VolumeVolumeInfo'>VolumeVolumeInfo</a></td>
+                        <td class='docblock short'><p>General volume information.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeVolumeInfoDimensions.html'
+                               title='google-books1::VolumeVolumeInfoDimensions'>VolumeVolumeInfoDimensions</a></td>
+                        <td class='docblock short'><p>Physical dimensions of this volume.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeVolumeInfoImageLinks.html'
+                               title='google-books1::VolumeVolumeInfoImageLinks'>VolumeVolumeInfoImageLinks</a></td>
+                        <td class='docblock short'><p>A list of image links for all the sizes that are available. (In LITE projection.)</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeVolumeInfoIndustryIdentifiers.html'
+                               title='google-books1::VolumeVolumeInfoIndustryIdentifiers'>VolumeVolumeInfoIndustryIdentifiers</a></td>
+                        <td class='docblock short'><p>Industry standard identifiers for this volume.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Volumeannotation.html'
+                               title='google-books1::Volumeannotation'>Volumeannotation</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.LayerVolumeAnnotationGetMethodBuilder.html">volume annotations get layers</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VolumeannotationContentRanges.html'
+                               title='google-books1::VolumeannotationContentRanges'>VolumeannotationContentRanges</a></td>
+                        <td class='docblock short'><p>The content ranges to identify the selected text.</p>
+
+<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Volumeannotations.html'
+                               title='google-books1::Volumeannotations'>Volumeannotations</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.LayerVolumeAnnotationListMethodBuilder.html">volume annotations list layers</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Volumes.html'
+                               title='google-books1::Volumes'>Volumes</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+
+<h1 id="activities" class='section-header'><a
+                           href="#activities">Activities</a></h1>
+<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
+The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
+
+<ul>
+<li><a href="struct.VolumeUseruploadedListMethodBuilder.html">useruploaded list volumes</a> (response)</li>
+<li><a href="struct.MyconfigSyncVolumeLicenseMethodBuilder.html">sync volume licenses myconfig</a> (response)</li>
+<li><a href="struct.VolumeListMethodBuilder.html">list volumes</a> (response)</li>
+<li><a href="struct.VolumeAssociatedListMethodBuilder.html">associated list volumes</a> (response)</li>
+<li><a href="struct.BookshelveVolumeListMethodBuilder.html">volumes list bookshelves</a> (response)</li>
+<li><a href="struct.VolumeRecommendedListMethodBuilder.html">recommended list volumes</a> (response)</li>
+<li><a href="struct.MylibraryBookshelveVolumeListMethodBuilder.html">bookshelves volumes list mylibrary</a> (response)</li>
+<li><a href="struct.VolumeMybookListMethodBuilder.html">mybooks list volumes</a> (response)</li>
+</ul>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
+                               title='google-books1::Scope'>Scope</a></td>
+                        <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
+A scope is needed when requesting an
+<a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "google-books1";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>
