@@ -4461,6 +4461,106 @@
 <span id="4419">4419</span>
 <span id="4420">4420</span>
 <span id="4421">4421</span>
+<span id="4422">4422</span>
+<span id="4423">4423</span>
+<span id="4424">4424</span>
+<span id="4425">4425</span>
+<span id="4426">4426</span>
+<span id="4427">4427</span>
+<span id="4428">4428</span>
+<span id="4429">4429</span>
+<span id="4430">4430</span>
+<span id="4431">4431</span>
+<span id="4432">4432</span>
+<span id="4433">4433</span>
+<span id="4434">4434</span>
+<span id="4435">4435</span>
+<span id="4436">4436</span>
+<span id="4437">4437</span>
+<span id="4438">4438</span>
+<span id="4439">4439</span>
+<span id="4440">4440</span>
+<span id="4441">4441</span>
+<span id="4442">4442</span>
+<span id="4443">4443</span>
+<span id="4444">4444</span>
+<span id="4445">4445</span>
+<span id="4446">4446</span>
+<span id="4447">4447</span>
+<span id="4448">4448</span>
+<span id="4449">4449</span>
+<span id="4450">4450</span>
+<span id="4451">4451</span>
+<span id="4452">4452</span>
+<span id="4453">4453</span>
+<span id="4454">4454</span>
+<span id="4455">4455</span>
+<span id="4456">4456</span>
+<span id="4457">4457</span>
+<span id="4458">4458</span>
+<span id="4459">4459</span>
+<span id="4460">4460</span>
+<span id="4461">4461</span>
+<span id="4462">4462</span>
+<span id="4463">4463</span>
+<span id="4464">4464</span>
+<span id="4465">4465</span>
+<span id="4466">4466</span>
+<span id="4467">4467</span>
+<span id="4468">4468</span>
+<span id="4469">4469</span>
+<span id="4470">4470</span>
+<span id="4471">4471</span>
+<span id="4472">4472</span>
+<span id="4473">4473</span>
+<span id="4474">4474</span>
+<span id="4475">4475</span>
+<span id="4476">4476</span>
+<span id="4477">4477</span>
+<span id="4478">4478</span>
+<span id="4479">4479</span>
+<span id="4480">4480</span>
+<span id="4481">4481</span>
+<span id="4482">4482</span>
+<span id="4483">4483</span>
+<span id="4484">4484</span>
+<span id="4485">4485</span>
+<span id="4486">4486</span>
+<span id="4487">4487</span>
+<span id="4488">4488</span>
+<span id="4489">4489</span>
+<span id="4490">4490</span>
+<span id="4491">4491</span>
+<span id="4492">4492</span>
+<span id="4493">4493</span>
+<span id="4494">4494</span>
+<span id="4495">4495</span>
+<span id="4496">4496</span>
+<span id="4497">4497</span>
+<span id="4498">4498</span>
+<span id="4499">4499</span>
+<span id="4500">4500</span>
+<span id="4501">4501</span>
+<span id="4502">4502</span>
+<span id="4503">4503</span>
+<span id="4504">4504</span>
+<span id="4505">4505</span>
+<span id="4506">4506</span>
+<span id="4507">4507</span>
+<span id="4508">4508</span>
+<span id="4509">4509</span>
+<span id="4510">4510</span>
+<span id="4511">4511</span>
+<span id="4512">4512</span>
+<span id="4513">4513</span>
+<span id="4514">4514</span>
+<span id="4515">4515</span>
+<span id="4516">4516</span>
+<span id="4517">4517</span>
+<span id="4518">4518</span>
+<span id="4519">4519</span>
+<span id="4520">4520</span>
+<span id="4521">4521</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -6018,6 +6118,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.publishers.list&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>11</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
@@ -6044,6 +6148,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;relationshipStatus&quot;</span>, <span class='string'>&quot;publisherCategory&quot;</span>, <span class='string'>&quot;pageToken&quot;</span>, <span class='string'>&quot;minSevenDayEpc&quot;</span>, <span class='string'>&quot;minPayoutRank&quot;</span>, <span class='string'>&quot;minNinetyDayEpc&quot;</span>, <span class='string'>&quot;maxResults&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -6056,12 +6161,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/publishers&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -6098,35 +6206,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.publishers.list&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -6134,6 +6243,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -6307,6 +6417,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.publishers.get&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>5</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
@@ -6315,6 +6429,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;publisherId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -6327,12 +6442,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/publisher&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -6369,35 +6487,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.publishers.get&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -6405,6 +6524,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -6535,11 +6655,16 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.links.insert&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Post</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>5</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -6552,12 +6677,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/link&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -6599,38 +6727,39 @@
         <span class='kw'>loop</span> {
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;POST&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Post</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()))
                 .<span class='ident'>header</span>(<span class='ident'>ContentType</span>(<span class='ident'>json_mime_type</span>.<span class='ident'>clone</span>()))
                 .<span class='ident'>header</span>(<span class='ident'>ContentLength</span>(<span class='ident'>request_size</span> <span class='kw'>as</span> <span class='ident'>u64</span>))
                 .<span class='ident'>body</span>(<span class='ident'>request_value_reader</span>.<span class='ident'>into_body</span>());
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.links.insert&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -6638,6 +6767,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -6763,12 +6893,17 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.links.get&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>5</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;linkId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_link_id</span>.<span class='ident'>to_string</span>()));
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;linkId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -6781,12 +6916,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/link/{linkId}&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>), (<span class='string'>&quot;{linkId}&quot;</span>, <span class='string'>&quot;linkId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -6823,35 +6961,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.links.get&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -6859,6 +6998,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -7010,6 +7150,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.links.list&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>17</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
@@ -7066,6 +7210,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;startDateMin&quot;</span>, <span class='string'>&quot;startDateMax&quot;</span>, <span class='string'>&quot;searchText&quot;</span>, <span class='string'>&quot;relationshipStatus&quot;</span>, <span class='string'>&quot;promotionType&quot;</span>, <span class='string'>&quot;pageToken&quot;</span>, <span class='string'>&quot;maxResults&quot;</span>, <span class='string'>&quot;linkType&quot;</span>, <span class='string'>&quot;createDateMin&quot;</span>, <span class='string'>&quot;createDateMax&quot;</span>, <span class='string'>&quot;authorship&quot;</span>, <span class='string'>&quot;assetSize&quot;</span>, <span class='string'>&quot;advertiserId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -7078,12 +7223,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/links&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -7120,35 +7268,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.links.list&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -7156,6 +7305,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -7401,6 +7551,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.reports.get&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>16</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
@@ -7456,6 +7610,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;reportType&quot;</span>, <span class='string'>&quot;status&quot;</span>, <span class='string'>&quot;startIndex&quot;</span>, <span class='string'>&quot;startDate&quot;</span>, <span class='string'>&quot;publisherId&quot;</span>, <span class='string'>&quot;orderId&quot;</span>, <span class='string'>&quot;maxResults&quot;</span>, <span class='string'>&quot;linkId&quot;</span>, <span class='string'>&quot;eventType&quot;</span>, <span class='string'>&quot;endDate&quot;</span>, <span class='string'>&quot;calculateTotals&quot;</span>, <span class='string'>&quot;advertiserId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -7468,12 +7623,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/report/{reportType}&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>), (<span class='string'>&quot;{reportType}&quot;</span>, <span class='string'>&quot;reportType&quot;</span>)].<span class='ident'>iter</span>() {
@@ -7510,35 +7668,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.reports.get&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -7546,6 +7705,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -7766,6 +7926,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.ccOffers.list&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>5</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;publisher&quot;</span>, <span class='self'>self</span>.<span class='ident'>_publisher</span>.<span class='ident'>to_string</span>()));
         <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_projection</span> {
@@ -7780,6 +7944,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;publisher&quot;</span>, <span class='string'>&quot;projection&quot;</span>, <span class='string'>&quot;advertiser&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -7792,12 +7957,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/publishers/{publisher}/ccOffers&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{publisher}&quot;</span>, <span class='string'>&quot;publisher&quot;</span>)].<span class='ident'>iter</span>() {
@@ -7834,35 +8002,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.ccOffers.list&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -7870,6 +8039,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -7994,6 +8164,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.advertisers.get&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>5</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
@@ -8002,6 +8176,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;advertiserId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -8014,12 +8189,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/advertiser&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -8056,35 +8234,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.advertisers.get&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -8092,6 +8271,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -8229,6 +8409,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.advertisers.list&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>11</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
@@ -8255,6 +8439,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;relationshipStatus&quot;</span>, <span class='string'>&quot;pageToken&quot;</span>, <span class='string'>&quot;minSevenDayEpc&quot;</span>, <span class='string'>&quot;minPayoutRank&quot;</span>, <span class='string'>&quot;minNinetyDayEpc&quot;</span>, <span class='string'>&quot;maxResults&quot;</span>, <span class='string'>&quot;advertiserCategory&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -8267,12 +8452,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/advertisers&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -8309,35 +8497,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.advertisers.list&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -8345,6 +8534,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
@@ -8548,6 +8738,10 @@
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;gan.events.list&quot;</span>, 
+                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
+        }
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>20</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;role&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role</span>.<span class='ident'>to_string</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;roleId&quot;</span>, <span class='self'>self</span>.<span class='ident'>_role_id</span>.<span class='ident'>to_string</span>()));
@@ -8601,6 +8795,7 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;role&quot;</span>, <span class='string'>&quot;roleId&quot;</span>, <span class='string'>&quot;type&quot;</span>, <span class='string'>&quot;status&quot;</span>, <span class='string'>&quot;sku&quot;</span>, <span class='string'>&quot;publisherId&quot;</span>, <span class='string'>&quot;productCategory&quot;</span>, <span class='string'>&quot;pageToken&quot;</span>, <span class='string'>&quot;orderId&quot;</span>, <span class='string'>&quot;modifyDateMin&quot;</span>, <span class='string'>&quot;modifyDateMax&quot;</span>, <span class='string'>&quot;memberId&quot;</span>, <span class='string'>&quot;maxResults&quot;</span>, <span class='string'>&quot;linkId&quot;</span>, <span class='string'>&quot;eventDateMin&quot;</span>, <span class='string'>&quot;eventDateMax&quot;</span>, <span class='string'>&quot;chargeType&quot;</span>, <span class='string'>&quot;advertiserId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                 <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
@@ -8613,12 +8808,15 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/gan/v1beta1/{role}/{roleId}/events&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
         }}
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
+                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+            }
         }
 
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span>(<span class='ident'>find_this</span>, <span class='ident'>param_name</span>) <span class='kw'>in</span> [(<span class='string'>&quot;{role}&quot;</span>, <span class='string'>&quot;role&quot;</span>), (<span class='string'>&quot;{roleId}&quot;</span>, <span class='string'>&quot;roleId&quot;</span>)].<span class='ident'>iter</span>() {
@@ -8655,35 +8853,36 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
 
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Extension</span>(<span class='string'>&quot;GET&quot;</span>.<span class='ident'>to_string</span>()), <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>.<span class='ident'>pre_request</span>(<span class='string'>&quot;gan.events.list&quot;</span>),
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {}
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
             }
 
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
                             <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                             <span class='kw'>continue</span>;
                         }
                     }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
                             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                             <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
                             <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
                                 <span class='ident'>sleep</span>(<span class='ident'>d</span>);
                                 <span class='kw'>continue</span>;
                             }
                         }
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                         <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
@@ -8691,6 +8890,7 @@
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
                         (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
                     };
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
                     <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
