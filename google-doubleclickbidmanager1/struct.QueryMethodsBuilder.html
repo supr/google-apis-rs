@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-doubleclickbidmanager1</a>::<wbr><a class='struct' href=''>QueryMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-6744' href='../src/google-doubleclickbidmanager1/lib.rs.html#982-986'>[src]</a></span></h1>
+        </span><a id='src-12624' href='../src/google-doubleclickbidmanager1/lib.rs.html#945-949'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct QueryMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>query</em> resources.
@@ -55,7 +55,7 @@ It is not used directly, but through the <code>DoubleClickBidManager</code> hub.
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-doubleclickbidmanager1&quot;</span> <span class='kw'>as</span> <span class='ident'>doubleclickbidmanager1</span>;
  
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -67,32 +67,32 @@ It is not used directly, but through the <code>DoubleClickBidManager</code> hub.
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>DoubleClickBidManager</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
-<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='comment'>// like `createquery(...)`, `deletequery(...)`, `getquery(...)`, `listqueries(...)` and `runquery(...)`</span>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>queries</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryMethodsBuilder.html' title='google-doubleclickbidmanager1::QueryMethodsBuilder'>QueryMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.listqueries' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listqueries' class='fnname'>listqueries</a>(&amp;self) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryListqueryMethodBuilder.html' title='google-doubleclickbidmanager1::QueryListqueryMethodBuilder'>QueryListqueryMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryMethodsBuilder.html' title='google-doubleclickbidmanager1::QueryMethodsBuilder'>QueryMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.listqueries' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.listqueries' class='fnname'>listqueries</a>(&amp;self) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryListqueryCallBuilder.html' title='google-doubleclickbidmanager1::QueryListqueryCallBuilder'>QueryListqueryCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Retrieves stored queries.    </p>
-</div><h4 id='method.getquery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.getquery' class='fnname'>getquery</a>(&amp;self, query_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryGetqueryMethodBuilder.html' title='google-doubleclickbidmanager1::QueryGetqueryMethodBuilder'>QueryGetqueryMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.getquery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.getquery' class='fnname'>getquery</a>(&amp;self, query_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryGetqueryCallBuilder.html' title='google-doubleclickbidmanager1::QueryGetqueryCallBuilder'>QueryGetqueryCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Retrieves a stored query.    </p>
-</div><h4 id='method.createquery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.createquery' class='fnname'>createquery</a>(&amp;self, request: &amp;<a class='struct' href='../google-doubleclickbidmanager1/struct.Query.html' title='google-doubleclickbidmanager1::Query'>Query</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryCreatequeryMethodBuilder.html' title='google-doubleclickbidmanager1::QueryCreatequeryMethodBuilder'>QueryCreatequeryMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.createquery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.createquery' class='fnname'>createquery</a>(&amp;self, request: &amp;<a class='struct' href='../google-doubleclickbidmanager1/struct.Query.html' title='google-doubleclickbidmanager1::Query'>Query</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryCreatequeryCallBuilder.html' title='google-doubleclickbidmanager1::QueryCreatequeryCallBuilder'>QueryCreatequeryCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Creates a query.    </p>
-</div><h4 id='method.deletequery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.deletequery' class='fnname'>deletequery</a>(&amp;self, query_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryDeletequeryMethodBuilder.html' title='google-doubleclickbidmanager1::QueryDeletequeryMethodBuilder'>QueryDeletequeryMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.deletequery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.deletequery' class='fnname'>deletequery</a>(&amp;self, query_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryDeletequeryCallBuilder.html' title='google-doubleclickbidmanager1::QueryDeletequeryCallBuilder'>QueryDeletequeryCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Deletes a stored query as well as the associated stored reports.    </p>
-</div><h4 id='method.runquery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.runquery' class='fnname'>runquery</a>(&amp;self, request: &amp;<a class='struct' href='../google-doubleclickbidmanager1/struct.RunQueryRequest.html' title='google-doubleclickbidmanager1::RunQueryRequest'>RunQueryRequest</a>, query_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryRunqueryMethodBuilder.html' title='google-doubleclickbidmanager1::QueryRunqueryMethodBuilder'>QueryRunqueryMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.runquery' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.runquery' class='fnname'>runquery</a>(&amp;self, request: &amp;<a class='struct' href='../google-doubleclickbidmanager1/struct.RunQueryRequest.html' title='google-doubleclickbidmanager1::RunQueryRequest'>RunQueryRequest</a>, query_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryRunqueryCallBuilder.html' title='google-doubleclickbidmanager1::QueryRunqueryCallBuilder'>QueryRunqueryCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Runs a stored query to generate a report.    </p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-doubleclickbidmanager1/cmn/trait.ResourceMethodsBuilder.html' title='google-doubleclickbidmanager1::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryMethodsBuilder.html' title='google-doubleclickbidmanager1::QueryMethodsBuilder'>QueryMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; ResourceMethodsBuilder for <a class='struct' href='../google-doubleclickbidmanager1/struct.QueryMethodsBuilder.html' title='google-doubleclickbidmanager1::QueryMethodsBuilder'>QueryMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

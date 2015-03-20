@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-prediction1d6</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-prediction1d6/lib.rs.html#5-3050'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-prediction1d6/lib.rs.html#5-3042'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>prediction</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/prediction1d6">on github</a>.</p>
 
@@ -52,8 +52,16 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Prediction.html">hub</a> ... </p>
 
 <ul>
-<li>hostedmodels (<a href="struct.HostedmodelPredictMethodBuilder.html"><em>predict</em></a>)</li>
-<li>trainedmodels (<a href="struct.TrainedmodelAnalyzeMethodBuilder.html"><em>analyze</em></a>, <a href="struct.TrainedmodelDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TrainedmodelGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TrainedmodelInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TrainedmodelListMethodBuilder.html"><em>list</em></a>, <a href="struct.TrainedmodelPredictMethodBuilder.html"><em>predict</em></a> and <a href="struct.TrainedmodelUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>hostedmodels
+
+<ul>
+<li><a href="struct.HostedmodelPredictCallBuilder.html"><em>predict</em></a></li>
+</ul></li>
+<li>trainedmodels
+
+<ul>
+<li><a href="struct.TrainedmodelAnalyzeCallBuilder.html"><em>analyze</em></a>, <a href="struct.TrainedmodelDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.TrainedmodelGetCallBuilder.html"><em>get</em></a>, <a href="struct.TrainedmodelInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.TrainedmodelListCallBuilder.html"><em>list</em></a>, <a href="struct.TrainedmodelPredictCallBuilder.html"><em>predict</em></a> and <a href="struct.TrainedmodelUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>prediction</em> <em>v1d6</em> API can be found at the
@@ -83,7 +91,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -121,10 +129,10 @@ google-prediction1d6 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-prediction1d6&quot;</span> <span class='kw'>as</span> <span class='ident'>prediction1d6</span>;
 <span class='kw'>use</span> <span class='ident'>prediction1d6</span>::<span class='ident'>Update</span>;
-<span class='kw'>use</span> <span class='ident'>prediction1d6</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>prediction1d6</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>prediction1d6</span>::<span class='ident'>Prediction</span>;
@@ -158,6 +166,7 @@ google-prediction1d6 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -186,7 +195,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -201,7 +210,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -211,28 +220,12 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-prediction1d6::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Analyze.html'
                                title='google-prediction1d6::Analyze'>Analyze</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TrainedmodelAnalyzeMethodBuilder.html">analyze trainedmodels</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -240,8 +233,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescription.html'
                                title='google-prediction1d6::AnalyzeDataDescription'>AnalyzeDataDescription</a></td>
                         <td class='docblock short'><p>Description of the data the model was trained on.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -249,8 +240,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionFeatures.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionFeatures'>AnalyzeDataDescriptionFeatures</a></td>
                         <td class='docblock short'><p>Description of the input features in the data set.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -258,8 +247,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionFeaturesCategorical.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionFeaturesCategorical'>AnalyzeDataDescriptionFeaturesCategorical</a></td>
                         <td class='docblock short'><p>Description of the categorical values of this feature.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -267,8 +254,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionFeaturesCategoricalValues.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionFeaturesCategoricalValues'>AnalyzeDataDescriptionFeaturesCategoricalValues</a></td>
                         <td class='docblock short'><p>List of all the categories for this feature in the data set.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -276,8 +261,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionFeaturesNumeric.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionFeaturesNumeric'>AnalyzeDataDescriptionFeaturesNumeric</a></td>
                         <td class='docblock short'><p>Description of the numeric values of this feature.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -285,8 +268,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionFeaturesText.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionFeaturesText'>AnalyzeDataDescriptionFeaturesText</a></td>
                         <td class='docblock short'><p>Description of multiple-word text values of this feature.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -294,8 +275,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionOutputFeature.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionOutputFeature'>AnalyzeDataDescriptionOutputFeature</a></td>
                         <td class='docblock short'><p>Description of the output value or label.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -303,8 +282,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionOutputFeatureNumeric.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionOutputFeatureNumeric'>AnalyzeDataDescriptionOutputFeatureNumeric</a></td>
                         <td class='docblock short'><p>Description of the output values in the data set.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -312,8 +289,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeDataDescriptionOutputFeatureText.html'
                                title='google-prediction1d6::AnalyzeDataDescriptionOutputFeatureText'>AnalyzeDataDescriptionOutputFeatureText</a></td>
                         <td class='docblock short'><p>Description of the output labels in the data set.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -321,8 +296,14 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AnalyzeModelDescription.html'
                                title='google-prediction1d6::AnalyzeModelDescription'>AnalyzeModelDescription</a></td>
                         <td class='docblock short'><p>Description of the model.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-prediction1d6::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -335,8 +316,8 @@ It is not used directly, but through the <code>Prediction</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.HostedmodelPredictMethodBuilder.html'
-                               title='google-prediction1d6::HostedmodelPredictMethodBuilder'>HostedmodelPredictMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.HostedmodelPredictCallBuilder.html'
+                               title='google-prediction1d6::HostedmodelPredictCallBuilder'>HostedmodelPredictCallBuilder</a></td>
                         <td class='docblock short'><p>Submit input and request an output against a hosted model.</p>
 </td>
                     </tr>
@@ -345,16 +326,6 @@ It is not used directly, but through the <code>Prediction</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Input.html'
                                title='google-prediction1d6::Input'>Input</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.HostedmodelPredictMethodBuilder.html">predict hostedmodels</a> (request)</li>
-<li><a href="struct.TrainedmodelPredictMethodBuilder.html">predict trainedmodels</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -362,8 +333,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InputInput.html'
                                title='google-prediction1d6::InputInput'>InputInput</a></td>
                         <td class='docblock short'><p>Input to the model for a prediction.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -371,15 +340,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Insert.html'
                                title='google-prediction1d6::Insert'>Insert</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TrainedmodelInsertMethodBuilder.html">insert trainedmodels</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -387,17 +347,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Insert2.html'
                                title='google-prediction1d6::Insert2'>Insert2</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TrainedmodelInsertMethodBuilder.html">insert trainedmodels</a> (response)</li>
-<li><a href="struct.TrainedmodelGetMethodBuilder.html">get trainedmodels</a> (response)</li>
-<li><a href="struct.TrainedmodelUpdateMethodBuilder.html">update trainedmodels</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -405,8 +354,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Insert2ModelInfo.html'
                                title='google-prediction1d6::Insert2ModelInfo'>Insert2ModelInfo</a></td>
                         <td class='docblock short'><p>Model metadata.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -414,8 +361,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InsertTrainingInstances.html'
                                title='google-prediction1d6::InsertTrainingInstances'>InsertTrainingInstances</a></td>
                         <td class='docblock short'><p>Instances to train model on.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -423,15 +368,23 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.List.html'
                                title='google-prediction1d6::List'>List</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TrainedmodelListMethodBuilder.html">list trainedmodels</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-prediction1d6::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-prediction1d6::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -439,16 +392,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Output.html'
                                title='google-prediction1d6::Output'>Output</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.HostedmodelPredictMethodBuilder.html">predict hostedmodels</a> (response)</li>
-<li><a href="struct.TrainedmodelPredictMethodBuilder.html">predict trainedmodels</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -456,8 +399,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OutputOutputMulti.html'
                                title='google-prediction1d6::OutputOutputMulti'>OutputOutputMulti</a></td>
                         <td class='docblock short'><p>A list of class labels with their estimated probabilities (Categorical models only).</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -469,36 +410,36 @@ The list links the activity name, along with information about where it is used 
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelAnalyzeMethodBuilder.html'
-                               title='google-prediction1d6::TrainedmodelAnalyzeMethodBuilder'>TrainedmodelAnalyzeMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelAnalyzeCallBuilder.html'
+                               title='google-prediction1d6::TrainedmodelAnalyzeCallBuilder'>TrainedmodelAnalyzeCallBuilder</a></td>
                         <td class='docblock short'><p>Get analysis of the model and the data the model was trained on.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelDeleteMethodBuilder.html'
-                               title='google-prediction1d6::TrainedmodelDeleteMethodBuilder'>TrainedmodelDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelDeleteCallBuilder.html'
+                               title='google-prediction1d6::TrainedmodelDeleteCallBuilder'>TrainedmodelDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Delete a trained model.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelGetMethodBuilder.html'
-                               title='google-prediction1d6::TrainedmodelGetMethodBuilder'>TrainedmodelGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelGetCallBuilder.html'
+                               title='google-prediction1d6::TrainedmodelGetCallBuilder'>TrainedmodelGetCallBuilder</a></td>
                         <td class='docblock short'><p>Check training status of your model.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelInsertMethodBuilder.html'
-                               title='google-prediction1d6::TrainedmodelInsertMethodBuilder'>TrainedmodelInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelInsertCallBuilder.html'
+                               title='google-prediction1d6::TrainedmodelInsertCallBuilder'>TrainedmodelInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Train a Prediction API model.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelListMethodBuilder.html'
-                               title='google-prediction1d6::TrainedmodelListMethodBuilder'>TrainedmodelListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelListCallBuilder.html'
+                               title='google-prediction1d6::TrainedmodelListCallBuilder'>TrainedmodelListCallBuilder</a></td>
                         <td class='docblock short'><p>List available models.</p>
 </td>
                     </tr>
@@ -512,15 +453,15 @@ It is not used directly, but through the <code>Prediction</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelPredictMethodBuilder.html'
-                               title='google-prediction1d6::TrainedmodelPredictMethodBuilder'>TrainedmodelPredictMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelPredictCallBuilder.html'
+                               title='google-prediction1d6::TrainedmodelPredictCallBuilder'>TrainedmodelPredictCallBuilder</a></td>
                         <td class='docblock short'><p>Submit model id and request a prediction.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelUpdateMethodBuilder.html'
-                               title='google-prediction1d6::TrainedmodelUpdateMethodBuilder'>TrainedmodelUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TrainedmodelUpdateCallBuilder.html'
+                               title='google-prediction1d6::TrainedmodelUpdateCallBuilder'>TrainedmodelUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Add new data to a trained model.</p>
 </td>
                     </tr>
@@ -529,25 +470,93 @@ It is not used directly, but through the <code>Prediction</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Update.html'
                                title='google-prediction1d6::Update'>Update</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TrainedmodelUpdateMethodBuilder.html">update trainedmodels</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-prediction1d6::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-prediction1d6::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-prediction1d6::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-prediction1d6::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-prediction1d6::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-prediction1d6::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-prediction1d6::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-prediction1d6::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-prediction1d6::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-prediction1d6::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-prediction1d6::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

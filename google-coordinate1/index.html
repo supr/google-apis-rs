@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-coordinate1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-coordinate1/lib.rs.html#5-4822'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-coordinate1/lib.rs.html#5-4747'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>coordinate</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/coordinate1">on github</a>.</p>
 
@@ -52,12 +52,36 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Coordinate.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.CustomFieldDef.html">custom field def</a> (<a href="struct.CustomFieldDefListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Job.html">jobs</a> (<a href="struct.JobGetMethodBuilder.html"><em>get</em></a>, <a href="struct.JobInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.JobListMethodBuilder.html"><em>list</em></a>, <a href="struct.JobPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.JobUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Location.html">location</a> (<a href="struct.LocationListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Schedule.html">schedule</a> (<a href="struct.ScheduleGetMethodBuilder.html"><em>get</em></a>, <a href="struct.SchedulePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.ScheduleUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Team.html">team</a> (<a href="struct.TeamListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Worker.html">worker</a> (<a href="struct.WorkerListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.CustomFieldDef.html">custom field def</a>
+
+<ul>
+<li><a href="struct.CustomFieldDefListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Job.html">jobs</a>
+
+<ul>
+<li><a href="struct.JobGetCallBuilder.html"><em>get</em></a>, <a href="struct.JobInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.JobListCallBuilder.html"><em>list</em></a>, <a href="struct.JobPatchCallBuilder.html"><em>patch</em></a> and <a href="struct.JobUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
+<li><a href="struct.Location.html">location</a>
+
+<ul>
+<li><a href="struct.LocationListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Schedule.html">schedule</a>
+
+<ul>
+<li><a href="struct.ScheduleGetCallBuilder.html"><em>get</em></a>, <a href="struct.SchedulePatchCallBuilder.html"><em>patch</em></a> and <a href="struct.ScheduleUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
+<li><a href="struct.Team.html">team</a>
+
+<ul>
+<li><a href="struct.TeamListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Worker.html">worker</a>
+
+<ul>
+<li><a href="struct.WorkerListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>coordinate</em> <em>v1</em> API can be found at the
@@ -87,7 +111,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -127,10 +151,10 @@ google-coordinate1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-coordinate1&quot;</span> <span class='kw'>as</span> <span class='ident'>coordinate1</span>;
 <span class='kw'>use</span> <span class='ident'>coordinate1</span>::<span class='ident'>Job</span>;
-<span class='kw'>use</span> <span class='ident'>coordinate1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>coordinate1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>coordinate1</span>::<span class='ident'>Coordinate</span>;
@@ -174,6 +198,7 @@ google-coordinate1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -202,7 +227,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -217,7 +242,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -227,14 +252,7 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-coordinate1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Coordinate.html'
@@ -247,8 +265,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomField.html'
                                title='google-coordinate1::CustomField'>CustomField</a></td>
                         <td class='docblock short'><p>Custom field.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -256,14 +272,12 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomFieldDef.html'
                                title='google-coordinate1::CustomFieldDef'>CustomFieldDef</a></td>
                         <td class='docblock short'><p>Custom field definition.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomFieldDefListMethodBuilder.html'
-                               title='google-coordinate1::CustomFieldDefListMethodBuilder'>CustomFieldDefListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomFieldDefListCallBuilder.html'
+                               title='google-coordinate1::CustomFieldDefListCallBuilder'>CustomFieldDefListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves a list of custom field definitions for a team.</p>
 </td>
                     </tr>
@@ -272,15 +286,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomFieldDefListResponse.html'
                                title='google-coordinate1::CustomFieldDefListResponse'>CustomFieldDefListResponse</a></td>
                         <td class='docblock short'><p>Collection of custom field definitions for a team.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.CustomFieldDefListMethodBuilder.html">list custom field def</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -296,8 +301,14 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomFields.html'
                                title='google-coordinate1::CustomFields'>CustomFields</a></td>
                         <td class='docblock short'><p>Collection of custom fields.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-coordinate1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -305,8 +316,6 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EnumItemDef.html'
                                title='google-coordinate1::EnumItemDef'>EnumItemDef</a></td>
                         <td class='docblock short'><p>Enum Item definition.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -314,19 +323,6 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Job.html'
                                title='google-coordinate1::Job'>Job</a></td>
                         <td class='docblock short'><p>A job.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.JobGetMethodBuilder.html">get jobs</a> (response)</li>
-<li><a href="struct.JobUpdateMethodBuilder.html">update jobs</a> (request|response)</li>
-<li><a href="struct.JobPatchMethodBuilder.html">patch jobs</a> (request|response)</li>
-<li><a href="struct.JobListMethodBuilder.html">list jobs</a> (none)</li>
-<li><a href="struct.JobInsertMethodBuilder.html">insert jobs</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -334,28 +330,26 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobChange.html'
                                title='google-coordinate1::JobChange'>JobChange</a></td>
                         <td class='docblock short'><p>Change to a job. For example assigning the job to a different worker.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobGetMethodBuilder.html'
-                               title='google-coordinate1::JobGetMethodBuilder'>JobGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobGetCallBuilder.html'
+                               title='google-coordinate1::JobGetCallBuilder'>JobGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves a job, including all the changes made to the job.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobInsertMethodBuilder.html'
-                               title='google-coordinate1::JobInsertMethodBuilder'>JobInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobInsertCallBuilder.html'
+                               title='google-coordinate1::JobInsertCallBuilder'>JobInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Inserts a new job. Only the state field of the job should be set.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobListMethodBuilder.html'
-                               title='google-coordinate1::JobListMethodBuilder'>JobListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobListCallBuilder.html'
+                               title='google-coordinate1::JobListCallBuilder'>JobListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves jobs created or modified since the given timestamp.</p>
 </td>
                     </tr>
@@ -364,15 +358,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobListResponse.html'
                                title='google-coordinate1::JobListResponse'>JobListResponse</a></td>
                         <td class='docblock short'><p>Response from a List Jobs request.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.JobListMethodBuilder.html">list jobs</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -385,8 +370,8 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobPatchMethodBuilder.html'
-                               title='google-coordinate1::JobPatchMethodBuilder'>JobPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobPatchCallBuilder.html'
+                               title='google-coordinate1::JobPatchCallBuilder'>JobPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Updates a job. Fields that are set in the job state will be updated. This method supports patch semantics.</p>
 </td>
                     </tr>
@@ -395,14 +380,12 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobState.html'
                                title='google-coordinate1::JobState'>JobState</a></td>
                         <td class='docblock short'><p>Current state of a job.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobUpdateMethodBuilder.html'
-                               title='google-coordinate1::JobUpdateMethodBuilder'>JobUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobUpdateCallBuilder.html'
+                               title='google-coordinate1::JobUpdateCallBuilder'>JobUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Updates a job. Fields that are set in the job state will be updated.</p>
 </td>
                     </tr>
@@ -411,14 +394,12 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Location.html'
                                title='google-coordinate1::Location'>Location</a></td>
                         <td class='docblock short'><p>Location of a job.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LocationListMethodBuilder.html'
-                               title='google-coordinate1::LocationListMethodBuilder'>LocationListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LocationListCallBuilder.html'
+                               title='google-coordinate1::LocationListCallBuilder'>LocationListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves a list of locations for a worker.</p>
 </td>
                     </tr>
@@ -427,15 +408,6 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LocationListResponse.html'
                                title='google-coordinate1::LocationListResponse'>LocationListResponse</a></td>
                         <td class='docblock short'><p>Response from a List Locations request.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.LocationListMethodBuilder.html">list location</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -451,8 +423,23 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LocationRecord.html'
                                title='google-coordinate1::LocationRecord'>LocationRecord</a></td>
                         <td class='docblock short'><p>Recorded location of a worker.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-coordinate1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-coordinate1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -460,23 +447,12 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Schedule.html'
                                title='google-coordinate1::Schedule'>Schedule</a></td>
                         <td class='docblock short'><p>Job schedule.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ScheduleUpdateMethodBuilder.html">update schedule</a> (request|response)</li>
-<li><a href="struct.SchedulePatchMethodBuilder.html">patch schedule</a> (request|response)</li>
-<li><a href="struct.ScheduleGetMethodBuilder.html">get schedule</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ScheduleGetMethodBuilder.html'
-                               title='google-coordinate1::ScheduleGetMethodBuilder'>ScheduleGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ScheduleGetCallBuilder.html'
+                               title='google-coordinate1::ScheduleGetCallBuilder'>ScheduleGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the schedule for a job.</p>
 </td>
                     </tr>
@@ -490,15 +466,15 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SchedulePatchMethodBuilder.html'
-                               title='google-coordinate1::SchedulePatchMethodBuilder'>SchedulePatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SchedulePatchCallBuilder.html'
+                               title='google-coordinate1::SchedulePatchCallBuilder'>SchedulePatchCallBuilder</a></td>
                         <td class='docblock short'><p>Replaces the schedule of a job with the provided schedule. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ScheduleUpdateMethodBuilder.html'
-                               title='google-coordinate1::ScheduleUpdateMethodBuilder'>ScheduleUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ScheduleUpdateCallBuilder.html'
+                               title='google-coordinate1::ScheduleUpdateCallBuilder'>ScheduleUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Replaces the schedule of a job with the provided schedule.</p>
 </td>
                     </tr>
@@ -507,14 +483,12 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Team.html'
                                title='google-coordinate1::Team'>Team</a></td>
                         <td class='docblock short'><p>A Coordinate team.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TeamListMethodBuilder.html'
-                               title='google-coordinate1::TeamListMethodBuilder'>TeamListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TeamListCallBuilder.html'
+                               title='google-coordinate1::TeamListCallBuilder'>TeamListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves a list of teams for a user.</p>
 </td>
                     </tr>
@@ -523,15 +497,6 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TeamListResponse.html'
                                title='google-coordinate1::TeamListResponse'>TeamListResponse</a></td>
                         <td class='docblock short'><p>Response from a List Teams request.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TeamListMethodBuilder.html">list team</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -547,8 +512,6 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TokenPagination.html'
                                title='google-coordinate1::TokenPagination'>TokenPagination</a></td>
                         <td class='docblock short'><p>Pagination information.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -556,14 +519,12 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Worker.html'
                                title='google-coordinate1::Worker'>Worker</a></td>
                         <td class='docblock short'><p>A worker in a Coordinate team.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WorkerListMethodBuilder.html'
-                               title='google-coordinate1::WorkerListMethodBuilder'>WorkerListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WorkerListCallBuilder.html'
+                               title='google-coordinate1::WorkerListCallBuilder'>WorkerListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves a list of workers in a team.</p>
 </td>
                     </tr>
@@ -572,15 +533,6 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WorkerListResponse.html'
                                title='google-coordinate1::WorkerListResponse'>WorkerListResponse</a></td>
                         <td class='docblock short'><p>Response from a List Workers request.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.WorkerListMethodBuilder.html">list worker</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -594,11 +546,88 @@ It is not used directly, but through the <code>Coordinate</code> hub.</p>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-coordinate1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-coordinate1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-coordinate1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-coordinate1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-coordinate1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-coordinate1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-coordinate1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-coordinate1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-coordinate1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-coordinate1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-coordinate1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-gamesconfiguration1_configuration</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-gamesconfiguration1_configuration/lib.rs.html#5-4234'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-gamesconfiguration1_configuration/lib.rs.html#5-4137'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>Games Configuration</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/gamesconfiguration1_configuration">on github</a>.</p>
 
@@ -52,15 +52,27 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.GamesConfiguration.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.AchievementConfiguration.html">achievement configurations</a> (<a href="struct.AchievementConfigurationDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.AchievementConfigurationGetMethodBuilder.html"><em>get</em></a>, <a href="struct.AchievementConfigurationInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.AchievementConfigurationListMethodBuilder.html"><em>list</em></a>, <a href="struct.AchievementConfigurationPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.AchievementConfigurationUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.ImageConfiguration.html">image configurations</a> (<a href="struct.ImageConfigurationUploadMethodBuilder.html"><em>upload</em></a>)</li>
-<li><a href="struct.LeaderboardConfiguration.html">leaderboard configurations</a> (<a href="struct.LeaderboardConfigurationDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.LeaderboardConfigurationGetMethodBuilder.html"><em>get</em></a>, <a href="struct.LeaderboardConfigurationInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.LeaderboardConfigurationListMethodBuilder.html"><em>list</em></a>, <a href="struct.LeaderboardConfigurationPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.LeaderboardConfigurationUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.AchievementConfiguration.html">achievement configurations</a>
+
+<ul>
+<li><a href="struct.AchievementConfigurationDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.AchievementConfigurationGetCallBuilder.html"><em>get</em></a>, <a href="struct.AchievementConfigurationInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.AchievementConfigurationListCallBuilder.html"><em>list</em></a>, <a href="struct.AchievementConfigurationPatchCallBuilder.html"><em>patch</em></a> and <a href="struct.AchievementConfigurationUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
+<li><a href="struct.ImageConfiguration.html">image configurations</a>
+
+<ul>
+<li><a href="struct.ImageConfigurationUploadCallBuilder.html"><em>upload</em></a></li>
+</ul></li>
+<li><a href="struct.LeaderboardConfiguration.html">leaderboard configurations</a>
+
+<ul>
+<li><a href="struct.LeaderboardConfigurationDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.LeaderboardConfigurationGetCallBuilder.html"><em>get</em></a>, <a href="struct.LeaderboardConfigurationInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.LeaderboardConfigurationListCallBuilder.html"><em>list</em></a>, <a href="struct.LeaderboardConfigurationPatchCallBuilder.html"><em>patch</em></a> and <a href="struct.LeaderboardConfigurationUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
 </ul>
 
 <p>Upload supported by ...</p>
 
 <ul>
-<li><a href="struct.ImageConfigurationUploadMethodBuilder.html"><em>upload image configurations</em></a></li>
+<li><a href="struct.ImageConfigurationUploadCallBuilder.html"><em>upload image configurations</em></a></li>
 </ul>
 
 <p>Everything else about the <em>Games Configuration</em> <em>v1_configuration</em> API can be found at the
@@ -90,7 +102,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -131,9 +143,9 @@ google-gamesconfiguration1_configuration = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-gamesconfiguration1_configuration&quot;</span> <span class='kw'>as</span> <span class='ident'>gamesconfiguration1_configuration</span>;
-<span class='kw'>use</span> <span class='ident'>gamesconfiguration1_configuration</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>gamesconfiguration1_configuration</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>gamesconfiguration1_configuration</span>::<span class='ident'>GamesConfiguration</span>;
@@ -164,6 +176,7 @@ google-gamesconfiguration1_configuration = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -192,7 +205,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -207,7 +220,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -217,39 +230,18 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-gamesconfiguration1_configuration::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfiguration.html'
                                title='google-gamesconfiguration1_configuration::AchievementConfiguration'>AchievementConfiguration</a></td>
                         <td class='docblock short'><p>This is a JSON template for an achievement configuration resource.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.AchievementConfigurationListMethodBuilder.html">list achievement configurations</a> (none)</li>
-<li><a href="struct.AchievementConfigurationUpdateMethodBuilder.html">update achievement configurations</a> (request|response)</li>
-<li><a href="struct.AchievementConfigurationInsertMethodBuilder.html">insert achievement configurations</a> (request|response)</li>
-<li><a href="struct.AchievementConfigurationGetMethodBuilder.html">get achievement configurations</a> (response)</li>
-<li><a href="struct.AchievementConfigurationPatchMethodBuilder.html">patch achievement configurations</a> (request|response)</li>
-<li><a href="struct.AchievementConfigurationDeleteMethodBuilder.html">delete achievement configurations</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationDeleteMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::AchievementConfigurationDeleteMethodBuilder'>AchievementConfigurationDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationDeleteCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::AchievementConfigurationDeleteCallBuilder'>AchievementConfigurationDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Delete the achievement configuration with the given ID.</p>
 </td>
                     </tr>
@@ -258,28 +250,26 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationDetail.html'
                                title='google-gamesconfiguration1_configuration::AchievementConfigurationDetail'>AchievementConfigurationDetail</a></td>
                         <td class='docblock short'><p>This is a JSON template for an achievement configuration detail.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationGetMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::AchievementConfigurationGetMethodBuilder'>AchievementConfigurationGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationGetCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::AchievementConfigurationGetCallBuilder'>AchievementConfigurationGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the metadata of the achievement configuration with the given ID.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationInsertMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::AchievementConfigurationInsertMethodBuilder'>AchievementConfigurationInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationInsertCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::AchievementConfigurationInsertCallBuilder'>AchievementConfigurationInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Insert a new achievement configuration in this application.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationListMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::AchievementConfigurationListMethodBuilder'>AchievementConfigurationListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationListCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::AchievementConfigurationListCallBuilder'>AchievementConfigurationListCallBuilder</a></td>
                         <td class='docblock short'><p>Returns a list of the achievement configurations in this application.</p>
 </td>
                     </tr>
@@ -288,15 +278,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationListResponse.html'
                                title='google-gamesconfiguration1_configuration::AchievementConfigurationListResponse'>AchievementConfigurationListResponse</a></td>
                         <td class='docblock short'><p>This is a JSON template for a ListConfigurations response.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.AchievementConfigurationListMethodBuilder.html">list achievement configurations</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -309,16 +290,24 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationPatchMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::AchievementConfigurationPatchMethodBuilder'>AchievementConfigurationPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationPatchCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::AchievementConfigurationPatchCallBuilder'>AchievementConfigurationPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Update the metadata of the achievement configuration with the given ID. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationUpdateMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::AchievementConfigurationUpdateMethodBuilder'>AchievementConfigurationUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AchievementConfigurationUpdateCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::AchievementConfigurationUpdateCallBuilder'>AchievementConfigurationUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Update the metadata of the achievement configuration with the given ID.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-gamesconfiguration1_configuration::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -333,8 +322,6 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GamesNumberAffixConfiguration.html'
                                title='google-gamesconfiguration1_configuration::GamesNumberAffixConfiguration'>GamesNumberAffixConfiguration</a></td>
                         <td class='docblock short'><p>This is a JSON template for a number affix resource.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -342,8 +329,6 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GamesNumberFormatConfiguration.html'
                                title='google-gamesconfiguration1_configuration::GamesNumberFormatConfiguration'>GamesNumberFormatConfiguration</a></td>
                         <td class='docblock short'><p>This is a JSON template for a number format resource.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -351,15 +336,6 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ImageConfiguration.html'
                                title='google-gamesconfiguration1_configuration::ImageConfiguration'>ImageConfiguration</a></td>
                         <td class='docblock short'><p>This is a JSON template for an image configuration resource.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ImageConfigurationUploadMethodBuilder.html">upload image configurations</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -372,8 +348,8 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ImageConfigurationUploadMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::ImageConfigurationUploadMethodBuilder'>ImageConfigurationUploadMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ImageConfigurationUploadCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::ImageConfigurationUploadCallBuilder'>ImageConfigurationUploadCallBuilder</a></td>
                         <td class='docblock short'><p>Uploads an image for a resource with the given ID and image type.</p>
 </td>
                     </tr>
@@ -382,26 +358,12 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfiguration.html'
                                title='google-gamesconfiguration1_configuration::LeaderboardConfiguration'>LeaderboardConfiguration</a></td>
                         <td class='docblock short'><p>This is a JSON template for an leaderboard configuration resource.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.LeaderboardConfigurationInsertMethodBuilder.html">insert leaderboard configurations</a> (request|response)</li>
-<li><a href="struct.LeaderboardConfigurationGetMethodBuilder.html">get leaderboard configurations</a> (response)</li>
-<li><a href="struct.LeaderboardConfigurationPatchMethodBuilder.html">patch leaderboard configurations</a> (request|response)</li>
-<li><a href="struct.LeaderboardConfigurationListMethodBuilder.html">list leaderboard configurations</a> (none)</li>
-<li><a href="struct.LeaderboardConfigurationUpdateMethodBuilder.html">update leaderboard configurations</a> (request|response)</li>
-<li><a href="struct.LeaderboardConfigurationDeleteMethodBuilder.html">delete leaderboard configurations</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationDeleteMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationDeleteMethodBuilder'>LeaderboardConfigurationDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationDeleteCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationDeleteCallBuilder'>LeaderboardConfigurationDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Delete the leaderboard configuration with the given ID.</p>
 </td>
                     </tr>
@@ -410,28 +372,26 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationDetail.html'
                                title='google-gamesconfiguration1_configuration::LeaderboardConfigurationDetail'>LeaderboardConfigurationDetail</a></td>
                         <td class='docblock short'><p>This is a JSON template for a leaderboard configuration detail.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationGetMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationGetMethodBuilder'>LeaderboardConfigurationGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationGetCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationGetCallBuilder'>LeaderboardConfigurationGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the metadata of the leaderboard configuration with the given ID.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationInsertMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationInsertMethodBuilder'>LeaderboardConfigurationInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationInsertCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationInsertCallBuilder'>LeaderboardConfigurationInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Insert a new leaderboard configuration in this application.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationListMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationListMethodBuilder'>LeaderboardConfigurationListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationListCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationListCallBuilder'>LeaderboardConfigurationListCallBuilder</a></td>
                         <td class='docblock short'><p>Returns a list of the leaderboard configurations in this application.</p>
 </td>
                     </tr>
@@ -440,15 +400,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationListResponse.html'
                                title='google-gamesconfiguration1_configuration::LeaderboardConfigurationListResponse'>LeaderboardConfigurationListResponse</a></td>
                         <td class='docblock short'><p>This is a JSON template for a ListConfigurations response.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.LeaderboardConfigurationListMethodBuilder.html">list leaderboard configurations</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -461,15 +412,15 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationPatchMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationPatchMethodBuilder'>LeaderboardConfigurationPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationPatchCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationPatchCallBuilder'>LeaderboardConfigurationPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Update the metadata of the leaderboard configuration with the given ID. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationUpdateMethodBuilder.html'
-                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationUpdateMethodBuilder'>LeaderboardConfigurationUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LeaderboardConfigurationUpdateCallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::LeaderboardConfigurationUpdateCallBuilder'>LeaderboardConfigurationUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Update the metadata of the leaderboard configuration with the given ID.</p>
 </td>
                     </tr>
@@ -478,8 +429,6 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LocalizedString.html'
                                title='google-gamesconfiguration1_configuration::LocalizedString'>LocalizedString</a></td>
                         <td class='docblock short'><p>This is a JSON template for a localized string resource.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -487,18 +436,110 @@ It is not used directly, but through the <code>GamesConfiguration</code> hub.</p
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LocalizedStringBundle.html'
                                title='google-gamesconfiguration1_configuration::LocalizedStringBundle'>LocalizedStringBundle</a></td>
                         <td class='docblock short'><p>This is a JSON template for a localized string bundle resource.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-gamesconfiguration1_configuration::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-gamesconfiguration1_configuration::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-gamesconfiguration1_configuration::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-gamesconfiguration1_configuration::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-gamesconfiguration1_configuration::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-gamesconfiguration1_configuration::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-gamesconfiguration1_configuration::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-gamesconfiguration1_configuration::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-gamesconfiguration1_configuration::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-gamesconfiguration1_configuration::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-gamesconfiguration1_configuration::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-gamesconfiguration1_configuration::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-gamesconfiguration1_configuration::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

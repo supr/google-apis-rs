@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-fitness1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-fitness1/lib.rs.html#5-3888'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-fitness1/lib.rs.html#5-3807'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>fitness</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/fitness1">on github</a>.</p>
 
@@ -52,7 +52,11 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>It seems there is nothing you can do here ... .</p>
 
 <ul>
-<li>users (<a href="struct.UserDataSourceCreateMethodBuilder.html"><em>data sources.create</em></a>, <a href="struct.UserDataSourceDatasetDeleteMethodBuilder.html"><em>data sources.datasets.delete</em></a>, <a href="struct.UserDataSourceDatasetGetMethodBuilder.html"><em>data sources.datasets.get</em></a>, <a href="struct.UserDataSourceDatasetPatchMethodBuilder.html"><em>data sources.datasets.patch</em></a>, <a href="struct.UserDataSourceGetMethodBuilder.html"><em>data sources.get</em></a>, <a href="struct.UserDataSourceListMethodBuilder.html"><em>data sources.list</em></a>, <a href="struct.UserDataSourcePatchMethodBuilder.html"><em>data sources.patch</em></a>, <a href="struct.UserDataSourceUpdateMethodBuilder.html"><em>data sources.update</em></a>, <a href="struct.UserSessionDeleteMethodBuilder.html"><em>sessions.delete</em></a>, <a href="struct.UserSessionListMethodBuilder.html"><em>sessions.list</em></a> and <a href="struct.UserSessionUpdateMethodBuilder.html"><em>sessions.update</em></a>)</li>
+<li>users
+
+<ul>
+<li><a href="struct.UserDataSourceCreateCallBuilder.html"><em>data sources.create</em></a>, <a href="struct.UserDataSourceDatasetDeleteCallBuilder.html"><em>data sources.datasets.delete</em></a>, <a href="struct.UserDataSourceDatasetGetCallBuilder.html"><em>data sources.datasets.get</em></a>, <a href="struct.UserDataSourceDatasetPatchCallBuilder.html"><em>data sources.datasets.patch</em></a>, <a href="struct.UserDataSourceGetCallBuilder.html"><em>data sources.get</em></a>, <a href="struct.UserDataSourceListCallBuilder.html"><em>data sources.list</em></a>, <a href="struct.UserDataSourcePatchCallBuilder.html"><em>data sources.patch</em></a>, <a href="struct.UserDataSourceUpdateCallBuilder.html"><em>data sources.update</em></a>, <a href="struct.UserSessionDeleteCallBuilder.html"><em>sessions.delete</em></a>, <a href="struct.UserSessionListCallBuilder.html"><em>sessions.list</em></a> and <a href="struct.UserSessionUpdateCallBuilder.html"><em>sessions.update</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>fitness</em> <em>v1</em> API can be found at the
@@ -82,7 +86,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -121,10 +125,10 @@ google-fitness1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-fitness1&quot;</span> <span class='kw'>as</span> <span class='ident'>fitness1</span>;
 <span class='kw'>use</span> <span class='ident'>fitness1</span>::<span class='ident'>DataSource</span>;
-<span class='kw'>use</span> <span class='ident'>fitness1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>fitness1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>fitness1</span>::<span class='ident'>Fitness</span>;
@@ -158,6 +162,7 @@ google-fitness1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -186,7 +191,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -201,7 +206,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -211,21 +216,12 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-fitness1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Application.html'
                                title='google-fitness1::Application'>Application</a></td>
                         <td class='docblock short'><p>See: google3/java/com/google/android/apps/heart/platform/api/Application.java</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -233,12 +229,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataPoint.html'
                                title='google-fitness1::DataPoint'>DataPoint</a></td>
                         <td class='docblock short'><p>Represents a single data point, generated by a particular data source. A data point holds a value for each field, an end timestamp and an optional start time. The exact semantics of each of these attributes are specified in the documentation for the particular data type.</p>
-
-<p>A data point can represent an instantaneous measurement, reading or input observation, as well as averages or aggregates over a time interval. Check the data type documentation to determine which is the case for a particular data type.</p>
-
-<p>Data points always contain one value for each field of the data type.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -246,22 +236,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataSource.html'
                                title='google-fitness1::DataSource'>DataSource</a></td>
                         <td class='docblock short'><p>Definition of a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point inserted into or read from this service has an associated data source.</p>
-
-<p>The data source contains enough information to uniquely identify its data, including the hardware device and the application that collected and/or transformed the data. It also holds useful metadata, such as the hardware and application versions, and the device type.</p>
-
-<p>Each data source produces a unique stream of data, with a unique identifier. Not all changes to data source affect the stream identifier, so that data collected by updated versions of the same application/device can still be considered to belong to the same data stream.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UserDataSourceGetMethodBuilder.html">data sources get users</a> (response)</li>
-<li><a href="struct.UserDataSourceUpdateMethodBuilder.html">data sources update users</a> (request|response)</li>
-<li><a href="struct.UserDataSourceCreateMethodBuilder.html">data sources create users</a> (request|response)</li>
-<li><a href="struct.UserDataSourcePatchMethodBuilder.html">data sources patch users</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -269,8 +243,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataType.html'
                                title='google-fitness1::DataType'>DataType</a></td>
                         <td class='docblock short'><p>See: google3/java/com/google/android/apps/heart/platform/api/DataType.java</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -278,10 +250,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DataTypeField.html'
                                title='google-fitness1::DataTypeField'>DataTypeField</a></td>
                         <td class='docblock short'><p>In case of multi-dimensional data (such as an accelerometer with x, y, and z axes) each field represents one dimension. Each data type field has a unique name which identifies it. The field also defines the format of the data (int, float, etc.).</p>
-
-<p>This message is only instantiated in code and not used for wire comms or stored in any way.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -289,16 +257,14 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Dataset.html'
                                title='google-fitness1::Dataset'>Dataset</a></td>
                         <td class='docblock short'><p>A dataset represents a projection container for data points. They do not carry any info of their own. Datasets represent a set of data points from a particular data source. A data point can be found in more than one dataset.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UserDataSourceDatasetPatchMethodBuilder.html">data sources datasets patch users</a> (request|response)</li>
-<li><a href="struct.UserDataSourceDatasetGetMethodBuilder.html">data sources datasets get users</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-fitness1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -306,14 +272,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Device.html'
                                title='google-fitness1::Device'>Device</a></td>
                         <td class='docblock short'><p>Representation of an integrated device (such as a phone or a wearable) that can hold sensors. Each sensor is exposed as a data source.</p>
-
-<p>The main purpose of the device information contained in this class is to identify the hardware of a particular data source. This can be useful in different ways, including:<br>
-- Distinguishing two similar sensors on different devices (the step counter on two nexus 5 phones, for instance)
-- Display the source of data to the user (by using the device make / model)
-- Treat data differently depending on sensor type (accelerometers on a watch may give different patterns than those on a phone)
-- Build different analysis models for each device/version.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -328,15 +286,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListDataSourcesResponse.html'
                                title='google-fitness1::ListDataSourcesResponse'>ListDataSourcesResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UserDataSourceListMethodBuilder.html">data sources list users</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -344,15 +293,23 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListSessionsResponse.html'
                                title='google-fitness1::ListSessionsResponse'>ListSessionsResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UserSessionListMethodBuilder.html">sessions list users</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-fitness1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-fitness1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -360,75 +317,62 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Session.html'
                                title='google-fitness1::Session'>Session</a></td>
                         <td class='docblock short'><p>Sessions contain metadata, such as a user-friendly name and time interval information.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UserSessionUpdateMethodBuilder.html">sessions update users</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceCreateMethodBuilder.html'
-                               title='google-fitness1::UserDataSourceCreateMethodBuilder'>UserDataSourceCreateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceCreateCallBuilder.html'
+                               title='google-fitness1::UserDataSourceCreateCallBuilder'>UserDataSourceCreateCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a new data source that is unique across all data sources belonging to this user. The data stream ID field can be omitted and will be generated by the server with the correct format. The data stream ID is an ordered combination of some fields from the data source. In addition to the data source fields reflected into the data source ID, the developer project number that is authenticated when creating the data source is included. This developer project number is obfuscated when read by any other developer reading public data types.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceDatasetDeleteMethodBuilder.html'
-                               title='google-fitness1::UserDataSourceDatasetDeleteMethodBuilder'>UserDataSourceDatasetDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceDatasetDeleteCallBuilder.html'
+                               title='google-fitness1::UserDataSourceDatasetDeleteCallBuilder'>UserDataSourceDatasetDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceDatasetGetMethodBuilder.html'
-                               title='google-fitness1::UserDataSourceDatasetGetMethodBuilder'>UserDataSourceDatasetGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceDatasetGetCallBuilder.html'
+                               title='google-fitness1::UserDataSourceDatasetGetCallBuilder'>UserDataSourceDatasetGetCallBuilder</a></td>
                         <td class='docblock short'><p>Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceDatasetPatchMethodBuilder.html'
-                               title='google-fitness1::UserDataSourceDatasetPatchMethodBuilder'>UserDataSourceDatasetPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceDatasetPatchCallBuilder.html'
+                               title='google-fitness1::UserDataSourceDatasetPatchCallBuilder'>UserDataSourceDatasetPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Adds data points to a dataset. The dataset need not be previously created. All points within the given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong to more than one dataset. This method does not use patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceGetMethodBuilder.html'
-                               title='google-fitness1::UserDataSourceGetMethodBuilder'>UserDataSourceGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceGetCallBuilder.html'
+                               title='google-fitness1::UserDataSourceGetCallBuilder'>UserDataSourceGetCallBuilder</a></td>
                         <td class='docblock short'><p>Returns a data source identified by a data stream ID.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceListMethodBuilder.html'
-                               title='google-fitness1::UserDataSourceListMethodBuilder'>UserDataSourceListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceListCallBuilder.html'
+                               title='google-fitness1::UserDataSourceListCallBuilder'>UserDataSourceListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists all data sources that are visible to the developer, using the OAuth scopes provided. The list is not exhaustive: the user may have private data sources that are only visible to other developers or calls using other scopes.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourcePatchMethodBuilder.html'
-                               title='google-fitness1::UserDataSourcePatchMethodBuilder'>UserDataSourcePatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourcePatchCallBuilder.html'
+                               title='google-fitness1::UserDataSourcePatchCallBuilder'>UserDataSourcePatchCallBuilder</a></td>
                         <td class='docblock short'><p>Updates a given data source. It is an error to modify the data source&#39;s data stream ID, data type, type, stream name or device information apart from the device version. Changing these fields would require a new unique data stream ID and separate data source.</p>
-
-<p>Data sources are identified by their data stream ID. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceUpdateMethodBuilder.html'
-                               title='google-fitness1::UserDataSourceUpdateMethodBuilder'>UserDataSourceUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserDataSourceUpdateCallBuilder.html'
+                               title='google-fitness1::UserDataSourceUpdateCallBuilder'>UserDataSourceUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Updates a given data source. It is an error to modify the data source&#39;s data stream ID, data type, type, stream name or device information apart from the device version. Changing these fields would require a new unique data stream ID and separate data source.</p>
-
-<p>Data sources are identified by their data stream ID.</p>
 </td>
                     </tr>
                 
@@ -441,22 +385,22 @@ It is not used directly, but through the <code>Fitness</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserSessionDeleteMethodBuilder.html'
-                               title='google-fitness1::UserSessionDeleteMethodBuilder'>UserSessionDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserSessionDeleteCallBuilder.html'
+                               title='google-fitness1::UserSessionDeleteCallBuilder'>UserSessionDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes a session specified by the given session ID.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserSessionListMethodBuilder.html'
-                               title='google-fitness1::UserSessionListMethodBuilder'>UserSessionListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserSessionListCallBuilder.html'
+                               title='google-fitness1::UserSessionListCallBuilder'>UserSessionListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists sessions previously created.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserSessionUpdateMethodBuilder.html'
-                               title='google-fitness1::UserSessionUpdateMethodBuilder'>UserSessionUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserSessionUpdateCallBuilder.html'
+                               title='google-fitness1::UserSessionUpdateCallBuilder'>UserSessionUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Updates or insert a given session.</p>
 </td>
                     </tr>
@@ -465,20 +409,93 @@ It is not used directly, but through the <code>Fitness</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Value.html'
                                title='google-fitness1::Value'>Value</a></td>
                         <td class='docblock short'><p>Holder object for the value of a single field in a data point.</p>
-
-<p>A field value has a particular format and is only ever set to one of an integer or a floating point value.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-fitness1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-fitness1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-fitness1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-fitness1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-fitness1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-fitness1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-fitness1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-fitness1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-fitness1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-fitness1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-fitness1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

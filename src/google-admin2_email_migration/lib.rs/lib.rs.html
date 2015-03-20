@@ -771,6 +771,14 @@
 <span id="729">729</span>
 <span id="730">730</span>
 <span id="731">731</span>
+<span id="732">732</span>
+<span id="733">733</span>
+<span id="734">734</span>
+<span id="735">735</span>
+<span id="736">736</span>
+<span id="737">737</span>
+<span id="738">738</span>
+<span id="739">739</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -782,12 +790,13 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! It seems there is nothing you can do here ... .</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * mail ([*insert*](struct.MailInsertMethodBuilder.html))</span>
+<span class='doccomment'>//! * mail</span>
+<span class='doccomment'>//!  * [*insert*](struct.MailInsertCallBuilder.html)</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Upload supported by ...</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * [*insert mail*](struct.MailInsertMethodBuilder.html)</span>
+<span class='doccomment'>//! * [*insert mail*](struct.MailInsertCallBuilder.html)</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Everything else about the *admin* *v2_email_migration* API can be found at the</span>
@@ -807,7 +816,7 @@
 <span class='doccomment'>//!     * **[Parts](cmn/trait.Part.html)**</span>
 <span class='doccomment'>//!         * a collection of properties</span>
 <span class='doccomment'>//!         * never directly used in *Activities*</span>
-<span class='doccomment'>//! * **[Activities](cmn/trait.MethodBuilder.html)**</span>
+<span class='doccomment'>//! * **[Activities](cmn/trait.CallBuilder.html)**</span>
 <span class='doccomment'>//!     * operations to apply to *Resources*</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Generally speaking, you can invoke *Activities* like this:</span>
@@ -843,10 +852,10 @@
 <span class='doccomment'>//! ```test_harness,no_run</span>
 <span class='doccomment'>//! extern crate hyper;</span>
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>//! extern crate serde;</span>
 <span class='doccomment'>//! extern crate &quot;google-admin2_email_migration&quot; as admin2_email_migration;</span>
 <span class='doccomment'>//! use admin2_email_migration::MailItem;</span>
-<span class='doccomment'>//! use admin2_email_migration::cmn::Result;</span>
+<span class='doccomment'>//! use admin2_email_migration::Result;</span>
 <span class='doccomment'>//! use std::fs;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
@@ -882,6 +891,7 @@
 <span class='doccomment'>//!     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
 <span class='doccomment'>//!     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//!     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>//!     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
 <span class='doccomment'>//!     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! # }</span>
@@ -909,7 +919,7 @@
 <span class='doccomment'>//! ## About Customization/Callbacks</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! You may alter the way an `doit()` method is called by providing a [delegate](cmn/trait.Delegate.html) to the </span>
-<span class='doccomment'>//! [Method Builder](cmn/trait.MethodBuilder.html) before making the final `doit()` call. </span>
+<span class='doccomment'>//! [Method Builder](cmn/trait.CallBuilder.html) before making the final `doit()` call. </span>
 <span class='doccomment'>//! Respective methods will be called to provide progress information, as well as determine whether the system should </span>
 <span class='doccomment'>//! retry on failure.</span>
 <span class='doccomment'>//! </span>
@@ -924,7 +934,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## About Builder Arguments</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Using [method builders](cmn/trait.MethodBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
+<span class='doccomment'>//! Using [method builders](cmn/trait.CallBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
 <span class='doccomment'>//! These will always take a single argument, for which the following statements are true.</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [PODs][wiki-pod] are handed by copy</span>
@@ -945,15 +955,17 @@
 <span class='comment'>// Instead of pre-determining this, we just disable the lint. It&#39;s manually tuned to not have any </span>
 <span class='comment'>// unused imports in fully featured APIs. Same with unused_mut ... .</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>unused_imports</span>, <span class='ident'>unused_mut</span>)]</span>
-
+<span class='comment'>// Required for serde annotations</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>custom_derive</span>, <span class='ident'>custom_attribute</span>, <span class='ident'>plugin</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>plugin</span>(<span class='ident'>serde_macros</span>)]</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>mime</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>url</span>;
 
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>cmn</span>;
+<span class='kw'>mod</span> <span class='ident'>cmn</span>;
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>RefCell</span>;
@@ -961,12 +973,12 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
-<span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>;
+<span class='kw'>use</span> <span class='ident'>serde</span>::<span class='ident'>json</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::<span class='ident'>timer</span>::<span class='ident'>sleep</span>;
 
-<span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>MultiPartReader</span>, <span class='ident'>MethodInfo</span>, <span class='prelude-ty'>Result</span>, <span class='ident'>CallBuilder</span>, <span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>, <span class='ident'>UnusedType</span>};
 
 
 <span class='comment'>// ##############</span>
@@ -1011,10 +1023,10 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-admin2_email_migration&quot; as admin2_email_migration;</span>
 <span class='doccomment'>/// use admin2_email_migration::MailItem;</span>
-<span class='doccomment'>/// use admin2_email_migration::cmn::Result;</span>
+<span class='doccomment'>/// use admin2_email_migration::Result;</span>
 <span class='doccomment'>/// use std::fs;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
@@ -1050,6 +1062,7 @@
 <span class='doccomment'>///     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
 <span class='doccomment'>///     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>///     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>///     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
 <span class='doccomment'>///     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>/// }</span>
 <span class='doccomment'>/// # }</span>
@@ -1102,27 +1115,34 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [insert mail](struct.MailInsertMethodBuilder.html) (request)</span>
+<span class='doccomment'>/// * [insert mail](struct.MailInsertCallBuilder.html) (request)</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcEncodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Serialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>MailItem</span> {
     <span class='doccomment'>/// Boolean indicating if the mail is in trash    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isTrash&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>is_trash</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Kind of resource this is.    </span>
     <span class='kw'>pub</span> <span class='ident'>kind</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// List of labels (strings)    </span>
-    <span class='kw'>pub</span> <span class='ident'>labels</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>labels</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;&gt;</span>,
     <span class='doccomment'>/// Boolean indicating if the mail is draft    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isDraft&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>is_draft</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Boolean indicating if the mail is in inbox    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isInbox&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>is_inbox</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Boolean indicating if the mail is in &#39;sent mails&#39;    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isSent&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>is_sent</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Boolean indicating if the mail is starred    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isStarred&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>is_starred</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Boolean indicating if the mail is unread    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isUnread&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>is_unread</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Boolean indicating if the mail is deleted (used in Vault)    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isDeleted&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>is_deleted</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
 }
 
@@ -1136,7 +1156,7 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>is_trash</span>.<span class='ident'>is_some</span>() { <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>r</span> <span class='op'>+</span> <span class='string'>&quot;isTrash,&quot;</span>; }
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>kind</span>.<span class='ident'>is_some</span>() { <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>r</span> <span class='op'>+</span> <span class='string'>&quot;kind,&quot;</span>; }
-        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>labels</span>.<span class='ident'>len</span>() <span class='op'>&gt;</span> <span class='number'>0</span> { <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>r</span> <span class='op'>+</span> <span class='string'>&quot;labels,&quot;</span>; }
+        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>labels</span>.<span class='ident'>is_some</span>() { <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>r</span> <span class='op'>+</span> <span class='string'>&quot;labels,&quot;</span>; }
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>is_draft</span>.<span class='ident'>is_some</span>() { <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>r</span> <span class='op'>+</span> <span class='string'>&quot;isDraft,&quot;</span>; }
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>is_inbox</span>.<span class='ident'>is_some</span>() { <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>r</span> <span class='op'>+</span> <span class='string'>&quot;isInbox,&quot;</span>; }
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>is_sent</span>.<span class='ident'>is_some</span>() { <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>r</span> <span class='op'>+</span> <span class='string'>&quot;isSent,&quot;</span>; }
@@ -1150,7 +1170,7 @@
 
 
 <span class='comment'>// ###################</span>
-<span class='comment'>// MethodBuilders ###</span>
+<span class='comment'>// CallBuilders ###</span>
 <span class='comment'>// #################</span>
 
 <span class='doccomment'>/// A builder providing access to all methods supported on *mail* resources.</span>
@@ -1163,7 +1183,7 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-admin2_email_migration&quot; as admin2_email_migration;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -1176,7 +1196,7 @@
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
 <span class='doccomment'>/// let mut hub = Admin::new(hyper::Client::new(), auth);</span>
-<span class='doccomment'>/// // Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='doccomment'>/// // Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='doccomment'>/// // like `insert(...)`</span>
 <span class='doccomment'>/// // to build up your call.</span>
 <span class='doccomment'>/// let rb = hub.mail();</span>
@@ -1195,8 +1215,8 @@
     <span class='doccomment'>/// Create a builder to help you perform the following task:</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// Insert Mail into Google&#39;s Gmail backends    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>insert</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>request</span>: <span class='kw-2'>&amp;</span><span class='ident'>MailItem</span>, <span class='ident'>user_key</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
-        <span class='ident'>MailInsertMethodBuilder</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>insert</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>request</span>: <span class='kw-2'>&amp;</span><span class='ident'>MailItem</span>, <span class='ident'>user_key</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+        <span class='ident'>MailInsertCallBuilder</span> {
             <span class='ident'>hub</span>: <span class='self'>self</span>.<span class='ident'>hub</span>,
             <span class='ident'>_request</span>: <span class='ident'>request</span>.<span class='ident'>clone</span>(),
             <span class='ident'>_user_key</span>: <span class='ident'>user_key</span>.<span class='ident'>to_string</span>(),
@@ -1227,7 +1247,7 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-admin2_email_migration&quot; as admin2_email_migration;</span>
 <span class='doccomment'>/// use admin2_email_migration::MailItem;</span>
 <span class='doccomment'>/// use std::fs;</span>
@@ -1253,7 +1273,7 @@
 <span class='doccomment'>///              .upload(fs::File::open(&quot;file.ext&quot;).unwrap(), &quot;application/octet-stream&quot;.parse().unwrap());</span>
 <span class='doccomment'>/// # }</span>
 <span class='doccomment'>/// ```</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
     <span class='kw'>where</span> <span class='ident'>C</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>NC</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>A</span>: <span class='lifetime'>&#39;a</span> {
 
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Admin</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
@@ -1264,26 +1284,29 @@
     <span class='ident'>_scopes</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, ()<span class='op'>&gt;</span>
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>MethodBuilder</span> <span class='kw'>for</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>CallBuilder</span> <span class='kw'>for</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
 
 
     <span class='doccomment'>/// Perform the operation you have build so far.</span>
-    <span class='kw'>fn</span> <span class='ident'>doit</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='kw-2'>mut</span> <span class='ident'>stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>RS</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>, <span class='kw-2'>mut</span> <span class='ident'>resumeable_stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>RS</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>RS</span>: <span class='ident'>ReadSeek</span> {
+    <span class='kw'>fn</span> <span class='ident'>doit</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='kw-2'>mut</span> <span class='ident'>stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>RS</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>, <span class='kw-2'>mut</span> <span class='ident'>resumeable_stream</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>RS</span>, <span class='ident'>mime</span>::<span class='ident'>Mime</span>)<span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>RS</span>: <span class='ident'>ReadSeek</span> {
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
-        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;emailMigration.mail.insert&quot;</span>, 
-                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Post</span> });
-        }
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dd</span> <span class='op'>=</span> <span class='ident'>DefaultDelegate</span>;
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Delegate</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='prelude-val'>Some</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>dd</span>
+        };
+        <span class='ident'>dlg</span>.<span class='ident'>begin</span>(<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;emailMigration.mail.insert&quot;</span>, 
+                               <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Post</span> });
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>3</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;userKey&quot;</span>, <span class='self'>self</span>.<span class='ident'>_user_key</span>.<span class='ident'>to_string</span>()));
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;userKey&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
-                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
+                <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
         <span class='kw'>for</span> (<span class='ident'>name</span>, <span class='ident'>value</span>) <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>iter</span>() {
@@ -1334,23 +1357,23 @@
         }
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_mime_type</span> <span class='op'>=</span> <span class='ident'>mime</span>::<span class='ident'>Mime</span>(<span class='ident'>mime</span>::<span class='ident'>TopLevel</span>::<span class='ident'>Application</span>, <span class='ident'>mime</span>::<span class='ident'>SubLevel</span>::<span class='ident'>Json</span>, <span class='ident'>Default</span>::<span class='ident'>default</span>());
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>request_value_reader</span> <span class='op'>=</span> <span class='ident'>io</span>::<span class='ident'>Cursor</span>::<span class='ident'>new</span>(<span class='ident'>json</span>::<span class='ident'>encode</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>_request</span>).<span class='ident'>unwrap</span>().<span class='ident'>into_bytes</span>());
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>request_value_reader</span> <span class='op'>=</span> <span class='ident'>io</span>::<span class='ident'>Cursor</span>::<span class='ident'>new</span>(<span class='ident'>json</span>::<span class='ident'>to_vec</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>_request</span>));
         <span class='kw'>let</span> <span class='ident'>request_size</span> <span class='op'>=</span> <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>End</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
         <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>token</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>token</span>(<span class='self'>self</span>.<span class='ident'>_scopes</span>.<span class='ident'>keys</span>());
-            <span class='kw'>if</span> <span class='ident'>token</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='ident'>token</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>token</span>();
-            }}
             <span class='kw'>if</span> <span class='ident'>token</span>.<span class='ident'>is_none</span>() {
-                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
+                <span class='ident'>token</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>token</span>();
+            }
+            <span class='kw'>if</span> <span class='ident'>token</span>.<span class='ident'>is_none</span>() {
+                <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mp_reader</span>: <span class='ident'>cmn</span>::<span class='ident'>MultiPartReader</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mp_reader</span>: <span class='ident'>MultiPartReader</span> <span class='op'>=</span> <span class='ident'>Default</span>::<span class='ident'>default</span>();
             <span class='kw'>let</span> (<span class='kw-2'>mut</span> <span class='ident'>body_reader</span>, <span class='ident'>content_type</span>) <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>stream</span>.<span class='ident'>as_mut</span>() {
                 <span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> (<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>reader</span>, <span class='kw-2'>ref</span> <span class='ident'>mime</span>)) <span class='op'>=&gt;</span> {
                     <span class='ident'>mp_reader</span>.<span class='ident'>reserve_exact</span>(<span class='number'>2</span>);
@@ -1370,38 +1393,31 @@
                 .<span class='ident'>header</span>(<span class='ident'>content_type</span>)
                 .<span class='ident'>body</span>(<span class='ident'>body_reader</span>.<span class='ident'>into_body</span>());
 
-            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
-            }
-
+            <span class='ident'>dlg</span>.<span class='ident'>pre_request</span>();
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                            <span class='kw'>continue</span>;
-                        }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                        <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                        <span class='kw'>continue</span>;
                     }
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
+                    <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                    <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
-                            <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+                        <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
+                        <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>from_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
+                        <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                        <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> <span class='ident'>res</span>;
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
+                    <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                    <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
         }
@@ -1413,7 +1429,7 @@
     <span class='doccomment'>/// * *max size*: 35MB</span>
     <span class='doccomment'>/// * *multipart*: yes</span>
     <span class='doccomment'>/// * *valid mime types*: &#39;message/rfc822&#39;</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>stream</span>: <span class='ident'>RS</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span><span class='op'>&gt;</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>stream</span>: <span class='ident'>RS</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span><span class='op'>&gt;</span>
                 <span class='kw'>where</span> <span class='ident'>RS</span>: <span class='ident'>ReadSeek</span> {
         <span class='self'>self</span>.<span class='ident'>doit</span>(<span class='prelude-val'>Some</span>((<span class='ident'>stream</span>, <span class='ident'>mime_type</span>)), <span class='prelude-val'>None</span>, )
     }
@@ -1426,7 +1442,7 @@
     <span class='doccomment'>/// * *max size*: 35MB</span>
     <span class='doccomment'>/// * *multipart*: yes</span>
     <span class='doccomment'>/// * *valid mime types*: &#39;message/rfc822&#39;</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload_resumable</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>resumeable_stream</span>: <span class='ident'>RS</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span><span class='op'>&gt;</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upload_resumable</span><span class='op'>&lt;</span><span class='ident'>RS</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>resumeable_stream</span>: <span class='ident'>RS</span>, <span class='ident'>mime_type</span>: <span class='ident'>mime</span>::<span class='ident'>Mime</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span><span class='op'>&gt;</span>
                 <span class='kw'>where</span> <span class='ident'>RS</span>: <span class='ident'>ReadSeek</span> {
         <span class='self'>self</span>.<span class='ident'>doit</span>(<span class='prelude-val'>None</span>, <span class='prelude-val'>Some</span>((<span class='ident'>resumeable_stream</span>, <span class='ident'>mime_type</span>)), )
     }
@@ -1436,7 +1452,7 @@
     <span class='doccomment'>/// Even though the property as already been set when instantiating this call, </span>
     <span class='doccomment'>/// we provide this method for API completeness.</span>
     <span class='doccomment'>/// </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>request</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>MailItem</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>request</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>MailItem</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_request</span> <span class='op'>=</span> <span class='ident'>new_value</span>.<span class='ident'>clone</span>();
         <span class='self'>self</span>
     }
@@ -1446,7 +1462,7 @@
     <span class='doccomment'>/// we provide this method for API completeness.</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// The email or immutable id of the user    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>user_key</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>user_key</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_user_key</span> <span class='op'>=</span> <span class='ident'>new_value</span>.<span class='ident'>to_string</span>();
         <span class='self'>self</span>
     }
@@ -1457,7 +1473,7 @@
     <span class='doccomment'>/// while executing the actual API request.</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// It should be used to handle progress information, and to implement a certain level of resilience.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>delegate</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Delegate</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>delegate</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Delegate</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_delegate</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>);
         <span class='self'>self</span>
     }
@@ -1478,7 +1494,7 @@
     <span class='doccomment'>/// * *userIp* (query-string) - IP address of the site where the request originates. Use this if you want to enforce per-user limits.</span>
     <span class='doccomment'>/// * *fields* (query-string) - Selector specifying which fields to include in a partial response.</span>
     <span class='doccomment'>/// * *alt* (query-string) - Data format for the response.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>param</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='ident'>T</span>, <span class='ident'>value</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>param</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='ident'>T</span>, <span class='ident'>value</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
                                                         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Str</span> {
         <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>insert</span>(<span class='ident'>name</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>(), <span class='ident'>value</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>());
         <span class='self'>self</span>
@@ -1495,7 +1511,7 @@
     <span class='doccomment'>/// Usually there is more than one suitable scope to authorize an operation, some of which may</span>
     <span class='doccomment'>/// encompass more rights than others. For example, for listing resources, a *read-only* scope will be</span>
     <span class='doccomment'>/// sufficient, a read-write scope will do as well.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_scope</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>scope</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> 
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_scope</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>scope</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>MailInsertCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> 
                                                         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Str</span> {
         <span class='self'>self</span>.<span class='ident'>_scopes</span>.<span class='ident'>insert</span>(<span class='ident'>scope</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>(), ());
         <span class='self'>self</span>

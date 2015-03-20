@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-webmasters3</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-webmasters3/lib.rs.html#5-3725'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-webmasters3/lib.rs.html#5-3717'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>webmasters</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/webmasters3">on github</a>.</p>
 
@@ -52,10 +52,26 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Webmasters.html">hub</a> ... </p>
 
 <ul>
-<li>sitemaps (<a href="struct.SitemapDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.SitemapGetMethodBuilder.html"><em>get</em></a>, <a href="struct.SitemapListMethodBuilder.html"><em>list</em></a> and <a href="struct.SitemapSubmitMethodBuilder.html"><em>submit</em></a>)</li>
-<li>sites (<a href="struct.SiteAddMethodBuilder.html"><em>add</em></a>, <a href="struct.SiteDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.SiteGetMethodBuilder.html"><em>get</em></a> and <a href="struct.SiteListMethodBuilder.html"><em>list</em></a>)</li>
-<li>urlcrawlerrorscounts (<a href="struct.UrlcrawlerrorscountQueryMethodBuilder.html"><em>query</em></a>)</li>
-<li>urlcrawlerrorssamples (<a href="struct.UrlcrawlerrorssampleGetMethodBuilder.html"><em>get</em></a>, <a href="struct.UrlcrawlerrorssampleListMethodBuilder.html"><em>list</em></a> and <a href="struct.UrlcrawlerrorssampleMarkAsFixedMethodBuilder.html"><em>mark as fixed</em></a>)</li>
+<li>sitemaps
+
+<ul>
+<li><a href="struct.SitemapDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.SitemapGetCallBuilder.html"><em>get</em></a>, <a href="struct.SitemapListCallBuilder.html"><em>list</em></a> and <a href="struct.SitemapSubmitCallBuilder.html"><em>submit</em></a></li>
+</ul></li>
+<li>sites
+
+<ul>
+<li><a href="struct.SiteAddCallBuilder.html"><em>add</em></a>, <a href="struct.SiteDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.SiteGetCallBuilder.html"><em>get</em></a> and <a href="struct.SiteListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li>urlcrawlerrorscounts
+
+<ul>
+<li><a href="struct.UrlcrawlerrorscountQueryCallBuilder.html"><em>query</em></a></li>
+</ul></li>
+<li>urlcrawlerrorssamples
+
+<ul>
+<li><a href="struct.UrlcrawlerrorssampleGetCallBuilder.html"><em>get</em></a>, <a href="struct.UrlcrawlerrorssampleListCallBuilder.html"><em>list</em></a> and <a href="struct.UrlcrawlerrorssampleMarkAsFixedCallBuilder.html"><em>mark as fixed</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>webmasters</em> <em>v3</em> API can be found at the
@@ -85,7 +101,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -121,9 +137,9 @@ google-webmasters3 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-webmasters3&quot;</span> <span class='kw'>as</span> <span class='ident'>webmasters3</span>;
-<span class='kw'>use</span> <span class='ident'>webmasters3</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>webmasters3</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>webmasters3</span>::<span class='ident'>Webmasters</span>;
@@ -152,6 +168,7 @@ google-webmasters3 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -180,7 +197,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -195,7 +212,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -205,39 +222,57 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-webmasters3::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-webmasters3::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
+</td>
                     </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
+                
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteAddMethodBuilder.html'
-                               title='google-webmasters3::SiteAddMethodBuilder'>SiteAddMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-webmasters3::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-webmasters3::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteAddCallBuilder.html'
+                               title='google-webmasters3::SiteAddCallBuilder'>SiteAddCallBuilder</a></td>
                         <td class='docblock short'><p>Adds a site to the set of the user&#39;s sites in Webmaster Tools.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteDeleteMethodBuilder.html'
-                               title='google-webmasters3::SiteDeleteMethodBuilder'>SiteDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteDeleteCallBuilder.html'
+                               title='google-webmasters3::SiteDeleteCallBuilder'>SiteDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Removes a site from the set of the user&#39;s Webmaster Tools sites.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteGetMethodBuilder.html'
-                               title='google-webmasters3::SiteGetMethodBuilder'>SiteGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteGetCallBuilder.html'
+                               title='google-webmasters3::SiteGetCallBuilder'>SiteGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves information about specific site.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteListMethodBuilder.html'
-                               title='google-webmasters3::SiteListMethodBuilder'>SiteListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteListCallBuilder.html'
+                               title='google-webmasters3::SiteListCallBuilder'>SiteListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists your Webmaster Tools sites.</p>
 </td>
                     </tr>
@@ -251,22 +286,22 @@ It is not used directly, but through the <code>Webmasters</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapDeleteMethodBuilder.html'
-                               title='google-webmasters3::SitemapDeleteMethodBuilder'>SitemapDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapDeleteCallBuilder.html'
+                               title='google-webmasters3::SitemapDeleteCallBuilder'>SitemapDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes a sitemap from this site.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapGetMethodBuilder.html'
-                               title='google-webmasters3::SitemapGetMethodBuilder'>SitemapGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapGetCallBuilder.html'
+                               title='google-webmasters3::SitemapGetCallBuilder'>SitemapGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves information about a specific sitemap.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapListMethodBuilder.html'
-                               title='google-webmasters3::SitemapListMethodBuilder'>SitemapListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapListCallBuilder.html'
+                               title='google-webmasters3::SitemapListCallBuilder'>SitemapListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists sitemaps uploaded to the site.</p>
 </td>
                     </tr>
@@ -280,8 +315,8 @@ It is not used directly, but through the <code>Webmasters</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapSubmitMethodBuilder.html'
-                               title='google-webmasters3::SitemapSubmitMethodBuilder'>SitemapSubmitMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapSubmitCallBuilder.html'
+                               title='google-webmasters3::SitemapSubmitCallBuilder'>SitemapSubmitCallBuilder</a></td>
                         <td class='docblock short'><p>Submits a sitemap for a site.</p>
 </td>
                     </tr>
@@ -290,15 +325,6 @@ It is not used directly, but through the <code>Webmasters</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitemapsListResponse.html'
                                title='google-webmasters3::SitemapsListResponse'>SitemapsListResponse</a></td>
                         <td class='docblock short'><p>List of sitemaps.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SitemapListMethodBuilder.html">list sitemaps</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -306,15 +332,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SitesListResponse.html'
                                title='google-webmasters3::SitesListResponse'>SitesListResponse</a></td>
                         <td class='docblock short'><p>List of sites with access level information.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SiteListMethodBuilder.html">list sites</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -322,8 +339,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlCrawlErrorCount.html'
                                title='google-webmasters3::UrlCrawlErrorCount'>UrlCrawlErrorCount</a></td>
                         <td class='docblock short'><p>An entry in a URL crawl errors time series.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -331,8 +346,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlCrawlErrorCountsPerType.html'
                                title='google-webmasters3::UrlCrawlErrorCountsPerType'>UrlCrawlErrorCountsPerType</a></td>
                         <td class='docblock short'><p>Number of errors per day for a specific error type (defined by platform and category).</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -340,15 +353,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlCrawlErrorsCountsQueryResponse.html'
                                title='google-webmasters3::UrlCrawlErrorsCountsQueryResponse'>UrlCrawlErrorsCountsQueryResponse</a></td>
                         <td class='docblock short'><p>A time series of the number of URL crawl errors per error category and platform.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UrlcrawlerrorscountQueryMethodBuilder.html">query urlcrawlerrorscounts</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -356,15 +360,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlCrawlErrorsSample.html'
                                title='google-webmasters3::UrlCrawlErrorsSample'>UrlCrawlErrorsSample</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UrlcrawlerrorssampleGetMethodBuilder.html">get urlcrawlerrorssamples</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -372,15 +367,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlCrawlErrorsSamplesListResponse.html'
                                title='google-webmasters3::UrlCrawlErrorsSamplesListResponse'>UrlCrawlErrorsSamplesListResponse</a></td>
                         <td class='docblock short'><p>List of crawl error samples.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.UrlcrawlerrorssampleListMethodBuilder.html">list urlcrawlerrorssamples</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -388,8 +374,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlSampleDetails.html'
                                title='google-webmasters3::UrlSampleDetails'>UrlSampleDetails</a></td>
                         <td class='docblock short'><p>Additional details about the URL, set only when calling get().</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -402,29 +386,29 @@ It is not used directly, but through the <code>Webmasters</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorscountQueryMethodBuilder.html'
-                               title='google-webmasters3::UrlcrawlerrorscountQueryMethodBuilder'>UrlcrawlerrorscountQueryMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorscountQueryCallBuilder.html'
+                               title='google-webmasters3::UrlcrawlerrorscountQueryCallBuilder'>UrlcrawlerrorscountQueryCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves a time series of the number of URL crawl errors per error category and platform.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorssampleGetMethodBuilder.html'
-                               title='google-webmasters3::UrlcrawlerrorssampleGetMethodBuilder'>UrlcrawlerrorssampleGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorssampleGetCallBuilder.html'
+                               title='google-webmasters3::UrlcrawlerrorssampleGetCallBuilder'>UrlcrawlerrorssampleGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves details about crawl errors for a site&#39;s sample URL.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorssampleListMethodBuilder.html'
-                               title='google-webmasters3::UrlcrawlerrorssampleListMethodBuilder'>UrlcrawlerrorssampleListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorssampleListCallBuilder.html'
+                               title='google-webmasters3::UrlcrawlerrorssampleListCallBuilder'>UrlcrawlerrorssampleListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists a site&#39;s sample URLs for the specified crawl error category and platform.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorssampleMarkAsFixedMethodBuilder.html'
-                               title='google-webmasters3::UrlcrawlerrorssampleMarkAsFixedMethodBuilder'>UrlcrawlerrorssampleMarkAsFixedMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UrlcrawlerrorssampleMarkAsFixedCallBuilder.html'
+                               title='google-webmasters3::UrlcrawlerrorssampleMarkAsFixedCallBuilder'>UrlcrawlerrorssampleMarkAsFixedCallBuilder</a></td>
                         <td class='docblock short'><p>Marks the provided site&#39;s sample URL as fixed, and removes it from the samples list.</p>
 </td>
                     </tr>
@@ -448,15 +432,6 @@ It is not used directly, but through the <code>Webmasters</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WmxSite.html'
                                title='google-webmasters3::WmxSite'>WmxSite</a></td>
                         <td class='docblock short'><p>Access level information for a Webmaster Tools site.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SiteGetMethodBuilder.html">get sites</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -464,15 +439,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WmxSitemap.html'
                                title='google-webmasters3::WmxSitemap'>WmxSitemap</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SitemapGetMethodBuilder.html">get sitemaps</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -480,18 +446,93 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WmxSitemapContent.html'
                                title='google-webmasters3::WmxSitemapContent'>WmxSitemapContent</a></td>
                         <td class='docblock short'><p>Information about the various content types in the sitemap.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-webmasters3::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-webmasters3::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-webmasters3::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-webmasters3::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-webmasters3::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-webmasters3::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-webmasters3::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-webmasters3::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-webmasters3::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-webmasters3::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-webmasters3::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

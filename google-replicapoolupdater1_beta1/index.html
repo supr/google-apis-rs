@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-replicapoolupdater1_beta1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-replicapoolupdater1_beta1/lib.rs.html#5-3343'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-replicapoolupdater1_beta1/lib.rs.html#5-3313'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>replicapoolupdater</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/replicapoolupdater1_beta1">on github</a>.</p>
 
@@ -52,8 +52,16 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Replicapoolupdater.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.RollingUpdate.html">rolling updates</a> (<a href="struct.RollingUpdateCancelMethodBuilder.html"><em>cancel</em></a>, <a href="struct.RollingUpdateGetMethodBuilder.html"><em>get</em></a>, <a href="struct.RollingUpdateInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.RollingUpdateListMethodBuilder.html"><em>list</em></a>, <a href="struct.RollingUpdateListInstanceUpdateMethodBuilder.html"><em>list instance updates</em></a>, <a href="struct.RollingUpdatePauseMethodBuilder.html"><em>pause</em></a>, <a href="struct.RollingUpdateResumeMethodBuilder.html"><em>resume</em></a> and <a href="struct.RollingUpdateRollbackMethodBuilder.html"><em>rollback</em></a>)</li>
-<li>zone operations (<a href="struct.ZoneOperationGetMethodBuilder.html"><em>get</em></a>)</li>
+<li><a href="struct.RollingUpdate.html">rolling updates</a>
+
+<ul>
+<li><a href="struct.RollingUpdateCancelCallBuilder.html"><em>cancel</em></a>, <a href="struct.RollingUpdateGetCallBuilder.html"><em>get</em></a>, <a href="struct.RollingUpdateInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.RollingUpdateListCallBuilder.html"><em>list</em></a>, <a href="struct.RollingUpdateListInstanceUpdateCallBuilder.html"><em>list instance updates</em></a>, <a href="struct.RollingUpdatePauseCallBuilder.html"><em>pause</em></a>, <a href="struct.RollingUpdateResumeCallBuilder.html"><em>resume</em></a> and <a href="struct.RollingUpdateRollbackCallBuilder.html"><em>rollback</em></a></li>
+</ul></li>
+<li>zone operations
+
+<ul>
+<li><a href="struct.ZoneOperationGetCallBuilder.html"><em>get</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>replicapoolupdater</em> <em>v1_beta1</em> API can be found at the
@@ -83,7 +91,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -126,9 +134,9 @@ google-replicapoolupdater1_beta1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-replicapoolupdater1_beta1&quot;</span> <span class='kw'>as</span> <span class='ident'>replicapoolupdater1_beta1</span>;
-<span class='kw'>use</span> <span class='ident'>replicapoolupdater1_beta1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>replicapoolupdater1_beta1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>replicapoolupdater1_beta1</span>::<span class='ident'>Replicapoolupdater</span>;
@@ -161,6 +169,7 @@ google-replicapoolupdater1_beta1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -189,7 +198,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -204,7 +213,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -214,21 +223,20 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-replicapoolupdater1_beta1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-replicapoolupdater1_beta1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
+</td>
                     </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceUpdate.html'
                                title='google-replicapoolupdater1_beta1::InstanceUpdate'>InstanceUpdate</a></td>
                         <td class='docblock short'><p>Update of a single instance.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -236,8 +244,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceUpdateError.html'
                                title='google-replicapoolupdater1_beta1::InstanceUpdateError'>InstanceUpdateError</a></td>
                         <td class='docblock short'><p>Errors that occurred during the instance update.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -245,8 +251,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceUpdateErrorErrors.html'
                                title='google-replicapoolupdater1_beta1::InstanceUpdateErrorErrors'>InstanceUpdateErrorErrors</a></td>
                         <td class='docblock short'><p>[Output Only] The array of errors encountered while processing this operation.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -254,15 +258,23 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceUpdateList.html'
                                title='google-replicapoolupdater1_beta1::InstanceUpdateList'>InstanceUpdateList</a></td>
                         <td class='docblock short'><p>Response returned by ListInstanceUpdates method.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RollingUpdateListInstanceUpdateMethodBuilder.html">list instance updates rolling updates</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-replicapoolupdater1_beta1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-replicapoolupdater1_beta1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -270,20 +282,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Operation.html'
                                title='google-replicapoolupdater1_beta1::Operation'>Operation</a></td>
                         <td class='docblock short'><p>An operation resource, used to manage asynchronous API requests.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RollingUpdatePauseMethodBuilder.html">pause rolling updates</a> (response)</li>
-<li><a href="struct.ZoneOperationGetMethodBuilder.html">get zone operations</a> (response)</li>
-<li><a href="struct.RollingUpdateRollbackMethodBuilder.html">rollback rolling updates</a> (response)</li>
-<li><a href="struct.RollingUpdateResumeMethodBuilder.html">resume rolling updates</a> (response)</li>
-<li><a href="struct.RollingUpdateInsertMethodBuilder.html">insert rolling updates</a> (response)</li>
-<li><a href="struct.RollingUpdateCancelMethodBuilder.html">cancel rolling updates</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -291,8 +289,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationError.html'
                                title='google-replicapoolupdater1_beta1::OperationError'>OperationError</a></td>
                         <td class='docblock short'><p>[Output Only] If errors occurred during processing of this operation, this field will be populated.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -300,8 +296,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationErrorErrors.html'
                                title='google-replicapoolupdater1_beta1::OperationErrorErrors'>OperationErrorErrors</a></td>
                         <td class='docblock short'><p>[Output Only] The array of errors encountered while processing this operation.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -309,8 +303,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationWarnings.html'
                                title='google-replicapoolupdater1_beta1::OperationWarnings'>OperationWarnings</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -318,8 +310,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationWarningsData.html'
                                title='google-replicapoolupdater1_beta1::OperationWarningsData'>OperationWarningsData</a></td>
                         <td class='docblock short'><p>[Output only] Metadata for this warning in key:value format.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -334,28 +324,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdate.html'
                                title='google-replicapoolupdater1_beta1::RollingUpdate'>RollingUpdate</a></td>
                         <td class='docblock short'><p>The following represents a resource describing a single update (rollout) of a group of instances to the given template.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RollingUpdatePauseMethodBuilder.html">pause rolling updates</a> (none)</li>
-<li><a href="struct.RollingUpdateRollbackMethodBuilder.html">rollback rolling updates</a> (none)</li>
-<li><a href="struct.RollingUpdateGetMethodBuilder.html">get rolling updates</a> (response)</li>
-<li><a href="struct.RollingUpdateResumeMethodBuilder.html">resume rolling updates</a> (none)</li>
-<li><a href="struct.RollingUpdateListMethodBuilder.html">list rolling updates</a> (none)</li>
-<li><a href="struct.RollingUpdateInsertMethodBuilder.html">insert rolling updates</a> (request)</li>
-<li><a href="struct.RollingUpdateListInstanceUpdateMethodBuilder.html">list instance updates rolling updates</a> (none)</li>
-<li><a href="struct.RollingUpdateCancelMethodBuilder.html">cancel rolling updates</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateCancelMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdateCancelMethodBuilder'>RollingUpdateCancelMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateCancelCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdateCancelCallBuilder'>RollingUpdateCancelCallBuilder</a></td>
                         <td class='docblock short'><p>Cancels an update. The update must be PAUSED before it can be cancelled. This has no effect if the update is already CANCELLED.</p>
 </td>
                     </tr>
@@ -364,8 +338,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateError.html'
                                title='google-replicapoolupdater1_beta1::RollingUpdateError'>RollingUpdateError</a></td>
                         <td class='docblock short'><p>[Output Only] Errors that occurred during rolling update.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -373,21 +345,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateErrorErrors.html'
                                title='google-replicapoolupdater1_beta1::RollingUpdateErrorErrors'>RollingUpdateErrorErrors</a></td>
                         <td class='docblock short'><p>[Output Only] The array of errors encountered while processing this operation.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateGetMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdateGetMethodBuilder'>RollingUpdateGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateGetCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdateGetCallBuilder'>RollingUpdateGetCallBuilder</a></td>
                         <td class='docblock short'><p>Returns information about an update.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateInsertMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdateInsertMethodBuilder'>RollingUpdateInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateInsertCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdateInsertCallBuilder'>RollingUpdateInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Inserts and starts a new update.</p>
 </td>
                     </tr>
@@ -396,29 +366,20 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateList.html'
                                title='google-replicapoolupdater1_beta1::RollingUpdateList'>RollingUpdateList</a></td>
                         <td class='docblock short'><p>Response returned by List method.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RollingUpdateListMethodBuilder.html">list rolling updates</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateListInstanceUpdateMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdateListInstanceUpdateMethodBuilder'>RollingUpdateListInstanceUpdateMethodBuilder</a></td>
-                        <td class='docblock short'><p>Lists the current status for each instance within a given update.</p>
-</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateListMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdateListMethodBuilder'>RollingUpdateListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateListCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdateListCallBuilder'>RollingUpdateListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists recent updates for a given managed instance group, in reverse chronological order and paginated format.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateListInstanceUpdateCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdateListInstanceUpdateCallBuilder'>RollingUpdateListInstanceUpdateCallBuilder</a></td>
+                        <td class='docblock short'><p>Lists the current status for each instance within a given update.</p>
 </td>
                     </tr>
                 
@@ -431,8 +392,8 @@ It is not used directly, but through the <code>Replicapoolupdater</code> hub.</p
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdatePauseMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdatePauseMethodBuilder'>RollingUpdatePauseMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdatePauseCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdatePauseCallBuilder'>RollingUpdatePauseCallBuilder</a></td>
                         <td class='docblock short'><p>Pauses the update in state from ROLLING_FORWARD or ROLLING_BACK. Has no effect if invoked when the state of the update is PAUSED.</p>
 </td>
                     </tr>
@@ -441,28 +402,26 @@ It is not used directly, but through the <code>Replicapoolupdater</code> hub.</p
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdatePolicy.html'
                                title='google-replicapoolupdater1_beta1::RollingUpdatePolicy'>RollingUpdatePolicy</a></td>
                         <td class='docblock short'><p>Parameters of the update process.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateResumeMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdateResumeMethodBuilder'>RollingUpdateResumeMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateResumeCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdateResumeCallBuilder'>RollingUpdateResumeCallBuilder</a></td>
                         <td class='docblock short'><p>Continues an update in PAUSED state. Has no effect if invoked when the state of the update is ROLLED_OUT.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateRollbackMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::RollingUpdateRollbackMethodBuilder'>RollingUpdateRollbackMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RollingUpdateRollbackCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::RollingUpdateRollbackCallBuilder'>RollingUpdateRollbackCallBuilder</a></td>
                         <td class='docblock short'><p>Rolls back the update in state from ROLLING_FORWARD or PAUSED. Has no effect if invoked when the state of the update is ROLLED_BACK.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ZoneOperationGetMethodBuilder.html'
-                               title='google-replicapoolupdater1_beta1::ZoneOperationGetMethodBuilder'>ZoneOperationGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ZoneOperationGetCallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::ZoneOperationGetCallBuilder'>ZoneOperationGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the specified zone-specific operation resource.</p>
 </td>
                     </tr>
@@ -477,11 +436,88 @@ It is not used directly, but through the <code>Replicapoolupdater</code> hub.</p
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-replicapoolupdater1_beta1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-replicapoolupdater1_beta1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-replicapoolupdater1_beta1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-replicapoolupdater1_beta1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-replicapoolupdater1_beta1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-replicapoolupdater1_beta1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-replicapoolupdater1_beta1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-replicapoolupdater1_beta1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-replicapoolupdater1_beta1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-replicapoolupdater1_beta1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-replicapoolupdater1_beta1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

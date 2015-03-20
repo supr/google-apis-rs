@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-groupssettings1</a>::<wbr><a class='struct' href=''>GroupMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-3215' href='../src/google-groupssettings1/lib.rs.html#467-471'>[src]</a></span></h1>
+        </span><a id='src-5250' href='../src/google-groupssettings1/lib.rs.html#496-500'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct GroupMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>group</em> resources.
@@ -55,7 +55,7 @@ It is not used directly, but through the <code>Groupssettings</code> hub.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-groupssettings1&quot;</span> <span class='kw'>as</span> <span class='ident'>groupssettings1</span>;
  
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -67,24 +67,24 @@ It is not used directly, but through the <code>Groupssettings</code> hub.</p>
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Groupssettings</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
-<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='comment'>// like `get(...)`, `patch(...)` and `update(...)`</span>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>groups</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-groupssettings1/struct.GroupMethodsBuilder.html' title='google-groupssettings1::GroupMethodsBuilder'>GroupMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;self, request: &amp;<a class='struct' href='../google-groupssettings1/struct.Groups.html' title='google-groupssettings1::Groups'>Groups</a>, group_unique_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-groupssettings1/struct.GroupUpdateMethodBuilder.html' title='google-groupssettings1::GroupUpdateMethodBuilder'>GroupUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-groupssettings1/struct.GroupMethodsBuilder.html' title='google-groupssettings1::GroupMethodsBuilder'>GroupMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;self, request: &amp;<a class='struct' href='../google-groupssettings1/struct.Groups.html' title='google-groupssettings1::Groups'>Groups</a>, group_unique_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-groupssettings1/struct.GroupUpdateCallBuilder.html' title='google-groupssettings1::GroupUpdateCallBuilder'>GroupUpdateCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Updates an existing resource.    </p>
-</div><h4 id='method.patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.patch' class='fnname'>patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-groupssettings1/struct.Groups.html' title='google-groupssettings1::Groups'>Groups</a>, group_unique_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-groupssettings1/struct.GroupPatchMethodBuilder.html' title='google-groupssettings1::GroupPatchMethodBuilder'>GroupPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.patch' class='fnname'>patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-groupssettings1/struct.Groups.html' title='google-groupssettings1::Groups'>Groups</a>, group_unique_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-groupssettings1/struct.GroupPatchCallBuilder.html' title='google-groupssettings1::GroupPatchCallBuilder'>GroupPatchCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Updates an existing resource. This method supports patch semantics.    </p>
-</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, group_unique_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-groupssettings1/struct.GroupGetMethodBuilder.html' title='google-groupssettings1::GroupGetMethodBuilder'>GroupGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, group_unique_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-groupssettings1/struct.GroupGetCallBuilder.html' title='google-groupssettings1::GroupGetCallBuilder'>GroupGetCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Gets one resource by id.    </p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-groupssettings1/cmn/trait.ResourceMethodsBuilder.html' title='google-groupssettings1::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-groupssettings1/struct.GroupMethodsBuilder.html' title='google-groupssettings1::GroupMethodsBuilder'>GroupMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; ResourceMethodsBuilder for <a class='struct' href='../google-groupssettings1/struct.GroupMethodsBuilder.html' title='google-groupssettings1::GroupMethodsBuilder'>GroupMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

@@ -929,6 +929,20 @@
 <span id="887">887</span>
 <span id="888">888</span>
 <span id="889">889</span>
+<span id="890">890</span>
+<span id="891">891</span>
+<span id="892">892</span>
+<span id="893">893</span>
+<span id="894">894</span>
+<span id="895">895</span>
+<span id="896">896</span>
+<span id="897">897</span>
+<span id="898">898</span>
+<span id="899">899</span>
+<span id="900">900</span>
+<span id="901">901</span>
+<span id="902">902</span>
+<span id="903">903</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -940,7 +954,8 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! It seems there is nothing you can do here ... .</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * [activities](struct.Activity.html) ([*list*](struct.ActivityListMethodBuilder.html))</span>
+<span class='doccomment'>//! * [activities](struct.Activity.html)</span>
+<span class='doccomment'>//!  * [*list*](struct.ActivityListCallBuilder.html)</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
@@ -961,7 +976,7 @@
 <span class='doccomment'>//!     * **[Parts](cmn/trait.Part.html)**</span>
 <span class='doccomment'>//!         * a collection of properties</span>
 <span class='doccomment'>//!         * never directly used in *Activities*</span>
-<span class='doccomment'>//! * **[Activities](cmn/trait.MethodBuilder.html)**</span>
+<span class='doccomment'>//! * **[Activities](cmn/trait.CallBuilder.html)**</span>
 <span class='doccomment'>//!     * operations to apply to *Resources*</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Generally speaking, you can invoke *Activities* like this:</span>
@@ -997,9 +1012,9 @@
 <span class='doccomment'>//! ```test_harness,no_run</span>
 <span class='doccomment'>//! extern crate hyper;</span>
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>//! extern crate serde;</span>
 <span class='doccomment'>//! extern crate &quot;google-appsactivity1&quot; as appsactivity1;</span>
-<span class='doccomment'>//! use appsactivity1::cmn::Result;</span>
+<span class='doccomment'>//! use appsactivity1::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -1036,6 +1051,7 @@
 <span class='doccomment'>//!     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
 <span class='doccomment'>//!     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//!     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>//!     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
 <span class='doccomment'>//!     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! # }</span>
@@ -1063,7 +1079,7 @@
 <span class='doccomment'>//! ## About Customization/Callbacks</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! You may alter the way an `doit()` method is called by providing a [delegate](cmn/trait.Delegate.html) to the </span>
-<span class='doccomment'>//! [Method Builder](cmn/trait.MethodBuilder.html) before making the final `doit()` call. </span>
+<span class='doccomment'>//! [Method Builder](cmn/trait.CallBuilder.html) before making the final `doit()` call. </span>
 <span class='doccomment'>//! Respective methods will be called to provide progress information, as well as determine whether the system should </span>
 <span class='doccomment'>//! retry on failure.</span>
 <span class='doccomment'>//! </span>
@@ -1078,7 +1094,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## About Builder Arguments</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Using [method builders](cmn/trait.MethodBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
+<span class='doccomment'>//! Using [method builders](cmn/trait.CallBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
 <span class='doccomment'>//! These will always take a single argument, for which the following statements are true.</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [PODs][wiki-pod] are handed by copy</span>
@@ -1099,15 +1115,17 @@
 <span class='comment'>// Instead of pre-determining this, we just disable the lint. It&#39;s manually tuned to not have any </span>
 <span class='comment'>// unused imports in fully featured APIs. Same with unused_mut ... .</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>unused_imports</span>, <span class='ident'>unused_mut</span>)]</span>
-
+<span class='comment'>// Required for serde annotations</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>custom_derive</span>, <span class='ident'>custom_attribute</span>, <span class='ident'>plugin</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>plugin</span>(<span class='ident'>serde_macros</span>)]</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>mime</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>url</span>;
 
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>cmn</span>;
+<span class='kw'>mod</span> <span class='ident'>cmn</span>;
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>RefCell</span>;
@@ -1115,12 +1133,12 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
-<span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>;
+<span class='kw'>use</span> <span class='ident'>serde</span>::<span class='ident'>json</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::<span class='ident'>timer</span>::<span class='ident'>sleep</span>;
 
-<span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>MultiPartReader</span>, <span class='ident'>MethodInfo</span>, <span class='prelude-ty'>Result</span>, <span class='ident'>CallBuilder</span>, <span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>, <span class='ident'>UnusedType</span>};
 
 
 <span class='comment'>// ##############</span>
@@ -1177,9 +1195,9 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-appsactivity1&quot; as appsactivity1;</span>
-<span class='doccomment'>/// use appsactivity1::cmn::Result;</span>
+<span class='doccomment'>/// use appsactivity1::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -1216,6 +1234,7 @@
 <span class='doccomment'>///     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
 <span class='doccomment'>///     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>///     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>///     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
 <span class='doccomment'>///     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>/// }</span>
 <span class='doccomment'>/// # }</span>
@@ -1265,122 +1284,126 @@
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Rename</span> {
     <span class='doccomment'>/// The new title.    </span>
-    <span class='kw'>pub</span> <span class='ident'>new_title</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;newTitle&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>new_title</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// The old title.    </span>
-    <span class='kw'>pub</span> <span class='ident'>old_title</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;oldTitle&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>old_title</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Rename</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Rename</span> {}
 
 
 <span class='doccomment'>/// Contains information about a Drive object&#39;s permissions that changed as a result of a permissionChange type event.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PermissionChange</span> {
     <span class='doccomment'>/// Lists all Permission objects removed.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;removedPermissions&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>removed_permissions</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Permission</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Lists all Permission objects added.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;addedPermissions&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>added_permissions</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Permission</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>PermissionChange</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>PermissionChange</span> {}
 
 
 <span class='doccomment'>/// Information about the object modified by the event.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Target</span> {
     <span class='doccomment'>/// The MIME type of the target.    </span>
-    <span class='kw'>pub</span> <span class='ident'>mime_type</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;mimeType&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>mime_type</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// The ID of the target. For example, in Google Drive, this is the file or folder ID.    </span>
-    <span class='kw'>pub</span> <span class='ident'>id</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>id</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// The name of the target. For example, in Google Drive, this is the title of the file.    </span>
-    <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Target</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Target</span> {}
 
 
 <span class='doccomment'>/// Contains information about a parent object. For example, a folder in Drive is a parent for all files within it.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Parent</span> {
     <span class='doccomment'>/// The parent&#39;s ID.    </span>
-    <span class='kw'>pub</span> <span class='ident'>id</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>id</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Whether this is the root folder.    </span>
-    <span class='kw'>pub</span> <span class='ident'>is_root</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;isRoot&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>is_root</span>: <span class='ident'>bool</span>,
     <span class='doccomment'>/// The parent&#39;s title.    </span>
-    <span class='kw'>pub</span> <span class='ident'>title</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>title</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Parent</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Parent</span> {}
 
 
 <span class='doccomment'>/// Contains information about the permissions and type of access allowed with regards to a Google Drive object. This is a subset of the fields contained in a corresponding Drive Permissions object.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Permission</span> {
     <span class='doccomment'>/// Whether the permission requires a link to the file.    </span>
-    <span class='kw'>pub</span> <span class='ident'>with_link</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;withLink&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>with_link</span>: <span class='ident'>bool</span>,
     <span class='doccomment'>/// The ID for this permission. Corresponds to the Drive API&#39;s permission ID returned as part of the Drive Permissions resource.    </span>
-    <span class='kw'>pub</span> <span class='ident'>permission_id</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;permissionId&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>permission_id</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Indicates the Google Drive permissions role. The role determines a user&#39;s ability to read, write, or comment on the file.    </span>
-    <span class='kw'>pub</span> <span class='ident'>role</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>role</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// The name of the user or group the permission applies to.    </span>
-    <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Indicates how widely permissions are granted.    </span>
-    <span class='kw'>pub</span> <span class='ident'>type_</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;type&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>type_</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// The user&#39;s information if the type is USER.    </span>
-    <span class='kw'>pub</span> <span class='ident'>user</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>User</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>user</span>: <span class='ident'>User</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Permission</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Permission</span> {}
 
 
 <span class='doccomment'>/// Photo information for a user.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Photo</span> {
     <span class='doccomment'>/// The URL of the photo.    </span>
-    <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Photo</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Photo</span> {}
 
 
 <span class='doccomment'>/// Contains information about changes in an object&#39;s parents as a result of a move type event.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Move</span> {
     <span class='doccomment'>/// The removed parent(s).    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;removedParents&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>removed_parents</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Parent</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// The added parent(s).    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;addedParents&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>added_parents</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Parent</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Move</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Move</span> {}
 
 
 <span class='doccomment'>/// The response from the list request. Contains a list of activities and a token to retrieve the next page of results.</span>
@@ -1390,12 +1413,13 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [list activities](struct.ActivityListMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [list activities](struct.ActivityListCallBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ListActivitiesResponse</span> {
     <span class='doccomment'>/// Token for the next page of results.    </span>
-    <span class='kw'>pub</span> <span class='ident'>next_page_token</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;nextPageToken&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>next_page_token</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// List of activities.    </span>
     <span class='kw'>pub</span> <span class='ident'>activities</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Activity</span><span class='op'>&gt;</span>,
 }
@@ -1407,67 +1431,72 @@
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>User</span> {
     <span class='doccomment'>/// The profile photo of the user.    </span>
-    <span class='kw'>pub</span> <span class='ident'>photo</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Photo</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>photo</span>: <span class='ident'>Photo</span>,
     <span class='doccomment'>/// The displayable name of the user.    </span>
-    <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>User</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>User</span> {}
 
 
 <span class='doccomment'>/// An Activity resource is a combined view of multiple events. An activity has a list of individual events and a combined view of the common fields among all events.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Activity</span> {
     <span class='doccomment'>/// The fields common to all of the singleEvents that make up the Activity.    </span>
-    <span class='kw'>pub</span> <span class='ident'>combined_event</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;combinedEvent&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>combined_event</span>: <span class='ident'>Event</span>,
     <span class='doccomment'>/// A list of all the Events that make up the Activity.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;singleEvents&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>single_events</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Activity</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Activity</span> {}
 
 
 <span class='doccomment'>/// Represents the changes associated with an action taken by a user.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Event</span> {
     <span class='doccomment'>/// Extra information for rename type events, such as the old and new names.    </span>
-    <span class='kw'>pub</span> <span class='ident'>rename</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Rename</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>rename</span>: <span class='ident'>Rename</span>,
     <span class='doccomment'>/// Information specific to the Target object modified by the event.    </span>
-    <span class='kw'>pub</span> <span class='ident'>target</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Target</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>target</span>: <span class='ident'>Target</span>,
     <span class='doccomment'>/// Additional event types. Some events may have multiple types when multiple actions are part of a single event. For example, creating a document, renaming it, and sharing it may be part of a single file-creation event.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;additionalEventTypes&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>additional_event_types</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Extra information for move type events, such as changes in an object&#39;s parents.    </span>
-    <span class='kw'>pub</span> <span class='ident'>move_</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Move</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;move&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>move_</span>: <span class='ident'>Move</span>,
     <span class='doccomment'>/// Extra information for permissionChange type events, such as the user or group the new permission applies to.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;permissionChanges&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>permission_changes</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>PermissionChange</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Represents the user responsible for the event.    </span>
-    <span class='kw'>pub</span> <span class='ident'>user</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>User</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>user</span>: <span class='ident'>User</span>,
     <span class='doccomment'>/// The time at which the event occurred formatted as Unix time in milliseconds.    </span>
-    <span class='kw'>pub</span> <span class='ident'>event_time_millis</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;eventTimeMillis&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>event_time_millis</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// The main type of event that occurred.    </span>
-    <span class='kw'>pub</span> <span class='ident'>primary_event_type</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;primaryEventType&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>primary_event_type</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Whether this event is caused by a user being deleted.    </span>
-    <span class='kw'>pub</span> <span class='ident'>from_user_deletion</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;fromUserDeletion&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>from_user_deletion</span>: <span class='ident'>bool</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>Event</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Event</span> {}
 
 
 
 <span class='comment'>// ###################</span>
-<span class='comment'>// MethodBuilders ###</span>
+<span class='comment'>// CallBuilders ###</span>
 <span class='comment'>// #################</span>
 
 <span class='doccomment'>/// A builder providing access to all methods supported on *activity* resources.</span>
@@ -1480,7 +1509,7 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-appsactivity1&quot; as appsactivity1;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -1493,7 +1522,7 @@
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
 <span class='doccomment'>/// let mut hub = Appsactivity::new(hyper::Client::new(), auth);</span>
-<span class='doccomment'>/// // Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='doccomment'>/// // Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='doccomment'>/// // like `list(...)`</span>
 <span class='doccomment'>/// // to build up your call.</span>
 <span class='doccomment'>/// let rb = hub.activities();</span>
@@ -1512,8 +1541,8 @@
     <span class='doccomment'>/// Create a builder to help you perform the following task:</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// Returns a list of activities visible to the current logged in user. Visible activities are determined by the visiblity settings of the object that was acted on, e.g. Drive files a user can see. An activity is a record of past events. Multiple events may be merged if they are similar. A request is scoped to activities from a given Google service using the source parameter.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>list</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
-        <span class='ident'>ActivityListMethodBuilder</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>list</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+        <span class='ident'>ActivityListCallBuilder</span> {
             <span class='ident'>hub</span>: <span class='self'>self</span>.<span class='ident'>hub</span>,
             <span class='ident'>_user_id</span>: <span class='ident'>Default</span>::<span class='ident'>default</span>(),
             <span class='ident'>_source</span>: <span class='ident'>Default</span>::<span class='ident'>default</span>(),
@@ -1549,7 +1578,7 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-appsactivity1&quot; as appsactivity1;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -1575,7 +1604,7 @@
 <span class='doccomment'>///              .doit();</span>
 <span class='doccomment'>/// # }</span>
 <span class='doccomment'>/// ```</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
     <span class='kw'>where</span> <span class='ident'>C</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>NC</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>A</span>: <span class='lifetime'>&#39;a</span> {
 
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Appsactivity</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
@@ -1591,20 +1620,23 @@
     <span class='ident'>_scopes</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, ()<span class='op'>&gt;</span>
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>MethodBuilder</span> <span class='kw'>for</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>CallBuilder</span> <span class='kw'>for</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
 
 
     <span class='doccomment'>/// Perform the operation you have build so far.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>doit</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span>, <span class='ident'>ListActivitiesResponse</span>)<span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>doit</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span>, <span class='ident'>ListActivitiesResponse</span>)<span class='op'>&gt;</span> {
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
-        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;appsactivity.activities.list&quot;</span>, 
-                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
-        }
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dd</span> <span class='op'>=</span> <span class='ident'>DefaultDelegate</span>;
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Delegate</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='prelude-val'>Some</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>dd</span>
+        };
+        <span class='ident'>dlg</span>.<span class='ident'>begin</span>(<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;appsactivity.activities.list&quot;</span>, 
+                               <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>9</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_user_id</span> {
             <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;userId&quot;</span>, <span class='ident'>value</span>.<span class='ident'>to_string</span>()));
@@ -1629,8 +1661,8 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;userId&quot;</span>, <span class='string'>&quot;source&quot;</span>, <span class='string'>&quot;pageToken&quot;</span>, <span class='string'>&quot;pageSize&quot;</span>, <span class='string'>&quot;groupingStrategy&quot;</span>, <span class='string'>&quot;drive.fileId&quot;</span>, <span class='string'>&quot;drive.ancestorId&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
-                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
+                <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
         <span class='kw'>for</span> (<span class='ident'>name</span>, <span class='ident'>value</span>) <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>iter</span>() {
@@ -1654,12 +1686,12 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
         <span class='kw'>loop</span> {
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>token</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>token</span>(<span class='self'>self</span>.<span class='ident'>_scopes</span>.<span class='ident'>keys</span>());
-            <span class='kw'>if</span> <span class='ident'>token</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='ident'>token</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>token</span>();
-            }}
             <span class='kw'>if</span> <span class='ident'>token</span>.<span class='ident'>is_none</span>() {
-                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
+                <span class='ident'>token</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>token</span>();
+            }
+            <span class='kw'>if</span> <span class='ident'>token</span>.<span class='ident'>is_none</span>() {
+                <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
             <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
 
@@ -1667,42 +1699,38 @@
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()))
                 .<span class='ident'>header</span>(<span class='ident'>auth_header</span>);
 
-            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
-            }
-
+            <span class='ident'>dlg</span>.<span class='ident'>pre_request</span>();
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                            <span class='kw'>continue</span>;
-                        }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                        <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                        <span class='kw'>continue</span>;
                     }
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
+                    <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                    <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
-                            <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+                        <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
+                        <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>from_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
+                        <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                        <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
                         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_response</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
-                        (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
+                        <span class='kw'>match</span> <span class='ident'>json</span>::<span class='ident'>from_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>) {
+                            <span class='prelude-val'>Ok</span>(<span class='ident'>decoded</span>) <span class='op'>=&gt;</span> (<span class='ident'>res</span>, <span class='ident'>decoded</span>),
+                            <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>),
+                        }
                     };
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
+                    <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                    <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
         }
@@ -1713,7 +1741,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// Indicates the user to return activity for. Use the special value me to indicate the currently authenticated user.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>user_id</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>user_id</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_user_id</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1722,7 +1750,7 @@
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// The Google service from which to return activities. Possible values of source are: </span>
     <span class='doccomment'>/// - drive.google.com</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>source</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>source</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_source</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1730,7 +1758,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// A token to retrieve a specific page of results.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>page_token</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>page_token</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_page_token</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1738,7 +1766,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// The maximum number of events to return on a page. The response includes a continuation token if there are more events.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>page_size</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='ident'>i32</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>page_size</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='ident'>i32</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_page_size</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>);
         <span class='self'>self</span>
     }
@@ -1746,7 +1774,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// Indicates the strategy to use when grouping singleEvents items in the associated combinedEvent object.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>grouping_strategy</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>grouping_strategy</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_grouping_strategy</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1754,7 +1782,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// Identifies the Drive item to return activities for.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>drive_file_id</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>drive_file_id</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_drive_file_id</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1762,7 +1790,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// Identifies the Drive folder containing the items for which to return activities.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>drive_ancestor_id</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>drive_ancestor_id</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_drive_ancestor_id</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1773,7 +1801,7 @@
     <span class='doccomment'>/// while executing the actual API request.</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// It should be used to handle progress information, and to implement a certain level of resilience.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>delegate</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Delegate</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>delegate</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Delegate</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_delegate</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>);
         <span class='self'>self</span>
     }
@@ -1794,7 +1822,7 @@
     <span class='doccomment'>/// * *userIp* (query-string) - IP address of the site where the request originates. Use this if you want to enforce per-user limits.</span>
     <span class='doccomment'>/// * *fields* (query-string) - Selector specifying which fields to include in a partial response.</span>
     <span class='doccomment'>/// * *alt* (query-string) - Data format for the response.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>param</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='ident'>T</span>, <span class='ident'>value</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>param</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='ident'>T</span>, <span class='ident'>value</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
                                                         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Str</span> {
         <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>insert</span>(<span class='ident'>name</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>(), <span class='ident'>value</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>());
         <span class='self'>self</span>
@@ -1811,7 +1839,7 @@
     <span class='doccomment'>/// Usually there is more than one suitable scope to authorize an operation, some of which may</span>
     <span class='doccomment'>/// encompass more rights than others. For example, for listing resources, a *read-only* scope will be</span>
     <span class='doccomment'>/// sufficient, a read-write scope will do as well.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_scope</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>scope</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> 
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_scope</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>scope</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>ActivityListCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> 
                                                         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Str</span> {
         <span class='self'>self</span>.<span class='ident'>_scopes</span>.<span class='ident'>insert</span>(<span class='ident'>scope</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>(), ());
         <span class='self'>self</span>

@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-tagmanager1</a>::<wbr><a class='struct' href=''>TagManager</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-1210' href='../src/google-tagmanager1/lib.rs.html#348-354'>[src]</a></span></h1>
+        </span><a id='src-1489' href='../src/google-tagmanager1/lib.rs.html#353-359'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct TagManager&lt;C, NC, A&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Central instance to access all TagManager related resource activities</p>
@@ -54,10 +54,10 @@
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-tagmanager1&quot;</span> <span class='kw'>as</span> <span class='ident'>tagmanager1</span>;
 <span class='kw'>use</span> <span class='ident'>tagmanager1</span>::<span class='ident'>Trigger</span>;
-<span class='kw'>use</span> <span class='ident'>tagmanager1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>tagmanager1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>tagmanager1</span>::<span class='ident'>TagManager</span>;
@@ -92,6 +92,7 @@
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -102,7 +103,7 @@
 It defaults to <code>google-api-rust-client/0.0.1</code>.</p>
 
 <p>Returns the previously set user-agent.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-tagmanager1/cmn/trait.Hub.html' title='google-tagmanager1::cmn::Hub'>Hub</a> for <a class='struct' href='../google-tagmanager1/struct.TagManager.html' title='google-tagmanager1::TagManager'>TagManager</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-tagmanager1/trait.Hub.html' title='google-tagmanager1::Hub'>Hub</a> for <a class='struct' href='../google-tagmanager1/struct.TagManager.html' title='google-tagmanager1::TagManager'>TagManager</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

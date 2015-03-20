@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-reseller1_sandbox</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-reseller1_sandbox/lib.rs.html#5-4528'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-reseller1_sandbox/lib.rs.html#5-4468'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>reseller</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/reseller1_sandbox">on github</a>.</p>
 
@@ -52,8 +52,16 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Reseller.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.Customer.html">customers</a> (<a href="struct.CustomerGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CustomerInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.CustomerPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.CustomerUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Subscription.html">subscriptions</a> (<a href="struct.SubscriptionActivateMethodBuilder.html"><em>activate</em></a>, <a href="struct.SubscriptionChangePlanMethodBuilder.html"><em>change plan</em></a>, <a href="struct.SubscriptionChangeRenewalSettingMethodBuilder.html"><em>change renewal settings</em></a>, <a href="struct.SubscriptionChangeSeatMethodBuilder.html"><em>change seats</em></a>, <a href="struct.SubscriptionDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.SubscriptionGetMethodBuilder.html"><em>get</em></a>, <a href="struct.SubscriptionInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.SubscriptionListMethodBuilder.html"><em>list</em></a>, <a href="struct.SubscriptionStartPaidServiceMethodBuilder.html"><em>start paid service</em></a> and <a href="struct.SubscriptionSuspendMethodBuilder.html"><em>suspend</em></a>)</li>
+<li><a href="struct.Customer.html">customers</a>
+
+<ul>
+<li><a href="struct.CustomerGetCallBuilder.html"><em>get</em></a>, <a href="struct.CustomerInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.CustomerPatchCallBuilder.html"><em>patch</em></a> and <a href="struct.CustomerUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
+<li><a href="struct.Subscription.html">subscriptions</a>
+
+<ul>
+<li><a href="struct.SubscriptionActivateCallBuilder.html"><em>activate</em></a>, <a href="struct.SubscriptionChangePlanCallBuilder.html"><em>change plan</em></a>, <a href="struct.SubscriptionChangeRenewalSettingCallBuilder.html"><em>change renewal settings</em></a>, <a href="struct.SubscriptionChangeSeatCallBuilder.html"><em>change seats</em></a>, <a href="struct.SubscriptionDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.SubscriptionGetCallBuilder.html"><em>get</em></a>, <a href="struct.SubscriptionInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.SubscriptionListCallBuilder.html"><em>list</em></a>, <a href="struct.SubscriptionStartPaidServiceCallBuilder.html"><em>start paid service</em></a> and <a href="struct.SubscriptionSuspendCallBuilder.html"><em>suspend</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>reseller</em> <em>v1_sandbox</em> API can be found at the
@@ -83,7 +91,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -128,9 +136,9 @@ google-reseller1_sandbox = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-reseller1_sandbox&quot;</span> <span class='kw'>as</span> <span class='ident'>reseller1_sandbox</span>;
-<span class='kw'>use</span> <span class='ident'>reseller1_sandbox</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>reseller1_sandbox</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>reseller1_sandbox</span>::<span class='ident'>Reseller</span>;
@@ -164,6 +172,7 @@ google-reseller1_sandbox = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -192,7 +201,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -207,7 +216,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -217,21 +226,12 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-reseller1_sandbox::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Address.html'
                                title='google-reseller1_sandbox::Address'>Address</a></td>
                         <td class='docblock short'><p>JSON template for address of a customer.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -239,15 +239,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangePlanRequest.html'
                                title='google-reseller1_sandbox::ChangePlanRequest'>ChangePlanRequest</a></td>
                         <td class='docblock short'><p>JSON template for the ChangePlan rpc request.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SubscriptionChangePlanMethodBuilder.html">change plan subscriptions</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -255,31 +246,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Customer.html'
                                title='google-reseller1_sandbox::Customer'>Customer</a></td>
                         <td class='docblock short'><p>JSON template for a customer.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.CustomerUpdateMethodBuilder.html">update customers</a> (request|response)</li>
-<li><a href="struct.CustomerPatchMethodBuilder.html">patch customers</a> (request|response)</li>
-<li><a href="struct.CustomerInsertMethodBuilder.html">insert customers</a> (request|response)</li>
-<li><a href="struct.CustomerGetMethodBuilder.html">get customers</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerGetMethodBuilder.html'
-                               title='google-reseller1_sandbox::CustomerGetMethodBuilder'>CustomerGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerGetCallBuilder.html'
+                               title='google-reseller1_sandbox::CustomerGetCallBuilder'>CustomerGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets a customer resource if one exists and is owned by the reseller.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerInsertMethodBuilder.html'
-                               title='google-reseller1_sandbox::CustomerInsertMethodBuilder'>CustomerInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerInsertCallBuilder.html'
+                               title='google-reseller1_sandbox::CustomerInsertCallBuilder'>CustomerInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a customer resource if one does not already exist.</p>
 </td>
                     </tr>
@@ -293,16 +272,41 @@ It is not used directly, but through the <code>Reseller</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerPatchMethodBuilder.html'
-                               title='google-reseller1_sandbox::CustomerPatchMethodBuilder'>CustomerPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerPatchCallBuilder.html'
+                               title='google-reseller1_sandbox::CustomerPatchCallBuilder'>CustomerPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Update a customer resource if one it exists and is owned by the reseller. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerUpdateMethodBuilder.html'
-                               title='google-reseller1_sandbox::CustomerUpdateMethodBuilder'>CustomerUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CustomerUpdateCallBuilder.html'
+                               title='google-reseller1_sandbox::CustomerUpdateCallBuilder'>CustomerUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Update a customer resource if one it exists and is owned by the reseller.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-reseller1_sandbox::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-reseller1_sandbox::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-reseller1_sandbox::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -310,15 +314,6 @@ It is not used directly, but through the <code>Reseller</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RenewalSettings.html'
                                title='google-reseller1_sandbox::RenewalSettings'>RenewalSettings</a></td>
                         <td class='docblock short'><p>JSON template for a subscription renewal settings.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SubscriptionChangeRenewalSettingMethodBuilder.html">change renewal settings subscriptions</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -333,15 +328,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Seats.html'
                                title='google-reseller1_sandbox::Seats'>Seats</a></td>
                         <td class='docblock short'><p>JSON template for subscription seats.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SubscriptionChangeSeatMethodBuilder.html">change seats subscriptions</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -349,79 +335,61 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Subscription.html'
                                title='google-reseller1_sandbox::Subscription'>Subscription</a></td>
                         <td class='docblock short'><p>JSON template for a subscription.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SubscriptionInsertMethodBuilder.html">insert subscriptions</a> (request|response)</li>
-<li><a href="struct.SubscriptionDeleteMethodBuilder.html">delete subscriptions</a> (none)</li>
-<li><a href="struct.SubscriptionGetMethodBuilder.html">get subscriptions</a> (response)</li>
-<li><a href="struct.SubscriptionListMethodBuilder.html">list subscriptions</a> (none)</li>
-<li><a href="struct.SubscriptionStartPaidServiceMethodBuilder.html">start paid service subscriptions</a> (response)</li>
-<li><a href="struct.SubscriptionChangeSeatMethodBuilder.html">change seats subscriptions</a> (response)</li>
-<li><a href="struct.SubscriptionSuspendMethodBuilder.html">suspend subscriptions</a> (response)</li>
-<li><a href="struct.SubscriptionActivateMethodBuilder.html">activate subscriptions</a> (response)</li>
-<li><a href="struct.SubscriptionChangeRenewalSettingMethodBuilder.html">change renewal settings subscriptions</a> (response)</li>
-<li><a href="struct.SubscriptionChangePlanMethodBuilder.html">change plan subscriptions</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionActivateMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionActivateMethodBuilder'>SubscriptionActivateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionActivateCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionActivateCallBuilder'>SubscriptionActivateCallBuilder</a></td>
                         <td class='docblock short'><p>Activates a subscription previously suspended by the reseller</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionChangePlanMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionChangePlanMethodBuilder'>SubscriptionChangePlanMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionChangePlanCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionChangePlanCallBuilder'>SubscriptionChangePlanCallBuilder</a></td>
                         <td class='docblock short'><p>Changes the plan of a subscription</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionChangeRenewalSettingMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionChangeRenewalSettingMethodBuilder'>SubscriptionChangeRenewalSettingMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionChangeRenewalSettingCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionChangeRenewalSettingCallBuilder'>SubscriptionChangeRenewalSettingCallBuilder</a></td>
                         <td class='docblock short'><p>Changes the renewal settings of a subscription</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionChangeSeatMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionChangeSeatMethodBuilder'>SubscriptionChangeSeatMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionChangeSeatCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionChangeSeatCallBuilder'>SubscriptionChangeSeatCallBuilder</a></td>
                         <td class='docblock short'><p>Changes the seats configuration of a subscription</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionDeleteMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionDeleteMethodBuilder'>SubscriptionDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionDeleteCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionDeleteCallBuilder'>SubscriptionDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Cancels/Downgrades a subscription.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionGetMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionGetMethodBuilder'>SubscriptionGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionGetCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionGetCallBuilder'>SubscriptionGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets a subscription of the customer.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionInsertMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionInsertMethodBuilder'>SubscriptionInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionInsertCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionInsertCallBuilder'>SubscriptionInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates/Transfers a subscription for the customer.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionListMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionListMethodBuilder'>SubscriptionListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionListCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionListCallBuilder'>SubscriptionListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists subscriptions of a reseller, optionally filtered by a customer name prefix.</p>
 </td>
                     </tr>
@@ -438,8 +406,6 @@ It is not used directly, but through the <code>Reseller</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionPlan.html'
                                title='google-reseller1_sandbox::SubscriptionPlan'>SubscriptionPlan</a></td>
                         <td class='docblock short'><p>Plan details of the subscription</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -447,21 +413,19 @@ It is not used directly, but through the <code>Reseller</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionPlanCommitmentInterval.html'
                                title='google-reseller1_sandbox::SubscriptionPlanCommitmentInterval'>SubscriptionPlanCommitmentInterval</a></td>
                         <td class='docblock short'><p>Interval of the commitment if it is a commitment plan.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionStartPaidServiceMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionStartPaidServiceMethodBuilder'>SubscriptionStartPaidServiceMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionStartPaidServiceCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionStartPaidServiceCallBuilder'>SubscriptionStartPaidServiceCallBuilder</a></td>
                         <td class='docblock short'><p>Starts paid service of a trial subscription</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionSuspendMethodBuilder.html'
-                               title='google-reseller1_sandbox::SubscriptionSuspendMethodBuilder'>SubscriptionSuspendMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionSuspendCallBuilder.html'
+                               title='google-reseller1_sandbox::SubscriptionSuspendCallBuilder'>SubscriptionSuspendCallBuilder</a></td>
                         <td class='docblock short'><p>Suspends an active subscription</p>
 </td>
                     </tr>
@@ -470,8 +434,6 @@ It is not used directly, but through the <code>Reseller</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionTransferInfo.html'
                                title='google-reseller1_sandbox::SubscriptionTransferInfo'>SubscriptionTransferInfo</a></td>
                         <td class='docblock short'><p>Transfer related information for the subscription.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -479,8 +441,6 @@ It is not used directly, but through the <code>Reseller</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SubscriptionTrialSettings.html'
                                title='google-reseller1_sandbox::SubscriptionTrialSettings'>SubscriptionTrialSettings</a></td>
                         <td class='docblock short'><p>Trial Settings of the subscription.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -488,25 +448,93 @@ It is not used directly, but through the <code>Reseller</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Subscriptions.html'
                                title='google-reseller1_sandbox::Subscriptions'>Subscriptions</a></td>
                         <td class='docblock short'><p>JSON template for a subscription list.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.SubscriptionListMethodBuilder.html">list subscriptions</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-reseller1_sandbox::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-reseller1_sandbox::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-reseller1_sandbox::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-reseller1_sandbox::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-reseller1_sandbox::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-reseller1_sandbox::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-reseller1_sandbox::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-reseller1_sandbox::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-reseller1_sandbox::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-reseller1_sandbox::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-reseller1_sandbox::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

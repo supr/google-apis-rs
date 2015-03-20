@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-genomics1_beta2</a>::<wbr><a class='struct' href=''>ReadMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-27117' href='../src/google-genomics1_beta2/lib.rs.html#3318-3322'>[src]</a></span></h1>
+        </span><a id='src-48273' href='../src/google-genomics1_beta2/lib.rs.html#3203-3207'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct ReadMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>read</em> resources.
@@ -55,7 +55,7 @@ It is not used directly, but through the <code>Genomics</code> hub.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-genomics1_beta2&quot;</span> <span class='kw'>as</span> <span class='ident'>genomics1_beta2</span>;
  
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -67,12 +67,12 @@ It is not used directly, but through the <code>Genomics</code> hub.</p>
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Genomics</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
-<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='comment'>// like `search(...)`</span>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>reads</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-genomics1_beta2/struct.ReadMethodsBuilder.html' title='google-genomics1_beta2::ReadMethodsBuilder'>ReadMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.search' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search' class='fnname'>search</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.SearchReadsRequest.html' title='google-genomics1_beta2::SearchReadsRequest'>SearchReadsRequest</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.ReadSearchMethodBuilder.html' title='google-genomics1_beta2::ReadSearchMethodBuilder'>ReadSearchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-genomics1_beta2/struct.ReadMethodsBuilder.html' title='google-genomics1_beta2::ReadMethodsBuilder'>ReadMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.search' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search' class='fnname'>search</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.SearchReadsRequest.html' title='google-genomics1_beta2::SearchReadsRequest'>SearchReadsRequest</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.ReadSearchCallBuilder.html' title='google-genomics1_beta2::ReadSearchCallBuilder'>ReadSearchCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Gets a list of reads for one or more read group sets. Reads search operates over a genomic coordinate space of reference sequence &amp; position defined over the reference sequences to which the requested read group sets are aligned.</p>
@@ -82,7 +82,7 @@ It is not used directly, but through the <code>Genomics</code> hub.</p>
 <p>All reads returned (including reads on subsequent pages) are ordered by genomic coordinate (reference sequence &amp; position). Reads with equivalent genomic coordinates are returned in a deterministic order.</p>
 
 <p>Implements GlobalAllianceApi.searchReads.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-genomics1_beta2/cmn/trait.ResourceMethodsBuilder.html' title='google-genomics1_beta2::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-genomics1_beta2/struct.ReadMethodsBuilder.html' title='google-genomics1_beta2::ReadMethodsBuilder'>ReadMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; ResourceMethodsBuilder for <a class='struct' href='../google-genomics1_beta2/struct.ReadMethodsBuilder.html' title='google-genomics1_beta2::ReadMethodsBuilder'>ReadMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

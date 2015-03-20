@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-genomics1_beta2</a>::<wbr><a class='struct' href=''>CallsetMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-26907' href='../src/google-genomics1_beta2/lib.rs.html#3194-3198'>[src]</a></span></h1>
+        </span><a id='src-48063' href='../src/google-genomics1_beta2/lib.rs.html#3079-3083'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct CallsetMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>callset</em> resources.
@@ -55,7 +55,7 @@ It is not used directly, but through the <code>Genomics</code> hub.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-genomics1_beta2&quot;</span> <span class='kw'>as</span> <span class='ident'>genomics1_beta2</span>;
  
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -67,38 +67,38 @@ It is not used directly, but through the <code>Genomics</code> hub.</p>
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Genomics</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
-<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='comment'>// like `create(...)`, `delete(...)`, `get(...)`, `patch(...)`, `search(...)` and `update(...)`</span>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>callsets</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetMethodsBuilder.html' title='google-genomics1_beta2::CallsetMethodsBuilder'>CallsetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetDeleteMethodBuilder.html' title='google-genomics1_beta2::CallsetDeleteMethodBuilder'>CallsetDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetMethodsBuilder.html' title='google-genomics1_beta2::CallsetMethodsBuilder'>CallsetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetDeleteCallBuilder.html' title='google-genomics1_beta2::CallsetDeleteCallBuilder'>CallsetDeleteCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Deletes a call set.    </p>
-</div><h4 id='method.search' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search' class='fnname'>search</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.SearchCallSetsRequest.html' title='google-genomics1_beta2::SearchCallSetsRequest'>SearchCallSetsRequest</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetSearchMethodBuilder.html' title='google-genomics1_beta2::CallsetSearchMethodBuilder'>CallsetSearchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.search' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.search' class='fnname'>search</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.SearchCallSetsRequest.html' title='google-genomics1_beta2::SearchCallSetsRequest'>SearchCallSetsRequest</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetSearchCallBuilder.html' title='google-genomics1_beta2::CallsetSearchCallBuilder'>CallsetSearchCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Gets a list of call sets matching the criteria.</p>
 
 <p>Implements GlobalAllianceApi.searchCallSets.</p>
-</div><h4 id='method.patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.patch' class='fnname'>patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.CallSet.html' title='google-genomics1_beta2::CallSet'>CallSet</a>, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetPatchMethodBuilder.html' title='google-genomics1_beta2::CallsetPatchMethodBuilder'>CallsetPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.patch' class='fnname'>patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.CallSet.html' title='google-genomics1_beta2::CallSet'>CallSet</a>, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetPatchCallBuilder.html' title='google-genomics1_beta2::CallsetPatchCallBuilder'>CallsetPatchCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Updates a call set. This method supports patch semantics.    </p>
-</div><h4 id='method.create' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.create' class='fnname'>create</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.CallSet.html' title='google-genomics1_beta2::CallSet'>CallSet</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetCreateMethodBuilder.html' title='google-genomics1_beta2::CallsetCreateMethodBuilder'>CallsetCreateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.create' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.create' class='fnname'>create</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.CallSet.html' title='google-genomics1_beta2::CallSet'>CallSet</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetCreateCallBuilder.html' title='google-genomics1_beta2::CallsetCreateCallBuilder'>CallsetCreateCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Creates a new call set.    </p>
-</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetGetMethodBuilder.html' title='google-genomics1_beta2::CallsetGetMethodBuilder'>CallsetGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetGetCallBuilder.html' title='google-genomics1_beta2::CallsetGetCallBuilder'>CallsetGetCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Gets a call set by ID.    </p>
-</div><h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.CallSet.html' title='google-genomics1_beta2::CallSet'>CallSet</a>, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetUpdateMethodBuilder.html' title='google-genomics1_beta2::CallsetUpdateMethodBuilder'>CallsetUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.CallSet.html' title='google-genomics1_beta2::CallSet'>CallSet</a>, call_set_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.CallsetUpdateCallBuilder.html' title='google-genomics1_beta2::CallsetUpdateCallBuilder'>CallsetUpdateCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Updates a call set.    </p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-genomics1_beta2/cmn/trait.ResourceMethodsBuilder.html' title='google-genomics1_beta2::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-genomics1_beta2/struct.CallsetMethodsBuilder.html' title='google-genomics1_beta2::CallsetMethodsBuilder'>CallsetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; ResourceMethodsBuilder for <a class='struct' href='../google-genomics1_beta2/struct.CallsetMethodsBuilder.html' title='google-genomics1_beta2::CallsetMethodsBuilder'>CallsetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

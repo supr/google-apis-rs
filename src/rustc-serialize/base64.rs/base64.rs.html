@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/Users/byron/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.3/src/base64.rs`.">
+    <meta name="description" content="Source to the Rust file `/Users/byron/.cargo/registry/src/github.com-1ecc6299db9ec823/rustc-serialize-0.3.6/src/base64.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>base64.rs.html -- source</title>
@@ -470,8 +470,6 @@
 <span id="428">428</span>
 <span id="429">429</span>
 <span id="430">430</span>
-<span id="431">431</span>
-<span id="432">432</span>
 </pre><pre class='rust '>
 <span class='comment'>// Copyright 2012-2014 The Rust Project Developers. See the COPYRIGHT</span>
 <span class='comment'>// file at the top-level directory of this distribution and at</span>
@@ -557,7 +555,6 @@
     <span class='doccomment'>/// # Example</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```rust</span>
-    <span class='doccomment'>/// # #![allow(unstable)]</span>
     <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
     <span class='doccomment'>/// use rustc_serialize::base64::{ToBase64, STANDARD};</span>
     <span class='doccomment'>///</span>
@@ -581,14 +578,14 @@
         <span class='kw'>let</span> <span class='ident'>mod_len</span> <span class='op'>=</span> <span class='ident'>len</span> <span class='op'>%</span> <span class='number'>3</span>;
         <span class='kw'>let</span> <span class='ident'>cond_len</span> <span class='op'>=</span> <span class='ident'>len</span> <span class='op'>-</span> <span class='ident'>mod_len</span>;
         <span class='kw'>let</span> <span class='ident'>newline</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>config</span>.<span class='ident'>newline</span> {
-            <span class='ident'>Newline</span>::<span class='ident'>LF</span> <span class='op'>=&gt;</span> <span class='string'>b&quot;\n&quot;</span>,
-            <span class='ident'>Newline</span>::<span class='ident'>CRLF</span> <span class='op'>=&gt;</span> <span class='string'>b&quot;\r\n&quot;</span>
+            <span class='ident'>Newline</span>::<span class='ident'>LF</span> <span class='op'>=&gt;</span> <span class='string'>&quot;\n&quot;</span>,
+            <span class='ident'>Newline</span>::<span class='ident'>CRLF</span> <span class='op'>=&gt;</span> <span class='string'>&quot;\r\n&quot;</span>,
         };
         <span class='kw'>while</span> <span class='ident'>i</span> <span class='op'>&lt;</span> <span class='ident'>cond_len</span> {
             <span class='kw'>let</span> (<span class='ident'>first</span>, <span class='ident'>second</span>, <span class='ident'>third</span>) <span class='op'>=</span> (<span class='self'>self</span>[<span class='ident'>i</span>], <span class='self'>self</span>[<span class='ident'>i</span> <span class='op'>+</span> <span class='number'>1</span>], <span class='self'>self</span>[<span class='ident'>i</span> <span class='op'>+</span> <span class='number'>2</span>]);
             <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>line_length</span>) <span class='op'>=</span> <span class='ident'>config</span>.<span class='ident'>line_length</span> {
                 <span class='kw'>if</span> <span class='ident'>cur_length</span> <span class='op'>&gt;=</span> <span class='ident'>line_length</span> {
-                    <span class='ident'>v</span>.<span class='ident'>extend</span>(<span class='ident'>newline</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='op'>*</span><span class='ident'>x</span>));
+                    <span class='ident'>v</span>.<span class='ident'>extend</span>(<span class='ident'>newline</span>.<span class='ident'>bytes</span>());
                     <span class='ident'>cur_length</span> <span class='op'>=</span> <span class='number'>0</span>;
                 }
             }
@@ -610,7 +607,7 @@
         <span class='kw'>if</span> <span class='ident'>mod_len</span> <span class='op'>!=</span> <span class='number'>0</span> {
             <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>line_length</span>) <span class='op'>=</span> <span class='ident'>config</span>.<span class='ident'>line_length</span> {
                 <span class='kw'>if</span> <span class='ident'>cur_length</span> <span class='op'>&gt;=</span> <span class='ident'>line_length</span> {
-                    <span class='ident'>v</span>.<span class='ident'>extend</span>(<span class='ident'>newline</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='op'>*</span><span class='ident'>x</span>));
+                    <span class='ident'>v</span>.<span class='ident'>extend</span>(<span class='ident'>newline</span>.<span class='ident'>bytes</span>());
                 }
             }
         }
@@ -698,7 +695,6 @@
     <span class='doccomment'>/// This converts a string literal to base64 and back.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```rust</span>
-    <span class='doccomment'>/// # #![allow(unstable)]</span>
     <span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
     <span class='doccomment'>/// use rustc_serialize::base64::{ToBase64, FromBase64, STANDARD};</span>
     <span class='doccomment'>///</span>

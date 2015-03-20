@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-dns1_beta1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-dns1_beta1/lib.rs.html#5-3206'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-dns1_beta1/lib.rs.html#5-3199'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>dns</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/dns1_beta1">on github</a>.</p>
 
@@ -52,10 +52,26 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Dns.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.Change.html">changes</a> (<a href="struct.ChangeCreateMethodBuilder.html"><em>create</em></a>, <a href="struct.ChangeGetMethodBuilder.html"><em>get</em></a> and <a href="struct.ChangeListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.ManagedZone.html">managed zones</a> (<a href="struct.ManagedZoneCreateMethodBuilder.html"><em>create</em></a>, <a href="struct.ManagedZoneDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.ManagedZoneGetMethodBuilder.html"><em>get</em></a> and <a href="struct.ManagedZoneListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Project.html">projects</a> (<a href="struct.ProjectGetMethodBuilder.html"><em>get</em></a>)</li>
-<li><a href="struct.ResourceRecordSet.html">resource record sets</a> (<a href="struct.ResourceRecordSetListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.Change.html">changes</a>
+
+<ul>
+<li><a href="struct.ChangeCreateCallBuilder.html"><em>create</em></a>, <a href="struct.ChangeGetCallBuilder.html"><em>get</em></a> and <a href="struct.ChangeListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.ManagedZone.html">managed zones</a>
+
+<ul>
+<li><a href="struct.ManagedZoneCreateCallBuilder.html"><em>create</em></a>, <a href="struct.ManagedZoneDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.ManagedZoneGetCallBuilder.html"><em>get</em></a> and <a href="struct.ManagedZoneListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Project.html">projects</a>
+
+<ul>
+<li><a href="struct.ProjectGetCallBuilder.html"><em>get</em></a></li>
+</ul></li>
+<li><a href="struct.ResourceRecordSet.html">resource record sets</a>
+
+<ul>
+<li><a href="struct.ResourceRecordSetListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>dns</em> <em>v1_beta1</em> API can be found at the
@@ -85,7 +101,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -124,9 +140,9 @@ google-dns1_beta1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-dns1_beta1&quot;</span> <span class='kw'>as</span> <span class='ident'>dns1_beta1</span>;
-<span class='kw'>use</span> <span class='ident'>dns1_beta1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>dns1_beta1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>dns1_beta1</span>::<span class='ident'>Dns</span>;
@@ -157,6 +173,7 @@ google-dns1_beta1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -185,7 +202,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -200,7 +217,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -210,50 +227,32 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-dns1_beta1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Change.html'
                                title='google-dns1_beta1::Change'>Change</a></td>
                         <td class='docblock short'><p>An atomic update to a collection of ResourceRecordSets.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ChangeGetMethodBuilder.html">get changes</a> (response)</li>
-<li><a href="struct.ChangeCreateMethodBuilder.html">create changes</a> (request|response)</li>
-<li><a href="struct.ChangeListMethodBuilder.html">list changes</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeCreateMethodBuilder.html'
-                               title='google-dns1_beta1::ChangeCreateMethodBuilder'>ChangeCreateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeCreateCallBuilder.html'
+                               title='google-dns1_beta1::ChangeCreateCallBuilder'>ChangeCreateCallBuilder</a></td>
                         <td class='docblock short'><p>Atomically update the ResourceRecordSet collection.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeGetMethodBuilder.html'
-                               title='google-dns1_beta1::ChangeGetMethodBuilder'>ChangeGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeGetCallBuilder.html'
+                               title='google-dns1_beta1::ChangeGetCallBuilder'>ChangeGetCallBuilder</a></td>
                         <td class='docblock short'><p>Fetch the representation of an existing Change.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeListMethodBuilder.html'
-                               title='google-dns1_beta1::ChangeListMethodBuilder'>ChangeListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangeListCallBuilder.html'
+                               title='google-dns1_beta1::ChangeListCallBuilder'>ChangeListCallBuilder</a></td>
                         <td class='docblock short'><p>Enumerate Changes to a ResourceRecordSet collection.</p>
 </td>
                     </tr>
@@ -270,15 +269,14 @@ It is not used directly, but through the <code>Dns</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ChangesListResponse.html'
                                title='google-dns1_beta1::ChangesListResponse'>ChangesListResponse</a></td>
                         <td class='docblock short'><p>The response to a request to enumerate Changes to a ResourceRecordSets collection.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ChangeListMethodBuilder.html">list changes</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-dns1_beta1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -293,45 +291,33 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZone.html'
                                title='google-dns1_beta1::ManagedZone'>ManagedZone</a></td>
                         <td class='docblock short'><p>A zone is a subtree of the DNS namespace under one administrative responsibility. A ManagedZone is a resource that represents a DNS zone hosted by the Cloud DNS service.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ManagedZoneGetMethodBuilder.html">get managed zones</a> (response)</li>
-<li><a href="struct.ManagedZoneListMethodBuilder.html">list managed zones</a> (none)</li>
-<li><a href="struct.ManagedZoneCreateMethodBuilder.html">create managed zones</a> (request|response)</li>
-<li><a href="struct.ManagedZoneDeleteMethodBuilder.html">delete managed zones</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneCreateMethodBuilder.html'
-                               title='google-dns1_beta1::ManagedZoneCreateMethodBuilder'>ManagedZoneCreateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneCreateCallBuilder.html'
+                               title='google-dns1_beta1::ManagedZoneCreateCallBuilder'>ManagedZoneCreateCallBuilder</a></td>
                         <td class='docblock short'><p>Create a new ManagedZone.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneDeleteMethodBuilder.html'
-                               title='google-dns1_beta1::ManagedZoneDeleteMethodBuilder'>ManagedZoneDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneDeleteCallBuilder.html'
+                               title='google-dns1_beta1::ManagedZoneDeleteCallBuilder'>ManagedZoneDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Delete a previously created ManagedZone.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneGetMethodBuilder.html'
-                               title='google-dns1_beta1::ManagedZoneGetMethodBuilder'>ManagedZoneGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneGetCallBuilder.html'
+                               title='google-dns1_beta1::ManagedZoneGetCallBuilder'>ManagedZoneGetCallBuilder</a></td>
                         <td class='docblock short'><p>Fetch the representation of an existing ManagedZone.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneListMethodBuilder.html'
-                               title='google-dns1_beta1::ManagedZoneListMethodBuilder'>ManagedZoneListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZoneListCallBuilder.html'
+                               title='google-dns1_beta1::ManagedZoneListCallBuilder'>ManagedZoneListCallBuilder</a></td>
                         <td class='docblock short'><p>Enumerate ManagedZones that have been created but not yet deleted.</p>
 </td>
                     </tr>
@@ -348,15 +334,23 @@ It is not used directly, but through the <code>Dns</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManagedZonesListResponse.html'
                                title='google-dns1_beta1::ManagedZonesListResponse'>ManagedZonesListResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ManagedZoneListMethodBuilder.html">list managed zones</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-dns1_beta1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-dns1_beta1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -364,21 +358,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Project.html'
                                title='google-dns1_beta1::Project'>Project</a></td>
                         <td class='docblock short'><p>A project resource. The project is a top level container for resources including Cloud DNS ManagedZones. Projects can be created only in the APIs console.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectGetMethodBuilder.html">get projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectGetMethodBuilder.html'
-                               title='google-dns1_beta1::ProjectGetMethodBuilder'>ProjectGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectGetCallBuilder.html'
+                               title='google-dns1_beta1::ProjectGetCallBuilder'>ProjectGetCallBuilder</a></td>
                         <td class='docblock short'><p>Fetch the representation of an existing Project.</p>
 </td>
                     </tr>
@@ -395,8 +380,6 @@ It is not used directly, but through the <code>Dns</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Quota.html'
                                title='google-dns1_beta1::Quota'>Quota</a></td>
                         <td class='docblock short'><p>Limits associated with a Project.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -404,21 +387,12 @@ It is not used directly, but through the <code>Dns</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceRecordSet.html'
                                title='google-dns1_beta1::ResourceRecordSet'>ResourceRecordSet</a></td>
                         <td class='docblock short'><p>A unit of data that will be returned by the DNS servers.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ResourceRecordSetListMethodBuilder.html">list resource record sets</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceRecordSetListMethodBuilder.html'
-                               title='google-dns1_beta1::ResourceRecordSetListMethodBuilder'>ResourceRecordSetListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceRecordSetListCallBuilder.html'
+                               title='google-dns1_beta1::ResourceRecordSetListCallBuilder'>ResourceRecordSetListCallBuilder</a></td>
                         <td class='docblock short'><p>Enumerate ResourceRecordSets that have been created but not yet deleted.</p>
 </td>
                     </tr>
@@ -435,25 +409,93 @@ It is not used directly, but through the <code>Dns</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceRecordSetsListResponse.html'
                                title='google-dns1_beta1::ResourceRecordSetsListResponse'>ResourceRecordSetsListResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ResourceRecordSetListMethodBuilder.html">list resource record sets</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-dns1_beta1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-dns1_beta1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-dns1_beta1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-dns1_beta1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-dns1_beta1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-dns1_beta1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-dns1_beta1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-dns1_beta1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-dns1_beta1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-dns1_beta1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-dns1_beta1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

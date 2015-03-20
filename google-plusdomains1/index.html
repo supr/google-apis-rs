@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-plusdomains1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-plusdomains1/lib.rs.html#5-7836'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-plusdomains1/lib.rs.html#5-7396'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>plusDomains</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/plusdomains1">on github</a>.</p>
 
@@ -52,18 +52,42 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.PlusDomains.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.Activity.html">activities</a> (<a href="struct.ActivityGetMethodBuilder.html"><em>get</em></a>, <a href="struct.ActivityInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.ActivityListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Audience.html">audiences</a> (<a href="struct.AudienceListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Circle.html">circles</a> (<a href="struct.CircleAddPeopleMethodBuilder.html"><em>add people</em></a>, <a href="struct.CircleGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CircleInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.CircleListMethodBuilder.html"><em>list</em></a>, <a href="struct.CirclePatchMethodBuilder.html"><em>patch</em></a>, <a href="struct.CircleRemoveMethodBuilder.html"><em>remove</em></a>, <a href="struct.CircleRemovePeopleMethodBuilder.html"><em>remove people</em></a> and <a href="struct.CircleUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Comment.html">comments</a> (<a href="struct.CommentGetMethodBuilder.html"><em>get</em></a>, <a href="struct.CommentInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.CommentListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Media.html">media</a> (<a href="struct.MediaInsertMethodBuilder.html"><em>insert</em></a>)</li>
-<li>people (<a href="struct.PeopleGetMethodBuilder.html"><em>get</em></a>, <a href="struct.PeopleListMethodBuilder.html"><em>list</em></a>, <a href="struct.PeopleListByActivityMethodBuilder.html"><em>list by activity</em></a> and <a href="struct.PeopleListByCircleMethodBuilder.html"><em>list by circle</em></a>)</li>
+<li><a href="struct.Activity.html">activities</a>
+
+<ul>
+<li><a href="struct.ActivityGetCallBuilder.html"><em>get</em></a>, <a href="struct.ActivityInsertCallBuilder.html"><em>insert</em></a> and <a href="struct.ActivityListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Audience.html">audiences</a>
+
+<ul>
+<li><a href="struct.AudienceListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Circle.html">circles</a>
+
+<ul>
+<li><a href="struct.CircleAddPeopleCallBuilder.html"><em>add people</em></a>, <a href="struct.CircleGetCallBuilder.html"><em>get</em></a>, <a href="struct.CircleInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.CircleListCallBuilder.html"><em>list</em></a>, <a href="struct.CirclePatchCallBuilder.html"><em>patch</em></a>, <a href="struct.CircleRemoveCallBuilder.html"><em>remove</em></a>, <a href="struct.CircleRemovePeopleCallBuilder.html"><em>remove people</em></a> and <a href="struct.CircleUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
+<li><a href="struct.Comment.html">comments</a>
+
+<ul>
+<li><a href="struct.CommentGetCallBuilder.html"><em>get</em></a>, <a href="struct.CommentInsertCallBuilder.html"><em>insert</em></a> and <a href="struct.CommentListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Media.html">media</a>
+
+<ul>
+<li><a href="struct.MediaInsertCallBuilder.html"><em>insert</em></a></li>
+</ul></li>
+<li>people
+
+<ul>
+<li><a href="struct.PeopleGetCallBuilder.html"><em>get</em></a>, <a href="struct.PeopleListCallBuilder.html"><em>list</em></a>, <a href="struct.PeopleListByActivityCallBuilder.html"><em>list by activity</em></a> and <a href="struct.PeopleListByCircleCallBuilder.html"><em>list by circle</em></a></li>
+</ul></li>
 </ul>
 
 <p>Upload supported by ...</p>
 
 <ul>
-<li><a href="struct.MediaInsertMethodBuilder.html"><em>insert media</em></a></li>
+<li><a href="struct.MediaInsertCallBuilder.html"><em>insert media</em></a></li>
 </ul>
 
 <p>Everything else about the <em>plusDomains</em> <em>v1</em> API can be found at the
@@ -93,7 +117,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -136,9 +160,9 @@ google-plusdomains1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-plusdomains1&quot;</span> <span class='kw'>as</span> <span class='ident'>plusdomains1</span>;
-<span class='kw'>use</span> <span class='ident'>plusdomains1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>plusdomains1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>plusdomains1</span>::<span class='ident'>PlusDomains</span>;
@@ -169,6 +193,7 @@ google-plusdomains1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -197,7 +222,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -212,7 +237,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -222,21 +247,12 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-plusdomains1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Acl.html'
                                title='google-plusdomains1::Acl'>Acl</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -244,16 +260,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Activity.html'
                                title='google-plusdomains1::Activity'>Activity</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ActivityInsertMethodBuilder.html">insert activities</a> (request|response)</li>
-<li><a href="struct.ActivityGetMethodBuilder.html">get activities</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -261,8 +267,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityActor.html'
                                title='google-plusdomains1::ActivityActor'>ActivityActor</a></td>
                         <td class='docblock short'><p>The person who performed this activity.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -270,8 +274,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityActorImage.html'
                                title='google-plusdomains1::ActivityActorImage'>ActivityActorImage</a></td>
                         <td class='docblock short'><p>The image representation of the actor.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -279,8 +281,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityActorName.html'
                                title='google-plusdomains1::ActivityActorName'>ActivityActorName</a></td>
                         <td class='docblock short'><p>An object representation of the individual components of name.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -288,35 +288,26 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityFeed.html'
                                title='google-plusdomains1::ActivityFeed'>ActivityFeed</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ActivityListMethodBuilder.html">list activities</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityGetMethodBuilder.html'
-                               title='google-plusdomains1::ActivityGetMethodBuilder'>ActivityGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityGetCallBuilder.html'
+                               title='google-plusdomains1::ActivityGetCallBuilder'>ActivityGetCallBuilder</a></td>
                         <td class='docblock short'><p>Get an activity.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityInsertMethodBuilder.html'
-                               title='google-plusdomains1::ActivityInsertMethodBuilder'>ActivityInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityInsertCallBuilder.html'
+                               title='google-plusdomains1::ActivityInsertCallBuilder'>ActivityInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Create a new activity for the authenticated user.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityListMethodBuilder.html'
-                               title='google-plusdomains1::ActivityListMethodBuilder'>ActivityListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityListCallBuilder.html'
+                               title='google-plusdomains1::ActivityListCallBuilder'>ActivityListCallBuilder</a></td>
                         <td class='docblock short'><p>List all of the activities in the specified collection for a particular user.</p>
 </td>
                     </tr>
@@ -333,8 +324,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObject.html'
                                title='google-plusdomains1::ActivityObject'>ActivityObject</a></td>
                         <td class='docblock short'><p>The object of this activity.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -342,8 +331,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectActor.html'
                                title='google-plusdomains1::ActivityObjectActor'>ActivityObjectActor</a></td>
                         <td class='docblock short'><p>If this activity&#39;s object is itself another activity, such as when a person reshares an activity, this property specifies the original activity&#39;s actor.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -351,8 +338,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectActorImage.html'
                                title='google-plusdomains1::ActivityObjectActorImage'>ActivityObjectActorImage</a></td>
                         <td class='docblock short'><p>The image representation of the original actor.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -360,8 +345,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectAttachments.html'
                                title='google-plusdomains1::ActivityObjectAttachments'>ActivityObjectAttachments</a></td>
                         <td class='docblock short'><p>The media objects attached to this activity.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -369,8 +352,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectAttachmentsEmbed.html'
                                title='google-plusdomains1::ActivityObjectAttachmentsEmbed'>ActivityObjectAttachmentsEmbed</a></td>
                         <td class='docblock short'><p>If the attachment is a video, the embeddable link.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -378,8 +359,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectAttachmentsFullImage.html'
                                title='google-plusdomains1::ActivityObjectAttachmentsFullImage'>ActivityObjectAttachmentsFullImage</a></td>
                         <td class='docblock short'><p>The full image URL for photo attachments.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -387,8 +366,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectAttachmentsImage.html'
                                title='google-plusdomains1::ActivityObjectAttachmentsImage'>ActivityObjectAttachmentsImage</a></td>
                         <td class='docblock short'><p>The preview image for photos or videos.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -396,8 +373,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectAttachmentsPreviewThumbnails.html'
                                title='google-plusdomains1::ActivityObjectAttachmentsPreviewThumbnails'>ActivityObjectAttachmentsPreviewThumbnails</a></td>
                         <td class='docblock short'><p>When previewing, these are the optional thumbnails for the post. When posting an article, choose one by setting the attachment.image.url property. If you don&#39;t choose one, one will be chosen for you.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -405,8 +380,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectAttachmentsThumbnails.html'
                                title='google-plusdomains1::ActivityObjectAttachmentsThumbnails'>ActivityObjectAttachmentsThumbnails</a></td>
                         <td class='docblock short'><p>If the attachment is an album, this property is a list of potential additional thumbnails from the album.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -414,8 +387,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectAttachmentsThumbnailsImage.html'
                                title='google-plusdomains1::ActivityObjectAttachmentsThumbnailsImage'>ActivityObjectAttachmentsThumbnailsImage</a></td>
                         <td class='docblock short'><p>Image resource.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -423,8 +394,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectPlusoners.html'
                                title='google-plusdomains1::ActivityObjectPlusoners'>ActivityObjectPlusoners</a></td>
                         <td class='docblock short'><p>People who +1&#39;d this activity.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -432,8 +401,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectReplies.html'
                                title='google-plusdomains1::ActivityObjectReplies'>ActivityObjectReplies</a></td>
                         <td class='docblock short'><p>Comments in reply to this activity.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -441,8 +408,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectResharers.html'
                                title='google-plusdomains1::ActivityObjectResharers'>ActivityObjectResharers</a></td>
                         <td class='docblock short'><p>People who reshared this activity.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -450,8 +415,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityObjectStatusForViewer.html'
                                title='google-plusdomains1::ActivityObjectStatusForViewer'>ActivityObjectStatusForViewer</a></td>
                         <td class='docblock short'><p>Status of the activity as seen by the viewer.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -459,8 +422,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ActivityProvider.html'
                                title='google-plusdomains1::ActivityProvider'>ActivityProvider</a></td>
                         <td class='docblock short'><p>The service provider that initially published this activity.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -468,21 +429,12 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Audience.html'
                                title='google-plusdomains1::Audience'>Audience</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.AudienceListMethodBuilder.html">list audiences</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AudienceListMethodBuilder.html'
-                               title='google-plusdomains1::AudienceListMethodBuilder'>AudienceListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AudienceListCallBuilder.html'
+                               title='google-plusdomains1::AudienceListCallBuilder'>AudienceListCallBuilder</a></td>
                         <td class='docblock short'><p>List all of the audiences to which a user can share.</p>
 </td>
                     </tr>
@@ -499,15 +451,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AudiencesFeed.html'
                                title='google-plusdomains1::AudiencesFeed'>AudiencesFeed</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.AudienceListMethodBuilder.html">list audiences</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -515,28 +458,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Circle.html'
                                title='google-plusdomains1::Circle'>Circle</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.CircleRemovePeopleMethodBuilder.html">remove people circles</a> (none)</li>
-<li><a href="struct.CircleInsertMethodBuilder.html">insert circles</a> (request|response)</li>
-<li><a href="struct.CircleAddPeopleMethodBuilder.html">add people circles</a> (response)</li>
-<li><a href="struct.CircleGetMethodBuilder.html">get circles</a> (response)</li>
-<li><a href="struct.CircleListMethodBuilder.html">list circles</a> (none)</li>
-<li><a href="struct.CircleUpdateMethodBuilder.html">update circles</a> (request|response)</li>
-<li><a href="struct.CirclePatchMethodBuilder.html">patch circles</a> (request|response)</li>
-<li><a href="struct.CircleRemoveMethodBuilder.html">remove circles</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleAddPeopleMethodBuilder.html'
-                               title='google-plusdomains1::CircleAddPeopleMethodBuilder'>CircleAddPeopleMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleAddPeopleCallBuilder.html'
+                               title='google-plusdomains1::CircleAddPeopleCallBuilder'>CircleAddPeopleCallBuilder</a></td>
                         <td class='docblock short'><p>Add a person to a circle. Google+ limits certain circle operations, including the number of circle adds. Learn More.</p>
 </td>
                     </tr>
@@ -545,35 +472,26 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleFeed.html'
                                title='google-plusdomains1::CircleFeed'>CircleFeed</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.CircleListMethodBuilder.html">list circles</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleGetMethodBuilder.html'
-                               title='google-plusdomains1::CircleGetMethodBuilder'>CircleGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleGetCallBuilder.html'
+                               title='google-plusdomains1::CircleGetCallBuilder'>CircleGetCallBuilder</a></td>
                         <td class='docblock short'><p>Get a circle.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleInsertMethodBuilder.html'
-                               title='google-plusdomains1::CircleInsertMethodBuilder'>CircleInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleInsertCallBuilder.html'
+                               title='google-plusdomains1::CircleInsertCallBuilder'>CircleInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Create a new circle for the authenticated user.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleListMethodBuilder.html'
-                               title='google-plusdomains1::CircleListMethodBuilder'>CircleListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleListCallBuilder.html'
+                               title='google-plusdomains1::CircleListCallBuilder'>CircleListCallBuilder</a></td>
                         <td class='docblock short'><p>List all of the circles for a user.</p>
 </td>
                     </tr>
@@ -587,8 +505,8 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CirclePatchMethodBuilder.html'
-                               title='google-plusdomains1::CirclePatchMethodBuilder'>CirclePatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CirclePatchCallBuilder.html'
+                               title='google-plusdomains1::CirclePatchCallBuilder'>CirclePatchCallBuilder</a></td>
                         <td class='docblock short'><p>Update a circle&#39;s description. This method supports patch semantics.</p>
 </td>
                     </tr>
@@ -597,28 +515,26 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CirclePeople.html'
                                title='google-plusdomains1::CirclePeople'>CirclePeople</a></td>
                         <td class='docblock short'><p>The people in this circle.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleRemoveMethodBuilder.html'
-                               title='google-plusdomains1::CircleRemoveMethodBuilder'>CircleRemoveMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleRemoveCallBuilder.html'
+                               title='google-plusdomains1::CircleRemoveCallBuilder'>CircleRemoveCallBuilder</a></td>
                         <td class='docblock short'><p>Delete a circle.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleRemovePeopleMethodBuilder.html'
-                               title='google-plusdomains1::CircleRemovePeopleMethodBuilder'>CircleRemovePeopleMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleRemovePeopleCallBuilder.html'
+                               title='google-plusdomains1::CircleRemovePeopleCallBuilder'>CircleRemovePeopleCallBuilder</a></td>
                         <td class='docblock short'><p>Remove a person from a circle.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleUpdateMethodBuilder.html'
-                               title='google-plusdomains1::CircleUpdateMethodBuilder'>CircleUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CircleUpdateCallBuilder.html'
+                               title='google-plusdomains1::CircleUpdateCallBuilder'>CircleUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Update a circle&#39;s description.</p>
 </td>
                     </tr>
@@ -627,17 +543,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Comment.html'
                                title='google-plusdomains1::Comment'>Comment</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.CommentInsertMethodBuilder.html">insert comments</a> (request|response)</li>
-<li><a href="struct.CommentGetMethodBuilder.html">get comments</a> (response)</li>
-<li><a href="struct.CommentListMethodBuilder.html">list comments</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -645,8 +550,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentActor.html'
                                title='google-plusdomains1::CommentActor'>CommentActor</a></td>
                         <td class='docblock short'><p>The person who posted this comment.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -654,8 +557,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentActorImage.html'
                                title='google-plusdomains1::CommentActorImage'>CommentActorImage</a></td>
                         <td class='docblock short'><p>The image representation of this actor.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -663,21 +564,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentFeed.html'
                                title='google-plusdomains1::CommentFeed'>CommentFeed</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.CommentListMethodBuilder.html">list comments</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentGetMethodBuilder.html'
-                               title='google-plusdomains1::CommentGetMethodBuilder'>CommentGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentGetCallBuilder.html'
+                               title='google-plusdomains1::CommentGetCallBuilder'>CommentGetCallBuilder</a></td>
                         <td class='docblock short'><p>Get a comment.</p>
 </td>
                     </tr>
@@ -686,21 +578,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentInReplyTo.html'
                                title='google-plusdomains1::CommentInReplyTo'>CommentInReplyTo</a></td>
                         <td class='docblock short'><p>The activity this comment replied to.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentInsertMethodBuilder.html'
-                               title='google-plusdomains1::CommentInsertMethodBuilder'>CommentInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentInsertCallBuilder.html'
+                               title='google-plusdomains1::CommentInsertCallBuilder'>CommentInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Create a new comment in reply to an activity.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentListMethodBuilder.html'
-                               title='google-plusdomains1::CommentListMethodBuilder'>CommentListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentListCallBuilder.html'
+                               title='google-plusdomains1::CommentListCallBuilder'>CommentListCallBuilder</a></td>
                         <td class='docblock short'><p>List all of the comments for an activity.</p>
 </td>
                     </tr>
@@ -717,8 +607,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentObject.html'
                                title='google-plusdomains1::CommentObject'>CommentObject</a></td>
                         <td class='docblock short'><p>The object of this comment.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -726,8 +614,14 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CommentPlusoners.html'
                                title='google-plusdomains1::CommentPlusoners'>CommentPlusoners</a></td>
                         <td class='docblock short'><p>People who +1&#39;d this comment.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-plusdomains1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -735,15 +629,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Media.html'
                                title='google-plusdomains1::Media'>Media</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.MediaInsertMethodBuilder.html">insert media</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -751,8 +636,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MediaAuthor.html'
                                title='google-plusdomains1::MediaAuthor'>MediaAuthor</a></td>
                         <td class='docblock short'><p>The person who uploaded this media.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -760,8 +643,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MediaAuthorImage.html'
                                title='google-plusdomains1::MediaAuthorImage'>MediaAuthorImage</a></td>
                         <td class='docblock short'><p>The author&#39;s Google profile image.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -769,14 +650,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MediaExif.html'
                                title='google-plusdomains1::MediaExif'>MediaExif</a></td>
                         <td class='docblock short'><p>Exif information of the media item.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MediaInsertMethodBuilder.html'
-                               title='google-plusdomains1::MediaInsertMethodBuilder'>MediaInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MediaInsertCallBuilder.html'
+                               title='google-plusdomains1::MediaInsertCallBuilder'>MediaInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Add a new media item to an album. The current upload size limitations are 36MB for a photo and 1GB for a video. Uploads do not count against quota if photos are less than 2048 pixels on their longest side or videos are less than 15 minutes in length.</p>
 </td>
                     </tr>
@@ -790,47 +669,53 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleFeed.html'
-                               title='google-plusdomains1::PeopleFeed'>PeopleFeed</a></td>
-                        <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PeopleListByCircleMethodBuilder.html">list by circle people</a> (response)</li>
-<li><a href="struct.PeopleListByActivityMethodBuilder.html">list by activity people</a> (response)</li>
-<li><a href="struct.PeopleListMethodBuilder.html">list people</a> (response)</li>
-</ul>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-plusdomains1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleGetMethodBuilder.html'
-                               title='google-plusdomains1::PeopleGetMethodBuilder'>PeopleGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-plusdomains1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleFeed.html'
+                               title='google-plusdomains1::PeopleFeed'>PeopleFeed</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleGetCallBuilder.html'
+                               title='google-plusdomains1::PeopleGetCallBuilder'>PeopleGetCallBuilder</a></td>
                         <td class='docblock short'><p>Get a person&#39;s profile.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleListByActivityMethodBuilder.html'
-                               title='google-plusdomains1::PeopleListByActivityMethodBuilder'>PeopleListByActivityMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleListByActivityCallBuilder.html'
+                               title='google-plusdomains1::PeopleListByActivityCallBuilder'>PeopleListByActivityCallBuilder</a></td>
                         <td class='docblock short'><p>List all of the people in the specified collection for a particular activity.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleListByCircleMethodBuilder.html'
-                               title='google-plusdomains1::PeopleListByCircleMethodBuilder'>PeopleListByCircleMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleListByCircleCallBuilder.html'
+                               title='google-plusdomains1::PeopleListByCircleCallBuilder'>PeopleListByCircleCallBuilder</a></td>
                         <td class='docblock short'><p>List all of the people who are members of a circle.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleListMethodBuilder.html'
-                               title='google-plusdomains1::PeopleListMethodBuilder'>PeopleListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PeopleListCallBuilder.html'
+                               title='google-plusdomains1::PeopleListCallBuilder'>PeopleListCallBuilder</a></td>
                         <td class='docblock short'><p>List all of the people in the specified collection.</p>
 </td>
                     </tr>
@@ -847,15 +732,6 @@ It is not used directly, but through the <code>PlusDomains</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Person.html'
                                title='google-plusdomains1::Person'>Person</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PeopleGetMethodBuilder.html">get people</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -863,8 +739,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonCover.html'
                                title='google-plusdomains1::PersonCover'>PersonCover</a></td>
                         <td class='docblock short'><p>The cover photo content.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -872,8 +746,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonCoverCoverInfo.html'
                                title='google-plusdomains1::PersonCoverCoverInfo'>PersonCoverCoverInfo</a></td>
                         <td class='docblock short'><p>Extra information about the cover photo.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -881,8 +753,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonCoverCoverPhoto.html'
                                title='google-plusdomains1::PersonCoverCoverPhoto'>PersonCoverCoverPhoto</a></td>
                         <td class='docblock short'><p>The person&#39;s primary cover image.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -890,8 +760,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonEmails.html'
                                title='google-plusdomains1::PersonEmails'>PersonEmails</a></td>
                         <td class='docblock short'><p>A list of email addresses that this person has, including their Google account email address, and the public verified email addresses on their Google+ profile. The plus.profile.emails.read scope is needed to retrieve these email addresses, or the email scope can be used to retrieve just the Google account email address.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -899,8 +767,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonImage.html'
                                title='google-plusdomains1::PersonImage'>PersonImage</a></td>
                         <td class='docblock short'><p>The representation of the person&#39;s profile photo.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -908,8 +774,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonName.html'
                                title='google-plusdomains1::PersonName'>PersonName</a></td>
                         <td class='docblock short'><p>An object representation of the individual components of a person&#39;s name.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -917,8 +781,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonOrganizations.html'
                                title='google-plusdomains1::PersonOrganizations'>PersonOrganizations</a></td>
                         <td class='docblock short'><p>A list of current or past organizations with which this person is associated.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -926,8 +788,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonPlacesLived.html'
                                title='google-plusdomains1::PersonPlacesLived'>PersonPlacesLived</a></td>
                         <td class='docblock short'><p>A list of places where this person has lived.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -935,8 +795,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PersonUrls.html'
                                title='google-plusdomains1::PersonUrls'>PersonUrls</a></td>
                         <td class='docblock short'><p>A list of URLs for this person.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -944,8 +802,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Place.html'
                                title='google-plusdomains1::Place'>Place</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -953,8 +809,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PlaceAddress.html'
                                title='google-plusdomains1::PlaceAddress'>PlaceAddress</a></td>
                         <td class='docblock short'><p>The physical address of the place.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -962,8 +816,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PlacePosition.html'
                                title='google-plusdomains1::PlacePosition'>PlacePosition</a></td>
                         <td class='docblock short'><p>The position of the place.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -978,8 +830,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PlusDomainsAclentryResource.html'
                                title='google-plusdomains1::PlusDomainsAclentryResource'>PlusDomainsAclentryResource</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -987,18 +837,93 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Videostream.html'
                                title='google-plusdomains1::Videostream'>Videostream</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-plusdomains1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-plusdomains1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-plusdomains1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-plusdomains1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-plusdomains1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-plusdomains1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-plusdomains1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-plusdomains1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-plusdomains1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-plusdomains1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-plusdomains1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

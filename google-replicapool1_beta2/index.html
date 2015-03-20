@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-replicapool1_beta2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-replicapool1_beta2/lib.rs.html#5-4244'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-replicapool1_beta2/lib.rs.html#5-4259'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>replicapool</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/replicapool1_beta2">on github</a>.</p>
 
@@ -52,8 +52,16 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Replicapool.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.InstanceGroupManager.html">instance group managers</a> (<a href="struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html"><em>abandon instances</em></a>, <a href="struct.InstanceGroupManagerDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html"><em>delete instances</em></a>, <a href="struct.InstanceGroupManagerGetMethodBuilder.html"><em>get</em></a>, <a href="struct.InstanceGroupManagerInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.InstanceGroupManagerListMethodBuilder.html"><em>list</em></a>, <a href="struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html"><em>recreate instances</em></a>, <a href="struct.InstanceGroupManagerResizeMethodBuilder.html"><em>resize</em></a>, <a href="struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html"><em>set instance template</em></a> and <a href="struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html"><em>set target pools</em></a>)</li>
-<li>zone operations (<a href="struct.ZoneOperationGetMethodBuilder.html"><em>get</em></a> and <a href="struct.ZoneOperationListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.InstanceGroupManager.html">instance group managers</a>
+
+<ul>
+<li><a href="struct.InstanceGroupManagerAbandonInstanceCallBuilder.html"><em>abandon instances</em></a>, <a href="struct.InstanceGroupManagerDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.InstanceGroupManagerDeleteInstanceCallBuilder.html"><em>delete instances</em></a>, <a href="struct.InstanceGroupManagerGetCallBuilder.html"><em>get</em></a>, <a href="struct.InstanceGroupManagerInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.InstanceGroupManagerListCallBuilder.html"><em>list</em></a>, <a href="struct.InstanceGroupManagerRecreateInstanceCallBuilder.html"><em>recreate instances</em></a>, <a href="struct.InstanceGroupManagerResizeCallBuilder.html"><em>resize</em></a>, <a href="struct.InstanceGroupManagerSetInstanceTemplateCallBuilder.html"><em>set instance template</em></a> and <a href="struct.InstanceGroupManagerSetTargetPoolCallBuilder.html"><em>set target pools</em></a></li>
+</ul></li>
+<li>zone operations
+
+<ul>
+<li><a href="struct.ZoneOperationGetCallBuilder.html"><em>get</em></a> and <a href="struct.ZoneOperationListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>replicapool</em> <em>v1_beta2</em> API can be found at the
@@ -83,7 +91,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -128,9 +136,9 @@ google-replicapool1_beta2 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-replicapool1_beta2&quot;</span> <span class='kw'>as</span> <span class='ident'>replicapool1_beta2</span>;
-<span class='kw'>use</span> <span class='ident'>replicapool1_beta2</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>replicapool1_beta2</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>replicapool1_beta2</span>::<span class='ident'>Replicapool</span>;
@@ -162,6 +170,7 @@ google-replicapool1_beta2 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -190,7 +199,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -205,7 +214,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -215,71 +224,54 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-replicapool1_beta2::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManager.html'
-                               title='google-replicapool1_beta2::InstanceGroupManager'>InstanceGroupManager</a></td>
-                        <td class='docblock short'><p>An Instance Group Manager resource.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html">set target pools instance group managers</a> (none)</li>
-<li><a href="struct.InstanceGroupManagerListMethodBuilder.html">list instance group managers</a> (none)</li>
-<li><a href="struct.InstanceGroupManagerInsertMethodBuilder.html">insert instance group managers</a> (request)</li>
-<li><a href="struct.InstanceGroupManagerGetMethodBuilder.html">get instance group managers</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html">abandon instances instance group managers</a> (none)</li>
-<li><a href="struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html">recreate instances instance group managers</a> (none)</li>
-<li><a href="struct.InstanceGroupManagerDeleteMethodBuilder.html">delete instance group managers</a> (none)</li>
-<li><a href="struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html">set instance template instance group managers</a> (none)</li>
-<li><a href="struct.InstanceGroupManagerResizeMethodBuilder.html">resize instance group managers</a> (none)</li>
-<li><a href="struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html">delete instances instance group managers</a> (none)</li>
-</ul>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-replicapool1_beta2::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerAbandonInstanceMethodBuilder'>InstanceGroupManagerAbandonInstanceMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManager.html'
+                               title='google-replicapool1_beta2::InstanceGroupManager'>InstanceGroupManager</a></td>
+                        <td class='docblock short'><p>An Instance Group Manager resource.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerAbandonInstanceCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerAbandonInstanceCallBuilder'>InstanceGroupManagerAbandonInstanceCallBuilder</a></td>
                         <td class='docblock short'><p>Removes the specified instances from the managed instance group, and from any target pools of which they were members, without deleting the instances.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerDeleteInstanceMethodBuilder'>InstanceGroupManagerDeleteInstanceMethodBuilder</a></td>
-                        <td class='docblock short'><p>Deletes the specified instances. The instances are removed from the instance group and any target pools of which they are a member, then deleted. The targetSize of the instance group manager is reduced by the number of instances deleted.</p>
-</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerDeleteMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerDeleteMethodBuilder'>InstanceGroupManagerDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerDeleteCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerDeleteCallBuilder'>InstanceGroupManagerDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes the instance group manager and all instances contained within. If you&#39;d like to delete the manager without deleting the instances, you must first abandon the instances to remove them from the group.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerGetMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerGetMethodBuilder'>InstanceGroupManagerGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerDeleteInstanceCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerDeleteInstanceCallBuilder'>InstanceGroupManagerDeleteInstanceCallBuilder</a></td>
+                        <td class='docblock short'><p>Deletes the specified instances. The instances are removed from the instance group and any target pools of which they are a member, then deleted. The targetSize of the instance group manager is reduced by the number of instances deleted.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerGetCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerGetCallBuilder'>InstanceGroupManagerGetCallBuilder</a></td>
                         <td class='docblock short'><p>Returns the specified Instance Group Manager resource.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerInsertMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerInsertMethodBuilder'>InstanceGroupManagerInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerInsertCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerInsertCallBuilder'>InstanceGroupManagerInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates an instance group manager, as well as the instance group and the specified number of instances.</p>
 </td>
                     </tr>
@@ -288,21 +280,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerList.html'
                                title='google-replicapool1_beta2::InstanceGroupManagerList'>InstanceGroupManagerList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerListMethodBuilder.html">list instance group managers</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerListMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerListMethodBuilder'>InstanceGroupManagerListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerListCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerListCallBuilder'>InstanceGroupManagerListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the list of Instance Group Manager resources contained within the specified zone.</p>
 </td>
                     </tr>
@@ -316,29 +299,29 @@ It is not used directly, but through the <code>Replicapool</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerRecreateInstanceMethodBuilder'>InstanceGroupManagerRecreateInstanceMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerRecreateInstanceCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerRecreateInstanceCallBuilder'>InstanceGroupManagerRecreateInstanceCallBuilder</a></td>
                         <td class='docblock short'><p>Recreates the specified instances. The instances are deleted, then recreated using the instance group manager&#39;s current instance template.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerResizeMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerResizeMethodBuilder'>InstanceGroupManagerResizeMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerResizeCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerResizeCallBuilder'>InstanceGroupManagerResizeCallBuilder</a></td>
                         <td class='docblock short'><p>Resizes the managed instance group up or down. If resized up, new instances are created using the current instance template. If resized down, instances are removed in the order outlined in Resizing a managed instance group.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerSetInstanceTemplateMethodBuilder'>InstanceGroupManagerSetInstanceTemplateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerSetInstanceTemplateCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerSetInstanceTemplateCallBuilder'>InstanceGroupManagerSetInstanceTemplateCallBuilder</a></td>
                         <td class='docblock short'><p>Sets the instance template to use when creating new instances in this group. Existing instances are not affected.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html'
-                               title='google-replicapool1_beta2::InstanceGroupManagerSetTargetPoolMethodBuilder'>InstanceGroupManagerSetTargetPoolMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagerSetTargetPoolCallBuilder.html'
+                               title='google-replicapool1_beta2::InstanceGroupManagerSetTargetPoolCallBuilder'>InstanceGroupManagerSetTargetPoolCallBuilder</a></td>
                         <td class='docblock short'><p>Modifies the target pools to which all new instances in this group are assigned. Existing instances in the group are not affected.</p>
 </td>
                     </tr>
@@ -347,15 +330,6 @@ It is not used directly, but through the <code>Replicapool</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagersAbandonInstancesRequest.html'
                                title='google-replicapool1_beta2::InstanceGroupManagersAbandonInstancesRequest'>InstanceGroupManagersAbandonInstancesRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html">abandon instances instance group managers</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -363,15 +337,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagersDeleteInstancesRequest.html'
                                title='google-replicapool1_beta2::InstanceGroupManagersDeleteInstancesRequest'>InstanceGroupManagersDeleteInstancesRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html">delete instances instance group managers</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -379,15 +344,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagersRecreateInstancesRequest.html'
                                title='google-replicapool1_beta2::InstanceGroupManagersRecreateInstancesRequest'>InstanceGroupManagersRecreateInstancesRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html">recreate instances instance group managers</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -395,15 +351,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagersSetInstanceTemplateRequest.html'
                                title='google-replicapool1_beta2::InstanceGroupManagersSetInstanceTemplateRequest'>InstanceGroupManagersSetInstanceTemplateRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html">set instance template instance group managers</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -411,15 +358,23 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.InstanceGroupManagersSetTargetPoolsRequest.html'
                                title='google-replicapool1_beta2::InstanceGroupManagersSetTargetPoolsRequest'>InstanceGroupManagersSetTargetPoolsRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html">set target pools instance group managers</a> (request)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-replicapool1_beta2::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-replicapool1_beta2::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -427,23 +382,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Operation.html'
                                title='google-replicapool1_beta2::Operation'>Operation</a></td>
                         <td class='docblock short'><p>An operation resource, used to manage asynchronous API requests.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.InstanceGroupManagerSetTargetPoolMethodBuilder.html">set target pools instance group managers</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerInsertMethodBuilder.html">insert instance group managers</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerAbandonInstanceMethodBuilder.html">abandon instances instance group managers</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerRecreateInstanceMethodBuilder.html">recreate instances instance group managers</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerDeleteMethodBuilder.html">delete instance group managers</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerSetInstanceTemplateMethodBuilder.html">set instance template instance group managers</a> (response)</li>
-<li><a href="struct.ZoneOperationGetMethodBuilder.html">get zone operations</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerResizeMethodBuilder.html">resize instance group managers</a> (response)</li>
-<li><a href="struct.InstanceGroupManagerDeleteInstanceMethodBuilder.html">delete instances instance group managers</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -451,8 +389,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationError.html'
                                title='google-replicapool1_beta2::OperationError'>OperationError</a></td>
                         <td class='docblock short'><p>[Output Only] If errors occurred during processing of this operation, this field will be populated.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -460,8 +396,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationErrorErrors.html'
                                title='google-replicapool1_beta2::OperationErrorErrors'>OperationErrorErrors</a></td>
                         <td class='docblock short'><p>[Output Only] The array of errors encountered while processing this operation.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -469,15 +403,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationList.html'
                                title='google-replicapool1_beta2::OperationList'>OperationList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ZoneOperationListMethodBuilder.html">list zone operations</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -485,8 +410,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationWarnings.html'
                                title='google-replicapool1_beta2::OperationWarnings'>OperationWarnings</a></td>
                         <td class='docblock short'><p>[Output Only] If there are issues with this operation, a warning is returned.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -494,8 +417,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationWarningsData.html'
                                title='google-replicapool1_beta2::OperationWarningsData'>OperationWarningsData</a></td>
                         <td class='docblock short'><p>[Output only] Metadata for this warning in key:value format.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -507,15 +428,15 @@ The list links the activity name, along with information about where it is used 
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ZoneOperationGetMethodBuilder.html'
-                               title='google-replicapool1_beta2::ZoneOperationGetMethodBuilder'>ZoneOperationGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ZoneOperationGetCallBuilder.html'
+                               title='google-replicapool1_beta2::ZoneOperationGetCallBuilder'>ZoneOperationGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the specified zone-specific operation resource.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ZoneOperationListMethodBuilder.html'
-                               title='google-replicapool1_beta2::ZoneOperationListMethodBuilder'>ZoneOperationListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ZoneOperationListCallBuilder.html'
+                               title='google-replicapool1_beta2::ZoneOperationListCallBuilder'>ZoneOperationListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the list of operation resources contained within the specified zone.</p>
 </td>
                     </tr>
@@ -530,11 +451,88 @@ It is not used directly, but through the <code>Replicapool</code> hub.</p>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-replicapool1_beta2::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-replicapool1_beta2::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-replicapool1_beta2::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-replicapool1_beta2::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-replicapool1_beta2::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-replicapool1_beta2::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-replicapool1_beta2::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-replicapool1_beta2::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-replicapool1_beta2::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-replicapool1_beta2::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-replicapool1_beta2::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

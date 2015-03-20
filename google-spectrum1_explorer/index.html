@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-spectrum1_explorer</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-spectrum1_explorer/lib.rs.html#5-2671'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-spectrum1_explorer/lib.rs.html#5-2529'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>spectrum</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/spectrum1_explorer">on github</a>.</p>
 
@@ -52,7 +52,11 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>It seems there is nothing you can do here ... .</p>
 
 <ul>
-<li>paws (<a href="struct.PawGetSpectrumMethodBuilder.html"><em>get spectrum</em></a>, <a href="struct.PawGetSpectrumBatchMethodBuilder.html"><em>get spectrum batch</em></a>, <a href="struct.PawInitMethodBuilder.html"><em>init</em></a>, <a href="struct.PawNotifySpectrumUseMethodBuilder.html"><em>notify spectrum use</em></a>, <a href="struct.PawRegisterMethodBuilder.html"><em>register</em></a> and <a href="struct.PawVerifyDeviceMethodBuilder.html"><em>verify device</em></a>)</li>
+<li>paws
+
+<ul>
+<li><a href="struct.PawGetSpectrumCallBuilder.html"><em>get spectrum</em></a>, <a href="struct.PawGetSpectrumBatchCallBuilder.html"><em>get spectrum batch</em></a>, <a href="struct.PawInitCallBuilder.html"><em>init</em></a>, <a href="struct.PawNotifySpectrumUseCallBuilder.html"><em>notify spectrum use</em></a>, <a href="struct.PawRegisterCallBuilder.html"><em>register</em></a> and <a href="struct.PawVerifyDeviceCallBuilder.html"><em>verify device</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>spectrum</em> <em>v1_explorer</em> API can be found at the
@@ -82,7 +86,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -118,10 +122,10 @@ google-spectrum1_explorer = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-spectrum1_explorer&quot;</span> <span class='kw'>as</span> <span class='ident'>spectrum1_explorer</span>;
 <span class='kw'>use</span> <span class='ident'>spectrum1_explorer</span>::<span class='ident'>PawsGetSpectrumBatchRequest</span>;
-<span class='kw'>use</span> <span class='ident'>spectrum1_explorer</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>spectrum1_explorer</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>spectrum1_explorer</span>::<span class='ident'>Spectrum</span>;
@@ -155,6 +159,7 @@ google-spectrum1_explorer = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -183,7 +188,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -198,7 +203,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -208,21 +213,12 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-spectrum1_explorer::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AntennaCharacteristics.html'
                                title='google-spectrum1_explorer::AntennaCharacteristics'>AntennaCharacteristics</a></td>
                         <td class='docblock short'><p>Antenna characteristics provide additional information, such as the antenna height, antenna type, etc. Whether antenna characteristics must be provided in a request depends on the device type and regulatory domain.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -230,8 +226,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatabaseSpec.html'
                                title='google-spectrum1_explorer::DatabaseSpec'>DatabaseSpec</a></td>
                         <td class='docblock short'><p>This message contains the name and URI of a database.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -239,8 +233,14 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DbUpdateSpec.html'
                                title='google-spectrum1_explorer::DbUpdateSpec'>DbUpdateSpec</a></td>
                         <td class='docblock short'><p>This message is provided by the database to notify devices of an upcoming change to the database URI.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-spectrum1_explorer::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -248,8 +248,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeviceCapabilities.html'
                                title='google-spectrum1_explorer::DeviceCapabilities'>DeviceCapabilities</a></td>
                         <td class='docblock short'><p>Device capabilities provide additional information that may be used by a device to provide additional information to the database that may help it to determine available spectrum. If the database does not support device capabilities it will ignore the parameter altogether.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -257,8 +255,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeviceDescriptor.html'
                                title='google-spectrum1_explorer::DeviceDescriptor'>DeviceDescriptor</a></td>
                         <td class='docblock short'><p>The device descriptor contains parameters that identify the specific device, such as its manufacturer serial number, regulatory-specific identifier (e.g., FCC ID), and any other device characteristics required by regulatory domains.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -266,17 +262,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeviceOwner.html'
                                title='google-spectrum1_explorer::DeviceOwner'>DeviceOwner</a></td>
                         <td class='docblock short'><p>This parameter contains device-owner information required as part of device registration. The regulatory domains may require additional parameters.</p>
-
-<p>All contact information must be expressed using the structure defined by the vCard format specification. Only the contact fields of vCard are supported:<br>
-- fn: Full name of an individual 
-- org: Name of the organization 
-- adr: Address fields 
-- tel: Telephone numbers 
-- email: Email addresses  </p>
-
-<p>Note that the vCard specification defines maximum lengths for each field.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -284,8 +269,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeviceValidity.html'
                                title='google-spectrum1_explorer::DeviceValidity'>DeviceValidity</a></td>
                         <td class='docblock short'><p>The device validity element describes whether a particular device is valid to operate in the regulatory domain.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -293,10 +276,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.EventTime.html'
                                title='google-spectrum1_explorer::EventTime'>EventTime</a></td>
                         <td class='docblock short'><p>The start and stop times of an event. This is used to indicate the time period for which a spectrum profile is valid.</p>
-
-<p>Both times are expressed using the format, YYYY-MM-DDThh:mm:ssZ, as defined in RFC3339. The times must be expressed using UTC.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -304,8 +283,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.FrequencyRange.html'
                                title='google-spectrum1_explorer::FrequencyRange'>FrequencyRange</a></td>
                         <td class='docblock short'><p>A specific range of frequencies together with the associated maximum power level and channel identifier.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -313,8 +290,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeoLocation.html'
                                title='google-spectrum1_explorer::GeoLocation'>GeoLocation</a></td>
                         <td class='docblock short'><p>This parameter is used to specify the geolocation of the device.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -322,8 +297,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeoLocationEllipse.html'
                                title='google-spectrum1_explorer::GeoLocationEllipse'>GeoLocationEllipse</a></td>
                         <td class='docblock short'><p>A &quot;point&quot; with uncertainty is represented using the Ellipse shape.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -331,8 +304,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeoLocationPoint.html'
                                title='google-spectrum1_explorer::GeoLocationPoint'>GeoLocationPoint</a></td>
                         <td class='docblock short'><p>A single geolocation on the globe.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -340,8 +311,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeoLocationPolygon.html'
                                title='google-spectrum1_explorer::GeoLocationPolygon'>GeoLocationPolygon</a></td>
                         <td class='docblock short'><p>A region is represented using the polygonal shape.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -349,28 +318,43 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GeoSpectrumSchedule.html'
                                title='google-spectrum1_explorer::GeoSpectrumSchedule'>GeoSpectrumSchedule</a></td>
                         <td class='docblock short'><p>The schedule of spectrum profiles available at a particular geolocation.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumBatchMethodBuilder.html'
-                               title='google-spectrum1_explorer::PawGetSpectrumBatchMethodBuilder'>PawGetSpectrumBatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-spectrum1_explorer::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-spectrum1_explorer::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumBatchCallBuilder.html'
+                               title='google-spectrum1_explorer::PawGetSpectrumBatchCallBuilder'>PawGetSpectrumBatchCallBuilder</a></td>
                         <td class='docblock short'><p>The Google Spectrum Database does not support batch requests, so this method always yields an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumMethodBuilder.html'
-                               title='google-spectrum1_explorer::PawGetSpectrumMethodBuilder'>PawGetSpectrumMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumCallBuilder.html'
+                               title='google-spectrum1_explorer::PawGetSpectrumCallBuilder'>PawGetSpectrumCallBuilder</a></td>
                         <td class='docblock short'><p>Requests information about the available spectrum for a device at a location. Requests from a fixed-mode device must include owner information so the device can be registered with the database.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawInitMethodBuilder.html'
-                               title='google-spectrum1_explorer::PawInitMethodBuilder'>PawInitMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawInitCallBuilder.html'
+                               title='google-spectrum1_explorer::PawInitCallBuilder'>PawInitCallBuilder</a></td>
                         <td class='docblock short'><p>Initializes the connection between a white space device and the database.</p>
 </td>
                     </tr>
@@ -384,22 +368,22 @@ It is not used directly, but through the <code>Spectrum</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawNotifySpectrumUseMethodBuilder.html'
-                               title='google-spectrum1_explorer::PawNotifySpectrumUseMethodBuilder'>PawNotifySpectrumUseMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawNotifySpectrumUseCallBuilder.html'
+                               title='google-spectrum1_explorer::PawNotifySpectrumUseCallBuilder'>PawNotifySpectrumUseCallBuilder</a></td>
                         <td class='docblock short'><p>Notifies the database that the device has selected certain frequency ranges for transmission. Only to be invoked when required by the regulator. The Google Spectrum Database does not operate in domains that require notification, so this always yields an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawRegisterMethodBuilder.html'
-                               title='google-spectrum1_explorer::PawRegisterMethodBuilder'>PawRegisterMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawRegisterCallBuilder.html'
+                               title='google-spectrum1_explorer::PawRegisterCallBuilder'>PawRegisterCallBuilder</a></td>
                         <td class='docblock short'><p>The Google Spectrum Database implements registration in the getSpectrum method. As such this always returns an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawVerifyDeviceMethodBuilder.html'
-                               title='google-spectrum1_explorer::PawVerifyDeviceMethodBuilder'>PawVerifyDeviceMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawVerifyDeviceCallBuilder.html'
+                               title='google-spectrum1_explorer::PawVerifyDeviceCallBuilder'>PawVerifyDeviceCallBuilder</a></td>
                         <td class='docblock short'><p>Validates a device for white space use in accordance with regulatory rules. The Google Spectrum Database does not support master/slave configurations, so this always yields an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
@@ -408,15 +392,6 @@ It is not used directly, but through the <code>Spectrum</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsGetSpectrumBatchRequest.html'
                                title='google-spectrum1_explorer::PawsGetSpectrumBatchRequest'>PawsGetSpectrumBatchRequest</a></td>
                         <td class='docblock short'><p>The request message for a batch available spectrum query protocol.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawGetSpectrumBatchMethodBuilder.html">get spectrum batch paws</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -424,15 +399,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsGetSpectrumBatchResponse.html'
                                title='google-spectrum1_explorer::PawsGetSpectrumBatchResponse'>PawsGetSpectrumBatchResponse</a></td>
                         <td class='docblock short'><p>The response message for the batch available spectrum query contains a schedule of available spectrum for the device at multiple locations.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawGetSpectrumBatchMethodBuilder.html">get spectrum batch paws</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -440,15 +406,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsGetSpectrumRequest.html'
                                title='google-spectrum1_explorer::PawsGetSpectrumRequest'>PawsGetSpectrumRequest</a></td>
                         <td class='docblock short'><p>The request message for the available spectrum query protocol which must include the device&#39;s geolocation.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawGetSpectrumMethodBuilder.html">get spectrum paws</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -456,15 +413,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsGetSpectrumResponse.html'
                                title='google-spectrum1_explorer::PawsGetSpectrumResponse'>PawsGetSpectrumResponse</a></td>
                         <td class='docblock short'><p>The response message for the available spectrum query which contains a schedule of available spectrum for the device.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawGetSpectrumMethodBuilder.html">get spectrum paws</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -472,15 +420,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsInitRequest.html'
                                title='google-spectrum1_explorer::PawsInitRequest'>PawsInitRequest</a></td>
                         <td class='docblock short'><p>The initialization request message allows the master device to initiate exchange of capabilities with the database.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawInitMethodBuilder.html">init paws</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -488,15 +427,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsInitResponse.html'
                                title='google-spectrum1_explorer::PawsInitResponse'>PawsInitResponse</a></td>
                         <td class='docblock short'><p>The initialization response message communicates database parameters to the requesting device.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawInitMethodBuilder.html">init paws</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -504,15 +434,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsNotifySpectrumUseRequest.html'
                                title='google-spectrum1_explorer::PawsNotifySpectrumUseRequest'>PawsNotifySpectrumUseRequest</a></td>
                         <td class='docblock short'><p>The spectrum-use notification message which must contain the geolocation of the Device and parameters required by the regulatory domain.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawNotifySpectrumUseMethodBuilder.html">notify spectrum use paws</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -520,15 +441,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsNotifySpectrumUseResponse.html'
                                title='google-spectrum1_explorer::PawsNotifySpectrumUseResponse'>PawsNotifySpectrumUseResponse</a></td>
                         <td class='docblock short'><p>An empty response to the notification.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawNotifySpectrumUseMethodBuilder.html">notify spectrum use paws</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -536,15 +448,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsRegisterRequest.html'
                                title='google-spectrum1_explorer::PawsRegisterRequest'>PawsRegisterRequest</a></td>
                         <td class='docblock short'><p>The registration request message contains the required registration parameters.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawRegisterMethodBuilder.html">register paws</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -552,15 +455,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsRegisterResponse.html'
                                title='google-spectrum1_explorer::PawsRegisterResponse'>PawsRegisterResponse</a></td>
                         <td class='docblock short'><p>The registration response message simply acknowledges receipt of the request and is otherwise empty.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawRegisterMethodBuilder.html">register paws</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -568,15 +462,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsVerifyDeviceRequest.html'
                                title='google-spectrum1_explorer::PawsVerifyDeviceRequest'>PawsVerifyDeviceRequest</a></td>
                         <td class='docblock short'><p>The device validation request message.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawVerifyDeviceMethodBuilder.html">verify device paws</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -584,15 +469,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawsVerifyDeviceResponse.html'
                                title='google-spectrum1_explorer::PawsVerifyDeviceResponse'>PawsVerifyDeviceResponse</a></td>
                         <td class='docblock short'><p>The device validation response message.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.PawVerifyDeviceMethodBuilder.html">verify device paws</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -600,8 +476,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RulesetInfo.html'
                                title='google-spectrum1_explorer::RulesetInfo'>RulesetInfo</a></td>
                         <td class='docblock short'><p>This contains parameters for the ruleset of a regulatory domain that is communicated using the initialization and available-spectrum processes.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -616,8 +490,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SpectrumMessage.html'
                                title='google-spectrum1_explorer::SpectrumMessage'>SpectrumMessage</a></td>
                         <td class='docblock short'><p>Available spectrum can be logically characterized by a list of frequency ranges and permissible power levels for each range.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -625,8 +497,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SpectrumSchedule.html'
                                title='google-spectrum1_explorer::SpectrumSchedule'>SpectrumSchedule</a></td>
                         <td class='docblock short'><p>The spectrum schedule element combines an event time with spectrum profile to define a time period in which the profile is valid.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -639,8 +509,6 @@ The list links the activity name, along with information about where it is used 
 - adr: Address fields 
 - tel: Telephone numbers 
 - email: Email addresses</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -648,8 +516,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VcardAddress.html'
                                title='google-spectrum1_explorer::VcardAddress'>VcardAddress</a></td>
                         <td class='docblock short'><p>The structure used to represent a street address.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -657,8 +523,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VcardTelephone.html'
                                title='google-spectrum1_explorer::VcardTelephone'>VcardTelephone</a></td>
                         <td class='docblock short'><p>The structure used to represent a telephone number.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -666,8 +530,84 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VcardTypedText.html'
                                title='google-spectrum1_explorer::VcardTypedText'>VcardTypedText</a></td>
                         <td class='docblock short'><p>The structure used to represent an organization and an email address.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-spectrum1_explorer::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-spectrum1_explorer::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-spectrum1_explorer::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-spectrum1_explorer::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-spectrum1_explorer::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-spectrum1_explorer::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-spectrum1_explorer::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-spectrum1_explorer::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-spectrum1_explorer::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-spectrum1_explorer::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

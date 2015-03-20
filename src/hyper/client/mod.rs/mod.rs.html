@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/Users/byron/.cargo/registry/src/github.com-1ecc6299db9ec823/hyper-0.3.0/src/client/mod.rs`.">
+    <meta name="description" content="Source to the Rust file `/Users/byron/Documents/dev/rust/hyper/src/client/mod.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>mod.rs.html -- source</title>
@@ -522,27 +522,27 @@
         <span class='self'>self</span>.<span class='ident'>redirect_policy</span> <span class='op'>=</span> <span class='ident'>policy</span>;
     }
 
-    <span class='doccomment'>/// Execute a Get request.</span>
+    <span class='doccomment'>/// Build a Get request.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get</span><span class='op'>&lt;</span><span class='ident'>U</span>: <span class='ident'>IntoUrl</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>url</span>: <span class='ident'>U</span>) <span class='op'>-&gt;</span> <span class='ident'>RequestBuilder</span><span class='op'>&lt;</span><span class='ident'>U</span>, <span class='ident'>C</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>request</span>(<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>)
     }
 
-    <span class='doccomment'>/// Execute a Head request.</span>
+    <span class='doccomment'>/// Build a Head request.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>head</span><span class='op'>&lt;</span><span class='ident'>U</span>: <span class='ident'>IntoUrl</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>url</span>: <span class='ident'>U</span>) <span class='op'>-&gt;</span> <span class='ident'>RequestBuilder</span><span class='op'>&lt;</span><span class='ident'>U</span>, <span class='ident'>C</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>request</span>(<span class='ident'>Method</span>::<span class='ident'>Head</span>, <span class='ident'>url</span>)
     }
 
-    <span class='doccomment'>/// Execute a Post request.</span>
+    <span class='doccomment'>/// Build a Post request.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>post</span><span class='op'>&lt;</span><span class='ident'>U</span>: <span class='ident'>IntoUrl</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>url</span>: <span class='ident'>U</span>) <span class='op'>-&gt;</span> <span class='ident'>RequestBuilder</span><span class='op'>&lt;</span><span class='ident'>U</span>, <span class='ident'>C</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>request</span>(<span class='ident'>Method</span>::<span class='ident'>Post</span>, <span class='ident'>url</span>)
     }
 
-    <span class='doccomment'>/// Execute a Put request.</span>
+    <span class='doccomment'>/// Build a Put request.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>put</span><span class='op'>&lt;</span><span class='ident'>U</span>: <span class='ident'>IntoUrl</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>url</span>: <span class='ident'>U</span>) <span class='op'>-&gt;</span> <span class='ident'>RequestBuilder</span><span class='op'>&lt;</span><span class='ident'>U</span>, <span class='ident'>C</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>request</span>(<span class='ident'>Method</span>::<span class='ident'>Put</span>, <span class='ident'>url</span>)
     }
 
-    <span class='doccomment'>/// Execute a Delete request.</span>
+    <span class='doccomment'>/// Build a Delete request.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>delete</span><span class='op'>&lt;</span><span class='ident'>U</span>: <span class='ident'>IntoUrl</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>url</span>: <span class='ident'>U</span>) <span class='op'>-&gt;</span> <span class='ident'>RequestBuilder</span><span class='op'>&lt;</span><span class='ident'>U</span>, <span class='ident'>C</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>request</span>(<span class='ident'>Method</span>::<span class='ident'>Delete</span>, <span class='ident'>url</span>)
     }

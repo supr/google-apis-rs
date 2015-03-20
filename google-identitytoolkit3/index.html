@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-identitytoolkit3</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-identitytoolkit3/lib.rs.html#5-3436'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-identitytoolkit3/lib.rs.html#5-3476'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>Identity Toolkit</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/identitytoolkit3">on github</a>.</p>
 
@@ -52,7 +52,11 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>It seems there is nothing you can do here ... .</p>
 
 <ul>
-<li><a href="struct.Relyingparty.html">relyingparty</a> (<a href="struct.RelyingpartyCreateAuthUriMethodBuilder.html"><em>create auth uri</em></a>, <a href="struct.RelyingpartyDeleteAccountMethodBuilder.html"><em>delete account</em></a>, <a href="struct.RelyingpartyDownloadAccountMethodBuilder.html"><em>download account</em></a>, <a href="struct.RelyingpartyGetAccountInfoMethodBuilder.html"><em>get account info</em></a>, <a href="struct.RelyingpartyGetOobConfirmationCodeMethodBuilder.html"><em>get oob confirmation code</em></a>, <a href="struct.RelyingpartyGetPublicKeyMethodBuilder.html"><em>get public keys</em></a>, <a href="struct.RelyingpartyResetPasswordMethodBuilder.html"><em>reset password</em></a>, <a href="struct.RelyingpartySetAccountInfoMethodBuilder.html"><em>set account info</em></a>, <a href="struct.RelyingpartyUploadAccountMethodBuilder.html"><em>upload account</em></a>, <a href="struct.RelyingpartyVerifyAssertionMethodBuilder.html"><em>verify assertion</em></a> and <a href="struct.RelyingpartyVerifyPasswordMethodBuilder.html"><em>verify password</em></a>)</li>
+<li><a href="struct.Relyingparty.html">relyingparty</a>
+
+<ul>
+<li><a href="struct.RelyingpartyCreateAuthUriCallBuilder.html"><em>create auth uri</em></a>, <a href="struct.RelyingpartyDeleteAccountCallBuilder.html"><em>delete account</em></a>, <a href="struct.RelyingpartyDownloadAccountCallBuilder.html"><em>download account</em></a>, <a href="struct.RelyingpartyGetAccountInfoCallBuilder.html"><em>get account info</em></a>, <a href="struct.RelyingpartyGetOobConfirmationCodeCallBuilder.html"><em>get oob confirmation code</em></a>, <a href="struct.RelyingpartyGetPublicKeyCallBuilder.html"><em>get public keys</em></a>, <a href="struct.RelyingpartyResetPasswordCallBuilder.html"><em>reset password</em></a>, <a href="struct.RelyingpartySetAccountInfoCallBuilder.html"><em>set account info</em></a>, <a href="struct.RelyingpartyUploadAccountCallBuilder.html"><em>upload account</em></a>, <a href="struct.RelyingpartyVerifyAssertionCallBuilder.html"><em>verify assertion</em></a> and <a href="struct.RelyingpartyVerifyPasswordCallBuilder.html"><em>verify password</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>Identity Toolkit</em> <em>v3</em> API can be found at the
@@ -82,7 +86,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -118,10 +122,10 @@ google-identitytoolkit3 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-identitytoolkit3&quot;</span> <span class='kw'>as</span> <span class='ident'>identitytoolkit3</span>;
 <span class='kw'>use</span> <span class='ident'>identitytoolkit3</span>::<span class='ident'>IdentitytoolkitRelyingpartyVerifyAssertionRequest</span>;
-<span class='kw'>use</span> <span class='ident'>identitytoolkit3</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>identitytoolkit3</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>identitytoolkit3</span>::<span class='ident'>IdentityToolkit</span>;
@@ -155,6 +159,7 @@ google-identitytoolkit3 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -183,7 +188,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -198,7 +203,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -208,28 +213,20 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-identitytoolkit3::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CreateAuthUriResponse.html'
                                title='google-identitytoolkit3::CreateAuthUriResponse'>CreateAuthUriResponse</a></td>
                         <td class='docblock short'><p>Response of creating the IDP authentication URL.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyCreateAuthUriMethodBuilder.html">create auth uri relyingparty</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-identitytoolkit3::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -237,15 +234,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeleteAccountResponse.html'
                                title='google-identitytoolkit3::DeleteAccountResponse'>DeleteAccountResponse</a></td>
                         <td class='docblock short'><p>Respone of deleting account.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyDeleteAccountMethodBuilder.html">delete account relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -253,15 +241,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DownloadAccountResponse.html'
                                title='google-identitytoolkit3::DownloadAccountResponse'>DownloadAccountResponse</a></td>
                         <td class='docblock short'><p>Respone of downloading accounts in batch.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyDownloadAccountMethodBuilder.html">download account relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -269,15 +248,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GetAccountInfoResponse.html'
                                title='google-identitytoolkit3::GetAccountInfoResponse'>GetAccountInfoResponse</a></td>
                         <td class='docblock short'><p>Response of getting account information.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyGetAccountInfoMethodBuilder.html">get account info relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -285,15 +255,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GetOobConfirmationCodeResponse.html'
                                title='google-identitytoolkit3::GetOobConfirmationCodeResponse'>GetOobConfirmationCodeResponse</a></td>
                         <td class='docblock short'><p>Response of getting a code for user confirmation (reset password, change email etc.).</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyGetOobConfirmationCodeMethodBuilder.html">get oob confirmation code relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -308,15 +269,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyCreateAuthUriRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyCreateAuthUriRequest'>IdentitytoolkitRelyingpartyCreateAuthUriRequest</a></td>
                         <td class='docblock short'><p>Request to get the IDP authentication URL.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyCreateAuthUriMethodBuilder.html">create auth uri relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -324,15 +276,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyDeleteAccountRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyDeleteAccountRequest'>IdentitytoolkitRelyingpartyDeleteAccountRequest</a></td>
                         <td class='docblock short'><p>Request to delete account.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyDeleteAccountMethodBuilder.html">delete account relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -340,15 +283,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyDownloadAccountRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyDownloadAccountRequest'>IdentitytoolkitRelyingpartyDownloadAccountRequest</a></td>
                         <td class='docblock short'><p>Request to download user account in batch.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyDownloadAccountMethodBuilder.html">download account relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -356,15 +290,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyGetAccountInfoRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyGetAccountInfoRequest'>IdentitytoolkitRelyingpartyGetAccountInfoRequest</a></td>
                         <td class='docblock short'><p>Request to get the account information.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyGetAccountInfoMethodBuilder.html">get account info relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -372,15 +297,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyGetPublicKeysResponse.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyGetPublicKeysResponse'>IdentitytoolkitRelyingpartyGetPublicKeysResponse</a></td>
                         <td class='docblock short'><p>Respone of getting public keys.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyGetPublicKeyMethodBuilder.html">get public keys relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -388,15 +304,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyResetPasswordRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyResetPasswordRequest'>IdentitytoolkitRelyingpartyResetPasswordRequest</a></td>
                         <td class='docblock short'><p>Request to reset the password.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyResetPasswordMethodBuilder.html">reset password relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -404,15 +311,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartySetAccountInfoRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartySetAccountInfoRequest'>IdentitytoolkitRelyingpartySetAccountInfoRequest</a></td>
                         <td class='docblock short'><p>Request to set the account information.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartySetAccountInfoMethodBuilder.html">set account info relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -420,15 +318,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyUploadAccountRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyUploadAccountRequest'>IdentitytoolkitRelyingpartyUploadAccountRequest</a></td>
                         <td class='docblock short'><p>Request to upload user account in batch.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyUploadAccountMethodBuilder.html">upload account relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -436,15 +325,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyVerifyAssertionRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyVerifyAssertionRequest'>IdentitytoolkitRelyingpartyVerifyAssertionRequest</a></td>
                         <td class='docblock short'><p>Request to verify the IDP assertion.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyVerifyAssertionMethodBuilder.html">verify assertion relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -452,15 +332,23 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IdentitytoolkitRelyingpartyVerifyPasswordRequest.html'
                                title='google-identitytoolkit3::IdentitytoolkitRelyingpartyVerifyPasswordRequest'>IdentitytoolkitRelyingpartyVerifyPasswordRequest</a></td>
                         <td class='docblock short'><p>Request to verify the password.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyVerifyPasswordMethodBuilder.html">verify password relyingparty</a> (request)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-identitytoolkit3::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-identitytoolkit3::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -468,56 +356,47 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Relyingparty.html'
                                title='google-identitytoolkit3::Relyingparty'>Relyingparty</a></td>
                         <td class='docblock short'><p>Request of getting a code for user confirmation (reset password, change email etc.)</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyGetOobConfirmationCodeMethodBuilder.html">get oob confirmation code relyingparty</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyCreateAuthUriMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyCreateAuthUriMethodBuilder'>RelyingpartyCreateAuthUriMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyCreateAuthUriCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyCreateAuthUriCallBuilder'>RelyingpartyCreateAuthUriCallBuilder</a></td>
                         <td class='docblock short'><p>Creates the URI used by the IdP to authenticate the user.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyDeleteAccountMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyDeleteAccountMethodBuilder'>RelyingpartyDeleteAccountMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyDeleteAccountCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyDeleteAccountCallBuilder'>RelyingpartyDeleteAccountCallBuilder</a></td>
                         <td class='docblock short'><p>Delete user account.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyDownloadAccountMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyDownloadAccountMethodBuilder'>RelyingpartyDownloadAccountMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyDownloadAccountCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyDownloadAccountCallBuilder'>RelyingpartyDownloadAccountCallBuilder</a></td>
                         <td class='docblock short'><p>Batch download user accounts.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyGetAccountInfoMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyGetAccountInfoMethodBuilder'>RelyingpartyGetAccountInfoMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyGetAccountInfoCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyGetAccountInfoCallBuilder'>RelyingpartyGetAccountInfoCallBuilder</a></td>
                         <td class='docblock short'><p>Returns the account info.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyGetOobConfirmationCodeMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyGetOobConfirmationCodeMethodBuilder'>RelyingpartyGetOobConfirmationCodeMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyGetOobConfirmationCodeCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyGetOobConfirmationCodeCallBuilder'>RelyingpartyGetOobConfirmationCodeCallBuilder</a></td>
                         <td class='docblock short'><p>Get a code for user action confirmation.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyGetPublicKeyMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyGetPublicKeyMethodBuilder'>RelyingpartyGetPublicKeyMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyGetPublicKeyCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyGetPublicKeyCallBuilder'>RelyingpartyGetPublicKeyCallBuilder</a></td>
                         <td class='docblock short'><p>Get token signing public key.</p>
 </td>
                     </tr>
@@ -531,36 +410,36 @@ It is not used directly, but through the <code>IdentityToolkit</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyResetPasswordMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyResetPasswordMethodBuilder'>RelyingpartyResetPasswordMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyResetPasswordCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyResetPasswordCallBuilder'>RelyingpartyResetPasswordCallBuilder</a></td>
                         <td class='docblock short'><p>Reset password for a user.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartySetAccountInfoMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartySetAccountInfoMethodBuilder'>RelyingpartySetAccountInfoMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartySetAccountInfoCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartySetAccountInfoCallBuilder'>RelyingpartySetAccountInfoCallBuilder</a></td>
                         <td class='docblock short'><p>Set account info for a user.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyUploadAccountMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyUploadAccountMethodBuilder'>RelyingpartyUploadAccountMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyUploadAccountCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyUploadAccountCallBuilder'>RelyingpartyUploadAccountCallBuilder</a></td>
                         <td class='docblock short'><p>Batch upload existing user accounts.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyVerifyAssertionMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyVerifyAssertionMethodBuilder'>RelyingpartyVerifyAssertionMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyVerifyAssertionCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyVerifyAssertionCallBuilder'>RelyingpartyVerifyAssertionCallBuilder</a></td>
                         <td class='docblock short'><p>Verifies the assertion returned by the IdP.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyVerifyPasswordMethodBuilder.html'
-                               title='google-identitytoolkit3::RelyingpartyVerifyPasswordMethodBuilder'>RelyingpartyVerifyPasswordMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RelyingpartyVerifyPasswordCallBuilder.html'
+                               title='google-identitytoolkit3::RelyingpartyVerifyPasswordCallBuilder'>RelyingpartyVerifyPasswordCallBuilder</a></td>
                         <td class='docblock short'><p>Verifies the user entered password.</p>
 </td>
                     </tr>
@@ -569,15 +448,6 @@ It is not used directly, but through the <code>IdentityToolkit</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResetPasswordResponse.html'
                                title='google-identitytoolkit3::ResetPasswordResponse'>ResetPasswordResponse</a></td>
                         <td class='docblock short'><p>Response of resetting the password.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyResetPasswordMethodBuilder.html">reset password relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -585,15 +455,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SetAccountInfoResponse.html'
                                title='google-identitytoolkit3::SetAccountInfoResponse'>SetAccountInfoResponse</a></td>
                         <td class='docblock short'><p>Respone of setting the account information.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartySetAccountInfoMethodBuilder.html">set account info relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -601,8 +462,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SetAccountInfoResponseProviderUserInfo.html'
                                title='google-identitytoolkit3::SetAccountInfoResponseProviderUserInfo'>SetAccountInfoResponseProviderUserInfo</a></td>
                         <td class='docblock short'><p>The user&#39;s profiles at the associated IdPs.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -610,15 +469,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UploadAccountResponse.html'
                                title='google-identitytoolkit3::UploadAccountResponse'>UploadAccountResponse</a></td>
                         <td class='docblock short'><p>Respone of uploading accounts in batch.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyUploadAccountMethodBuilder.html">upload account relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -626,8 +476,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UploadAccountResponseError.html'
                                title='google-identitytoolkit3::UploadAccountResponseError'>UploadAccountResponseError</a></td>
                         <td class='docblock short'><p>The error encountered while processing the account info.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -635,8 +483,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserInfo.html'
                                title='google-identitytoolkit3::UserInfo'>UserInfo</a></td>
                         <td class='docblock short'><p>Template for an individual account info.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -644,8 +490,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.UserInfoProviderUserInfo.html'
                                title='google-identitytoolkit3::UserInfoProviderUserInfo'>UserInfoProviderUserInfo</a></td>
                         <td class='docblock short'><p>The IDP of the user.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -653,15 +497,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VerifyAssertionResponse.html'
                                title='google-identitytoolkit3::VerifyAssertionResponse'>VerifyAssertionResponse</a></td>
                         <td class='docblock short'><p>Response of verifying the IDP assertion.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyVerifyAssertionMethodBuilder.html">verify assertion relyingparty</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -669,15 +504,84 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.VerifyPasswordResponse.html'
                                title='google-identitytoolkit3::VerifyPasswordResponse'>VerifyPasswordResponse</a></td>
                         <td class='docblock short'><p>Request of verifying the password.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.RelyingpartyVerifyPasswordMethodBuilder.html">verify password relyingparty</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-identitytoolkit3::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-identitytoolkit3::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-identitytoolkit3::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-identitytoolkit3::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-identitytoolkit3::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-identitytoolkit3::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-identitytoolkit3::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-identitytoolkit3::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-identitytoolkit3::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-identitytoolkit3::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

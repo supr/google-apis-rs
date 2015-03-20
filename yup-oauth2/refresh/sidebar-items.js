@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["RefreshResult","All possible outcomes of the refresh flow"]],"struct":[["RefreshFlow","Implements the Outh2 Refresh Token Flow.   Refresh an expired access token, as obtained by any other authentication flow. This flow is useful when your `Token` is expired and allows to obtain a new and valid access token."]]});
+initSidebarItems({"struct":[["RefreshFlow","Implements the Outh2 Refresh Token Flow."]],"enum":[["RefreshResult","All possible outcomes of the refresh flow"]]});

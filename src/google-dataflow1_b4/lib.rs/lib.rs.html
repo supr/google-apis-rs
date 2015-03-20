@@ -294,6 +294,8 @@
 <span id="252">252</span>
 <span id="253">253</span>
 <span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -323,7 +325,7 @@
 <span class='doccomment'>//!     * **[Parts](cmn/trait.Part.html)**</span>
 <span class='doccomment'>//!         * a collection of properties</span>
 <span class='doccomment'>//!         * never directly used in *Activities*</span>
-<span class='doccomment'>//! * **[Activities](cmn/trait.MethodBuilder.html)**</span>
+<span class='doccomment'>//! * **[Activities](cmn/trait.CallBuilder.html)**</span>
 <span class='doccomment'>//!     * operations to apply to *Resources*</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Generally speaking, you can invoke *Activities* like this:</span>
@@ -354,7 +356,7 @@
 <span class='doccomment'>//! ```test_harness,no_run</span>
 <span class='doccomment'>//! extern crate hyper;</span>
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>//! extern crate serde;</span>
 <span class='doccomment'>//! extern crate &quot;google-dataflow1_b4&quot; as dataflow1_b4;</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
@@ -400,7 +402,7 @@
 <span class='doccomment'>//! ## About Customization/Callbacks</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! You may alter the way an `doit()` method is called by providing a [delegate](cmn/trait.Delegate.html) to the </span>
-<span class='doccomment'>//! [Method Builder](cmn/trait.MethodBuilder.html) before making the final `doit()` call. </span>
+<span class='doccomment'>//! [Method Builder](cmn/trait.CallBuilder.html) before making the final `doit()` call. </span>
 <span class='doccomment'>//! Respective methods will be called to provide progress information, as well as determine whether the system should </span>
 <span class='doccomment'>//! retry on failure.</span>
 <span class='doccomment'>//! </span>
@@ -415,7 +417,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## About Builder Arguments</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Using [method builders](cmn/trait.MethodBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
+<span class='doccomment'>//! Using [method builders](cmn/trait.CallBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
 <span class='doccomment'>//! These will always take a single argument, for which the following statements are true.</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [PODs][wiki-pod] are handed by copy</span>
@@ -436,15 +438,17 @@
 <span class='comment'>// Instead of pre-determining this, we just disable the lint. It&#39;s manually tuned to not have any </span>
 <span class='comment'>// unused imports in fully featured APIs. Same with unused_mut ... .</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>unused_imports</span>, <span class='ident'>unused_mut</span>)]</span>
-
+<span class='comment'>// Required for serde annotations</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>custom_derive</span>, <span class='ident'>custom_attribute</span>, <span class='ident'>plugin</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>plugin</span>(<span class='ident'>serde_macros</span>)]</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>mime</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>url</span>;
 
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>cmn</span>;
+<span class='kw'>mod</span> <span class='ident'>cmn</span>;
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>RefCell</span>;
@@ -452,12 +456,12 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
-<span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>;
+<span class='kw'>use</span> <span class='ident'>serde</span>::<span class='ident'>json</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::<span class='ident'>timer</span>::<span class='ident'>sleep</span>;
 
-<span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>MultiPartReader</span>, <span class='ident'>MethodInfo</span>, <span class='prelude-ty'>Result</span>, <span class='ident'>CallBuilder</span>, <span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>, <span class='ident'>UnusedType</span>};
 
 
 <span class='comment'>// ##############</span>
@@ -480,7 +484,7 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-dataflow1_b4&quot; as dataflow1_b4;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -540,7 +544,7 @@
 
 
 <span class='comment'>// ###################</span>
-<span class='comment'>// MethodBuilders ###</span>
+<span class='comment'>// CallBuilders ###</span>
 <span class='comment'>// #################</span>
 
 

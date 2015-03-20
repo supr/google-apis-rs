@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-content2</a>::<wbr><a class='struct' href=''>ProductMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-34688' href='../src/google-content2/lib.rs.html#4032-4036'>[src]</a></span></h1>
+        </span><a id='src-63800' href='../src/google-content2/lib.rs.html#3601-3605'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct ProductMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>product</em> resources.
@@ -55,7 +55,7 @@ It is not used directly, but through the <code>ShoppingContent</code> hub.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-content2&quot;</span> <span class='kw'>as</span> <span class='ident'>content2</span>;
  
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -67,32 +67,32 @@ It is not used directly, but through the <code>ShoppingContent</code> hub.</p>
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>ShoppingContent</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
-<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='comment'>// like `custombatch(...)`, `delete(...)`, `get(...)`, `insert(...)` and `list(...)`</span>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>products</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-content2/struct.ProductMethodsBuilder.html' title='google-content2::ProductMethodsBuilder'>ProductMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductListMethodBuilder.html' title='google-content2::ProductListMethodBuilder'>ProductListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-content2/struct.ProductMethodsBuilder.html' title='google-content2::ProductMethodsBuilder'>ProductMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductListCallBuilder.html' title='google-content2::ProductListCallBuilder'>ProductListCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Lists the products in your Merchant Center account.    </p>
-</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, product_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductGetMethodBuilder.html' title='google-content2::ProductGetMethodBuilder'>ProductGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, product_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductGetCallBuilder.html' title='google-content2::ProductGetCallBuilder'>ProductGetCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Retrieves a product from your Merchant Center account.    </p>
-</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, product_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductDeleteMethodBuilder.html' title='google-content2::ProductDeleteMethodBuilder'>ProductDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, product_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductDeleteCallBuilder.html' title='google-content2::ProductDeleteCallBuilder'>ProductDeleteCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Deletes a product from your Merchant Center account.    </p>
-</div><h4 id='method.custombatch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.custombatch' class='fnname'>custombatch</a>(&amp;self, request: &amp;<a class='struct' href='../google-content2/struct.ProductsCustomBatchRequest.html' title='google-content2::ProductsCustomBatchRequest'>ProductsCustomBatchRequest</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductCustombatchMethodBuilder.html' title='google-content2::ProductCustombatchMethodBuilder'>ProductCustombatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.custombatch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.custombatch' class='fnname'>custombatch</a>(&amp;self, request: &amp;<a class='struct' href='../google-content2/struct.ProductsCustomBatchRequest.html' title='google-content2::ProductsCustomBatchRequest'>ProductsCustomBatchRequest</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductCustombatchCallBuilder.html' title='google-content2::ProductCustombatchCallBuilder'>ProductCustombatchCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Retrieves, inserts, and deletes multiple products in a single request.    </p>
-</div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;self, request: &amp;<a class='struct' href='../google-content2/struct.Product.html' title='google-content2::Product'>Product</a>, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductInsertMethodBuilder.html' title='google-content2::ProductInsertMethodBuilder'>ProductInsertMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;self, request: &amp;<a class='struct' href='../google-content2/struct.Product.html' title='google-content2::Product'>Product</a>, merchant_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-content2/struct.ProductInsertCallBuilder.html' title='google-content2::ProductInsertCallBuilder'>ProductInsertCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Uploads a product to your Merchant Center account.    </p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-content2/cmn/trait.ResourceMethodsBuilder.html' title='google-content2::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-content2/struct.ProductMethodsBuilder.html' title='google-content2::ProductMethodsBuilder'>ProductMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; ResourceMethodsBuilder for <a class='struct' href='../google-content2/struct.ProductMethodsBuilder.html' title='google-content2::ProductMethodsBuilder'>ProductMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

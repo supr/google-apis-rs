@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-cloudmonitoring2_beta2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-cloudmonitoring2_beta2/lib.rs.html#5-2969'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-cloudmonitoring2_beta2/lib.rs.html#5-2854'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>Cloud Monitoring</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/cloudmonitoring2_beta2">on github</a>.</p>
 
@@ -52,9 +52,21 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.CloudMonitoring.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.MetricDescriptor.html">metric descriptors</a> (<a href="struct.MetricDescriptorCreateMethodBuilder.html"><em>create</em></a>, <a href="struct.MetricDescriptorDeleteMethodBuilder.html"><em>delete</em></a> and <a href="struct.MetricDescriptorListMethodBuilder.html"><em>list</em></a>)</li>
-<li>timeseries (<a href="struct.TimeseryListMethodBuilder.html"><em>list</em></a> and <a href="struct.TimeseryWriteMethodBuilder.html"><em>write</em></a>)</li>
-<li><a href="struct.TimeseriesDescriptor.html">timeseries descriptors</a> (<a href="struct.TimeseriesDescriptorListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.MetricDescriptor.html">metric descriptors</a>
+
+<ul>
+<li><a href="struct.MetricDescriptorCreateCallBuilder.html"><em>create</em></a>, <a href="struct.MetricDescriptorDeleteCallBuilder.html"><em>delete</em></a> and <a href="struct.MetricDescriptorListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li>timeseries
+
+<ul>
+<li><a href="struct.TimeseryListCallBuilder.html"><em>list</em></a> and <a href="struct.TimeseryWriteCallBuilder.html"><em>write</em></a></li>
+</ul></li>
+<li><a href="struct.TimeseriesDescriptor.html">timeseries descriptors</a>
+
+<ul>
+<li><a href="struct.TimeseriesDescriptorListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>Cloud Monitoring</em> <em>v2_beta2</em> API can be found at the
@@ -84,7 +96,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -122,10 +134,10 @@ google-cloudmonitoring2_beta2 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-cloudmonitoring2_beta2&quot;</span> <span class='kw'>as</span> <span class='ident'>cloudmonitoring2_beta2</span>;
 <span class='kw'>use</span> <span class='ident'>cloudmonitoring2_beta2</span>::<span class='ident'>ListMetricDescriptorsRequest</span>;
-<span class='kw'>use</span> <span class='ident'>cloudmonitoring2_beta2</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>cloudmonitoring2_beta2</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>cloudmonitoring2_beta2</span>::<span class='ident'>CloudMonitoring</span>;
@@ -162,6 +174,7 @@ google-cloudmonitoring2_beta2 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -190,7 +203,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -205,7 +218,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -215,14 +228,7 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-cloudmonitoring2_beta2::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CloudMonitoring.html'
@@ -232,18 +238,17 @@ These will always take a single argument, for which the following statements are
                     </tr>
                 
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-cloudmonitoring2_beta2::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeleteMetricDescriptorResponse.html'
                                title='google-cloudmonitoring2_beta2::DeleteMetricDescriptorResponse'>DeleteMetricDescriptorResponse</a></td>
                         <td class='docblock short'><p>The response of cloudmonitoring.metricDescriptors.delete.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.MetricDescriptorDeleteMethodBuilder.html">delete metric descriptors</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -251,15 +256,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListMetricDescriptorsRequest.html'
                                title='google-cloudmonitoring2_beta2::ListMetricDescriptorsRequest'>ListMetricDescriptorsRequest</a></td>
                         <td class='docblock short'><p>The request of cloudmonitoring.metricDescriptors.list.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.MetricDescriptorListMethodBuilder.html">list metric descriptors</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -267,15 +263,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListMetricDescriptorsResponse.html'
                                title='google-cloudmonitoring2_beta2::ListMetricDescriptorsResponse'>ListMetricDescriptorsResponse</a></td>
                         <td class='docblock short'><p>The response of cloudmonitoring.metricDescriptors.list.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.MetricDescriptorListMethodBuilder.html">list metric descriptors</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -283,15 +270,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListTimeseriesDescriptorsRequest.html'
                                title='google-cloudmonitoring2_beta2::ListTimeseriesDescriptorsRequest'>ListTimeseriesDescriptorsRequest</a></td>
                         <td class='docblock short'><p>The request of cloudmonitoring.timeseriesDescriptors.list</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TimeseriesDescriptorListMethodBuilder.html">list timeseries descriptors</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -299,15 +277,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListTimeseriesDescriptorsResponse.html'
                                title='google-cloudmonitoring2_beta2::ListTimeseriesDescriptorsResponse'>ListTimeseriesDescriptorsResponse</a></td>
                         <td class='docblock short'><p>The response of cloudmonitoring.timeseriesDescriptors.list</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TimeseriesDescriptorListMethodBuilder.html">list timeseries descriptors</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -315,15 +284,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListTimeseriesRequest.html'
                                title='google-cloudmonitoring2_beta2::ListTimeseriesRequest'>ListTimeseriesRequest</a></td>
                         <td class='docblock short'><p>The request of cloudmonitoring.timeseries.list</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TimeseryListMethodBuilder.html">list timeseries</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -331,15 +291,13 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListTimeseriesResponse.html'
                                title='google-cloudmonitoring2_beta2::ListTimeseriesResponse'>ListTimeseriesResponse</a></td>
                         <td class='docblock short'><p>The response of cloudmonitoring.timeseries.list</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TimeseryListMethodBuilder.html">list timeseries</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-cloudmonitoring2_beta2::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
 </td>
                     </tr>
                 
@@ -347,30 +305,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptor.html'
                                title='google-cloudmonitoring2_beta2::MetricDescriptor'>MetricDescriptor</a></td>
                         <td class='docblock short'><p>A metricDescriptor defines the name, label keys, and data type of a particular metric.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.MetricDescriptorListMethodBuilder.html">list metric descriptors</a> (none)</li>
-<li><a href="struct.MetricDescriptorDeleteMethodBuilder.html">delete metric descriptors</a> (none)</li>
-<li><a href="struct.MetricDescriptorCreateMethodBuilder.html">create metric descriptors</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorCreateMethodBuilder.html'
-                               title='google-cloudmonitoring2_beta2::MetricDescriptorCreateMethodBuilder'>MetricDescriptorCreateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorCreateCallBuilder.html'
+                               title='google-cloudmonitoring2_beta2::MetricDescriptorCreateCallBuilder'>MetricDescriptorCreateCallBuilder</a></td>
                         <td class='docblock short'><p>Create a new metric.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorDeleteMethodBuilder.html'
-                               title='google-cloudmonitoring2_beta2::MetricDescriptorDeleteMethodBuilder'>MetricDescriptorDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorDeleteCallBuilder.html'
+                               title='google-cloudmonitoring2_beta2::MetricDescriptorDeleteCallBuilder'>MetricDescriptorDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Delete an existing metric.</p>
 </td>
                     </tr>
@@ -379,14 +326,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorLabelDescriptor.html'
                                title='google-cloudmonitoring2_beta2::MetricDescriptorLabelDescriptor'>MetricDescriptorLabelDescriptor</a></td>
                         <td class='docblock short'><p>A label in a metric is a description of this metric, including the key of this description (what the description is), and the value for this description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorListMethodBuilder.html'
-                               title='google-cloudmonitoring2_beta2::MetricDescriptorListMethodBuilder'>MetricDescriptorListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorListCallBuilder.html'
+                               title='google-cloudmonitoring2_beta2::MetricDescriptorListCallBuilder'>MetricDescriptorListCallBuilder</a></td>
                         <td class='docblock short'><p>List metric descriptors that match the query. If the query is not set, then all of the metric descriptors will be returned. Large responses will be paginated, use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.</p>
 </td>
                     </tr>
@@ -403,8 +348,16 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MetricDescriptorTypeDescriptor.html'
                                title='google-cloudmonitoring2_beta2::MetricDescriptorTypeDescriptor'>MetricDescriptorTypeDescriptor</a></td>
                         <td class='docblock short'><p>A type in a metric contains information about how the metric is collected and what its data points look like.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-cloudmonitoring2_beta2::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -412,8 +365,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Point.html'
                                title='google-cloudmonitoring2_beta2::Point'>Point</a></td>
                         <td class='docblock short'><p>Point is a single point in a time series. It consists of a start time, an end time, and a value.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -421,8 +372,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PointDistribution.html'
                                title='google-cloudmonitoring2_beta2::PointDistribution'>PointDistribution</a></td>
                         <td class='docblock short'><p>Distribution data point value type. When writing distribution points, try to be consistent with the boundaries of your buckets. If you must modify the bucket boundaries, then do so by merging, partitioning, or appending rather than skewing them.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -430,8 +379,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PointDistributionBucket.html'
                                title='google-cloudmonitoring2_beta2::PointDistributionBucket'>PointDistributionBucket</a></td>
                         <td class='docblock short'><p>The histogram&#39;s bucket. Buckets that form the histogram of a distribution value. If the upper bound of a bucket, say U1, does not equal the lower bound of the next bucket, say L2, this means that there is no event in [U1, L2).</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -439,8 +386,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PointDistributionOverflowBucket.html'
                                title='google-cloudmonitoring2_beta2::PointDistributionOverflowBucket'>PointDistributionOverflowBucket</a></td>
                         <td class='docblock short'><p>The overflow bucket is a special bucket that does not have the upperBound field; it includes all of the events that are no less than its lower bound.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -448,8 +393,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PointDistributionUnderflowBucket.html'
                                title='google-cloudmonitoring2_beta2::PointDistributionUnderflowBucket'>PointDistributionUnderflowBucket</a></td>
                         <td class='docblock short'><p>The underflow bucket is a special bucket that does not have the lowerBound field; it includes all of the events that are less than its upper bound.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -457,8 +400,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Timeseries.html'
                                title='google-cloudmonitoring2_beta2::Timeseries'>Timeseries</a></td>
                         <td class='docblock short'><p>The monitoring data is organized as metrics and stored as data points that are recorded over time. Each data point represents information like the CPU utilization of your virtual machine. A historical record of these data points is called a time series.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -466,15 +407,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseriesDescriptor.html'
                                title='google-cloudmonitoring2_beta2::TimeseriesDescriptor'>TimeseriesDescriptor</a></td>
                         <td class='docblock short'><p>TimeseriesDescriptor identifies a single time series.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TimeseriesDescriptorListMethodBuilder.html">list timeseries descriptors</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -482,14 +414,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseriesDescriptorLabel.html'
                                title='google-cloudmonitoring2_beta2::TimeseriesDescriptorLabel'>TimeseriesDescriptorLabel</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseriesDescriptorListMethodBuilder.html'
-                               title='google-cloudmonitoring2_beta2::TimeseriesDescriptorListMethodBuilder'>TimeseriesDescriptorListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseriesDescriptorListCallBuilder.html'
+                               title='google-cloudmonitoring2_beta2::TimeseriesDescriptorListCallBuilder'>TimeseriesDescriptorListCallBuilder</a></td>
                         <td class='docblock short'><p>List the descriptors of the time series that match the metric and labels values and that have data points in the interval. Large responses are paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.</p>
 </td>
                     </tr>
@@ -506,14 +436,12 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseriesPoint.html'
                                title='google-cloudmonitoring2_beta2::TimeseriesPoint'>TimeseriesPoint</a></td>
                         <td class='docblock short'><p>When writing time series, TimeseriesPoint should be used instead of Timeseries, to enforce single point for each time series in the timeseries.write request.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseryListMethodBuilder.html'
-                               title='google-cloudmonitoring2_beta2::TimeseryListMethodBuilder'>TimeseryListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseryListCallBuilder.html'
+                               title='google-cloudmonitoring2_beta2::TimeseryListCallBuilder'>TimeseryListCallBuilder</a></td>
                         <td class='docblock short'><p>List the data points of the time series that match the metric and labels values and that have data points in the interval. Large responses are paginated; use the nextPageToken returned in the response to request subsequent pages of results by setting the pageToken query parameter to the value of the nextPageToken.</p>
 </td>
                     </tr>
@@ -527,8 +455,8 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseryWriteMethodBuilder.html'
-                               title='google-cloudmonitoring2_beta2::TimeseryWriteMethodBuilder'>TimeseryWriteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TimeseryWriteCallBuilder.html'
+                               title='google-cloudmonitoring2_beta2::TimeseryWriteCallBuilder'>TimeseryWriteCallBuilder</a></td>
                         <td class='docblock short'><p>Put data points to one or more time series for one or more metrics. If a time series does not exist, a new time series will be created. It is not allowed to write a time series point that is older than the existing youngest point of that time series. Points that are older than the existing youngest point of that time series will be discarded silently. Therefore, users should make sure that points of a time series are written sequentially in the order of their end time.</p>
 </td>
                     </tr>
@@ -537,15 +465,6 @@ It is not used directly, but through the <code>CloudMonitoring</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WriteTimeseriesRequest.html'
                                title='google-cloudmonitoring2_beta2::WriteTimeseriesRequest'>WriteTimeseriesRequest</a></td>
                         <td class='docblock short'><p>The request of cloudmonitoring.timeseries.write</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TimeseryWriteMethodBuilder.html">write timeseries</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -553,25 +472,93 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WriteTimeseriesResponse.html'
                                title='google-cloudmonitoring2_beta2::WriteTimeseriesResponse'>WriteTimeseriesResponse</a></td>
                         <td class='docblock short'><p>The response of cloudmonitoring.timeseries.write</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TimeseryWriteMethodBuilder.html">write timeseries</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-cloudmonitoring2_beta2::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-cloudmonitoring2_beta2::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-cloudmonitoring2_beta2::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-cloudmonitoring2_beta2::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-cloudmonitoring2_beta2::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-cloudmonitoring2_beta2::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-cloudmonitoring2_beta2::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-cloudmonitoring2_beta2::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-cloudmonitoring2_beta2::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-cloudmonitoring2_beta2::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-cloudmonitoring2_beta2::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

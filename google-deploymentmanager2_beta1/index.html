@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-deploymentmanager2_beta1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-deploymentmanager2_beta1/lib.rs.html#5-3823'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-deploymentmanager2_beta1/lib.rs.html#5-3831'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>deploymentmanager</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/deploymentmanager2_beta1">on github</a>.</p>
 
@@ -52,11 +52,31 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Deploymentmanager.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.Deployment.html">deployments</a> (<a href="struct.DeploymentDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.DeploymentGetMethodBuilder.html"><em>get</em></a>, <a href="struct.DeploymentInsertMethodBuilder.html"><em>insert</em></a> and <a href="struct.DeploymentListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Manifest.html">manifests</a> (<a href="struct.ManifestGetMethodBuilder.html"><em>get</em></a> and <a href="struct.ManifestListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Operation.html">operations</a> (<a href="struct.OperationGetMethodBuilder.html"><em>get</em></a> and <a href="struct.OperationListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Resource.html">resources</a> (<a href="struct.ResourceGetMethodBuilder.html"><em>get</em></a> and <a href="struct.ResourceListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Type.html">types</a> (<a href="struct.TypeListMethodBuilder.html"><em>list</em></a>)</li>
+<li><a href="struct.Deployment.html">deployments</a>
+
+<ul>
+<li><a href="struct.DeploymentDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.DeploymentGetCallBuilder.html"><em>get</em></a>, <a href="struct.DeploymentInsertCallBuilder.html"><em>insert</em></a> and <a href="struct.DeploymentListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Manifest.html">manifests</a>
+
+<ul>
+<li><a href="struct.ManifestGetCallBuilder.html"><em>get</em></a> and <a href="struct.ManifestListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Operation.html">operations</a>
+
+<ul>
+<li><a href="struct.OperationGetCallBuilder.html"><em>get</em></a> and <a href="struct.OperationListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Resource.html">resources</a>
+
+<ul>
+<li><a href="struct.ResourceGetCallBuilder.html"><em>get</em></a> and <a href="struct.ResourceListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Type.html">types</a>
+
+<ul>
+<li><a href="struct.TypeListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>deploymentmanager</em> <em>v2_beta1</em> API can be found at the
@@ -86,7 +106,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -125,9 +145,9 @@ google-deploymentmanager2_beta1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-deploymentmanager2_beta1&quot;</span> <span class='kw'>as</span> <span class='ident'>deploymentmanager2_beta1</span>;
-<span class='kw'>use</span> <span class='ident'>deploymentmanager2_beta1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>deploymentmanager2_beta1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>deploymentmanager2_beta1</span>::<span class='ident'>Deploymentmanager</span>;
@@ -158,6 +178,7 @@ google-deploymentmanager2_beta1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -186,7 +207,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -201,7 +222,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -211,58 +232,47 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-deploymentmanager2_beta1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Deployment.html'
-                               title='google-deploymentmanager2_beta1::Deployment'>Deployment</a></td>
-                        <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.DeploymentInsertMethodBuilder.html">insert deployments</a> (request)</li>
-<li><a href="struct.DeploymentGetMethodBuilder.html">get deployments</a> (response)</li>
-<li><a href="struct.DeploymentListMethodBuilder.html">list deployments</a> (none)</li>
-<li><a href="struct.DeploymentDeleteMethodBuilder.html">delete deployments</a> (none)</li>
-</ul>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-deploymentmanager2_beta1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentDeleteMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::DeploymentDeleteMethodBuilder'>DeploymentDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Deployment.html'
+                               title='google-deploymentmanager2_beta1::Deployment'>Deployment</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentDeleteCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::DeploymentDeleteCallBuilder'>DeploymentDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes a deployment and all of the resources in the deployment.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentGetMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::DeploymentGetMethodBuilder'>DeploymentGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentGetCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::DeploymentGetCallBuilder'>DeploymentGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets information about a specific deployment.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentInsertMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::DeploymentInsertMethodBuilder'>DeploymentInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentInsertCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::DeploymentInsertCallBuilder'>DeploymentInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a deployment and all of the resources described by the deployment manifest.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentListMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::DeploymentListMethodBuilder'>DeploymentListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentListCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::DeploymentListCallBuilder'>DeploymentListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists all deployments for a given project.</p>
 </td>
                     </tr>
@@ -286,15 +296,6 @@ It is not used directly, but through the <code>Deploymentmanager</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DeploymentsListResponse.html'
                                title='google-deploymentmanager2_beta1::DeploymentsListResponse'>DeploymentsListResponse</a></td>
                         <td class='docblock short'><p>A response containing a partial list of deployments and a page token used to build the next request if the request has been truncated.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.DeploymentListMethodBuilder.html">list deployments</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -302,29 +303,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Manifest.html'
                                title='google-deploymentmanager2_beta1::Manifest'>Manifest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ManifestListMethodBuilder.html">list manifests</a> (none)</li>
-<li><a href="struct.ManifestGetMethodBuilder.html">get manifests</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManifestGetMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::ManifestGetMethodBuilder'>ManifestGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManifestGetCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::ManifestGetCallBuilder'>ManifestGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets information about a specific manifest.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManifestListMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::ManifestListMethodBuilder'>ManifestListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManifestListCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::ManifestListCallBuilder'>ManifestListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists all manifests for a given deployment.</p>
 </td>
                     </tr>
@@ -341,15 +332,23 @@ It is not used directly, but through the <code>Deploymentmanager</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ManifestsListResponse.html'
                                title='google-deploymentmanager2_beta1::ManifestsListResponse'>ManifestsListResponse</a></td>
                         <td class='docblock short'><p>A response containing a partial list of manifests and a page token used to build the next request if the request has been truncated.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ManifestListMethodBuilder.html">list manifests</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-deploymentmanager2_beta1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-deploymentmanager2_beta1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -357,18 +356,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Operation.html'
                                title='google-deploymentmanager2_beta1::Operation'>Operation</a></td>
                         <td class='docblock short'><p>An operation resource, used to manage asynchronous API requests.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.OperationListMethodBuilder.html">list operations</a> (none)</li>
-<li><a href="struct.DeploymentDeleteMethodBuilder.html">delete deployments</a> (response)</li>
-<li><a href="struct.OperationGetMethodBuilder.html">get operations</a> (response)</li>
-<li><a href="struct.DeploymentInsertMethodBuilder.html">insert deployments</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -376,8 +363,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationError.html'
                                title='google-deploymentmanager2_beta1::OperationError'>OperationError</a></td>
                         <td class='docblock short'><p>[Output Only] If errors occurred during processing of this operation, this field will be populated.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -385,21 +370,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationErrorErrors.html'
                                title='google-deploymentmanager2_beta1::OperationErrorErrors'>OperationErrorErrors</a></td>
                         <td class='docblock short'><p>The array of errors encountered while processing this operation.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationGetMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::OperationGetMethodBuilder'>OperationGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationGetCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::OperationGetCallBuilder'>OperationGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets information about a specific Operation.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationListMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::OperationListMethodBuilder'>OperationListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationListCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::OperationListCallBuilder'>OperationListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists all Operations for a project.</p>
 </td>
                     </tr>
@@ -416,8 +399,6 @@ It is not used directly, but through the <code>Deploymentmanager</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationWarnings.html'
                                title='google-deploymentmanager2_beta1::OperationWarnings'>OperationWarnings</a></td>
                         <td class='docblock short'><p>[Output Only] If warning messages generated during processing of this operation, this field will be populated.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -425,8 +406,6 @@ It is not used directly, but through the <code>Deploymentmanager</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationWarningsData.html'
                                title='google-deploymentmanager2_beta1::OperationWarningsData'>OperationWarningsData</a></td>
                         <td class='docblock short'><p>Metadata for this warning in &#39;key: value&#39; format.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -434,15 +413,6 @@ It is not used directly, but through the <code>Deploymentmanager</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.OperationsListResponse.html'
                                title='google-deploymentmanager2_beta1::OperationsListResponse'>OperationsListResponse</a></td>
                         <td class='docblock short'><p>A response containing a partial list of operations and a page token used to build the next request if the request has been truncated.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.OperationListMethodBuilder.html">list operations</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -450,29 +420,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Resource.html'
                                title='google-deploymentmanager2_beta1::Resource'>Resource</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ResourceGetMethodBuilder.html">get resources</a> (response)</li>
-<li><a href="struct.ResourceListMethodBuilder.html">list resources</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceGetMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::ResourceGetMethodBuilder'>ResourceGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceGetCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::ResourceGetCallBuilder'>ResourceGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets information about a single resource.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceListMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::ResourceListMethodBuilder'>ResourceListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourceListCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::ResourceListCallBuilder'>ResourceListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists all resources in a given deployment.</p>
 </td>
                     </tr>
@@ -489,15 +449,6 @@ It is not used directly, but through the <code>Deploymentmanager</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ResourcesListResponse.html'
                                title='google-deploymentmanager2_beta1::ResourcesListResponse'>ResourcesListResponse</a></td>
                         <td class='docblock short'><p>A response containing a partial list of resources and a page token used to build the next request if the request has been truncated.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ResourceListMethodBuilder.html">list resources</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -505,21 +456,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Type.html'
                                title='google-deploymentmanager2_beta1::Type'>Type</a></td>
                         <td class='docblock short'><p>A type supported by Deployment Manager.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TypeListMethodBuilder.html">list types</a> (none)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TypeListMethodBuilder.html'
-                               title='google-deploymentmanager2_beta1::TypeListMethodBuilder'>TypeListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TypeListCallBuilder.html'
+                               title='google-deploymentmanager2_beta1::TypeListCallBuilder'>TypeListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists all Types for Deployment Manager.</p>
 </td>
                     </tr>
@@ -536,25 +478,93 @@ It is not used directly, but through the <code>Deploymentmanager</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TypesListResponse.html'
                                title='google-deploymentmanager2_beta1::TypesListResponse'>TypesListResponse</a></td>
                         <td class='docblock short'><p>A response that returns all Types supported by Deployment Manager</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TypeListMethodBuilder.html">list types</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-deploymentmanager2_beta1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-deploymentmanager2_beta1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-deploymentmanager2_beta1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-deploymentmanager2_beta1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-deploymentmanager2_beta1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-deploymentmanager2_beta1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-deploymentmanager2_beta1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-deploymentmanager2_beta1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-deploymentmanager2_beta1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-deploymentmanager2_beta1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-deploymentmanager2_beta1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-tasks1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-tasks1/lib.rs.html#5-4340'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-tasks1/lib.rs.html#5-4312'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>tasks</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/tasks1">on github</a>.</p>
 
@@ -52,8 +52,16 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.TasksHub.html">hub</a> ... </p>
 
 <ul>
-<li>tasklists (<a href="struct.TasklistDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TasklistGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TasklistInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TasklistListMethodBuilder.html"><em>list</em></a>, <a href="struct.TasklistPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.TasklistUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Task.html">tasks</a> (<a href="struct.TaskClearMethodBuilder.html"><em>clear</em></a>, <a href="struct.TaskDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TaskGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TaskInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TaskListMethodBuilder.html"><em>list</em></a>, <a href="struct.TaskMoveMethodBuilder.html"><em>move</em></a>, <a href="struct.TaskPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.TaskUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>tasklists
+
+<ul>
+<li><a href="struct.TasklistDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.TasklistGetCallBuilder.html"><em>get</em></a>, <a href="struct.TasklistInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.TasklistListCallBuilder.html"><em>list</em></a>, <a href="struct.TasklistPatchCallBuilder.html"><em>patch</em></a> and <a href="struct.TasklistUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
+<li><a href="struct.Task.html">tasks</a>
+
+<ul>
+<li><a href="struct.TaskClearCallBuilder.html"><em>clear</em></a>, <a href="struct.TaskDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.TaskGetCallBuilder.html"><em>get</em></a>, <a href="struct.TaskInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.TaskListCallBuilder.html"><em>list</em></a>, <a href="struct.TaskMoveCallBuilder.html"><em>move</em></a>, <a href="struct.TaskPatchCallBuilder.html"><em>patch</em></a> and <a href="struct.TaskUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>tasks</em> <em>v1</em> API can be found at the
@@ -83,7 +91,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -126,9 +134,9 @@ google-tasks1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-tasks1&quot;</span> <span class='kw'>as</span> <span class='ident'>tasks1</span>;
-<span class='kw'>use</span> <span class='ident'>tasks1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>tasks1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>tasks1</span>::<span class='ident'>TasksHub</span>;
@@ -167,6 +175,7 @@ google-tasks1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -195,7 +204,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -210,7 +219,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -220,62 +229,64 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-tasks1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Task.html'
-                               title='google-tasks1::Task'>Task</a></td>
-                        <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TaskListMethodBuilder.html">list tasks</a> (none)</li>
-<li><a href="struct.TaskUpdateMethodBuilder.html">update tasks</a> (request|response)</li>
-<li><a href="struct.TaskPatchMethodBuilder.html">patch tasks</a> (request|response)</li>
-<li><a href="struct.TaskClearMethodBuilder.html">clear tasks</a> (none)</li>
-<li><a href="struct.TaskMoveMethodBuilder.html">move tasks</a> (response)</li>
-<li><a href="struct.TaskDeleteMethodBuilder.html">delete tasks</a> (none)</li>
-<li><a href="struct.TaskGetMethodBuilder.html">get tasks</a> (response)</li>
-<li><a href="struct.TaskInsertMethodBuilder.html">insert tasks</a> (request|response)</li>
-</ul>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-tasks1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskClearMethodBuilder.html'
-                               title='google-tasks1::TaskClearMethodBuilder'>TaskClearMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-tasks1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-tasks1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Task.html'
+                               title='google-tasks1::Task'>Task</a></td>
+                        <td class='docblock short'><p>There is no detailed description.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskClearCallBuilder.html'
+                               title='google-tasks1::TaskClearCallBuilder'>TaskClearCallBuilder</a></td>
                         <td class='docblock short'><p>Clears all completed tasks from the specified task list. The affected tasks will be marked as &#39;hidden&#39; and no longer be returned by default when retrieving all tasks for a task list.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskDeleteMethodBuilder.html'
-                               title='google-tasks1::TaskDeleteMethodBuilder'>TaskDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskDeleteCallBuilder.html'
+                               title='google-tasks1::TaskDeleteCallBuilder'>TaskDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes the specified task from the task list.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskGetMethodBuilder.html'
-                               title='google-tasks1::TaskGetMethodBuilder'>TaskGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskGetCallBuilder.html'
+                               title='google-tasks1::TaskGetCallBuilder'>TaskGetCallBuilder</a></td>
                         <td class='docblock short'><p>Returns the specified task.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskInsertMethodBuilder.html'
-                               title='google-tasks1::TaskInsertMethodBuilder'>TaskInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskInsertCallBuilder.html'
+                               title='google-tasks1::TaskInsertCallBuilder'>TaskInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a new task on the specified task list.</p>
 </td>
                     </tr>
@@ -284,8 +295,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskLinks.html'
                                title='google-tasks1::TaskLinks'>TaskLinks</a></td>
                         <td class='docblock short'><p>Collection of links. This collection is read-only.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -293,24 +302,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskList.html'
                                title='google-tasks1::TaskList'>TaskList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TasklistUpdateMethodBuilder.html">update tasklists</a> (request|response)</li>
-<li><a href="struct.TasklistGetMethodBuilder.html">get tasklists</a> (response)</li>
-<li><a href="struct.TasklistPatchMethodBuilder.html">patch tasklists</a> (request|response)</li>
-<li><a href="struct.TasklistInsertMethodBuilder.html">insert tasklists</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskListMethodBuilder.html'
-                               title='google-tasks1::TaskListMethodBuilder'>TaskListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskListCallBuilder.html'
+                               title='google-tasks1::TaskListCallBuilder'>TaskListCallBuilder</a></td>
                         <td class='docblock short'><p>Returns all tasks in the specified task list.</p>
 </td>
                     </tr>
@@ -319,15 +316,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskLists.html'
                                title='google-tasks1::TaskLists'>TaskLists</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TasklistListMethodBuilder.html">list tasklists</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -340,50 +328,50 @@ It is not used directly, but through the <code>TasksHub</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskMoveMethodBuilder.html'
-                               title='google-tasks1::TaskMoveMethodBuilder'>TaskMoveMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskMoveCallBuilder.html'
+                               title='google-tasks1::TaskMoveCallBuilder'>TaskMoveCallBuilder</a></td>
                         <td class='docblock short'><p>Moves the specified task to another position in the task list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskPatchMethodBuilder.html'
-                               title='google-tasks1::TaskPatchMethodBuilder'>TaskPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskPatchCallBuilder.html'
+                               title='google-tasks1::TaskPatchCallBuilder'>TaskPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Updates the specified task. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskUpdateMethodBuilder.html'
-                               title='google-tasks1::TaskUpdateMethodBuilder'>TaskUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TaskUpdateCallBuilder.html'
+                               title='google-tasks1::TaskUpdateCallBuilder'>TaskUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Updates the specified task.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistDeleteMethodBuilder.html'
-                               title='google-tasks1::TasklistDeleteMethodBuilder'>TasklistDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistDeleteCallBuilder.html'
+                               title='google-tasks1::TasklistDeleteCallBuilder'>TasklistDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes the authenticated user&#39;s specified task list.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistGetMethodBuilder.html'
-                               title='google-tasks1::TasklistGetMethodBuilder'>TasklistGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistGetCallBuilder.html'
+                               title='google-tasks1::TasklistGetCallBuilder'>TasklistGetCallBuilder</a></td>
                         <td class='docblock short'><p>Returns the authenticated user&#39;s specified task list.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistInsertMethodBuilder.html'
-                               title='google-tasks1::TasklistInsertMethodBuilder'>TasklistInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistInsertCallBuilder.html'
+                               title='google-tasks1::TasklistInsertCallBuilder'>TasklistInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a new task list and adds it to the authenticated user&#39;s task lists.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistListMethodBuilder.html'
-                               title='google-tasks1::TasklistListMethodBuilder'>TasklistListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistListCallBuilder.html'
+                               title='google-tasks1::TasklistListCallBuilder'>TasklistListCallBuilder</a></td>
                         <td class='docblock short'><p>Returns all the authenticated user&#39;s task lists.</p>
 </td>
                     </tr>
@@ -397,15 +385,15 @@ It is not used directly, but through the <code>TasksHub</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistPatchMethodBuilder.html'
-                               title='google-tasks1::TasklistPatchMethodBuilder'>TasklistPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistPatchCallBuilder.html'
+                               title='google-tasks1::TasklistPatchCallBuilder'>TasklistPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Updates the authenticated user&#39;s specified task list. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistUpdateMethodBuilder.html'
-                               title='google-tasks1::TasklistUpdateMethodBuilder'>TasklistUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TasklistUpdateCallBuilder.html'
+                               title='google-tasks1::TasklistUpdateCallBuilder'>TasklistUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Updates the authenticated user&#39;s specified task list.</p>
 </td>
                     </tr>
@@ -414,15 +402,6 @@ It is not used directly, but through the <code>TasksHub</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Tasks.html'
                                title='google-tasks1::Tasks'>Tasks</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TaskListMethodBuilder.html">list tasks</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -435,11 +414,88 @@ The list links the activity name, along with information about where it is used 
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-tasks1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-tasks1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-tasks1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-tasks1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-tasks1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-tasks1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-tasks1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-tasks1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-tasks1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-tasks1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-tasks1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

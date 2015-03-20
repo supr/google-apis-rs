@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-bigquery2</a>::<wbr><a class='struct' href=''>JobMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-19198' href='../src/google-bigquery2/lib.rs.html#2112-2116'>[src]</a></span></h1>
+        </span><a id='src-35589' href='../src/google-bigquery2/lib.rs.html#1881-1885'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct JobMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>job</em> resources.
@@ -55,7 +55,7 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-bigquery2&quot;</span> <span class='kw'>as</span> <span class='ident'>bigquery2</span>;
  
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -67,32 +67,32 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Bigquery</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
-<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='comment'>// like `get(...)`, `get_query_results(...)`, `insert(...)`, `list(...)` and `query(...)`</span>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>jobs</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-bigquery2/struct.JobMethodsBuilder.html' title='google-bigquery2::JobMethodsBuilder'>JobMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.query' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.query' class='fnname'>query</a>(&amp;self, request: &amp;<a class='struct' href='../google-bigquery2/struct.QueryRequest.html' title='google-bigquery2::QueryRequest'>QueryRequest</a>, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobQueryMethodBuilder.html' title='google-bigquery2::JobQueryMethodBuilder'>JobQueryMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-bigquery2/struct.JobMethodsBuilder.html' title='google-bigquery2::JobMethodsBuilder'>JobMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.query' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.query' class='fnname'>query</a>(&amp;self, request: &amp;<a class='struct' href='../google-bigquery2/struct.QueryRequest.html' title='google-bigquery2::QueryRequest'>QueryRequest</a>, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobQueryCallBuilder.html' title='google-bigquery2::JobQueryCallBuilder'>JobQueryCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.    </p>
-</div><h4 id='method.get_query_results' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get_query_results' class='fnname'>get_query_results</a>(&amp;self, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, job_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobGetQueryResultMethodBuilder.html' title='google-bigquery2::JobGetQueryResultMethodBuilder'>JobGetQueryResultMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.get_query_results' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get_query_results' class='fnname'>get_query_results</a>(&amp;self, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, job_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobGetQueryResultCallBuilder.html' title='google-bigquery2::JobGetQueryResultCallBuilder'>JobGetQueryResultCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Retrieves the results of a query job.    </p>
-</div><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobListMethodBuilder.html' title='google-bigquery2::JobListMethodBuilder'>JobListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobListCallBuilder.html' title='google-bigquery2::JobListCallBuilder'>JobListCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Lists all the Jobs in the specified project that were started by the user. The job list returns in reverse chronological order of when the jobs were created, starting with the most recent job created.    </p>
-</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, job_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobGetMethodBuilder.html' title='google-bigquery2::JobGetMethodBuilder'>JobGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, job_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobGetCallBuilder.html' title='google-bigquery2::JobGetCallBuilder'>JobGetCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Retrieves the specified job by ID.    </p>
-</div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;self, request: &amp;<a class='struct' href='../google-bigquery2/struct.Job.html' title='google-bigquery2::Job'>Job</a>, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobInsertMethodBuilder.html' title='google-bigquery2::JobInsertMethodBuilder'>JobInsertMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;self, request: &amp;<a class='struct' href='../google-bigquery2/struct.Job.html' title='google-bigquery2::Job'>Job</a>, project_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-bigquery2/struct.JobInsertCallBuilder.html' title='google-bigquery2::JobInsertCallBuilder'>JobInsertCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Starts a new asynchronous job.    </p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-bigquery2/cmn/trait.ResourceMethodsBuilder.html' title='google-bigquery2::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-bigquery2/struct.JobMethodsBuilder.html' title='google-bigquery2::JobMethodsBuilder'>JobMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; ResourceMethodsBuilder for <a class='struct' href='../google-bigquery2/struct.JobMethodsBuilder.html' title='google-bigquery2::JobMethodsBuilder'>JobMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

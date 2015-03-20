@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-bigquery2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-bigquery2/lib.rs.html#5-7576'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-bigquery2/lib.rs.html#5-7319'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>bigquery</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/bigquery2">on github</a>.</p>
 
@@ -52,17 +52,37 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>Handle the following <em>Resources</em> with ease from the central <a href="struct.Bigquery.html">hub</a> ... </p>
 
 <ul>
-<li><a href="struct.Dataset.html">datasets</a> (<a href="struct.DatasetDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.DatasetGetMethodBuilder.html"><em>get</em></a>, <a href="struct.DatasetInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.DatasetListMethodBuilder.html"><em>list</em></a>, <a href="struct.DatasetPatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.DatasetUpdateMethodBuilder.html"><em>update</em></a>)</li>
-<li><a href="struct.Job.html">jobs</a> (<a href="struct.JobGetMethodBuilder.html"><em>get</em></a>, <a href="struct.JobGetQueryResultMethodBuilder.html"><em>get query results</em></a>, <a href="struct.JobInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.JobListMethodBuilder.html"><em>list</em></a> and <a href="struct.JobQueryMethodBuilder.html"><em>query</em></a>)</li>
-<li>projects (<a href="struct.ProjectListMethodBuilder.html"><em>list</em></a>)</li>
-<li>tabledata (<a href="struct.TabledataInsertAllMethodBuilder.html"><em>insert all</em></a> and <a href="struct.TabledataListMethodBuilder.html"><em>list</em></a>)</li>
-<li><a href="struct.Table.html">tables</a> (<a href="struct.TableDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.TableGetMethodBuilder.html"><em>get</em></a>, <a href="struct.TableInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.TableListMethodBuilder.html"><em>list</em></a>, <a href="struct.TablePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.TableUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li><a href="struct.Dataset.html">datasets</a>
+
+<ul>
+<li><a href="struct.DatasetDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.DatasetGetCallBuilder.html"><em>get</em></a>, <a href="struct.DatasetInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.DatasetListCallBuilder.html"><em>list</em></a>, <a href="struct.DatasetPatchCallBuilder.html"><em>patch</em></a> and <a href="struct.DatasetUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
+<li><a href="struct.Job.html">jobs</a>
+
+<ul>
+<li><a href="struct.JobGetCallBuilder.html"><em>get</em></a>, <a href="struct.JobGetQueryResultCallBuilder.html"><em>get query results</em></a>, <a href="struct.JobInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.JobListCallBuilder.html"><em>list</em></a> and <a href="struct.JobQueryCallBuilder.html"><em>query</em></a></li>
+</ul></li>
+<li>projects
+
+<ul>
+<li><a href="struct.ProjectListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li>tabledata
+
+<ul>
+<li><a href="struct.TabledataInsertAllCallBuilder.html"><em>insert all</em></a> and <a href="struct.TabledataListCallBuilder.html"><em>list</em></a></li>
+</ul></li>
+<li><a href="struct.Table.html">tables</a>
+
+<ul>
+<li><a href="struct.TableDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.TableGetCallBuilder.html"><em>get</em></a>, <a href="struct.TableInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.TableListCallBuilder.html"><em>list</em></a>, <a href="struct.TablePatchCallBuilder.html"><em>patch</em></a> and <a href="struct.TableUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
 </ul>
 
 <p>Upload supported by ...</p>
 
 <ul>
-<li><a href="struct.JobInsertMethodBuilder.html"><em>insert jobs</em></a></li>
+<li><a href="struct.JobInsertCallBuilder.html"><em>insert jobs</em></a></li>
 </ul>
 
 <p>Everything else about the <em>bigquery</em> <em>v2</em> API can be found at the
@@ -92,7 +112,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -133,10 +153,10 @@ google-bigquery2 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-bigquery2&quot;</span> <span class='kw'>as</span> <span class='ident'>bigquery2</span>;
 <span class='kw'>use</span> <span class='ident'>bigquery2</span>::<span class='ident'>Table</span>;
-<span class='kw'>use</span> <span class='ident'>bigquery2</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>bigquery2</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>bigquery2</span>::<span class='ident'>Bigquery</span>;
@@ -170,6 +190,7 @@ google-bigquery2 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -198,7 +219,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -213,7 +234,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -223,14 +244,7 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-bigquery2::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Bigquery.html'
@@ -243,20 +257,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Dataset.html'
                                title='google-bigquery2::Dataset'>Dataset</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.DatasetGetMethodBuilder.html">get datasets</a> (response)</li>
-<li><a href="struct.DatasetListMethodBuilder.html">list datasets</a> (none)</li>
-<li><a href="struct.DatasetPatchMethodBuilder.html">patch datasets</a> (request|response)</li>
-<li><a href="struct.DatasetUpdateMethodBuilder.html">update datasets</a> (request|response)</li>
-<li><a href="struct.DatasetDeleteMethodBuilder.html">delete datasets</a> (none)</li>
-<li><a href="struct.DatasetInsertMethodBuilder.html">insert datasets</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -264,28 +264,26 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetAccess.html'
                                title='google-bigquery2::DatasetAccess'>DatasetAccess</a></td>
                         <td class='docblock short'><p>[Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetDeleteMethodBuilder.html'
-                               title='google-bigquery2::DatasetDeleteMethodBuilder'>DatasetDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetDeleteCallBuilder.html'
+                               title='google-bigquery2::DatasetDeleteCallBuilder'>DatasetDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create another dataset with the same name.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetGetMethodBuilder.html'
-                               title='google-bigquery2::DatasetGetMethodBuilder'>DatasetGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetGetCallBuilder.html'
+                               title='google-bigquery2::DatasetGetCallBuilder'>DatasetGetCallBuilder</a></td>
                         <td class='docblock short'><p>Returns the dataset specified by datasetID.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetInsertMethodBuilder.html'
-                               title='google-bigquery2::DatasetInsertMethodBuilder'>DatasetInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetInsertCallBuilder.html'
+                               title='google-bigquery2::DatasetInsertCallBuilder'>DatasetInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a new empty dataset.</p>
 </td>
                     </tr>
@@ -294,15 +292,13 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetList.html'
                                title='google-bigquery2::DatasetList'>DatasetList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.DatasetListMethodBuilder.html">list datasets</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetListCallBuilder.html'
+                               title='google-bigquery2::DatasetListCallBuilder'>DatasetListCallBuilder</a></td>
+                        <td class='docblock short'><p>Lists all the datasets in the specified project to which the caller has read access; however, a project owner can list (but not necessarily get) all datasets in his project.</p>
 </td>
                     </tr>
                 
@@ -310,15 +306,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetListDatasets.html'
                                title='google-bigquery2::DatasetListDatasets'>DatasetListDatasets</a></td>
                         <td class='docblock short'><p>An array of the dataset resources in the project. Each resource contains basic information. For full information about a particular dataset resource, use the Datasets: get method. This property is omitted when there are no datasets in the project.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
-</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetListMethodBuilder.html'
-                               title='google-bigquery2::DatasetListMethodBuilder'>DatasetListMethodBuilder</a></td>
-                        <td class='docblock short'><p>Lists all the datasets in the specified project to which the caller has read access; however, a project owner can list (but not necessarily get) all datasets in his project.</p>
 </td>
                     </tr>
                 
@@ -331,8 +318,8 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetPatchMethodBuilder.html'
-                               title='google-bigquery2::DatasetPatchMethodBuilder'>DatasetPatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetPatchCallBuilder.html'
+                               title='google-bigquery2::DatasetPatchCallBuilder'>DatasetPatchCallBuilder</a></td>
                         <td class='docblock short'><p>Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource. This method supports patch semantics.</p>
 </td>
                     </tr>
@@ -341,15 +328,21 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetReference.html'
                                title='google-bigquery2::DatasetReference'>DatasetReference</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetUpdateMethodBuilder.html'
-                               title='google-bigquery2::DatasetUpdateMethodBuilder'>DatasetUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DatasetUpdateCallBuilder.html'
+                               title='google-bigquery2::DatasetUpdateCallBuilder'>DatasetUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-bigquery2::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -357,8 +350,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ErrorProto.html'
                                title='google-bigquery2::ErrorProto'>ErrorProto</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -366,15 +357,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.GetQueryResultsResponse.html'
                                title='google-bigquery2::GetQueryResultsResponse'>GetQueryResultsResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.JobGetQueryResultMethodBuilder.html">get query results jobs</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -382,19 +364,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Job.html'
                                title='google-bigquery2::Job'>Job</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.JobInsertMethodBuilder.html">insert jobs</a> (request|response)</li>
-<li><a href="struct.JobQueryMethodBuilder.html">query jobs</a> (none)</li>
-<li><a href="struct.JobListMethodBuilder.html">list jobs</a> (none)</li>
-<li><a href="struct.JobGetQueryResultMethodBuilder.html">get query results jobs</a> (none)</li>
-<li><a href="struct.JobGetMethodBuilder.html">get jobs</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -402,8 +371,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobConfiguration.html'
                                title='google-bigquery2::JobConfiguration'>JobConfiguration</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -411,8 +378,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobConfigurationExtract.html'
                                title='google-bigquery2::JobConfigurationExtract'>JobConfigurationExtract</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -420,8 +385,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobConfigurationLink.html'
                                title='google-bigquery2::JobConfigurationLink'>JobConfigurationLink</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -429,8 +392,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobConfigurationLoad.html'
                                title='google-bigquery2::JobConfigurationLoad'>JobConfigurationLoad</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -438,8 +399,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobConfigurationQuery.html'
                                title='google-bigquery2::JobConfigurationQuery'>JobConfigurationQuery</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -447,28 +406,26 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobConfigurationTableCopy.html'
                                title='google-bigquery2::JobConfigurationTableCopy'>JobConfigurationTableCopy</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobGetMethodBuilder.html'
-                               title='google-bigquery2::JobGetMethodBuilder'>JobGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobGetCallBuilder.html'
+                               title='google-bigquery2::JobGetCallBuilder'>JobGetCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the specified job by ID.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobGetQueryResultMethodBuilder.html'
-                               title='google-bigquery2::JobGetQueryResultMethodBuilder'>JobGetQueryResultMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobGetQueryResultCallBuilder.html'
+                               title='google-bigquery2::JobGetQueryResultCallBuilder'>JobGetQueryResultCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves the results of a query job.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobInsertMethodBuilder.html'
-                               title='google-bigquery2::JobInsertMethodBuilder'>JobInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobInsertCallBuilder.html'
+                               title='google-bigquery2::JobInsertCallBuilder'>JobInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Starts a new asynchronous job.</p>
 </td>
                     </tr>
@@ -477,15 +434,13 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobList.html'
                                title='google-bigquery2::JobList'>JobList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.JobListMethodBuilder.html">list jobs</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobListCallBuilder.html'
+                               title='google-bigquery2::JobListCallBuilder'>JobListCallBuilder</a></td>
+                        <td class='docblock short'><p>Lists all the Jobs in the specified project that were started by the user. The job list returns in reverse chronological order of when the jobs were created, starting with the most recent job created.</p>
 </td>
                     </tr>
                 
@@ -493,15 +448,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobListJobs.html'
                                title='google-bigquery2::JobListJobs'>JobListJobs</a></td>
                         <td class='docblock short'><p>List of jobs that were requested.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
-</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobListMethodBuilder.html'
-                               title='google-bigquery2::JobListMethodBuilder'>JobListMethodBuilder</a></td>
-                        <td class='docblock short'><p>Lists all the Jobs in the specified project that were started by the user. The job list returns in reverse chronological order of when the jobs were created, starting with the most recent job created.</p>
 </td>
                     </tr>
                 
@@ -514,8 +460,8 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobQueryMethodBuilder.html'
-                               title='google-bigquery2::JobQueryMethodBuilder'>JobQueryMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobQueryCallBuilder.html'
+                               title='google-bigquery2::JobQueryCallBuilder'>JobQueryCallBuilder</a></td>
                         <td class='docblock short'><p>Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.</p>
 </td>
                     </tr>
@@ -524,8 +470,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobReference.html'
                                title='google-bigquery2::JobReference'>JobReference</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -533,8 +477,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobStatistics.html'
                                title='google-bigquery2::JobStatistics'>JobStatistics</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -542,8 +484,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobStatistics2.html'
                                title='google-bigquery2::JobStatistics2'>JobStatistics2</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -551,8 +491,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobStatistics3.html'
                                title='google-bigquery2::JobStatistics3'>JobStatistics3</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -560,8 +498,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobStatistics4.html'
                                title='google-bigquery2::JobStatistics4'>JobStatistics4</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -569,8 +505,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JobStatus.html'
                                title='google-bigquery2::JobStatus'>JobStatus</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -578,8 +512,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JsonObject.html'
                                title='google-bigquery2::JsonObject'>JsonObject</a></td>
                         <td class='docblock short'><p>Represents a single JSON object.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -587,10 +519,23 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JsonValue.html'
                                title='google-bigquery2::JsonValue'>JsonValue</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
-
-<p>The contained type is <code>Option&lt;String&gt;</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-bigquery2::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-bigquery2::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -598,21 +543,12 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectList.html'
                                title='google-bigquery2::ProjectList'>ProjectList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectListMethodBuilder.html">list projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectListMethodBuilder.html'
-                               title='google-bigquery2::ProjectListMethodBuilder'>ProjectListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectListCallBuilder.html'
+                               title='google-bigquery2::ProjectListCallBuilder'>ProjectListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists the projects to which you have at least read access.</p>
 </td>
                     </tr>
@@ -621,8 +557,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectListProjects.html'
                                title='google-bigquery2::ProjectListProjects'>ProjectListProjects</a></td>
                         <td class='docblock short'><p>Projects to which you have at least READ access.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -638,8 +572,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectReference.html'
                                title='google-bigquery2::ProjectReference'>ProjectReference</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -647,15 +579,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.QueryRequest.html'
                                title='google-bigquery2::QueryRequest'>QueryRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.JobQueryMethodBuilder.html">query jobs</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -663,15 +586,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.QueryResponse.html'
                                title='google-bigquery2::QueryResponse'>QueryResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.JobQueryMethodBuilder.html">query jobs</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -679,20 +593,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Table.html'
                                title='google-bigquery2::Table'>Table</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TableUpdateMethodBuilder.html">update tables</a> (request|response)</li>
-<li><a href="struct.TableInsertMethodBuilder.html">insert tables</a> (request|response)</li>
-<li><a href="struct.TableListMethodBuilder.html">list tables</a> (none)</li>
-<li><a href="struct.TableDeleteMethodBuilder.html">delete tables</a> (none)</li>
-<li><a href="struct.TableGetMethodBuilder.html">get tables</a> (response)</li>
-<li><a href="struct.TablePatchMethodBuilder.html">patch tables</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -700,8 +600,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableCell.html'
                                title='google-bigquery2::TableCell'>TableCell</a></td>
                         <td class='docblock short'><p>Represents a single cell in the result set. Users of the java client can detect whether their value result is null by calling &#39;com.google.api.client.util.Data.isNull(cell.getV())&#39;.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -709,15 +607,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableDataInsertAllRequest.html'
                                title='google-bigquery2::TableDataInsertAllRequest'>TableDataInsertAllRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TabledataInsertAllMethodBuilder.html">insert all tabledata</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -725,8 +614,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableDataInsertAllRequestRows.html'
                                title='google-bigquery2::TableDataInsertAllRequestRows'>TableDataInsertAllRequestRows</a></td>
                         <td class='docblock short'><p>The rows to insert.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -734,15 +621,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableDataInsertAllResponse.html'
                                title='google-bigquery2::TableDataInsertAllResponse'>TableDataInsertAllResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TabledataInsertAllMethodBuilder.html">insert all tabledata</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -750,8 +628,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableDataInsertAllResponseInsertErrors.html'
                                title='google-bigquery2::TableDataInsertAllResponseInsertErrors'>TableDataInsertAllResponseInsertErrors</a></td>
                         <td class='docblock short'><p>An array of errors for rows that were not inserted.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -759,21 +635,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableDataList.html'
                                title='google-bigquery2::TableDataList'>TableDataList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TabledataListMethodBuilder.html">list tabledata</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableDeleteMethodBuilder.html'
-                               title='google-bigquery2::TableDeleteMethodBuilder'>TableDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableDeleteCallBuilder.html'
+                               title='google-bigquery2::TableDeleteCallBuilder'>TableDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted.</p>
 </td>
                     </tr>
@@ -782,21 +649,19 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableFieldSchema.html'
                                title='google-bigquery2::TableFieldSchema'>TableFieldSchema</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableGetMethodBuilder.html'
-                               title='google-bigquery2::TableGetMethodBuilder'>TableGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableGetCallBuilder.html'
+                               title='google-bigquery2::TableGetCallBuilder'>TableGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableInsertMethodBuilder.html'
-                               title='google-bigquery2::TableInsertMethodBuilder'>TableInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableInsertCallBuilder.html'
+                               title='google-bigquery2::TableInsertCallBuilder'>TableInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a new, empty table in the dataset.</p>
 </td>
                     </tr>
@@ -805,21 +670,12 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableList.html'
                                title='google-bigquery2::TableList'>TableList</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.TableListMethodBuilder.html">list tables</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableListMethodBuilder.html'
-                               title='google-bigquery2::TableListMethodBuilder'>TableListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableListCallBuilder.html'
+                               title='google-bigquery2::TableListCallBuilder'>TableListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists all tables in the specified dataset.</p>
 </td>
                     </tr>
@@ -828,8 +684,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableListTables.html'
                                title='google-bigquery2::TableListTables'>TableListTables</a></td>
                         <td class='docblock short'><p>Tables in the requested dataset.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -842,8 +696,8 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TablePatchMethodBuilder.html'
-                               title='google-bigquery2::TablePatchMethodBuilder'>TablePatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TablePatchCallBuilder.html'
+                               title='google-bigquery2::TablePatchCallBuilder'>TablePatchCallBuilder</a></td>
                         <td class='docblock short'><p>Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource. This method supports patch semantics.</p>
 </td>
                     </tr>
@@ -852,8 +706,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableReference.html'
                                title='google-bigquery2::TableReference'>TableReference</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -861,8 +713,6 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableRow.html'
                                title='google-bigquery2::TableRow'>TableRow</a></td>
                         <td class='docblock short'><p>Represents a single row in the result set, consisting of one or more fields.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -870,28 +720,26 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableSchema.html'
                                title='google-bigquery2::TableSchema'>TableSchema</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableUpdateMethodBuilder.html'
-                               title='google-bigquery2::TableUpdateMethodBuilder'>TableUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TableUpdateCallBuilder.html'
+                               title='google-bigquery2::TableUpdateCallBuilder'>TableUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TabledataInsertAllMethodBuilder.html'
-                               title='google-bigquery2::TabledataInsertAllMethodBuilder'>TabledataInsertAllMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TabledataInsertAllCallBuilder.html'
+                               title='google-bigquery2::TabledataInsertAllCallBuilder'>TabledataInsertAllCallBuilder</a></td>
                         <td class='docblock short'><p>Streams data into BigQuery one record at a time without needing to run a load job.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TabledataListMethodBuilder.html'
-                               title='google-bigquery2::TabledataListMethodBuilder'>TabledataListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TabledataListCallBuilder.html'
+                               title='google-bigquery2::TabledataListCallBuilder'>TabledataListCallBuilder</a></td>
                         <td class='docblock short'><p>Retrieves table data from a specified set of rows.</p>
 </td>
                     </tr>
@@ -908,18 +756,93 @@ It is not used directly, but through the <code>Bigquery</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ViewDefinition.html'
                                title='google-bigquery2::ViewDefinition'>ViewDefinition</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-bigquery2::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-bigquery2::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-bigquery2::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-bigquery2::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-bigquery2::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-bigquery2::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-bigquery2::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-bigquery2::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-bigquery2::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-bigquery2::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-bigquery2::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-siteverification1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-siteverification1/lib.rs.html#5-2213'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-siteverification1/lib.rs.html#5-2184'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>siteVerification</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/siteverification1">on github</a>.</p>
 
@@ -52,7 +52,11 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>It seems there is nothing you can do here ... .</p>
 
 <ul>
-<li>web resource (<a href="struct.WebResourceDeleteMethodBuilder.html"><em>delete</em></a>, <a href="struct.WebResourceGetMethodBuilder.html"><em>get</em></a>, <a href="struct.WebResourceGetTokenMethodBuilder.html"><em>get token</em></a>, <a href="struct.WebResourceInsertMethodBuilder.html"><em>insert</em></a>, <a href="struct.WebResourceListMethodBuilder.html"><em>list</em></a>, <a href="struct.WebResourcePatchMethodBuilder.html"><em>patch</em></a> and <a href="struct.WebResourceUpdateMethodBuilder.html"><em>update</em></a>)</li>
+<li>web resource
+
+<ul>
+<li><a href="struct.WebResourceDeleteCallBuilder.html"><em>delete</em></a>, <a href="struct.WebResourceGetCallBuilder.html"><em>get</em></a>, <a href="struct.WebResourceGetTokenCallBuilder.html"><em>get token</em></a>, <a href="struct.WebResourceInsertCallBuilder.html"><em>insert</em></a>, <a href="struct.WebResourceListCallBuilder.html"><em>list</em></a>, <a href="struct.WebResourcePatchCallBuilder.html"><em>patch</em></a> and <a href="struct.WebResourceUpdateCallBuilder.html"><em>update</em></a></li>
+</ul></li>
 </ul>
 
 <p>Everything else about the <em>siteVerification</em> <em>v1</em> API can be found at the
@@ -82,7 +86,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -121,10 +125,10 @@ google-siteverification1 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-siteverification1&quot;</span> <span class='kw'>as</span> <span class='ident'>siteverification1</span>;
 <span class='kw'>use</span> <span class='ident'>siteverification1</span>::<span class='ident'>SiteVerificationWebResourceResource</span>;
-<span class='kw'>use</span> <span class='ident'>siteverification1</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>siteverification1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>siteverification1</span>::<span class='ident'>SiteVerification</span>;
@@ -158,6 +162,7 @@ google-siteverification1 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -186,7 +191,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -201,7 +206,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -211,15 +216,33 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-siteverification1::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-siteverification1::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
+</td>
                     </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-siteverification1::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-siteverification1::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteVerification.html'
                                title='google-siteverification1::SiteVerification'>SiteVerification</a></td>
@@ -231,15 +254,6 @@ These will always take a single argument, for which the following statements are
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteVerificationWebResourceGettokenRequest.html'
                                title='google-siteverification1::SiteVerificationWebResourceGettokenRequest'>SiteVerificationWebResourceGettokenRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.WebResourceGetTokenMethodBuilder.html">get token web resource</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -247,8 +261,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteVerificationWebResourceGettokenRequestSite.html'
                                title='google-siteverification1::SiteVerificationWebResourceGettokenRequestSite'>SiteVerificationWebResourceGettokenRequestSite</a></td>
                         <td class='docblock short'><p>The site for which a verification token will be generated.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -256,15 +268,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteVerificationWebResourceGettokenResponse.html'
                                title='google-siteverification1::SiteVerificationWebResourceGettokenResponse'>SiteVerificationWebResourceGettokenResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.WebResourceGetTokenMethodBuilder.html">get token web resource</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -272,15 +275,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteVerificationWebResourceListResponse.html'
                                title='google-siteverification1::SiteVerificationWebResourceListResponse'>SiteVerificationWebResourceListResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.WebResourceListMethodBuilder.html">list web resource</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -288,18 +282,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteVerificationWebResourceResource.html'
                                title='google-siteverification1::SiteVerificationWebResourceResource'>SiteVerificationWebResourceResource</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.WebResourcePatchMethodBuilder.html">patch web resource</a> (request|response)</li>
-<li><a href="struct.WebResourceGetMethodBuilder.html">get web resource</a> (response)</li>
-<li><a href="struct.WebResourceInsertMethodBuilder.html">insert web resource</a> (request|response)</li>
-<li><a href="struct.WebResourceUpdateMethodBuilder.html">update web resource</a> (request|response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -307,42 +289,40 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.SiteVerificationWebResourceResourceSite.html'
                                title='google-siteverification1::SiteVerificationWebResourceResourceSite'>SiteVerificationWebResourceResourceSite</a></td>
                         <td class='docblock short'><p>The address and type of a site that is verified or will be verified.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceDeleteMethodBuilder.html'
-                               title='google-siteverification1::WebResourceDeleteMethodBuilder'>WebResourceDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceDeleteCallBuilder.html'
+                               title='google-siteverification1::WebResourceDeleteCallBuilder'>WebResourceDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Relinquish ownership of a website or domain.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceGetMethodBuilder.html'
-                               title='google-siteverification1::WebResourceGetMethodBuilder'>WebResourceGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceGetCallBuilder.html'
+                               title='google-siteverification1::WebResourceGetCallBuilder'>WebResourceGetCallBuilder</a></td>
                         <td class='docblock short'><p>Get the most current data for a website or domain.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceGetTokenMethodBuilder.html'
-                               title='google-siteverification1::WebResourceGetTokenMethodBuilder'>WebResourceGetTokenMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceGetTokenCallBuilder.html'
+                               title='google-siteverification1::WebResourceGetTokenCallBuilder'>WebResourceGetTokenCallBuilder</a></td>
                         <td class='docblock short'><p>Get a verification token for placing on a website or domain.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceInsertMethodBuilder.html'
-                               title='google-siteverification1::WebResourceInsertMethodBuilder'>WebResourceInsertMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceInsertCallBuilder.html'
+                               title='google-siteverification1::WebResourceInsertCallBuilder'>WebResourceInsertCallBuilder</a></td>
                         <td class='docblock short'><p>Attempt verification of a website or domain.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceListMethodBuilder.html'
-                               title='google-siteverification1::WebResourceListMethodBuilder'>WebResourceListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceListCallBuilder.html'
+                               title='google-siteverification1::WebResourceListCallBuilder'>WebResourceListCallBuilder</a></td>
                         <td class='docblock short'><p>Get the list of your verified websites and domains.</p>
 </td>
                     </tr>
@@ -356,26 +336,103 @@ It is not used directly, but through the <code>SiteVerification</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourcePatchMethodBuilder.html'
-                               title='google-siteverification1::WebResourcePatchMethodBuilder'>WebResourcePatchMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourcePatchCallBuilder.html'
+                               title='google-siteverification1::WebResourcePatchCallBuilder'>WebResourcePatchCallBuilder</a></td>
                         <td class='docblock short'><p>Modify the list of owners for your website or domain. This method supports patch semantics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceUpdateMethodBuilder.html'
-                               title='google-siteverification1::WebResourceUpdateMethodBuilder'>WebResourceUpdateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WebResourceUpdateCallBuilder.html'
+                               title='google-siteverification1::WebResourceUpdateCallBuilder'>WebResourceUpdateCallBuilder</a></td>
                         <td class='docblock short'><p>Modify the list of owners for your website or domain.</p>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-siteverification1::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-siteverification1::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-siteverification1::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-siteverification1::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-siteverification1::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-siteverification1::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-siteverification1::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-siteverification1::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-siteverification1::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-siteverification1::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-siteverification1::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

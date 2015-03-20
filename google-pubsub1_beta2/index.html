@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-pubsub1_beta2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-pubsub1_beta2/lib.rs.html#5-4429'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-pubsub1_beta2/lib.rs.html#5-4406'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>pubsub</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/pubsub1_beta2">on github</a>.</p>
 
@@ -52,7 +52,11 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <p>It seems there is nothing you can do here ... .</p>
 
 <ul>
-<li>projects (<a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html"><em>subscriptions.acknowledge</em></a>, <a href="struct.ProjectSubscriptionCreateMethodBuilder.html"><em>subscriptions.create</em></a>, <a href="struct.ProjectSubscriptionDeleteMethodBuilder.html"><em>subscriptions.delete</em></a>, <a href="struct.ProjectSubscriptionGetMethodBuilder.html"><em>subscriptions.get</em></a>, <a href="struct.ProjectSubscriptionListMethodBuilder.html"><em>subscriptions.list</em></a>, <a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html"><em>subscriptions.modify ack deadline</em></a>, <a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html"><em>subscriptions.modify push config</em></a>, <a href="struct.ProjectSubscriptionPullMethodBuilder.html"><em>subscriptions.pull</em></a>, <a href="struct.ProjectTopicCreateMethodBuilder.html"><em>topics.create</em></a>, <a href="struct.ProjectTopicDeleteMethodBuilder.html"><em>topics.delete</em></a>, <a href="struct.ProjectTopicGetMethodBuilder.html"><em>topics.get</em></a>, <a href="struct.ProjectTopicListMethodBuilder.html"><em>topics.list</em></a>, <a href="struct.ProjectTopicPublishMethodBuilder.html"><em>topics.publish</em></a> and <a href="struct.ProjectTopicSubscriptionListMethodBuilder.html"><em>topics.subscriptions.list</em></a>)</li>
+<li>projects
+
+<ul>
+<li><a href="struct.ProjectSubscriptionAcknowledgeCallBuilder.html"><em>subscriptions.acknowledge</em></a>, <a href="struct.ProjectSubscriptionCreateCallBuilder.html"><em>subscriptions.create</em></a>, <a href="struct.ProjectSubscriptionDeleteCallBuilder.html"><em>subscriptions.delete</em></a>, <a href="struct.ProjectSubscriptionGetCallBuilder.html"><em>subscriptions.get</em></a>, <a href="struct.ProjectSubscriptionListCallBuilder.html"><em>subscriptions.list</em></a>, <a href="struct.ProjectSubscriptionModifyAckDeadlineCallBuilder.html"><em>subscriptions.modify ack deadline</em></a>, <a href="struct.ProjectSubscriptionModifyPushConfigCallBuilder.html"><em>subscriptions.modify push config</em></a>, <a href="struct.ProjectSubscriptionPullCallBuilder.html"><em>subscriptions.pull</em></a>, <a href="struct.ProjectTopicCreateCallBuilder.html"><em>topics.create</em></a>, <a href="struct.ProjectTopicDeleteCallBuilder.html"><em>topics.delete</em></a>, <a href="struct.ProjectTopicGetCallBuilder.html"><em>topics.get</em></a>, <a href="struct.ProjectTopicListCallBuilder.html"><em>topics.list</em></a>, <a href="struct.ProjectTopicPublishCallBuilder.html"><em>topics.publish</em></a> and <a href="struct.ProjectTopicSubscriptionListCallBuilder.html"><em>topics.subscriptions.list</em></a></li>
+</ul></li>
 </ul>
 
 <p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
@@ -79,7 +83,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.MethodBuilder.html">Activities</a></strong>
+<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -119,10 +123,10 @@ google-pubsub1_beta2 = &quot;0.0.1&quot;
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-pubsub1_beta2&quot;</span> <span class='kw'>as</span> <span class='ident'>pubsub1_beta2</span>;
 <span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='ident'>AcknowledgeRequest</span>;
-<span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>;
+<span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>oauth2</span>::{<span class='ident'>Authenticator</span>, <span class='ident'>DefaultAuthenticatorDelegate</span>, <span class='ident'>ApplicationSecret</span>, <span class='ident'>MemoryStorage</span>};
 <span class='kw'>use</span> <span class='ident'>pubsub1_beta2</span>::<span class='ident'>Pubsub</span>;
@@ -156,6 +160,7 @@ google-pubsub1_beta2 = &quot;0.0.1&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
@@ -184,7 +189,7 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <h2 id="about-customization/callbacks" class='section-header'><a
                            href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
 <p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.MethodBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
@@ -199,7 +204,7 @@ the server to indicate either the set parts of the request or the desired parts 
 
 <h2 id="about-builder-arguments" class='section-header'><a
                            href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.MethodBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
@@ -209,28 +214,20 @@ These will always take a single argument, for which the following statements are
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='cmn/index.html'
-                               title='google-pubsub1_beta2::cmn'>cmn</a></td>
-                        <td class='docblock short'></td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.AcknowledgeRequest.html'
                                title='google-pubsub1_beta2::AcknowledgeRequest'>AcknowledgeRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html">subscriptions acknowledge projects</a> (request)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultDelegate.html'
+                               title='google-pubsub1_beta2::DefaultDelegate'>DefaultDelegate</a></td>
+                        <td class='docblock short'><p>A delegate with a conservative default implementation, which is used if no other delegate is
+set.</p>
 </td>
                     </tr>
                 
@@ -238,19 +235,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Empty.html'
                                title='google-pubsub1_beta2::Empty'>Empty</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionAcknowledgeMethodBuilder.html">subscriptions acknowledge projects</a> (response)</li>
-<li><a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html">subscriptions modify push config projects</a> (response)</li>
-<li><a href="struct.ProjectSubscriptionDeleteMethodBuilder.html">subscriptions delete projects</a> (response)</li>
-<li><a href="struct.ProjectTopicDeleteMethodBuilder.html">topics delete projects</a> (response)</li>
-<li><a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html">subscriptions modify ack deadline projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -258,15 +242,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListSubscriptionsResponse.html'
                                title='google-pubsub1_beta2::ListSubscriptionsResponse'>ListSubscriptionsResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionListMethodBuilder.html">subscriptions list projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -274,15 +249,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListTopicSubscriptionsResponse.html'
                                title='google-pubsub1_beta2::ListTopicSubscriptionsResponse'>ListTopicSubscriptionsResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectTopicSubscriptionListMethodBuilder.html">topics subscriptions list projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -290,15 +256,13 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ListTopicsResponse.html'
                                title='google-pubsub1_beta2::ListTopicsResponse'>ListTopicsResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectTopicListMethodBuilder.html">topics list projects</a> (response)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MethodInfo.html'
+                               title='google-pubsub1_beta2::MethodInfo'>MethodInfo</a></td>
+                        <td class='docblock short'><p>Contains information about an API request.</p>
 </td>
                     </tr>
                 
@@ -306,15 +270,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ModifyAckDeadlineRequest.html'
                                title='google-pubsub1_beta2::ModifyAckDeadlineRequest'>ModifyAckDeadlineRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html">subscriptions modify ack deadline projects</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -322,15 +277,16 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ModifyPushConfigRequest.html'
                                title='google-pubsub1_beta2::ModifyPushConfigRequest'>ModifyPushConfigRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html">subscriptions modify push config projects</a> (request)</li>
-</ul>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.MultiPartReader.html'
+                               title='google-pubsub1_beta2::MultiPartReader'>MultiPartReader</a></td>
+                        <td class='docblock short'><p>Provides a <code>Read</code> interface that converts multiple parts into the protocol
+identified by <a href="https://tools.ietf.org/html/rfc2387">RFC2387</a>.
+<strong>Note</strong>: This implementation is just as rich as it needs to be to perform uploads
+to google APIs, and might not be a fully-featured implementation.</p>
 </td>
                     </tr>
                 
@@ -343,99 +299,99 @@ It is not used directly, but through the <code>Pubsub</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionAcknowledgeMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionAcknowledgeMethodBuilder'>ProjectSubscriptionAcknowledgeMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionAcknowledgeCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionAcknowledgeCallBuilder'>ProjectSubscriptionAcknowledgeCallBuilder</a></td>
                         <td class='docblock short'><p>Acknowledges the messages associated with the ack tokens in the AcknowledgeRequest. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionCreateMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionCreateMethodBuilder'>ProjectSubscriptionCreateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionCreateCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionCreateCallBuilder'>ProjectSubscriptionCreateCallBuilder</a></td>
                         <td class='docblock short'><p>Creates a subscription to a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn&#39;t exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionDeleteMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionDeleteMethodBuilder'>ProjectSubscriptionDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionDeleteCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionDeleteCallBuilder'>ProjectSubscriptionDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription, or its topic unless the same topic is specified.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionGetMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionGetMethodBuilder'>ProjectSubscriptionGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionGetCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionGetCallBuilder'>ProjectSubscriptionGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets the configuration details of a subscription.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionListMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionListMethodBuilder'>ProjectSubscriptionListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionListCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionListCallBuilder'>ProjectSubscriptionListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists matching subscriptions.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyAckDeadlineMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionModifyAckDeadlineMethodBuilder'>ProjectSubscriptionModifyAckDeadlineMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyAckDeadlineCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionModifyAckDeadlineCallBuilder'>ProjectSubscriptionModifyAckDeadlineCallBuilder</a></td>
                         <td class='docblock short'><p>Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyPushConfigMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionModifyPushConfigMethodBuilder'>ProjectSubscriptionModifyPushConfigMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyPushConfigCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionModifyPushConfigCallBuilder'>ProjectSubscriptionModifyPushConfigCallBuilder</a></td>
                         <td class='docblock short'><p>Modifies the PushConfig for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty PushConfig) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the PushConfig.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionPullMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionPullMethodBuilder'>ProjectSubscriptionPullMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionPullCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionPullCallBuilder'>ProjectSubscriptionPullCallBuilder</a></td>
                         <td class='docblock short'><p>Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return UNAVAILABLE if there are too many concurrent pull requests pending for the given subscription.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicCreateMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicCreateMethodBuilder'>ProjectTopicCreateMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicCreateCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectTopicCreateCallBuilder'>ProjectTopicCreateCallBuilder</a></td>
                         <td class='docblock short'><p>Creates the given topic with the given name.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicDeleteMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicDeleteMethodBuilder'>ProjectTopicDeleteMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicDeleteCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectTopicDeleteCallBuilder'>ProjectTopicDeleteCallBuilder</a></td>
                         <td class='docblock short'><p>Deletes the topic with the given name. All subscriptions to this topic are detached from the topic. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicGetMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicGetMethodBuilder'>ProjectTopicGetMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicGetCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectTopicGetCallBuilder'>ProjectTopicGetCallBuilder</a></td>
                         <td class='docblock short'><p>Gets the configuration of a topic.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicListMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicListMethodBuilder'>ProjectTopicListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicListCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectTopicListCallBuilder'>ProjectTopicListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists matching topics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicPublishMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicPublishMethodBuilder'>ProjectTopicPublishMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicPublishCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectTopicPublishCallBuilder'>ProjectTopicPublishCallBuilder</a></td>
                         <td class='docblock short'><p>Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicSubscriptionListMethodBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicSubscriptionListMethodBuilder'>ProjectTopicSubscriptionListMethodBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicSubscriptionListCallBuilder.html'
+                               title='google-pubsub1_beta2::ProjectTopicSubscriptionListCallBuilder'>ProjectTopicSubscriptionListCallBuilder</a></td>
                         <td class='docblock short'><p>Lists the name of the subscriptions for this topic.</p>
 </td>
                     </tr>
@@ -444,15 +400,6 @@ It is not used directly, but through the <code>Pubsub</code> hub.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PublishRequest.html'
                                title='google-pubsub1_beta2::PublishRequest'>PublishRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectTopicPublishMethodBuilder.html">topics publish projects</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -460,15 +407,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PublishResponse.html'
                                title='google-pubsub1_beta2::PublishResponse'>PublishResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectTopicPublishMethodBuilder.html">topics publish projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -483,8 +421,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PubsubMessage.html'
                                title='google-pubsub1_beta2::PubsubMessage'>PubsubMessage</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -492,15 +428,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PullRequest.html'
                                title='google-pubsub1_beta2::PullRequest'>PullRequest</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionPullMethodBuilder.html">subscriptions pull projects</a> (request)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -508,15 +435,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PullResponse.html'
                                title='google-pubsub1_beta2::PullResponse'>PullResponse</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionPullMethodBuilder.html">subscriptions pull projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -524,8 +442,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PushConfig.html'
                                title='google-pubsub1_beta2::PushConfig'>PushConfig</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -533,8 +449,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReceivedMessage.html'
                                title='google-pubsub1_beta2::ReceivedMessage'>ReceivedMessage</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<p>This type is not used in any activity, and only used as <em>part</em> of another schema.</p>
 </td>
                     </tr>
                 
@@ -542,16 +456,6 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Subscription.html'
                                title='google-pubsub1_beta2::Subscription'>Subscription</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectSubscriptionCreateMethodBuilder.html">subscriptions create projects</a> (request|response)</li>
-<li><a href="struct.ProjectSubscriptionGetMethodBuilder.html">subscriptions get projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 
@@ -559,26 +463,93 @@ The list links the activity name, along with information about where it is used 
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Topic.html'
                                title='google-pubsub1_beta2::Topic'>Topic</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
-
-<h1 id="activities" class='section-header'><a
-                           href="#activities">Activities</a></h1>
-<p>This type is used in activities, which are methods you may call on this type or where this type is involved in. 
-The list links the activity name, along with information about where it is used (one of <em>request</em> and <em>response</em>).</p>
-
-<ul>
-<li><a href="struct.ProjectTopicCreateMethodBuilder.html">topics create projects</a> (request|response)</li>
-<li><a href="struct.ProjectTopicGetMethodBuilder.html">topics get projects</a> (response)</li>
-</ul>
 </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Result.html'
+                               title='google-pubsub1_beta2::Result'>Result</a></td>
+                        <td class='docblock short'><p>A universal result type used as return for all action method results.</p>
+</td>
+                    </tr>
+                
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Scope.html'
                                title='google-pubsub1_beta2::Scope'>Scope</a></td>
                         <td class='docblock short'><p>Identifies the an OAuth2 authorization scope.
 A scope is needed when requesting an
 <a href="https://developers.google.com/youtube/v3/guides/authentication">authorization token</a>.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.CallBuilder.html'
+                               title='google-pubsub1_beta2::CallBuilder'>CallBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types which represent builders for a particular resource method</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Delegate.html'
+                               title='google-pubsub1_beta2::Delegate'>Delegate</a></td>
+                        <td class='docblock short'><p>A trait specifying functionality to help controlling any request performed by the API.
+The trait has a conservative default implementation.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Hub.html'
+                               title='google-pubsub1_beta2::Hub'>Hub</a></td>
+                        <td class='docblock short'><p>Identifies the Hub. There is only one per library, this trait is supposed
+to make intended use more explicit.
+The hub allows to access all resource methods more easily.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NestedType.html'
+                               title='google-pubsub1_beta2::NestedType'>NestedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used by other types internally.
+They have no special meaning, this trait just marks them for completeness.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Part.html'
+                               title='google-pubsub1_beta2::Part'>Part</a></td>
+                        <td class='docblock short'><p>Identifies types which are only used as part of other types, which
+usually are carrying the <code>Resource</code> trait.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ReadSeek.html'
+                               title='google-pubsub1_beta2::ReadSeek'>ReadSeek</a></td>
+                        <td class='docblock short'><p>A utility to specify reader types which provide seeking capabilities too</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
+                               title='google-pubsub1_beta2::RequestValue'>RequestValue</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResponseResult.html'
+                               title='google-pubsub1_beta2::ResponseResult'>ResponseResult</a></td>
+                        <td class='docblock short'><p>Identifies types which are used in API responses.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
+                               title='google-pubsub1_beta2::UnusedType'>UnusedType</a></td>
+                        <td class='docblock short'><p>Identifies types which are not actually used by the API
+This might be a bug within the google API schema.</p>
 </td>
                     </tr>
                 </table></section>

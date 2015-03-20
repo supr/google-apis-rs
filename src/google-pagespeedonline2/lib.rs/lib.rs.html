@@ -964,6 +964,20 @@
 <span id="922">922</span>
 <span id="923">923</span>
 <span id="924">924</span>
+<span id="925">925</span>
+<span id="926">926</span>
+<span id="927">927</span>
+<span id="928">928</span>
+<span id="929">929</span>
+<span id="930">930</span>
+<span id="931">931</span>
+<span id="932">932</span>
+<span id="933">933</span>
+<span id="934">934</span>
+<span id="935">935</span>
+<span id="936">936</span>
+<span id="937">937</span>
+<span id="938">938</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
@@ -975,7 +989,8 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! It seems there is nothing you can do here ... .</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! * pagespeedapi ([*runpagespeed*](struct.PagespeedapiRunpagespeedMethodBuilder.html))</span>
+<span class='doccomment'>//! * pagespeedapi</span>
+<span class='doccomment'>//!  * [*runpagespeed*](struct.PagespeedapiRunpagespeedCallBuilder.html)</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
@@ -996,7 +1011,7 @@
 <span class='doccomment'>//!     * **[Parts](cmn/trait.Part.html)**</span>
 <span class='doccomment'>//!         * a collection of properties</span>
 <span class='doccomment'>//!         * never directly used in *Activities*</span>
-<span class='doccomment'>//! * **[Activities](cmn/trait.MethodBuilder.html)**</span>
+<span class='doccomment'>//! * **[Activities](cmn/trait.CallBuilder.html)**</span>
 <span class='doccomment'>//!     * operations to apply to *Resources*</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Generally speaking, you can invoke *Activities* like this:</span>
@@ -1032,9 +1047,9 @@
 <span class='doccomment'>//! ```test_harness,no_run</span>
 <span class='doccomment'>//! extern crate hyper;</span>
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>//! extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>//! extern crate serde;</span>
 <span class='doccomment'>//! extern crate &quot;google-pagespeedonline2&quot; as pagespeedonline2;</span>
-<span class='doccomment'>//! use pagespeedonline2::cmn::Result;</span>
+<span class='doccomment'>//! use pagespeedonline2::Result;</span>
 <span class='doccomment'>//! # #[test] fn egal() {</span>
 <span class='doccomment'>//! use std::default::Default;</span>
 <span class='doccomment'>//! use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -1069,6 +1084,7 @@
 <span class='doccomment'>//!     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
 <span class='doccomment'>//!     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//!     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>//!     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
 <span class='doccomment'>//!     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! # }</span>
@@ -1096,7 +1112,7 @@
 <span class='doccomment'>//! ## About Customization/Callbacks</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! You may alter the way an `doit()` method is called by providing a [delegate](cmn/trait.Delegate.html) to the </span>
-<span class='doccomment'>//! [Method Builder](cmn/trait.MethodBuilder.html) before making the final `doit()` call. </span>
+<span class='doccomment'>//! [Method Builder](cmn/trait.CallBuilder.html) before making the final `doit()` call. </span>
 <span class='doccomment'>//! Respective methods will be called to provide progress information, as well as determine whether the system should </span>
 <span class='doccomment'>//! retry on failure.</span>
 <span class='doccomment'>//! </span>
@@ -1111,7 +1127,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## About Builder Arguments</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Using [method builders](cmn/trait.MethodBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
+<span class='doccomment'>//! Using [method builders](cmn/trait.CallBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
 <span class='doccomment'>//! These will always take a single argument, for which the following statements are true.</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [PODs][wiki-pod] are handed by copy</span>
@@ -1132,15 +1148,17 @@
 <span class='comment'>// Instead of pre-determining this, we just disable the lint. It&#39;s manually tuned to not have any </span>
 <span class='comment'>// unused imports in fully featured APIs. Same with unused_mut ... .</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>unused_imports</span>, <span class='ident'>unused_mut</span>)]</span>
-
+<span class='comment'>// Required for serde annotations</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>custom_derive</span>, <span class='ident'>custom_attribute</span>, <span class='ident'>plugin</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>plugin</span>(<span class='ident'>serde_macros</span>)]</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>mime</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>url</span>;
 
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>cmn</span>;
+<span class='kw'>mod</span> <span class='ident'>cmn</span>;
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>RefCell</span>;
@@ -1148,12 +1166,12 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
-<span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>;
+<span class='kw'>use</span> <span class='ident'>serde</span>::<span class='ident'>json</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::<span class='ident'>timer</span>::<span class='ident'>sleep</span>;
 
-<span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>MultiPartReader</span>, <span class='ident'>MethodInfo</span>, <span class='prelude-ty'>Result</span>, <span class='ident'>CallBuilder</span>, <span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>, <span class='ident'>UnusedType</span>};
 
 
 <span class='comment'>// ##############</span>
@@ -1176,9 +1194,9 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-pagespeedonline2&quot; as pagespeedonline2;</span>
-<span class='doccomment'>/// use pagespeedonline2::cmn::Result;</span>
+<span class='doccomment'>/// use pagespeedonline2::Result;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// use std::default::Default;</span>
 <span class='doccomment'>/// use oauth2::{Authenticator, DefaultAuthenticatorDelegate, ApplicationSecret, MemoryStorage};</span>
@@ -1213,6 +1231,7 @@
 <span class='doccomment'>///     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
 <span class='doccomment'>///     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>///     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>///     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
 <span class='doccomment'>///     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>/// }</span>
 <span class='doccomment'>/// # }</span>
@@ -1262,218 +1281,225 @@
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedApiFormatStringV2ArgsSecondaryRects</span> {
     <span class='doccomment'>/// The width of the rect.    </span>
-    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The top coordinate of the rect, in page coordinates.    </span>
-    <span class='kw'>pub</span> <span class='ident'>top</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>top</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The height of the rect.    </span>
-    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The left coordinate of the rect, in page coordinates.    </span>
-    <span class='kw'>pub</span> <span class='ident'>left</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>left</span>: <span class='ident'>i32</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2ArgsSecondaryRects</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2ArgsSecondaryRects</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2ArgsSecondaryRects</span> {}
 
 
 <span class='doccomment'>/// The screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments. If this is absent for a SNAPSHOT_RECT argument, it means that that argument refers to the entire snapshot.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedApiFormatStringV2ArgsRects</span> {
     <span class='doccomment'>/// The width of the rect.    </span>
-    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The top coordinate of the rect, in page coordinates.    </span>
-    <span class='kw'>pub</span> <span class='ident'>top</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>top</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The height of the rect.    </span>
-    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The left coordinate of the rect, in page coordinates.    </span>
-    <span class='kw'>pub</span> <span class='ident'>left</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>left</span>: <span class='ident'>i32</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2ArgsRects</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2ArgsRects</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2ArgsRects</span> {}
 
 
 <span class='doccomment'>/// There is no detailed description.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedApiFormatStringV2</span> {
     <span class='doccomment'>/// List of arguments for the format string.    </span>
     <span class='kw'>pub</span> <span class='ident'>args</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiFormatStringV2Args</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// A localized format string with {{FOO}} placeholders, where &#39;FOO&#39; is the key of the argument whose value should be substituted. For HYPERLINK arguments, the format string will instead contain {{BEGIN_FOO}} and {{END_FOO}} for the argument with key &#39;FOO&#39;.    </span>
-    <span class='kw'>pub</span> <span class='ident'>format</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>format</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2</span> {}
 
 
 <span class='doccomment'>/// List of entries that provide information about URLs in the url block. Optional.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocksUrls</span> {
     <span class='doccomment'>/// List of entries that provide additional details about a single URL. Optional.    </span>
     <span class='kw'>pub</span> <span class='ident'>details</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiFormatStringV2</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// A format string that gives information about the URL, and a list of arguments for that format string.    </span>
-    <span class='kw'>pub</span> <span class='ident'>result</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiFormatStringV2</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>result</span>: <span class='ident'>PagespeedApiFormatStringV2</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocksUrls</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocksUrls</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocksUrls</span> {}
 
 
 <span class='doccomment'>/// Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultPageStats</span> {
     <span class='doccomment'>/// Number of response bytes for flash resources on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>flash_response_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;flashResponseBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>flash_response_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Total size of all request bytes sent by the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>total_request_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;totalRequestBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>total_request_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Number of CSS resources referenced by the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>number_css_resources</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;numberCssResources&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>number_css_resources</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// Number of uncompressed response bytes for text resources not covered by other statistics (i.e non-HTML, non-script, non-CSS resources) on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>text_response_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;textResponseBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>text_response_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Number of HTTP resources loaded by the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>number_resources</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;numberResources&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>number_resources</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// Number of response bytes for other resources on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>other_response_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;otherResponseBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>other_response_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Number of response bytes for image resources on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>image_response_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;imageResponseBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>image_response_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Number of unique hosts referenced by the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>number_hosts</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;numberHosts&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>number_hosts</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// Number of uncompressed response bytes for JS resources on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>javascript_response_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;javascriptResponseBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>javascript_response_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Number of uncompressed response bytes for the main HTML document and all iframes on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>html_response_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;htmlResponseBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>html_response_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Number of uncompressed response bytes for CSS resources on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>css_response_bytes</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;cssResponseBytes&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>css_response_bytes</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Number of JavaScript resources referenced by the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>number_js_resources</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;numberJsResources&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>number_js_resources</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// Number of static (i.e. cacheable) resources on the page.    </span>
-    <span class='kw'>pub</span> <span class='ident'>number_static_resources</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;numberStaticResources&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>number_static_resources</span>: <span class='ident'>i32</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>ResultPageStats</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>ResultPageStats</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultPageStats</span> {}
 
 
 <span class='doccomment'>/// The enum-like identifier for this rule. For instance &quot;EnableKeepAlive&quot; or &quot;AvoidCssImport&quot;. Not localized.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultFormattedResultsRuleResults</span> {
     <span class='doccomment'>/// Localized name of the rule, intended for presentation to a user.    </span>
-    <span class='kw'>pub</span> <span class='ident'>localized_rule_name</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;localizedRuleName&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>localized_rule_name</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;urlBlocks&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>url_blocks</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>ResultFormattedResultsRuleResultsUrlBlocks</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// List of rule groups that this rule belongs to. Each entry in the list is one of &quot;SPEED&quot; or &quot;USABILITY&quot;.    </span>
     <span class='kw'>pub</span> <span class='ident'>groups</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// The impact (unbounded floating point value) that implementing the suggestions for this rule would have on making the page faster. Impact is comparable between rules to determine which rule&#39;s suggestions would have a higher or lower impact on making a page faster. For instance, if enabling compression would save 1MB, while optimizing images would save 500kB, the enable compression rule would have 2x the impact of the image optimization rule, all other things being equal.    </span>
-    <span class='kw'>pub</span> <span class='ident'>rule_impact</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>f64</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;ruleImpact&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>rule_impact</span>: <span class='ident'>f64</span>,
     <span class='doccomment'>/// A brief summary description for the rule, indicating at a high level what should be done to follow the rule and what benefit can be gained by doing so.    </span>
-    <span class='kw'>pub</span> <span class='ident'>summary</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiFormatStringV2</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>summary</span>: <span class='ident'>PagespeedApiFormatStringV2</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResults</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResults</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResults</span> {}
 
 
 <span class='doccomment'>/// The version of PageSpeed used to generate these results.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultVersion</span> {
     <span class='doccomment'>/// The major version number of PageSpeed used to generate these results.    </span>
-    <span class='kw'>pub</span> <span class='ident'>major</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>major</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The minor version number of PageSpeed used to generate these results.    </span>
-    <span class='kw'>pub</span> <span class='ident'>minor</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>minor</span>: <span class='ident'>i32</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>ResultVersion</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>ResultVersion</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultVersion</span> {}
 
 
 <span class='doccomment'>/// List of arguments for the format string.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedApiFormatStringV2Args</span> {
     <span class='doccomment'>/// The screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments. If this is absent for a SNAPSHOT_RECT argument, it means that that argument refers to the entire snapshot.    </span>
     <span class='kw'>pub</span> <span class='ident'>rects</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiFormatStringV2ArgsRects</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// The placeholder key for this arg, as a string.    </span>
-    <span class='kw'>pub</span> <span class='ident'>key</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>key</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, DURATION, VERBATIM_STRING, PERCENTAGE, HYPERLINK, or SNAPSHOT_RECT.    </span>
-    <span class='kw'>pub</span> <span class='ident'>type_</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;type&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>type_</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Secondary screen rectangles being referred to, with dimensions measured in CSS pixels. This is only ever used for SNAPSHOT_RECT arguments.    </span>
     <span class='kw'>pub</span> <span class='ident'>secondary_rects</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiFormatStringV2ArgsSecondaryRects</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Argument value, as a localized string.    </span>
-    <span class='kw'>pub</span> <span class='ident'>value</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>value</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2Args</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2Args</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiFormatStringV2Args</span> {}
 
 
 <span class='doccomment'>/// List of blocks of URLs. Each block may contain a heading and a list of URLs. Each URL may optionally include additional details.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocks</span> {
     <span class='doccomment'>/// Heading to be displayed with the list of URLs.    </span>
-    <span class='kw'>pub</span> <span class='ident'>header</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiFormatStringV2</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>header</span>: <span class='ident'>PagespeedApiFormatStringV2</span>,
     <span class='doccomment'>/// List of entries that provide information about URLs in the url block. Optional.    </span>
     <span class='kw'>pub</span> <span class='ident'>urls</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>ResultFormattedResultsRuleResultsUrlBlocksUrls</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocks</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocks</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResultsRuleResultsUrlBlocks</span> {}
 
 
 <span class='doccomment'>/// There is no detailed description.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedApiImageV2</span> {
     <span class='doccomment'>/// Width of screenshot in pixels.    </span>
-    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// Unique string key, if any, identifying this image.    </span>
-    <span class='kw'>pub</span> <span class='ident'>key</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>key</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// The region of the page that is captured by this image, with dimensions measured in CSS pixels.    </span>
-    <span class='kw'>pub</span> <span class='ident'>page_rect</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiImageV2PageRect</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>page_rect</span>: <span class='ident'>PagespeedApiImageV2PageRect</span>,
     <span class='doccomment'>/// Image data base64 encoded.    </span>
-    <span class='kw'>pub</span> <span class='ident'>data</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>data</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Mime type of image data (e.g. &quot;image/jpeg&quot;).    </span>
-    <span class='kw'>pub</span> <span class='ident'>mime_type</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>mime_type</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Height of screenshot in pixels.    </span>
-    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='ident'>i32</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiImageV2</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiImageV2</span> {}
 
 
 <span class='doccomment'>/// There is no detailed description.</span>
@@ -1483,91 +1509,94 @@
 <span class='doccomment'>/// This type is used in activities, which are methods you may call on this type or where this type is involved in. </span>
 <span class='doccomment'>/// The list links the activity name, along with information about where it is used (one of *request* and *response*).</span>
 <span class='doccomment'>/// </span>
-<span class='doccomment'>/// * [runpagespeed pagespeedapi](struct.PagespeedapiRunpagespeedMethodBuilder.html) (response)</span>
+<span class='doccomment'>/// * [runpagespeed pagespeedapi](struct.PagespeedapiRunpagespeedCallBuilder.html) (response)</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='prelude-ty'>Result</span> {
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultType</span> {
     <span class='doccomment'>/// Kind of result.    </span>
-    <span class='kw'>pub</span> <span class='ident'>kind</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>kind</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Response code for the document. 200 indicates a normal page load. 4xx/5xx indicates an error.    </span>
-    <span class='kw'>pub</span> <span class='ident'>response_code</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;responseCode&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>response_code</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// Base64-encoded screenshot of the page that was analyzed.    </span>
-    <span class='kw'>pub</span> <span class='ident'>screenshot</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>PagespeedApiImageV2</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>screenshot</span>: <span class='ident'>PagespeedApiImageV2</span>,
     <span class='doccomment'>/// Title of the page, as displayed in the browser&#39;s title bar.    </span>
-    <span class='kw'>pub</span> <span class='ident'>title</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>title</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// A map with one entry for each rule group in these results.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;ruleGroups&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>rule_groups</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>ResultRuleGroups</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// The version of PageSpeed used to generate these results.    </span>
-    <span class='kw'>pub</span> <span class='ident'>version</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>ResultVersion</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>version</span>: <span class='ident'>ResultVersion</span>,
     <span class='doccomment'>/// Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server.    </span>
-    <span class='kw'>pub</span> <span class='ident'>formatted_results</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>ResultFormattedResults</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;formattedResults&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>formatted_results</span>: <span class='ident'>ResultFormattedResults</span>,
     <span class='doccomment'>/// List of rules that were specified in the request, but which the server did not know how to instantiate.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;invalidRules&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>invalid_rules</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='doccomment'>/// Summary statistics for the page, such as number of JavaScript bytes, number of HTML bytes, etc.    </span>
-    <span class='kw'>pub</span> <span class='ident'>page_stats</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>ResultPageStats</span><span class='op'>&gt;</span>,
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;pageStats&quot;</span>)]</span>
+    <span class='kw'>pub</span> <span class='ident'>page_stats</span>: <span class='ident'>ResultPageStats</span>,
     <span class='doccomment'>/// Canonicalized and final URL for the document, after following page redirects (if any).    </span>
-    <span class='kw'>pub</span> <span class='ident'>id</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>id</span>: <span class='ident'>String</span>,
 }
 
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='prelude-ty'>Result</span> {}
+<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultType</span> {}
 
 
 <span class='doccomment'>/// The region of the page that is captured by this image, with dimensions measured in CSS pixels.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedApiImageV2PageRect</span> {
     <span class='doccomment'>/// The width of the rect.    </span>
-    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>width</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The top coordinate of the rect, in page coordinates.    </span>
-    <span class='kw'>pub</span> <span class='ident'>top</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>top</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The height of the rect.    </span>
-    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>height</span>: <span class='ident'>i32</span>,
     <span class='doccomment'>/// The left coordinate of the rect, in page coordinates.    </span>
-    <span class='kw'>pub</span> <span class='ident'>left</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>left</span>: <span class='ident'>i32</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiImageV2PageRect</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiImageV2PageRect</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>PagespeedApiImageV2PageRect</span> {}
 
 
 <span class='doccomment'>/// Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and run by the server.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultFormattedResults</span> {
     <span class='doccomment'>/// The locale of the formattedResults, e.g. &quot;en_US&quot;.    </span>
-    <span class='kw'>pub</span> <span class='ident'>locale</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>locale</span>: <span class='ident'>String</span>,
     <span class='doccomment'>/// Dictionary of formatted rule results, with one entry for each PageSpeed rule instantiated and run by the server.    </span>
+    <span class='attribute'>#[<span class='ident'>serde</span>(<span class='ident'>alias</span><span class='op'>=</span><span class='string'>&quot;ruleResults&quot;</span>)]</span>
     <span class='kw'>pub</span> <span class='ident'>rule_results</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>ResultFormattedResultsRuleResults</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResults</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResults</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultFormattedResults</span> {}
 
 
 <span class='doccomment'>/// The name of this rule group: one of &quot;SPEED&quot; or &quot;USABILITY&quot;.</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// This type is not used in any activity, and only used as *part* of another schema.</span>
 <span class='doccomment'>/// </span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>RustcDecodable</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Default</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>Deserialize</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ResultRuleGroups</span> {
     <span class='doccomment'>/// The score (0-100) for this rule group, which indicates how much better a page could be in that category (e.g. how much faster, or how much more usable). A high score indicates little room for improvement, while a lower score indicates more room for improvement.    </span>
-    <span class='kw'>pub</span> <span class='ident'>score</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>score</span>: <span class='ident'>i32</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>NestedType</span> <span class='kw'>for</span> <span class='ident'>ResultRuleGroups</span> {}
 <span class='kw'>impl</span> <span class='ident'>Part</span> <span class='kw'>for</span> <span class='ident'>ResultRuleGroups</span> {}
-<span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>ResultRuleGroups</span> {}
 
 
 
 <span class='comment'>// ###################</span>
-<span class='comment'>// MethodBuilders ###</span>
+<span class='comment'>// CallBuilders ###</span>
 <span class='comment'>// #################</span>
 
 <span class='doccomment'>/// A builder providing access to all methods supported on *pagespeedapi* resources.</span>
@@ -1580,7 +1609,7 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-pagespeedonline2&quot; as pagespeedonline2;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -1593,7 +1622,7 @@
 <span class='doccomment'>///                               hyper::Client::new(),</span>
 <span class='doccomment'>///                               &lt;MemoryStorage as Default&gt;::default(), None);</span>
 <span class='doccomment'>/// let mut hub = Pagespeedonline::new(hyper::Client::new(), auth);</span>
-<span class='doccomment'>/// // Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='doccomment'>/// // Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='doccomment'>/// // like `runpagespeed(...)`</span>
 <span class='doccomment'>/// // to build up your call.</span>
 <span class='doccomment'>/// let rb = hub.pagespeedapi();</span>
@@ -1612,8 +1641,8 @@
     <span class='doccomment'>/// Create a builder to help you perform the following task:</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>runpagespeed</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>url</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
-        <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>runpagespeed</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>url</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+        <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span> {
             <span class='ident'>hub</span>: <span class='self'>self</span>.<span class='ident'>hub</span>,
             <span class='ident'>_url</span>: <span class='ident'>url</span>.<span class='ident'>to_string</span>(),
             <span class='ident'>_strategy</span>: <span class='ident'>Default</span>::<span class='ident'>default</span>(),
@@ -1647,7 +1676,7 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate &quot;rustc-serialize&quot; as rustc_serialize;</span>
+<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-pagespeedonline2&quot; as pagespeedonline2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -1671,7 +1700,7 @@
 <span class='doccomment'>///              .doit();</span>
 <span class='doccomment'>/// # }</span>
 <span class='doccomment'>/// ```</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
     <span class='kw'>where</span> <span class='ident'>C</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>NC</span>: <span class='lifetime'>&#39;a</span>, <span class='ident'>A</span>: <span class='lifetime'>&#39;a</span> {
 
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Pagespeedonline</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
@@ -1685,20 +1714,23 @@
     <span class='ident'>_additional_params</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>MethodBuilder</span> <span class='kw'>for</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>CallBuilder</span> <span class='kw'>for</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>NC</span>: <span class='ident'>hyper</span>::<span class='ident'>net</span>::<span class='ident'>NetworkConnector</span>, <span class='ident'>C</span>: <span class='ident'>BorrowMut</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>Client</span><span class='op'>&lt;</span><span class='ident'>NC</span><span class='op'>&gt;&gt;</span>, <span class='ident'>A</span>: <span class='ident'>oauth2</span>::<span class='ident'>GetToken</span> {
 
 
     <span class='doccomment'>/// Perform the operation you have build so far.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>doit</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span>, <span class='prelude-ty'>Result</span>)<span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>doit</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span>, <span class='ident'>ResultType</span>)<span class='op'>&gt;</span> {
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>IntoBody</span>;
         <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='ident'>Read</span>, <span class='ident'>Seek</span>};
         <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Authorization</span>, <span class='ident'>UserAgent</span>};
-        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>d</span>.<span class='ident'>begin</span>(<span class='ident'>cmn</span>::<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;pagespeedonline.pagespeedapi.runpagespeed&quot;</span>, 
-                                      <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
-        }
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dd</span> <span class='op'>=</span> <span class='ident'>DefaultDelegate</span>;
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dlg</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Delegate</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
+            <span class='prelude-val'>Some</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>,
+            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>dd</span>
+        };
+        <span class='ident'>dlg</span>.<span class='ident'>begin</span>(<span class='ident'>MethodInfo</span> { <span class='ident'>id</span>: <span class='string'>&quot;pagespeedonline.pagespeedapi.runpagespeed&quot;</span>, 
+                               <span class='ident'>http_method</span>: <span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span> });
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>params</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>with_capacity</span>((<span class='number'>8</span> <span class='op'>+</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>len</span>()));
         <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;url&quot;</span>, <span class='self'>self</span>.<span class='ident'>_url</span>.<span class='ident'>to_string</span>()));
         <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_strategy</span> {
@@ -1722,8 +1754,8 @@
         }
         <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='ident'>field</span> <span class='kw'>in</span> [<span class='string'>&quot;alt&quot;</span>, <span class='string'>&quot;url&quot;</span>, <span class='string'>&quot;strategy&quot;</span>, <span class='string'>&quot;screenshot&quot;</span>, <span class='string'>&quot;rule&quot;</span>, <span class='string'>&quot;locale&quot;</span>, <span class='string'>&quot;filter_third_party_resources&quot;</span>].<span class='ident'>iter</span>() {
             <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>contains_key</span>(<span class='ident'>field</span>) {
-                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
+                <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>field</span>);
             }
         }
         <span class='kw'>for</span> (<span class='ident'>name</span>, <span class='ident'>value</span>) <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>iter</span>() {
@@ -1735,14 +1767,14 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://www.googleapis.com/pagespeedonline/v2/runPagespeed&quot;</span>.<span class='ident'>to_string</span>();
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>key</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>api_key</span>();
-        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() { <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>api_key</span>();
-        }}
+        <span class='kw'>if</span> <span class='ident'>key</span>.<span class='ident'>is_none</span>() {
+            <span class='ident'>key</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>api_key</span>();
+        }
         <span class='kw'>match</span> <span class='ident'>key</span> {
             <span class='prelude-val'>Some</span>(<span class='ident'>value</span>) <span class='op'>=&gt;</span> <span class='ident'>params</span>.<span class='ident'>push</span>((<span class='string'>&quot;key&quot;</span>, <span class='ident'>value</span>)),
             <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
-                <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
+                <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span>
             }
         }
 
@@ -1759,42 +1791,38 @@
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
                 .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>.<span class='ident'>clone</span>()));
 
-            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                <span class='ident'>d</span>.<span class='ident'>pre_request</span>();
-            }
-
+            <span class='ident'>dlg</span>.<span class='ident'>pre_request</span>();
             <span class='kw'>match</span> <span class='ident'>req</span>.<span class='ident'>send</span>() {
                 <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
-                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                            <span class='kw'>continue</span>;
-                        }
+                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_error</span>(<span class='kw-2'>&amp;</span><span class='ident'>err</span>) {
+                        <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                        <span class='kw'>continue</span>;
                     }
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
+                    <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                    <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>)
                 }
                 <span class='prelude-val'>Ok</span>(<span class='kw-2'>mut</span> <span class='ident'>res</span>) <span class='op'>=&gt;</span> {
                     <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>res</span>.<span class='ident'>status</span>.<span class='ident'>is_success</span>() {
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> {
-                            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
-                            <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
-                            <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>d</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
-                                <span class='ident'>sleep</span>(<span class='ident'>d</span>);
-                                <span class='kw'>continue</span>;
-                            }
+                        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_err</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+                        <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
+                        <span class='kw'>let</span> <span class='ident'>error_info</span>: <span class='ident'>cmn</span>::<span class='ident'>JsonServerError</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>from_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_err</span>).<span class='ident'>unwrap</span>();
+                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='ident'>oauth2</span>::<span class='ident'>Retry</span>::<span class='ident'>After</span>(<span class='ident'>d</span>) <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>http_failure</span>(<span class='kw-2'>&amp;</span><span class='ident'>res</span>, <span class='ident'>error_info</span>) {
+                            <span class='ident'>sleep</span>(<span class='ident'>d</span>);
+                            <span class='kw'>continue</span>;
                         }
-                        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                        <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
+                        <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                        <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(<span class='ident'>res</span>)
                     }
                     <span class='kw'>let</span> <span class='ident'>result_value</span> <span class='op'>=</span> {
                         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>json_response</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
                         <span class='ident'>res</span>.<span class='ident'>read_to_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>json_response</span>).<span class='ident'>unwrap</span>();
-                        (<span class='ident'>res</span>, <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>).<span class='ident'>unwrap</span>())
+                        <span class='kw'>match</span> <span class='ident'>json</span>::<span class='ident'>from_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_response</span>) {
+                            <span class='prelude-val'>Ok</span>(<span class='ident'>decoded</span>) <span class='op'>=&gt;</span> (<span class='ident'>res</span>, <span class='ident'>decoded</span>),
+                            <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>),
+                        }
                     };
-                    <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='kw-2'>mut</span> <span class='ident'>d</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>_delegate</span> { <span class='ident'>d</span>.<span class='ident'>finished</span>(); }
-                    <span class='kw'>return</span> <span class='ident'>cmn</span>::<span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
+                    <span class='ident'>dlg</span>.<span class='ident'>finished</span>();
+                    <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(<span class='ident'>result_value</span>)
                 }
             }
         }
@@ -1807,7 +1835,7 @@
     <span class='doccomment'>/// we provide this method for API completeness.</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// The URL to fetch and analyze    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>url</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>url</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_url</span> <span class='op'>=</span> <span class='ident'>new_value</span>.<span class='ident'>to_string</span>();
         <span class='self'>self</span>
     }
@@ -1815,7 +1843,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// The analysis strategy to use    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>strategy</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>strategy</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_strategy</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1823,7 +1851,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// Indicates if binary data containing a screenshot should be included    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>screenshot</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>screenshot</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_screenshot</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>);
         <span class='self'>self</span>
     }
@@ -1832,7 +1860,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// A PageSpeed rule to run; if none are given, all rules are run    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_rule</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_rule</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_rule</span>.<span class='ident'>push</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1840,7 +1868,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// The locale used to localize formatted results    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>locale</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>locale</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_locale</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>.<span class='ident'>to_string</span>());
         <span class='self'>self</span>
     }
@@ -1848,7 +1876,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// Indicates if third party resources should be filtered out before PageSpeed analysis.    </span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>filter_third_party_resources</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>filter_third_party_resources</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_filter_third_party_resources</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>);
         <span class='self'>self</span>
     }
@@ -1859,7 +1887,7 @@
     <span class='doccomment'>/// while executing the actual API request.</span>
     <span class='doccomment'>/// </span>
     <span class='doccomment'>/// It should be used to handle progress information, and to implement a certain level of resilience.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>delegate</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Delegate</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>delegate</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>new_value</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Delegate</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
         <span class='self'>self</span>.<span class='ident'>_delegate</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>new_value</span>);
         <span class='self'>self</span>
     }
@@ -1880,7 +1908,7 @@
     <span class='doccomment'>/// * *userIp* (query-string) - IP address of the site where the request originates. Use this if you want to enforce per-user limits.</span>
     <span class='doccomment'>/// * *fields* (query-string) - Selector specifying which fields to include in a partial response.</span>
     <span class='doccomment'>/// * *alt* (query-string) - Data format for the response.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>param</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='ident'>T</span>, <span class='ident'>value</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedMethodBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>param</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='ident'>T</span>, <span class='ident'>value</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>PagespeedapiRunpagespeedCallBuilder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>
                                                         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Str</span> {
         <span class='self'>self</span>.<span class='ident'>_additional_params</span>.<span class='ident'>insert</span>(<span class='ident'>name</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>(), <span class='ident'>value</span>.<span class='ident'>as_slice</span>().<span class='ident'>to_string</span>());
         <span class='self'>self</span>

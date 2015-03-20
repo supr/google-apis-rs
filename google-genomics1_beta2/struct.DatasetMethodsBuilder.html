@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-genomics1_beta2</a>::<wbr><a class='struct' href=''>DatasetMethodsBuilder</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-26457' href='../src/google-genomics1_beta2/lib.rs.html#2904-2908'>[src]</a></span></h1>
+        </span><a id='src-47613' href='../src/google-genomics1_beta2/lib.rs.html#2789-2793'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct DatasetMethodsBuilder&lt;'a, C, NC, A&gt; <span class='where'>where C: 'a, NC: 'a, A: 'a</span> {
     // some fields omitted
 }</pre><div class='docblock'><p>A builder providing access to all methods supported on <em>dataset</em> resources.
@@ -55,7 +55,7 @@ It is not used directly, but through the <code>Genomics</code> hub.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>rustc_serialize</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-genomics1_beta2&quot;</span> <span class='kw'>as</span> <span class='ident'>genomics1_beta2</span>;
  
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -67,40 +67,40 @@ It is not used directly, but through the <code>Genomics</code> hub.</p>
                               <span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(),
                               <span class='op'>&lt;</span><span class='ident'>MemoryStorage</span> <span class='kw'>as</span> <span class='ident'>Default</span><span class='op'>&gt;</span>::<span class='ident'>default</span>(), <span class='prelude-val'>None</span>);
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>hub</span> <span class='op'>=</span> <span class='ident'>Genomics</span>::<span class='ident'>new</span>(<span class='ident'>hyper</span>::<span class='ident'>Client</span>::<span class='ident'>new</span>(), <span class='ident'>auth</span>);
-<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *MethodBuilders*</span>
+<span class='comment'>// Usually you wouldn&#39;t bind this to a variable, but keep calling *CallBuilders*</span>
 <span class='comment'>// like `create(...)`, `delete(...)`, `get(...)`, `list(...)`, `patch(...)`, `undelete(...)` and `update(...)`</span>
 <span class='comment'>// to build up your call.</span>
 <span class='kw'>let</span> <span class='ident'>rb</span> <span class='op'>=</span> <span class='ident'>hub</span>.<span class='ident'>datasets</span>();
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetMethodsBuilder.html' title='google-genomics1_beta2::DatasetMethodsBuilder'>DatasetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.create' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.create' class='fnname'>create</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.Dataset.html' title='google-genomics1_beta2::Dataset'>Dataset</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetCreateMethodBuilder.html' title='google-genomics1_beta2::DatasetCreateMethodBuilder'>DatasetCreateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetMethodsBuilder.html' title='google-genomics1_beta2::DatasetMethodsBuilder'>DatasetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'><h4 id='method.create' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.create' class='fnname'>create</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.Dataset.html' title='google-genomics1_beta2::Dataset'>Dataset</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetCreateCallBuilder.html' title='google-genomics1_beta2::DatasetCreateCallBuilder'>DatasetCreateCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Creates a new dataset.    </p>
-</div><h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.Dataset.html' title='google-genomics1_beta2::Dataset'>Dataset</a>, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetUpdateMethodBuilder.html' title='google-genomics1_beta2::DatasetUpdateMethodBuilder'>DatasetUpdateMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.update' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.Dataset.html' title='google-genomics1_beta2::Dataset'>Dataset</a>, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetUpdateCallBuilder.html' title='google-genomics1_beta2::DatasetUpdateCallBuilder'>DatasetUpdateCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Updates a dataset.    </p>
-</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetDeleteMethodBuilder.html' title='google-genomics1_beta2::DatasetDeleteMethodBuilder'>DatasetDeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetDeleteCallBuilder.html' title='google-genomics1_beta2::DatasetDeleteCallBuilder'>DatasetDeleteCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Deletes a dataset.    </p>
-</div><h4 id='method.undelete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.undelete' class='fnname'>undelete</a>(&amp;self, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetUndeleteMethodBuilder.html' title='google-genomics1_beta2::DatasetUndeleteMethodBuilder'>DatasetUndeleteMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.undelete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.undelete' class='fnname'>undelete</a>(&amp;self, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetUndeleteCallBuilder.html' title='google-genomics1_beta2::DatasetUndeleteCallBuilder'>DatasetUndeleteCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Undeletes a dataset by restoring a dataset which was deleted via this API. This operation is only possible for a week after the deletion occurred.    </p>
-</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetGetMethodBuilder.html' title='google-genomics1_beta2::DatasetGetMethodBuilder'>DatasetGetMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.get' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetGetCallBuilder.html' title='google-genomics1_beta2::DatasetGetCallBuilder'>DatasetGetCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Gets a dataset by ID.    </p>
-</div><h4 id='method.patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.patch' class='fnname'>patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.Dataset.html' title='google-genomics1_beta2::Dataset'>Dataset</a>, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetPatchMethodBuilder.html' title='google-genomics1_beta2::DatasetPatchMethodBuilder'>DatasetPatchMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.patch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.patch' class='fnname'>patch</a>(&amp;self, request: &amp;<a class='struct' href='../google-genomics1_beta2/struct.Dataset.html' title='google-genomics1_beta2::Dataset'>Dataset</a>, dataset_id: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetPatchCallBuilder.html' title='google-genomics1_beta2::DatasetPatchCallBuilder'>DatasetPatchCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Updates a dataset. This method supports patch semantics.    </p>
-</div><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetListMethodBuilder.html' title='google-genomics1_beta2::DatasetListMethodBuilder'>DatasetListMethodBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
+</div><h4 id='method.list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.list' class='fnname'>list</a>(&amp;self) -&gt; <a class='struct' href='../google-genomics1_beta2/struct.DatasetListCallBuilder.html' title='google-genomics1_beta2::DatasetListCallBuilder'>DatasetListCallBuilder</a>&lt;'a, C, NC, A&gt;</code></h4>
 <div class='docblock'><p>Create a builder to help you perform the following task:</p>
 
 <p>Lists datasets within a project.    </p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-genomics1_beta2/cmn/trait.ResourceMethodsBuilder.html' title='google-genomics1_beta2::cmn::ResourceMethodsBuilder'>ResourceMethodsBuilder</a> for <a class='struct' href='../google-genomics1_beta2/struct.DatasetMethodsBuilder.html' title='google-genomics1_beta2::DatasetMethodsBuilder'>DatasetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; ResourceMethodsBuilder for <a class='struct' href='../google-genomics1_beta2/struct.DatasetMethodsBuilder.html' title='google-genomics1_beta2::DatasetMethodsBuilder'>DatasetMethodsBuilder</a>&lt;'a, C, NC, A&gt;</code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
