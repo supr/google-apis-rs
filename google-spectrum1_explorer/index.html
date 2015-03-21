@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-spectrum1_explorer</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-spectrum1_explorer/lib.rs.html#5-2529'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-spectrum1_explorer/lib.rs.html#5-2487'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>spectrum</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/spectrum1_explorer">on github</a>.</p>
 
@@ -55,7 +55,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>paws
 
 <ul>
-<li><a href="struct.PawGetSpectrumCallBuilder.html"><em>get spectrum</em></a>, <a href="struct.PawGetSpectrumBatchCallBuilder.html"><em>get spectrum batch</em></a>, <a href="struct.PawInitCallBuilder.html"><em>init</em></a>, <a href="struct.PawNotifySpectrumUseCallBuilder.html"><em>notify spectrum use</em></a>, <a href="struct.PawRegisterCallBuilder.html"><em>register</em></a> and <a href="struct.PawVerifyDeviceCallBuilder.html"><em>verify device</em></a></li>
+<li><a href="struct.PawGetSpectrumCall.html"><em>get spectrum</em></a>, <a href="struct.PawGetSpectrumBatchCall.html"><em>get spectrum batch</em></a>, <a href="struct.PawInitCall.html"><em>init</em></a>, <a href="struct.PawNotifySpectrumUseCall.html"><em>notify spectrum use</em></a>, <a href="struct.PawRegisterCall.html"><em>register</em></a> and <a href="struct.PawVerifyDeviceCall.html"><em>verify device</em></a></li>
 </ul></li>
 </ul>
 
@@ -339,51 +339,51 @@ to google APIs, and might not be a fully-featured implementation.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumBatchCallBuilder.html'
-                               title='google-spectrum1_explorer::PawGetSpectrumBatchCallBuilder'>PawGetSpectrumBatchCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumBatchCall.html'
+                               title='google-spectrum1_explorer::PawGetSpectrumBatchCall'>PawGetSpectrumBatchCall</a></td>
                         <td class='docblock short'><p>The Google Spectrum Database does not support batch requests, so this method always yields an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumCallBuilder.html'
-                               title='google-spectrum1_explorer::PawGetSpectrumCallBuilder'>PawGetSpectrumCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawGetSpectrumCall.html'
+                               title='google-spectrum1_explorer::PawGetSpectrumCall'>PawGetSpectrumCall</a></td>
                         <td class='docblock short'><p>Requests information about the available spectrum for a device at a location. Requests from a fixed-mode device must include owner information so the device can be registered with the database.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawInitCallBuilder.html'
-                               title='google-spectrum1_explorer::PawInitCallBuilder'>PawInitCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawInitCall.html'
+                               title='google-spectrum1_explorer::PawInitCall'>PawInitCall</a></td>
                         <td class='docblock short'><p>Initializes the connection between a white space device and the database.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawMethodsBuilder.html'
-                               title='google-spectrum1_explorer::PawMethodsBuilder'>PawMethodsBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawMethods.html'
+                               title='google-spectrum1_explorer::PawMethods'>PawMethods</a></td>
                         <td class='docblock short'><p>A builder providing access to all methods supported on <em>paw</em> resources.
 It is not used directly, but through the <code>Spectrum</code> hub.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawNotifySpectrumUseCallBuilder.html'
-                               title='google-spectrum1_explorer::PawNotifySpectrumUseCallBuilder'>PawNotifySpectrumUseCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawNotifySpectrumUseCall.html'
+                               title='google-spectrum1_explorer::PawNotifySpectrumUseCall'>PawNotifySpectrumUseCall</a></td>
                         <td class='docblock short'><p>Notifies the database that the device has selected certain frequency ranges for transmission. Only to be invoked when required by the regulator. The Google Spectrum Database does not operate in domains that require notification, so this always yields an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawRegisterCallBuilder.html'
-                               title='google-spectrum1_explorer::PawRegisterCallBuilder'>PawRegisterCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawRegisterCall.html'
+                               title='google-spectrum1_explorer::PawRegisterCall'>PawRegisterCall</a></td>
                         <td class='docblock short'><p>The Google Spectrum Database implements registration in the getSpectrum method. As such this always returns an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawVerifyDeviceCallBuilder.html'
-                               title='google-spectrum1_explorer::PawVerifyDeviceCallBuilder'>PawVerifyDeviceCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.PawVerifyDeviceCall.html'
+                               title='google-spectrum1_explorer::PawVerifyDeviceCall'>PawVerifyDeviceCall</a></td>
                         <td class='docblock short'><p>Validates a device for white space use in accordance with regulatory rules. The Google Spectrum Database does not support master/slave configurations, so this always yields an UNIMPLEMENTED error.</p>
 </td>
                     </tr>
@@ -604,10 +604,9 @@ usually are carrying the <code>Resource</code> trait.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
-                               title='google-spectrum1_explorer::UnusedType'>UnusedType</a></td>
-                        <td class='docblock short'><p>Identifies types which are not actually used by the API
-This might be a bug within the google API schema.</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ToParts.html'
+                               title='google-spectrum1_explorer::ToParts'>ToParts</a></td>
+                        <td class='docblock short'><p>A trait for all types that can convert themselves into a <em>parts</em> string</p>
 </td>
                     </tr>
                 </table></section>

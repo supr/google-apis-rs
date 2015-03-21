@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["linspace","Return an iterator with `n` elements, where the first element is `a` and the last element is `b`."]],"type":[["Linspace","An iterator of `n` evenly spaced floats."]]});
+initSidebarItems({"type":[["Linspace","An iterator of `n` evenly spaced floats."]],"fn":[["linspace","Return an iterator with `n` elements, where the first element is `a` and the last element is `b`."]]});

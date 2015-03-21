@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-pubsub1_beta2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-pubsub1_beta2/lib.rs.html#5-4406'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-pubsub1_beta2/lib.rs.html#5-4450'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>pubsub</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/pubsub1_beta2">on github</a>.</p>
 
@@ -55,7 +55,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>projects
 
 <ul>
-<li><a href="struct.ProjectSubscriptionAcknowledgeCallBuilder.html"><em>subscriptions.acknowledge</em></a>, <a href="struct.ProjectSubscriptionCreateCallBuilder.html"><em>subscriptions.create</em></a>, <a href="struct.ProjectSubscriptionDeleteCallBuilder.html"><em>subscriptions.delete</em></a>, <a href="struct.ProjectSubscriptionGetCallBuilder.html"><em>subscriptions.get</em></a>, <a href="struct.ProjectSubscriptionListCallBuilder.html"><em>subscriptions.list</em></a>, <a href="struct.ProjectSubscriptionModifyAckDeadlineCallBuilder.html"><em>subscriptions.modify ack deadline</em></a>, <a href="struct.ProjectSubscriptionModifyPushConfigCallBuilder.html"><em>subscriptions.modify push config</em></a>, <a href="struct.ProjectSubscriptionPullCallBuilder.html"><em>subscriptions.pull</em></a>, <a href="struct.ProjectTopicCreateCallBuilder.html"><em>topics.create</em></a>, <a href="struct.ProjectTopicDeleteCallBuilder.html"><em>topics.delete</em></a>, <a href="struct.ProjectTopicGetCallBuilder.html"><em>topics.get</em></a>, <a href="struct.ProjectTopicListCallBuilder.html"><em>topics.list</em></a>, <a href="struct.ProjectTopicPublishCallBuilder.html"><em>topics.publish</em></a> and <a href="struct.ProjectTopicSubscriptionListCallBuilder.html"><em>topics.subscriptions.list</em></a></li>
+<li><a href="struct.ProjectSubscriptionAcknowledgeCall.html"><em>subscriptions acknowledge</em></a>, <a href="struct.ProjectSubscriptionCreateCall.html"><em>subscriptions create</em></a>, <a href="struct.ProjectSubscriptionDeleteCall.html"><em>subscriptions delete</em></a>, <a href="struct.ProjectSubscriptionGetCall.html"><em>subscriptions get</em></a>, <a href="struct.ProjectSubscriptionListCall.html"><em>subscriptions list</em></a>, <a href="struct.ProjectSubscriptionModifyAckDeadlineCall.html"><em>subscriptions modify ack deadline</em></a>, <a href="struct.ProjectSubscriptionModifyPushConfigCall.html"><em>subscriptions modify push config</em></a>, <a href="struct.ProjectSubscriptionPullCall.html"><em>subscriptions pull</em></a>, <a href="struct.ProjectTopicCreateCall.html"><em>topics create</em></a>, <a href="struct.ProjectTopicDeleteCall.html"><em>topics delete</em></a>, <a href="struct.ProjectTopicGetCall.html"><em>topics get</em></a>, <a href="struct.ProjectTopicListCall.html"><em>topics list</em></a>, <a href="struct.ProjectTopicPublishCall.html"><em>topics publish</em></a> and <a href="struct.ProjectTopicSubscriptionListCall.html"><em>topics subscriptions list</em></a></li>
 </ul></li>
 </ul>
 
@@ -291,107 +291,107 @@ to google APIs, and might not be a fully-featured implementation.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectMethodsBuilder.html'
-                               title='google-pubsub1_beta2::ProjectMethodsBuilder'>ProjectMethodsBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectMethods.html'
+                               title='google-pubsub1_beta2::ProjectMethods'>ProjectMethods</a></td>
                         <td class='docblock short'><p>A builder providing access to all methods supported on <em>project</em> resources.
 It is not used directly, but through the <code>Pubsub</code> hub.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionAcknowledgeCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionAcknowledgeCallBuilder'>ProjectSubscriptionAcknowledgeCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionAcknowledgeCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionAcknowledgeCall'>ProjectSubscriptionAcknowledgeCall</a></td>
                         <td class='docblock short'><p>Acknowledges the messages associated with the ack tokens in the AcknowledgeRequest. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionCreateCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionCreateCallBuilder'>ProjectSubscriptionCreateCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionCreateCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionCreateCall'>ProjectSubscriptionCreateCall</a></td>
                         <td class='docblock short'><p>Creates a subscription to a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn&#39;t exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionDeleteCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionDeleteCallBuilder'>ProjectSubscriptionDeleteCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionDeleteCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionDeleteCall'>ProjectSubscriptionDeleteCall</a></td>
                         <td class='docblock short'><p>Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription, or its topic unless the same topic is specified.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionGetCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionGetCallBuilder'>ProjectSubscriptionGetCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionGetCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionGetCall'>ProjectSubscriptionGetCall</a></td>
                         <td class='docblock short'><p>Gets the configuration details of a subscription.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionListCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionListCallBuilder'>ProjectSubscriptionListCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionListCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionListCall'>ProjectSubscriptionListCall</a></td>
                         <td class='docblock short'><p>Lists matching subscriptions.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyAckDeadlineCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionModifyAckDeadlineCallBuilder'>ProjectSubscriptionModifyAckDeadlineCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyAckDeadlineCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionModifyAckDeadlineCall'>ProjectSubscriptionModifyAckDeadlineCall</a></td>
                         <td class='docblock short'><p>Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyPushConfigCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionModifyPushConfigCallBuilder'>ProjectSubscriptionModifyPushConfigCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionModifyPushConfigCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionModifyPushConfigCall'>ProjectSubscriptionModifyPushConfigCall</a></td>
                         <td class='docblock short'><p>Modifies the PushConfig for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty PushConfig) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the PushConfig.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionPullCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectSubscriptionPullCallBuilder'>ProjectSubscriptionPullCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectSubscriptionPullCall.html'
+                               title='google-pubsub1_beta2::ProjectSubscriptionPullCall'>ProjectSubscriptionPullCall</a></td>
                         <td class='docblock short'><p>Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return UNAVAILABLE if there are too many concurrent pull requests pending for the given subscription.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicCreateCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicCreateCallBuilder'>ProjectTopicCreateCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicCreateCall.html'
+                               title='google-pubsub1_beta2::ProjectTopicCreateCall'>ProjectTopicCreateCall</a></td>
                         <td class='docblock short'><p>Creates the given topic with the given name.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicDeleteCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicDeleteCallBuilder'>ProjectTopicDeleteCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicDeleteCall.html'
+                               title='google-pubsub1_beta2::ProjectTopicDeleteCall'>ProjectTopicDeleteCall</a></td>
                         <td class='docblock short'><p>Deletes the topic with the given name. All subscriptions to this topic are detached from the topic. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicGetCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicGetCallBuilder'>ProjectTopicGetCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicGetCall.html'
+                               title='google-pubsub1_beta2::ProjectTopicGetCall'>ProjectTopicGetCall</a></td>
                         <td class='docblock short'><p>Gets the configuration of a topic.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicListCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicListCallBuilder'>ProjectTopicListCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicListCall.html'
+                               title='google-pubsub1_beta2::ProjectTopicListCall'>ProjectTopicListCall</a></td>
                         <td class='docblock short'><p>Lists matching topics.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicPublishCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicPublishCallBuilder'>ProjectTopicPublishCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicPublishCall.html'
+                               title='google-pubsub1_beta2::ProjectTopicPublishCall'>ProjectTopicPublishCall</a></td>
                         <td class='docblock short'><p>Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicSubscriptionListCallBuilder.html'
-                               title='google-pubsub1_beta2::ProjectTopicSubscriptionListCallBuilder'>ProjectTopicSubscriptionListCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ProjectTopicSubscriptionListCall.html'
+                               title='google-pubsub1_beta2::ProjectTopicSubscriptionListCall'>ProjectTopicSubscriptionListCall</a></td>
                         <td class='docblock short'><p>Lists the name of the subscriptions for this topic.</p>
 </td>
                     </tr>
@@ -546,10 +546,9 @@ usually are carrying the <code>Resource</code> trait.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
-                               title='google-pubsub1_beta2::UnusedType'>UnusedType</a></td>
-                        <td class='docblock short'><p>Identifies types which are not actually used by the API
-This might be a bug within the google API schema.</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ToParts.html'
+                               title='google-pubsub1_beta2::ToParts'>ToParts</a></td>
+                        <td class='docblock short'><p>A trait for all types that can convert themselves into a <em>parts</em> string</p>
 </td>
                     </tr>
                 </table></section>

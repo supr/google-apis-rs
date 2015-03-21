@@ -43,7 +43,7 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-translate2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-translate2/lib.rs.html#5-1218'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/google-translate2/lib.rs.html#5-1245'>[src]</a></span></h1>
 <div class='docblock'><p>This documentation was generated from <em>translate</em> crate version <em>0.0.1</em>.
 The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/translate2">on github</a>.</p>
 
@@ -55,17 +55,17 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li>detections
 
 <ul>
-<li><a href="struct.DetectionListCallBuilder.html"><em>list</em></a></li>
+<li><a href="struct.DetectionListCall.html"><em>list</em></a></li>
 </ul></li>
 <li>languages
 
 <ul>
-<li><a href="struct.LanguageListCallBuilder.html"><em>list</em></a></li>
+<li><a href="struct.LanguageListCall.html"><em>list</em></a></li>
 </ul></li>
 <li>translations
 
 <ul>
-<li><a href="struct.TranslationListCallBuilder.html"><em>list</em></a></li>
+<li><a href="struct.TranslationListCall.html"><em>list</em></a></li>
 </ul></li>
 </ul>
 
@@ -228,15 +228,15 @@ set.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DetectionListCallBuilder.html'
-                               title='google-translate2::DetectionListCallBuilder'>DetectionListCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DetectionListCall.html'
+                               title='google-translate2::DetectionListCall'>DetectionListCall</a></td>
                         <td class='docblock short'><p>Detect the language of text.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DetectionMethodsBuilder.html'
-                               title='google-translate2::DetectionMethodsBuilder'>DetectionMethodsBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DetectionMethods.html'
+                               title='google-translate2::DetectionMethods'>DetectionMethods</a></td>
                         <td class='docblock short'><p>A builder providing access to all methods supported on <em>detection</em> resources.
 It is not used directly, but through the <code>Translate</code> hub.</p>
 </td>
@@ -264,15 +264,15 @@ It is not used directly, but through the <code>Translate</code> hub.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LanguageListCallBuilder.html'
-                               title='google-translate2::LanguageListCallBuilder'>LanguageListCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LanguageListCall.html'
+                               title='google-translate2::LanguageListCall'>LanguageListCall</a></td>
                         <td class='docblock short'><p>List the source/target languages supported by the API</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LanguageMethodsBuilder.html'
-                               title='google-translate2::LanguageMethodsBuilder'>LanguageMethodsBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LanguageMethods.html'
+                               title='google-translate2::LanguageMethods'>LanguageMethods</a></td>
                         <td class='docblock short'><p>A builder providing access to all methods supported on <em>language</em> resources.
 It is not used directly, but through the <code>Translate</code> hub.</p>
 </td>
@@ -317,15 +317,15 @@ to google APIs, and might not be a fully-featured implementation.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TranslationListCallBuilder.html'
-                               title='google-translate2::TranslationListCallBuilder'>TranslationListCallBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TranslationListCall.html'
+                               title='google-translate2::TranslationListCall'>TranslationListCall</a></td>
                         <td class='docblock short'><p>Returns text translations from one language to another.</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TranslationMethodsBuilder.html'
-                               title='google-translate2::TranslationMethodsBuilder'>TranslationMethodsBuilder</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TranslationMethods.html'
+                               title='google-translate2::TranslationMethods'>TranslationMethods</a></td>
                         <td class='docblock short'><p>A builder providing access to all methods supported on <em>translation</em> resources.
 It is not used directly, but through the <code>Translate</code> hub.</p>
 </td>
@@ -416,10 +416,9 @@ usually are carrying the <code>Resource</code> trait.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.UnusedType.html'
-                               title='google-translate2::UnusedType'>UnusedType</a></td>
-                        <td class='docblock short'><p>Identifies types which are not actually used by the API
-This might be a bug within the google API schema.</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ToParts.html'
+                               title='google-translate2::ToParts'>ToParts</a></td>
+                        <td class='docblock short'><p>A trait for all types that can convert themselves into a <em>parts</em> string</p>
 </td>
                     </tr>
                 </table></section>

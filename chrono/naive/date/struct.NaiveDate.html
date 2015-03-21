@@ -54,16 +54,54 @@ Also supports the conversion from ISO 8601 ordinal and week date.</p>
 This assumes the proleptic Gregorian calendar, with the year 0 being 1 BCE.</p>
 
 <p>Fails on the out-of-range date, invalid month and/or day.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>chrono</span>::{<span class='ident'>NaiveDate</span>, <span class='ident'>Datelike</span>, <span class='ident'>Weekday</span>};
+
+<span class='kw'>let</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>NaiveDate</span>::<span class='ident'>from_ymd</span>(<span class='number'>2015</span>, <span class='number'>3</span>, <span class='number'>14</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>year</span>(), <span class='number'>2015</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>month</span>(), <span class='number'>3</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>day</span>(), <span class='number'>14</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>ordinal</span>(), <span class='number'>73</span>); <span class='comment'>// day of year</span>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>isoweekdate</span>(), (<span class='number'>2015</span>, <span class='number'>11</span>, <span class='ident'>Weekday</span>::<span class='ident'>Sat</span>)); <span class='comment'>// ISO week and weekday</span>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>num_days_from_ce</span>(), <span class='number'>735671</span>); <span class='comment'>// days since January 1, 1 CE</span>
+</pre>
 </div><h4 id='method.from_ymd_opt' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_ymd_opt' class='fnname'>from_ymd_opt</a>(year: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, month: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>, day: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../chrono/naive/date/struct.NaiveDate.html' title='chrono::naive::date::NaiveDate'>NaiveDate</a>&gt;</code></h4>
 <div class='docblock'><p>Makes a new <code>NaiveDate</code> from year, month and day.
 This assumes the proleptic Gregorian calendar, with the year 0 being 1 BCE.</p>
 
 <p>Returns <code>None</code> on the out-of-range date, invalid month and/or day.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>chrono</span>::<span class='ident'>NaiveDate</span>;
+
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>NaiveDate</span>::<span class='ident'>from_ymd_opt</span>(<span class='number'>2015</span>, <span class='number'>3</span>, <span class='number'>14</span>).<span class='ident'>is_some</span>());
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>NaiveDate</span>::<span class='ident'>from_ymd_opt</span>(<span class='number'>2015</span>, <span class='number'>0</span>, <span class='number'>14</span>).<span class='ident'>is_none</span>());
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>NaiveDate</span>::<span class='ident'>from_ymd_opt</span>(<span class='number'>2015</span>, <span class='number'>2</span>, <span class='number'>29</span>).<span class='ident'>is_none</span>());
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>NaiveDate</span>::<span class='ident'>from_ymd_opt</span>(<span class='op'>-</span><span class='number'>4</span>, <span class='number'>2</span>, <span class='number'>29</span>).<span class='ident'>is_some</span>()); <span class='comment'>// 5 BCE is a leap year</span>
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>NaiveDate</span>::<span class='ident'>from_ymd_opt</span>(<span class='number'>400000</span>, <span class='number'>1</span>, <span class='number'>1</span>).<span class='ident'>is_none</span>());
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>NaiveDate</span>::<span class='ident'>from_ymd_opt</span>(<span class='op'>-</span><span class='number'>400000</span>, <span class='number'>1</span>, <span class='number'>1</span>).<span class='ident'>is_none</span>());
+</pre>
 </div><h4 id='method.from_yo' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_yo' class='fnname'>from_yo</a>(year: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, ordinal: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='struct' href='../../../chrono/naive/date/struct.NaiveDate.html' title='chrono::naive::date::NaiveDate'>NaiveDate</a></code></h4>
 <div class='docblock'><p>Makes a new <code>NaiveDate</code> from year and day of year (DOY or &quot;ordinal&quot;).
 This assumes the proleptic Gregorian calendar, with the year 0 being 1 BCE.</p>
 
 <p>Fails on the out-of-range date and/or invalid DOY.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>chrono</span>::{<span class='ident'>NaiveDate</span>, <span class='ident'>Datelike</span>, <span class='ident'>Weekday</span>};
+
+<span class='kw'>let</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>NaiveDate</span>::<span class='ident'>from_yo</span>(<span class='number'>2015</span>, <span class='number'>73</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>ordinal</span>(), <span class='number'>73</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>year</span>(), <span class='number'>2015</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>month</span>(), <span class='number'>3</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>day</span>(), <span class='number'>14</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>isoweekdate</span>(), (<span class='number'>2015</span>, <span class='number'>11</span>, <span class='ident'>Weekday</span>::<span class='ident'>Sat</span>)); <span class='comment'>// ISO week and weekday</span>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>num_days_from_ce</span>(), <span class='number'>735671</span>); <span class='comment'>// days since January 1, 1 CE</span>
+</pre>
 </div><h4 id='method.from_yo_opt' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_yo_opt' class='fnname'>from_yo_opt</a>(year: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, ordinal: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../chrono/naive/date/struct.NaiveDate.html' title='chrono::naive::date::NaiveDate'>NaiveDate</a>&gt;</code></h4>
 <div class='docblock'><p>Makes a new <code>NaiveDate</code> from year and day of year (DOY or &quot;ordinal&quot;).
 This assumes the proleptic Gregorian calendar, with the year 0 being 1 BCE.</p>
@@ -75,6 +113,19 @@ This assumes the proleptic Gregorian calendar, with the year 0 being 1 BCE.
 The resulting <code>NaiveDate</code> may have a different year from the input year.</p>
 
 <p>Fails on the out-of-range date and/or invalid week number.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>chrono</span>::{<span class='ident'>NaiveDate</span>, <span class='ident'>Datelike</span>, <span class='ident'>Weekday</span>};
+
+<span class='kw'>let</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>NaiveDate</span>::<span class='ident'>from_isoywd</span>(<span class='number'>2015</span>, <span class='number'>11</span>, <span class='ident'>Weekday</span>::<span class='ident'>Sat</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>isoweekdate</span>(), (<span class='number'>2015</span>, <span class='number'>11</span>, <span class='ident'>Weekday</span>::<span class='ident'>Sat</span>));
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>year</span>(), <span class='number'>2015</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>month</span>(), <span class='number'>3</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>day</span>(), <span class='number'>14</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>ordinal</span>(), <span class='number'>73</span>); <span class='comment'>// day of year</span>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>num_days_from_ce</span>(), <span class='number'>735671</span>); <span class='comment'>// days since January 1, 1 CE</span>
+</pre>
 </div><h4 id='method.from_isoywd_opt' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_isoywd_opt' class='fnname'>from_isoywd_opt</a>(year: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, week: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>, weekday: <a class='enum' href='../../../chrono/enum.Weekday.html' title='chrono::Weekday'>Weekday</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../chrono/naive/date/struct.NaiveDate.html' title='chrono::naive::date::NaiveDate'>NaiveDate</a>&gt;</code></h4>
 <div class='docblock'><p>Makes a new <code>NaiveDate</code> from ISO week date (year and week number) and day of the week (DOW).
 This assumes the proleptic Gregorian calendar, with the year 0 being 1 BCE.
@@ -86,6 +137,19 @@ The resulting <code>NaiveDate</code> may have a different year from the input ye
 in the proleptic Gregorian calendar.</p>
 
 <p>Fails on the out-of-range date.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>chrono</span>::{<span class='ident'>NaiveDate</span>, <span class='ident'>Datelike</span>, <span class='ident'>Weekday</span>};
+
+<span class='kw'>let</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>NaiveDate</span>::<span class='ident'>from_num_days_from_ce</span>(<span class='number'>735671</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>num_days_from_ce</span>(), <span class='number'>735671</span>); <span class='comment'>// days since January 1, 1 CE</span>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>year</span>(), <span class='number'>2015</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>month</span>(), <span class='number'>3</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>day</span>(), <span class='number'>14</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>ordinal</span>(), <span class='number'>73</span>); <span class='comment'>// day of year</span>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>isoweekdate</span>(), (<span class='number'>2015</span>, <span class='number'>11</span>, <span class='ident'>Weekday</span>::<span class='ident'>Sat</span>)); <span class='comment'>// ISO week and weekday</span>
+</pre>
 </div><h4 id='method.from_num_days_from_ce_opt' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_num_days_from_ce_opt' class='fnname'>from_num_days_from_ce_opt</a>(days: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../chrono/naive/date/struct.NaiveDate.html' title='chrono::naive::date::NaiveDate'>NaiveDate</a>&gt;</code></h4>
 <div class='docblock'><p>Makes a new <code>NaiveDate</code> from the number of days since January 1, 1 (Day 1)
 in the proleptic Gregorian calendar.</p>
