@@ -43,9 +43,12 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-plusdomains1</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-plusdomains1/lib.rs.html#5-7526'>[src]</a></span></h1>
-<div class='docblock'><p>This documentation was generated from <em>plusDomains</em> crate version <em>0.0.1</em>.
-The original source code can be found <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/plusdomains1">on github</a>.</p>
+        </span><a id='src-0' href='../src/google-plusdomains1/lib.rs.html#5-7527'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>plusDomains</em> crate version <em>0.0.1+20150303</em>, where <em>20150303</em> is the exact revision of the <em>plusDomains:v1</em> schema built by the <a href="http://www.makotemplates.org/">mako</a> code generator <em>v0.0.1</em>.</p>
+
+<p>Everything else about the <em>plusDomains</em> <em>v1</em> API can be found at the
+<a href="https://developers.google.com/+/domains/">official documentation site</a>.
+The original source code is <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/plusdomains1">on github</a>.</p>
 
 <h1 id="features" class='section-header'><a
                            href="#features">Features</a></h1>
@@ -90,10 +93,7 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <li><a href="struct.MediaInsertCall.html"><em>insert media</em></a></li>
 </ul>
 
-<p>Everything else about the <em>plusDomains</em> <em>v1</em> API can be found at the
-<a href="https://developers.google.com/+/domains/">official documentation site</a>.</p>
-
-<p>Not what you are looking for ? Find all other google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
+<p>Not what you are looking for ? Find all other Google APIs in their Rust <a href="../index.html">documentation index</a>.</p>
 
 <h1 id="structure-of-this-library" class='section-header'><a
                            href="#structure-of-this-library">Structure of this Library</a></h1>
@@ -105,19 +105,19 @@ The original source code can be found <a href="https://github.com/Byron/google-a
 <ul>
 <li>a central object to maintain state and allow accessing all <em>Activities</em></li>
 </ul></li>
-<li><strong><a href="cmn/trait.Resource.html">Resources</a></strong>
+<li><strong><a href="trait.Resource.html">Resources</a></strong>
 
 <ul>
 <li>primary types that you can apply <em>Activities</em> to</li>
 <li>a collection of properties and <em>Parts</em></li>
-<li><strong><a href="cmn/trait.Part.html">Parts</a></strong>
+<li><strong><a href="trait.Part.html">Parts</a></strong>
 
 <ul>
 <li>a collection of properties</li>
 <li>never directly used in <em>Activities</em></li>
 </ul></li>
 </ul></li>
-<li><strong><a href="cmn/trait.CallBuilder.html">Activities</a></strong>
+<li><strong><a href="trait.CallBuilder.html">Activities</a></strong>
 
 <ul>
 <li>operations to apply to <em>Resources</em></li>
@@ -153,14 +153,13 @@ The <code>doit()</code> method performs the actual communication with the server
 <p>To use this library, you would put the following lines into your <code>Cargo.toml</code> file:</p>
 
 <pre><code class="language-toml">[dependencies]
-google-plusdomains1 = &quot;0.0.1&quot;
+google-plusdomains1 = &quot;*&quot;
 </code></pre>
 
 <h2 id="a-complete-example" class='section-header'><a
                            href="#a-complete-example">A complete example</a></h2><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>hyper</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;yup-oauth2&quot;</span> <span class='kw'>as</span> <span class='ident'>oauth2</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>serde</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;google-plusdomains1&quot;</span> <span class='kw'>as</span> <span class='ident'>plusdomains1</span>;
 <span class='kw'>use</span> <span class='ident'>plusdomains1</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span>;
@@ -189,29 +188,30 @@ google-plusdomains1 = &quot;0.0.1&quot;
  
 <span class='kw'>match</span> <span class='ident'>result</span> {
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing API Key&quot;</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Missing Token&quot;</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (Response doesn&#39;t print)&quot;</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;FIELD CLASH: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
-    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Json failed to decode: {:?}&quot;</span>, <span class='ident'>err</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Auth: Missing API Key - used if there are no scopes&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;OAuth2: Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>UploadSizeLimitExceeded</span>(<span class='ident'>size</span>, <span class='ident'>max_size</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Upload size too big: {} of {}&quot;</span>, <span class='ident'>size</span>, <span class='ident'>max_size</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (hyper::client::Response doesn&#39;t print)&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;You added custom parameter which is part of builder: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>JsonDecodeError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Couldn&#39;t understand server reply - maybe API needs update: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Success</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Success (value doesn&#39;t print)&quot;</span>),
 }
 </pre>
 
 <h2 id="handling-errors" class='section-header'><a
                            href="#handling-errors">Handling Errors</a></h2>
-<p>All errors produced by the system are provided either as <a href="cmn/enum.Result.html">Result</a> enumeration as return value of 
+<p>All errors produced by the system are provided either as <a href="enum.Result.html">Result</a> enumeration as return value of 
 the doit() methods, or handed as possibly intermediate results to either the 
-<a href="cmn/trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
+<a href="trait.Delegate.html">Hub Delegate</a>, or the <a href="../yup-oauth2/trait.AuthenticatorDelegate.html">Authenticator Delegate</a>.</p>
 
 <p>When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This 
 makes the system potentially resilient to all kinds of errors.</p>
 
-<h2 id="about-uploads-and-downlods" class='section-header'><a
-                           href="#about-uploads-and-downlods">About Uploads and Downlods</a></h2>
-<p>If a method supports downloads, the response body, which is part of the <a href="cmn/enum.Result.html">Result</a>, should be
+<h2 id="uploads-and-downlods" class='section-header'><a
+                           href="#uploads-and-downlods">Uploads and Downlods</a></h2>
+<p>If a method supports downloads, the response body, which is part of the <a href="enum.Result.html">Result</a>, should be
 read by you to obtain the media.
-If such a method also supports a <a href="cmn/trait.ResponseResult.html">Response Result</a>, it will return that by default.
+If such a method also supports a <a href="trait.ResponseResult.html">Response Result</a>, it will return that by default.
 You can see it as meta-data for the actual media. To trigger a media download, you will have to set up the builder by making
 this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 
@@ -219,31 +219,31 @@ this call: <code>.param(&quot;alt&quot;, &quot;media&quot;)</code>.</p>
 <em>simple</em> and <em>resumable</em>. The distinctiveness of each is represented by customized 
 <code>doit(...)</code> methods, which are then named <code>upload(...)</code> and <code>upload_resumable(...)</code> respectively.</p>
 
-<h2 id="about-customization/callbacks" class='section-header'><a
-                           href="#about-customization/callbacks">About Customization/Callbacks</a></h2>
-<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="cmn/trait.Delegate.html">delegate</a> to the 
-<a href="cmn/trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
+<h2 id="customization-and-callbacks" class='section-header'><a
+                           href="#customization-and-callbacks">Customization and Callbacks</a></h2>
+<p>You may alter the way an <code>doit()</code> method is called by providing a <a href="trait.Delegate.html">delegate</a> to the 
+<a href="trait.CallBuilder.html">Method Builder</a> before making the final <code>doit()</code> call. 
 Respective methods will be called to provide progress information, as well as determine whether the system should 
 retry on failure.</p>
 
-<p>The <a href="cmn/trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
+<p>The <a href="trait.Delegate.html">delegate trait</a> is default-implemented, allowing you to customize it with minimal effort.</p>
 
-<h2 id="about-parts" class='section-header'><a
-                           href="#about-parts">About Parts</a></h2>
-<p>All structures provided by this library are made to be <a href="cmn/trait.RequestValue.html">enocodable</a> and 
-<a href="cmn/trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
-Most optionals are are considered <a href="cmn/trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
+<h2 id="optional-parts-in-server-requests" class='section-header'><a
+                           href="#optional-parts-in-server-requests">Optional Parts in Server-Requests</a></h2>
+<p>All structures provided by this library are made to be <a href="trait.RequestValue.html">enocodable</a> and 
+<a href="trait.ResponseResult.html">decodable</a> via json. Optionals are used to indicate that partial requests are responses are valid.
+Most optionals are are considered <a href="trait.Part.html">Parts</a> which are identifyable by name, which will be sent to 
 the server to indicate either the set parts of the request or the desired parts in the response.</p>
 
-<h2 id="about-builder-arguments" class='section-header'><a
-                           href="#about-builder-arguments">About Builder Arguments</a></h2>
-<p>Using <a href="cmn/trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
+<h2 id="builder-arguments" class='section-header'><a
+                           href="#builder-arguments">Builder Arguments</a></h2>
+<p>Using <a href="trait.CallBuilder.html">method builders</a>, you are able to prepare an action call by repeatedly calling it&#39;s methods.
 These will always take a single argument, for which the following statements are true.</p>
 
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Plain_old_data_structure">PODs</a> are handed by copy</li>
 <li>strings are passed as <code>&amp;str</code></li>
-<li><a href="cmn/trait.RequestValue.html">request values</a> are borrowed</li>
+<li><a href="trait.RequestValue.html">request values</a> are borrowed</li>
 </ul>
 
 <p>Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</p>
@@ -626,6 +626,13 @@ set.</p>
                     </tr>
                 
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.JsonServerError.html'
+                               title='google-plusdomains1::JsonServerError'>JsonServerError</a></td>
+                        <td class='docblock short'><p>A utility type which can decode a server response that indicates error</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Media.html'
                                title='google-plusdomains1::Media'>Media</a></td>
                         <td class='docblock short'><p>There is no detailed description.</p>
@@ -909,6 +916,21 @@ usually are carrying the <code>Resource</code> trait.</p>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.RequestValue.html'
                                title='google-plusdomains1::RequestValue'>RequestValue</a></td>
                         <td class='docblock short'><p>Identifies types which are used in API requests.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Resource.html'
+                               title='google-plusdomains1::Resource'>Resource</a></td>
+                        <td class='docblock short'><p>Identifies types which can be inserted and deleted.
+Types with this trait are most commonly used by clients of this API.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ResourceMethodsBuilder.html'
+                               title='google-plusdomains1::ResourceMethodsBuilder'>ResourceMethodsBuilder</a></td>
+                        <td class='docblock short'><p>Identifies types for building methods of a particular resource type</p>
 </td>
                     </tr>
                 

@@ -7491,13 +7491,18 @@
 <span id="7449">7449</span>
 <span id="7450">7450</span>
 <span id="7451">7451</span>
+<span id="7452">7452</span>
+<span id="7453">7453</span>
 </pre><pre class='rust '>
 <span class='comment'>// DO NOT EDIT !</span>
 <span class='comment'>// This file was generated automatically from &#39;src/mako/lib.rs.mako&#39;</span>
 <span class='comment'>// DO NOT EDIT !</span>
 
-<span class='doccomment'>//! This documentation was generated from *bigquery* crate version *0.0.1*.</span>
-<span class='doccomment'>//! The original source code can be found [on github](https://github.com/Byron/google-apis-rs/tree/master/gen/bigquery2).</span>
+<span class='doccomment'>//! This documentation was generated from *bigquery* crate version *0.0.1+20141112*, where *20141112* is the exact revision of the *bigquery:v2* schema built by the [mako](http://www.makotemplates.org/) code generator *v0.0.1*.</span>
+<span class='doccomment'>//! </span>
+<span class='doccomment'>//! Everything else about the *bigquery* *v2* API can be found at the</span>
+<span class='doccomment'>//! [official documentation site](https://developers.google.com/bigquery/docs/overview).</span>
+<span class='doccomment'>//! The original source code is [on github](https://github.com/Byron/google-apis-rs/tree/master/gen/bigquery2).</span>
 <span class='doccomment'>//! # Features</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Handle the following *Resources* with ease from the central [hub](struct.Bigquery.html) ... </span>
@@ -7519,10 +7524,8 @@
 <span class='doccomment'>//! * [*insert jobs*](struct.JobInsertCall.html)</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Everything else about the *bigquery* *v2* API can be found at the</span>
-<span class='doccomment'>//! [official documentation site](https://developers.google.com/bigquery/docs/overview).</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Not what you are looking for ? Find all other google APIs in their Rust [documentation index](../index.html).</span>
+<span class='doccomment'>//! Not what you are looking for ? Find all other Google APIs in their Rust [documentation index](../index.html).</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! # Structure of this Library</span>
 <span class='doccomment'>//! </span>
@@ -7530,13 +7533,13 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * **[Hub](struct.Bigquery.html)**</span>
 <span class='doccomment'>//!     * a central object to maintain state and allow accessing all *Activities*</span>
-<span class='doccomment'>//! * **[Resources](cmn/trait.Resource.html)**</span>
+<span class='doccomment'>//! * **[Resources](trait.Resource.html)**</span>
 <span class='doccomment'>//!     * primary types that you can apply *Activities* to</span>
 <span class='doccomment'>//!     * a collection of properties and *Parts*</span>
-<span class='doccomment'>//!     * **[Parts](cmn/trait.Part.html)**</span>
+<span class='doccomment'>//!     * **[Parts](trait.Part.html)**</span>
 <span class='doccomment'>//!         * a collection of properties</span>
 <span class='doccomment'>//!         * never directly used in *Activities*</span>
-<span class='doccomment'>//! * **[Activities](cmn/trait.CallBuilder.html)**</span>
+<span class='doccomment'>//! * **[Activities](trait.CallBuilder.html)**</span>
 <span class='doccomment'>//!     * operations to apply to *Resources*</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Generally speaking, you can invoke *Activities* like this:</span>
@@ -7569,7 +7572,7 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ```toml</span>
 <span class='doccomment'>//! [dependencies]</span>
-<span class='doccomment'>//! google-bigquery2 = &quot;0.0.1&quot;</span>
+<span class='doccomment'>//! google-bigquery2 = &quot;*&quot;</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! ## A complete example</span>
@@ -7577,7 +7580,6 @@
 <span class='doccomment'>//! ```test_harness,no_run</span>
 <span class='doccomment'>//! extern crate hyper;</span>
 <span class='doccomment'>//! extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>//! extern crate serde;</span>
 <span class='doccomment'>//! extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>//! use bigquery2::Table;</span>
 <span class='doccomment'>//! use bigquery2::Result;</span>
@@ -7611,28 +7613,29 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! match result {</span>
 <span class='doccomment'>//!     Result::HttpError(err) =&gt; println!(&quot;HTTPERROR: {:?}&quot;, err),</span>
-<span class='doccomment'>//!     Result::MissingAPIKey =&gt; println!(&quot;Missing API Key&quot;),</span>
-<span class='doccomment'>//!     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
-<span class='doccomment'>//!     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
-<span class='doccomment'>//!     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
-<span class='doccomment'>//!     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
+<span class='doccomment'>//!     Result::MissingAPIKey =&gt; println!(&quot;Auth: Missing API Key - used if there are no scopes&quot;),</span>
+<span class='doccomment'>//!     Result::MissingToken =&gt; println!(&quot;OAuth2: Missing Token&quot;),</span>
+<span class='doccomment'>//!     Result::UploadSizeLimitExceeded(size, max_size) =&gt; println!(&quot;Upload size too big: {} of {}&quot;, size, max_size),</span>
+<span class='doccomment'>//!     Result::Failure(_) =&gt; println!(&quot;General Failure (hyper::client::Response doesn&#39;t print)&quot;),</span>
+<span class='doccomment'>//!     Result::FieldClash(clashed_field) =&gt; println!(&quot;You added custom parameter which is part of builder: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>//!     Result::JsonDecodeError(err) =&gt; println!(&quot;Couldn&#39;t understand server reply - maybe API needs update: {:?}&quot;, err),</span>
 <span class='doccomment'>//!     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! # }</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//! ## Handling Errors</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! All errors produced by the system are provided either as [Result](cmn/enum.Result.html) enumeration as return value of </span>
+<span class='doccomment'>//! All errors produced by the system are provided either as [Result](enum.Result.html) enumeration as return value of </span>
 <span class='doccomment'>//! the doit() methods, or handed as possibly intermediate results to either the </span>
-<span class='doccomment'>//! [Hub Delegate](cmn/trait.Delegate.html), or the [Authenticator Delegate](../yup-oauth2/trait.AuthenticatorDelegate.html).</span>
+<span class='doccomment'>//! [Hub Delegate](trait.Delegate.html), or the [Authenticator Delegate](../yup-oauth2/trait.AuthenticatorDelegate.html).</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! When delegates handle errors or intermediate values, they may have a chance to instruct the system to retry. This </span>
 <span class='doccomment'>//! makes the system potentially resilient to all kinds of errors.</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! ## About Uploads and Downlods</span>
-<span class='doccomment'>//! If a method supports downloads, the response body, which is part of the [Result](cmn/enum.Result.html), should be</span>
+<span class='doccomment'>//! ## Uploads and Downlods</span>
+<span class='doccomment'>//! If a method supports downloads, the response body, which is part of the [Result](enum.Result.html), should be</span>
 <span class='doccomment'>//! read by you to obtain the media.</span>
-<span class='doccomment'>//! If such a method also supports a [Response Result](cmn/trait.ResponseResult.html), it will return that by default.</span>
+<span class='doccomment'>//! If such a method also supports a [Response Result](trait.ResponseResult.html), it will return that by default.</span>
 <span class='doccomment'>//! You can see it as meta-data for the actual media. To trigger a media download, you will have to set up the builder by making</span>
 <span class='doccomment'>//! this call: `.param(&quot;alt&quot;, &quot;media&quot;)`.</span>
 <span class='doccomment'>//! </span>
@@ -7640,30 +7643,30 @@
 <span class='doccomment'>//! *simple* and *resumable*. The distinctiveness of each is represented by customized </span>
 <span class='doccomment'>//! `doit(...)` methods, which are then named `upload(...)` and `upload_resumable(...)` respectively.</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! ## About Customization/Callbacks</span>
+<span class='doccomment'>//! ## Customization and Callbacks</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! You may alter the way an `doit()` method is called by providing a [delegate](cmn/trait.Delegate.html) to the </span>
-<span class='doccomment'>//! [Method Builder](cmn/trait.CallBuilder.html) before making the final `doit()` call. </span>
+<span class='doccomment'>//! You may alter the way an `doit()` method is called by providing a [delegate](trait.Delegate.html) to the </span>
+<span class='doccomment'>//! [Method Builder](trait.CallBuilder.html) before making the final `doit()` call. </span>
 <span class='doccomment'>//! Respective methods will be called to provide progress information, as well as determine whether the system should </span>
 <span class='doccomment'>//! retry on failure.</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! The [delegate trait](cmn/trait.Delegate.html) is default-implemented, allowing you to customize it with minimal effort.</span>
+<span class='doccomment'>//! The [delegate trait](trait.Delegate.html) is default-implemented, allowing you to customize it with minimal effort.</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! ## About Parts</span>
+<span class='doccomment'>//! ## Optional Parts in Server-Requests</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! All structures provided by this library are made to be [enocodable](cmn/trait.RequestValue.html) and </span>
-<span class='doccomment'>//! [decodable](cmn/trait.ResponseResult.html) via json. Optionals are used to indicate that partial requests are responses are valid.</span>
-<span class='doccomment'>//! Most optionals are are considered [Parts](cmn/trait.Part.html) which are identifyable by name, which will be sent to </span>
+<span class='doccomment'>//! All structures provided by this library are made to be [enocodable](trait.RequestValue.html) and </span>
+<span class='doccomment'>//! [decodable](trait.ResponseResult.html) via json. Optionals are used to indicate that partial requests are responses are valid.</span>
+<span class='doccomment'>//! Most optionals are are considered [Parts](trait.Part.html) which are identifyable by name, which will be sent to </span>
 <span class='doccomment'>//! the server to indicate either the set parts of the request or the desired parts in the response.</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! ## About Builder Arguments</span>
+<span class='doccomment'>//! ## Builder Arguments</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//! Using [method builders](cmn/trait.CallBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
+<span class='doccomment'>//! Using [method builders](trait.CallBuilder.html), you are able to prepare an action call by repeatedly calling it&#39;s methods.</span>
 <span class='doccomment'>//! These will always take a single argument, for which the following statements are true.</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! * [PODs][wiki-pod] are handed by copy</span>
 <span class='doccomment'>//! * strings are passed as `&amp;str`</span>
-<span class='doccomment'>//! * [request values](cmn/trait.RequestValue.html) are borrowed</span>
+<span class='doccomment'>//! * [request values](trait.RequestValue.html) are borrowed</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! Arguments will always be copied or cloned into the builder, to make them independent of their original life times.</span>
 <span class='doccomment'>//! </span>
@@ -7702,7 +7705,7 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>::<span class='ident'>sleep</span>;
 
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>MultiPartReader</span>, <span class='ident'>ToParts</span>, <span class='ident'>MethodInfo</span>, <span class='prelude-ty'>Result</span>, <span class='ident'>CallBuilder</span>, <span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>cmn</span>::{<span class='ident'>MultiPartReader</span>, <span class='ident'>ToParts</span>, <span class='ident'>MethodInfo</span>, <span class='prelude-ty'>Result</span>, <span class='ident'>CallBuilder</span>, <span class='ident'>Hub</span>, <span class='ident'>ReadSeek</span>, <span class='ident'>Part</span>, <span class='ident'>ResponseResult</span>, <span class='ident'>RequestValue</span>, <span class='ident'>NestedType</span>, <span class='ident'>Delegate</span>, <span class='ident'>DefaultDelegate</span>, <span class='ident'>ResourceMethodsBuilder</span>, <span class='ident'>Resource</span>, <span class='ident'>JsonServerError</span>};
 
 
 <span class='comment'>// ##############</span>
@@ -7767,7 +7770,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Table;</span>
 <span class='doccomment'>/// use bigquery2::Result;</span>
@@ -7801,11 +7803,12 @@
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// match result {</span>
 <span class='doccomment'>///     Result::HttpError(err) =&gt; println!(&quot;HTTPERROR: {:?}&quot;, err),</span>
-<span class='doccomment'>///     Result::MissingAPIKey =&gt; println!(&quot;Missing API Key&quot;),</span>
-<span class='doccomment'>///     Result::MissingToken =&gt; println!(&quot;Missing Token&quot;),</span>
-<span class='doccomment'>///     Result::Failure(_) =&gt; println!(&quot;General Failure (Response doesn&#39;t print)&quot;),</span>
-<span class='doccomment'>///     Result::FieldClash(clashed_field) =&gt; println!(&quot;FIELD CLASH: {:?}&quot;, clashed_field),</span>
-<span class='doccomment'>///     Result::JsonDecodeError(err) =&gt; println!(&quot;Json failed to decode: {:?}&quot;, err),</span>
+<span class='doccomment'>///     Result::MissingAPIKey =&gt; println!(&quot;Auth: Missing API Key - used if there are no scopes&quot;),</span>
+<span class='doccomment'>///     Result::MissingToken =&gt; println!(&quot;OAuth2: Missing Token&quot;),</span>
+<span class='doccomment'>///     Result::UploadSizeLimitExceeded(size, max_size) =&gt; println!(&quot;Upload size too big: {} of {}&quot;, size, max_size),</span>
+<span class='doccomment'>///     Result::Failure(_) =&gt; println!(&quot;General Failure (hyper::client::Response doesn&#39;t print)&quot;),</span>
+<span class='doccomment'>///     Result::FieldClash(clashed_field) =&gt; println!(&quot;You added custom parameter which is part of builder: {:?}&quot;, clashed_field),</span>
+<span class='doccomment'>///     Result::JsonDecodeError(err) =&gt; println!(&quot;Couldn&#39;t understand server reply - maybe API needs update: {:?}&quot;, err),</span>
 <span class='doccomment'>///     Result::Success(_) =&gt; println!(&quot;Success (value doesn&#39;t print)&quot;),</span>
 <span class='doccomment'>/// }</span>
 <span class='doccomment'>/// # }</span>
@@ -8076,8 +8079,8 @@
 }
 
 <span class='kw'>impl</span> <span class='ident'>RequestValue</span> <span class='kw'>for</span> <span class='ident'>Dataset</span> {}
+<span class='kw'>impl</span> <span class='ident'>Resource</span> <span class='kw'>for</span> <span class='ident'>Dataset</span> {}
 <span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Dataset</span> {}
-<span class='kw'>impl</span> <span class='ident'>cmn</span>::<span class='ident'>Resource</span> <span class='kw'>for</span> <span class='ident'>Dataset</span> {}
 
 
 <span class='doccomment'>/// An array of errors for rows that were not inserted.</span>
@@ -8281,8 +8284,8 @@
 }
 
 <span class='kw'>impl</span> <span class='ident'>RequestValue</span> <span class='kw'>for</span> <span class='ident'>Job</span> {}
+<span class='kw'>impl</span> <span class='ident'>Resource</span> <span class='kw'>for</span> <span class='ident'>Job</span> {}
 <span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Job</span> {}
-<span class='kw'>impl</span> <span class='ident'>cmn</span>::<span class='ident'>Resource</span> <span class='kw'>for</span> <span class='ident'>Job</span> {}
 
 
 <span class='doccomment'>/// List of jobs that were requested.</span>
@@ -8885,8 +8888,8 @@
 }
 
 <span class='kw'>impl</span> <span class='ident'>RequestValue</span> <span class='kw'>for</span> <span class='ident'>Table</span> {}
+<span class='kw'>impl</span> <span class='ident'>Resource</span> <span class='kw'>for</span> <span class='ident'>Table</span> {}
 <span class='kw'>impl</span> <span class='ident'>ResponseResult</span> <span class='kw'>for</span> <span class='ident'>Table</span> {}
-<span class='kw'>impl</span> <span class='ident'>cmn</span>::<span class='ident'>Resource</span> <span class='kw'>for</span> <span class='ident'>Table</span> {}
 
 
 <span class='doccomment'>/// There is no detailed description.</span>
@@ -8991,7 +8994,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -9016,7 +9018,7 @@
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Bigquery</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>TableMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>TableMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>TableMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
     
@@ -9126,7 +9128,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -9151,7 +9152,7 @@
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Bigquery</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>DatasetMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>DatasetMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>DatasetMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
     
@@ -9257,7 +9258,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -9282,7 +9282,7 @@
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Bigquery</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>JobMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>JobMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>JobMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
     
@@ -9377,7 +9377,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -9402,7 +9401,7 @@
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Bigquery</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>TabledataMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>TabledataMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>TabledataMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
     
@@ -9453,7 +9452,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// extern crate hyper;</span>
 <span class='doccomment'>/// extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// extern crate serde;</span>
 <span class='doccomment'>/// extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// </span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -9478,7 +9476,7 @@
     <span class='ident'>hub</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Bigquery</span><span class='op'>&lt;</span><span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>cmn</span>::<span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>ProjectMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ResourceMethodsBuilder</span> <span class='kw'>for</span> <span class='ident'>ProjectMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {}
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> <span class='ident'>ProjectMethods</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>C</span>, <span class='ident'>NC</span>, <span class='ident'>A</span><span class='op'>&gt;</span> {
     
@@ -9517,7 +9515,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Table;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -9638,7 +9635,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -9799,7 +9797,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Table;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -9918,7 +9915,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -10069,7 +10067,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -10187,7 +10184,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -10341,7 +10339,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -10450,7 +10447,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Delete</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -10588,7 +10586,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -10698,7 +10695,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -10846,7 +10844,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Table;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -10967,7 +10964,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -11128,7 +11126,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Dataset;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -11247,7 +11244,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -11398,7 +11396,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -11506,7 +11503,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -11644,7 +11642,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -11765,7 +11762,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -11917,7 +11915,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Dataset;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -12036,7 +12033,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -12187,7 +12185,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -12299,7 +12296,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Delete</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -12435,7 +12433,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Dataset;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -12552,7 +12549,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -12693,7 +12691,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::QueryRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -12810,7 +12807,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -12951,7 +12949,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -13079,7 +13076,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -13249,7 +13247,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -13384,7 +13381,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -13553,7 +13551,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -13661,7 +13658,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -13799,7 +13797,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::Job;</span>
 <span class='doccomment'>/// use std::fs;</span>
@@ -13916,7 +13913,7 @@
         <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>should_ask_dlg_for_url</span> <span class='op'>=</span> <span class='boolval'>false</span>;
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>upload_url_from_server</span> <span class='op'>=</span> <span class='boolval'>true</span>;
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>upload_url_from_server</span>;
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>upload_url</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='prelude-val'>None</span>;
 
         <span class='kw'>loop</span> {
@@ -13928,7 +13925,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>if</span> <span class='ident'>should_ask_dlg_for_url</span> <span class='op'>&amp;&amp;</span> (<span class='ident'>upload_url</span> <span class='op'>=</span> <span class='ident'>dlg</span>.<span class='ident'>upload_url</span>()) <span class='op'>==</span> () <span class='op'>&amp;&amp;</span> <span class='ident'>upload_url</span>.<span class='ident'>is_some</span>() {
@@ -13950,6 +13948,9 @@
                             <span class='ident'>mp_reader</span>.<span class='ident'>reserve_exact</span>(<span class='number'>2</span>);
                             <span class='kw'>let</span> <span class='ident'>size</span> <span class='op'>=</span> <span class='ident'>reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>End</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
                         <span class='ident'>reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
+                        <span class='kw'>if</span> <span class='ident'>size</span> <span class='op'>&gt;</span> <span class='number'>0</span> {
+                        	<span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>UploadSizeLimitExceeded</span>(<span class='ident'>size</span>, <span class='number'>0</span>)
+                        }
                             <span class='ident'>mp_reader</span>.<span class='ident'>add_part</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>request_value_reader</span>, <span class='ident'>request_size</span>, <span class='ident'>json_mime_type</span>.<span class='ident'>clone</span>())
                                      .<span class='ident'>add_part</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>reader</span>, <span class='ident'>size</span>, <span class='ident'>reader_mime_type</span>.<span class='ident'>clone</span>());
                             <span class='kw'>let</span> <span class='ident'>mime_type</span> <span class='op'>=</span> <span class='ident'>mp_reader</span>.<span class='ident'>mime_type</span>();
@@ -13998,6 +13999,9 @@
                     <span class='kw'>if</span> <span class='ident'>protocol</span> <span class='op'>==</span> <span class='string'>&quot;resumable&quot;</span> {
                         <span class='kw'>let</span> <span class='ident'>size</span> <span class='op'>=</span> <span class='ident'>reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>End</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
                         <span class='ident'>reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
+                        <span class='kw'>if</span> <span class='ident'>size</span> <span class='op'>&gt;</span> <span class='number'>0</span> {
+                        	<span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>UploadSizeLimitExceeded</span>(<span class='ident'>size</span>, <span class='number'>0</span>)
+                        }
                         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                         <span class='kw'>let</span> <span class='ident'>upload_result</span> <span class='op'>=</span> {
                             <span class='kw'>let</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='ident'>res</span>.<span class='ident'>headers</span>.<span class='ident'>get</span>::<span class='op'>&lt;</span><span class='ident'>Location</span><span class='op'>&gt;</span>().<span class='ident'>expect</span>(<span class='string'>&quot;Location header is part of protocol&quot;</span>).<span class='number'>0</span>;
@@ -14010,7 +14014,7 @@
                                 <span class='ident'>delegate</span>: <span class='ident'>dlg</span>,
                                 <span class='ident'>auth</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>auth</span>.<span class='ident'>borrow_mut</span>(),
                                 <span class='ident'>user_agent</span>: <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>_user_agent</span>,
-                                <span class='ident'>auth_token</span>: <span class='ident'>auth_header</span>.<span class='number'>0</span>.<span class='ident'>clone</span>(),
+                                <span class='ident'>auth_header</span>: <span class='ident'>auth_header</span>.<span class='ident'>clone</span>(),
                                 <span class='ident'>url</span>: <span class='ident'>url</span>,
                                 <span class='ident'>reader</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>reader</span>,
                                 <span class='ident'>media_type</span>: <span class='ident'>reader_mime_type</span>.<span class='ident'>clone</span>(),
@@ -14152,7 +14156,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// use bigquery2::TableDataInsertAllRequest;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
@@ -14273,7 +14276,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='ident'>request_value_reader</span>.<span class='ident'>seek</span>(<span class='ident'>io</span>::<span class='ident'>SeekFrom</span>::<span class='ident'>Start</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
@@ -14434,7 +14438,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -14559,7 +14562,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())
@@ -14731,7 +14735,6 @@
 <span class='doccomment'>/// ```test_harness,no_run</span>
 <span class='doccomment'>/// # extern crate hyper;</span>
 <span class='doccomment'>/// # extern crate &quot;yup-oauth2&quot; as oauth2;</span>
-<span class='doccomment'>/// # extern crate serde;</span>
 <span class='doccomment'>/// # extern crate &quot;google-bigquery2&quot; as bigquery2;</span>
 <span class='doccomment'>/// # #[test] fn egal() {</span>
 <span class='doccomment'>/// # use std::default::Default;</span>
@@ -14821,7 +14824,8 @@
                 <span class='ident'>dlg</span>.<span class='ident'>finished</span>(<span class='boolval'>false</span>);
                 <span class='kw'>return</span> <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span>
             }
-            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span>);
+            <span class='kw'>let</span> <span class='ident'>auth_header</span> <span class='op'>=</span> <span class='ident'>Authorization</span>(<span class='ident'>oauth2</span>::<span class='ident'>Scheme</span> { <span class='ident'>token_type</span>: <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>::<span class='ident'>Bearer</span>,
+                                                             <span class='ident'>access_token</span>: <span class='ident'>token</span>.<span class='ident'>unwrap</span>().<span class='ident'>access_token</span> });
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req_result</span> <span class='op'>=</span> {
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>client</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>hub</span>.<span class='ident'>client</span>.<span class='ident'>borrow_mut</span>();
                 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>req</span> <span class='op'>=</span> <span class='ident'>client</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>request</span>(<span class='ident'>hyper</span>::<span class='ident'>method</span>::<span class='ident'>Method</span>::<span class='ident'>Get</span>, <span class='ident'>url</span>.<span class='ident'>as_slice</span>())

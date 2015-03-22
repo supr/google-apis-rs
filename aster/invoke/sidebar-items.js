@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["Invoke",""]],"struct":[["Identity",""]]});
+initSidebarItems({"struct":[["Identity",""]],"trait":[["Invoke",""]]});

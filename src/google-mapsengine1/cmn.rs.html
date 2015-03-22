@@ -432,6 +432,11 @@
 <span id="390">390</span>
 <span id="391">391</span>
 <span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
 </pre><pre class='rust '>
 <span class='comment'>// COPY OF &#39;src/rust/cmn.rs&#39;</span>
 <span class='comment'>// DO NOT EDIT</span>
@@ -441,6 +446,7 @@
 
 <span class='kw'>use</span> <span class='ident'>mime</span>::{<span class='ident'>Mime</span>, <span class='ident'>TopLevel</span>, <span class='ident'>SubLevel</span>, <span class='ident'>Attr</span>, <span class='ident'>Value</span>};
 <span class='kw'>use</span> <span class='ident'>oauth2</span>;
+<span class='kw'>use</span> <span class='ident'>oauth2</span>::<span class='ident'>TokenType</span>;
 <span class='kw'>use</span> <span class='ident'>hyper</span>;
 <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>header</span>::{<span class='ident'>ContentType</span>, <span class='ident'>ContentLength</span>, <span class='ident'>Headers</span>, <span class='ident'>UserAgent</span>, <span class='ident'>Authorization</span>};
 <span class='kw'>use</span> <span class='ident'>hyper</span>::<span class='ident'>http</span>::<span class='ident'>LINE_ENDING</span>;
@@ -632,6 +638,10 @@
     <span class='doccomment'>/// The http connection failed</span>
     <span class='ident'>HttpError</span>(<span class='ident'>hyper</span>::<span class='ident'>HttpError</span>),
 
+    <span class='doccomment'>/// An attempt was made to upload a resource with size stored in field `.0`</span>
+    <span class='doccomment'>/// even though the maximum upload size is what is stored in field `.1`.</span>
+    <span class='ident'>UploadSizeLimitExceeded</span>(<span class='ident'>u64</span>, <span class='ident'>u64</span>),
+
     <span class='doccomment'>/// We needed an API key for authentication, but didn&#39;t obtain one.</span>
     <span class='doccomment'>/// Neither through the authenticator, nor through the Delegate.</span>
     <span class='ident'>MissingAPIKey</span>,
@@ -799,7 +809,7 @@
     <span class='kw'>pub</span> <span class='ident'>delegate</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>Delegate</span>,
     <span class='kw'>pub</span> <span class='ident'>auth</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>A</span>,
     <span class='kw'>pub</span> <span class='ident'>user_agent</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>str</span>,
-    <span class='kw'>pub</span> <span class='ident'>auth_token</span>: <span class='ident'>String</span>,
+    <span class='kw'>pub</span> <span class='ident'>auth_header</span>: <span class='ident'>Authorization</span><span class='op'>&lt;</span><span class='ident'>oauth2</span>::<span class='ident'>Scheme</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>url</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>str</span>,
     <span class='kw'>pub</span> <span class='ident'>reader</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='ident'>ReadSeek</span>,
     <span class='kw'>pub</span> <span class='ident'>media_type</span>: <span class='ident'>Mime</span>,
@@ -813,7 +823,7 @@
     <span class='kw'>fn</span> <span class='ident'>query_transfer_status</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> (<span class='ident'>u64</span>, <span class='ident'>hyper</span>::<span class='ident'>HttpResult</span><span class='op'>&lt;</span><span class='ident'>hyper</span>::<span class='ident'>client</span>::<span class='ident'>Response</span><span class='op'>&gt;</span>) {
         <span class='self'>self</span>.<span class='ident'>client</span>.<span class='ident'>post</span>(<span class='self'>self</span>.<span class='ident'>url</span>)
             .<span class='ident'>header</span>(<span class='ident'>UserAgent</span>(<span class='self'>self</span>.<span class='ident'>user_agent</span>.<span class='ident'>to_string</span>()))
-            .<span class='ident'>header</span>(<span class='ident'>Authorization</span>(<span class='string'>&quot;Bearer &quot;</span>.<span class='ident'>to_string</span>() <span class='op'>+</span> <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>auth_token</span>));
+            .<span class='ident'>header</span>(<span class='self'>self</span>.<span class='ident'>auth_header</span>.<span class='ident'>clone</span>());
         (<span class='number'>0</span>, <span class='prelude-val'>Err</span>(<span class='ident'>hyper</span>::<span class='ident'>error</span>::<span class='ident'>HttpError</span>::<span class='ident'>HttpStatusError</span>))
     }
 

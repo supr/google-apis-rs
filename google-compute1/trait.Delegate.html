@@ -43,7 +43,7 @@
     <section id='main' class="content trait">
 <h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>google-compute1</a>::<wbr><a class='trait' href=''>Delegate</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-496' href='../src/google-compute1/cmn.rs.html#97-185'>[src]</a></span></h1>
+        </span><a id='src-497' href='../src/google-compute1/cmn.rs.html#98-186'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait Delegate {
     fn <a href='#method.begin' class='fnname'>begin</a>(&amp;mut self, <a class='struct' href='../google-compute1/struct.MethodInfo.html' title='google-compute1::MethodInfo'>MethodInfo</a>) { ... }
     fn <a href='#method.http_error' class='fnname'>http_error</a>(&amp;mut self, &amp;<a class='enum' href='../hyper/error/enum.HttpError.html' title='hyper::error::HttpError'>HttpError</a>) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a> { ... }
@@ -52,7 +52,7 @@
     fn <a href='#method.upload_url' class='fnname'>upload_url</a>(&amp;mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt; { ... }
     fn <a href='#method.store_upload_url' class='fnname'>store_upload_url</a>(&amp;mut self, url: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) { ... }
     fn <a href='#method.response_json_decode_error' class='fnname'>response_json_decode_error</a>(&amp;mut self, json_encoded_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, json_decode_error: &amp;<a class='enum' href='../serde/json/error/enum.Error.html' title='serde::json::error::Error'>Error</a>) { ... }
-    fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, JsonServerError) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a> { ... }
+    fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../google-compute1/struct.JsonServerError.html' title='google-compute1::JsonServerError'>JsonServerError</a>) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a> { ... }
     fn <a href='#method.pre_request' class='fnname'>pre_request</a>(&amp;mut self) { ... }
     fn <a href='#method.finished' class='fnname'>finished</a>(&amp;mut self, is_success: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) { ... }
 }</pre><div class='docblock'><p>A trait specifying functionality to help controlling any request performed by the API.
@@ -96,7 +96,7 @@ accordingly.</p>
                            href="#arguments">Arguments</a></h1>
 <p><code>json_encoded_value</code> - The json-encoded value which failed to decode.
 <code>json_decode_error</code> - The decoder error</p>
-</div><h3 id='method.http_failure' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, JsonServerError) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a></code></h3><div class='docblock'><p>Called whenever the http request returns with a non-success status code.
+</div><h3 id='method.http_failure' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../google-compute1/struct.JsonServerError.html' title='google-compute1::JsonServerError'>JsonServerError</a>) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a></code></h3><div class='docblock'><p>Called whenever the http request returns with a non-success status code.
 This can involve authentication issues, or anything else that very much 
 depends on the used API method.
 The delegate should check the status, header and decoded json error to decide
