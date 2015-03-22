@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>google-customsearch1</a>::<wbr><a class='struct' href=''>Customsearch</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-1573' href='../src/google-customsearch1/lib.rs.html#311-317'>[src]</a></span></h1>
+        </span><a id='src-2713' href='../src/google-customsearch1/lib.rs.html#313-319'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Customsearch&lt;C, NC, A&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Central instance to access all Customsearch related resource activities</p>
@@ -113,6 +113,7 @@
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Auth: Missing API Key - used if there are no scopes&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;OAuth2: Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Cancelled</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Operation cancelled by user&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>UploadSizeLimitExceeded</span>(<span class='ident'>size</span>, <span class='ident'>max_size</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Upload size too big: {} of {}&quot;</span>, <span class='ident'>size</span>, <span class='ident'>max_size</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (hyper::client::Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;You added custom parameter which is part of builder: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),
@@ -124,7 +125,7 @@
 <h4 id='method.cse' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.cse' class='fnname'>cse</a>(&amp;'a self) -&gt; <a class='struct' href='../google-customsearch1/struct.CseMethods.html' title='google-customsearch1::CseMethods'>CseMethods</a>&lt;'a, C, NC, A&gt;</code></h4>
 <h4 id='method.user_agent' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.user_agent' class='fnname'>user_agent</a>(&amp;mut self, agent_name: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
 <div class='docblock'><p>Set the user-agent header field to use in all requests to the server.
-It defaults to <code>google-api-rust-client/0.0.1</code>.</p>
+It defaults to <code>google-api-rust-client/0.1.0</code>.</p>
 
 <p>Returns the previously set user-agent.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a, C, NC, A&gt; <a class='trait' href='../google-customsearch1/trait.Hub.html' title='google-customsearch1::Hub'>Hub</a> for <a class='struct' href='../google-customsearch1/struct.Customsearch.html' title='google-customsearch1::Customsearch'>Customsearch</a>&lt;C, NC, A&gt;</code></h3><div class='impl-items'></div></section>

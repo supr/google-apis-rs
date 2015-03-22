@@ -43,8 +43,8 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>google-pubsub1_beta2</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/google-pubsub1_beta2/lib.rs.html#5-4449'>[src]</a></span></h1>
-<div class='docblock'><p>This documentation was generated from <em>pubsub</em> crate version <em>0.0.1+20150213</em>, where <em>20150213</em> is the exact revision of the <em>pubsub:v1beta2</em> schema built by the <a href="http://www.makotemplates.org/">mako</a> code generator <em>v0.0.1</em>.
+        </span><a id='src-0' href='../src/google-pubsub1_beta2/lib.rs.html#5-4423'>[src]</a></span></h1>
+<div class='docblock'><p>This documentation was generated from <em>pubsub</em> crate version <em>0.1.0+20150213</em>, where <em>20150213</em> is the exact revision of the <em>pubsub:v1beta2</em> schema built by the <a href="http://www.makotemplates.org/">mako</a> code generator <em>v0.1.0</em>.
 The original source code is <a href="https://github.com/Byron/google-apis-rs/tree/master/gen/pubsub1_beta2">on github</a>.</p>
 
 <h1 id="features" class='section-header'><a
@@ -157,6 +157,7 @@ google-pubsub1_beta2 = &quot;*&quot;
     <span class='prelude-ty'>Result</span>::<span class='ident'>HttpError</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;HTTPERROR: {:?}&quot;</span>, <span class='ident'>err</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingAPIKey</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Auth: Missing API Key - used if there are no scopes&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>MissingToken</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;OAuth2: Missing Token&quot;</span>),
+    <span class='prelude-ty'>Result</span>::<span class='ident'>Cancelled</span> <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Operation cancelled by user&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>UploadSizeLimitExceeded</span>(<span class='ident'>size</span>, <span class='ident'>max_size</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Upload size too big: {} of {}&quot;</span>, <span class='ident'>size</span>, <span class='ident'>max_size</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>Failure</span>(_) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;General Failure (hyper::client::Response doesn&#39;t print)&quot;</span>),
     <span class='prelude-ty'>Result</span>::<span class='ident'>FieldClash</span>(<span class='ident'>clashed_field</span>) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;You added custom parameter which is part of builder: {:?}&quot;</span>, <span class='ident'>clashed_field</span>),

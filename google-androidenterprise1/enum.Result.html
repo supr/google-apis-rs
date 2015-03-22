@@ -43,12 +43,13 @@
     <section id='main' class="content enum">
 <h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>google-androidenterprise1</a>::<wbr><a class='enum' href=''>Result</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-633' href='../src/google-androidenterprise1/cmn.rs.html#197-224'>[src]</a></span></h1>
+        </span><a id='src-670' href='../src/google-androidenterprise1/cmn.rs.html#216-246'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Result&lt;T = <a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt; {
     HttpError(<a class='enum' href='../hyper/error/enum.HttpError.html' title='hyper::error::HttpError'>HttpError</a>),
     UploadSizeLimitExceeded(<a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>, <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>),
     MissingAPIKey,
     MissingToken,
+    Cancelled,
     FieldClash(&amp;'static <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>),
     JsonDecodeError(<a class='enum' href='../serde/json/error/enum.Error.html' title='serde::json::error::Error'>Error</a>),
     Failure(<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>),
@@ -61,6 +62,7 @@ even though the maximum upload size is what is stored in field <code>.1</code>.<
 </div></td></tr><tr><td id='variant.MissingAPIKey'><a class='stability Unmarked' title='No stability level'></a><code>MissingAPIKey</code></td><td><div class='docblock'><p>We needed an API key for authentication, but didn&#39;t obtain one.
 Neither through the authenticator, nor through the Delegate.</p>
 </div></td></tr><tr><td id='variant.MissingToken'><a class='stability Unmarked' title='No stability level'></a><code>MissingToken</code></td><td><div class='docblock'><p>We required a Token, but didn&#39;t get one from the Authenticator</p>
+</div></td></tr><tr><td id='variant.Cancelled'><a class='stability Unmarked' title='No stability level'></a><code>Cancelled</code></td><td><div class='docblock'><p>The delgate instructed to cancel the operation</p>
 </div></td></tr><tr><td id='variant.FieldClash'><a class='stability Unmarked' title='No stability level'></a><code>FieldClash</code></td><td><div class='docblock'><p>An additional, free form field clashed with one of the built-in optional ones</p>
 </div></td></tr><tr><td id='variant.JsonDecodeError'><a class='stability Unmarked' title='No stability level'></a><code>JsonDecodeError</code></td><td><div class='docblock'><p>Shows that we failed to decode the server response.
 This can happen if the protocol changes in conjunction with strict json decoding.</p>

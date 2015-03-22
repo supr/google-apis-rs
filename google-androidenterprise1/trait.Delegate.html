@@ -43,7 +43,7 @@
     <section id='main' class="content trait">
 <h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>google-androidenterprise1</a>::<wbr><a class='trait' href=''>Delegate</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-497' href='../src/google-androidenterprise1/cmn.rs.html#98-186'>[src]</a></span></h1>
+        </span><a id='src-507' href='../src/google-androidenterprise1/cmn.rs.html#102-205'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait Delegate {
     fn <a href='#method.begin' class='fnname'>begin</a>(&amp;mut self, <a class='struct' href='../google-androidenterprise1/struct.MethodInfo.html' title='google-androidenterprise1::MethodInfo'>MethodInfo</a>) { ... }
     fn <a href='#method.http_error' class='fnname'>http_error</a>(&amp;mut self, &amp;<a class='enum' href='../hyper/error/enum.HttpError.html' title='hyper::error::HttpError'>HttpError</a>) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a> { ... }
@@ -52,8 +52,10 @@
     fn <a href='#method.upload_url' class='fnname'>upload_url</a>(&amp;mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt; { ... }
     fn <a href='#method.store_upload_url' class='fnname'>store_upload_url</a>(&amp;mut self, url: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) { ... }
     fn <a href='#method.response_json_decode_error' class='fnname'>response_json_decode_error</a>(&amp;mut self, json_encoded_value: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, json_decode_error: &amp;<a class='enum' href='../serde/json/error/enum.Error.html' title='serde::json::error::Error'>Error</a>) { ... }
-    fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../google-androidenterprise1/struct.JsonServerError.html' title='google-androidenterprise1::JsonServerError'>JsonServerError</a>) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a> { ... }
+    fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../google-androidenterprise1/struct.JsonServerError.html' title='google-androidenterprise1::JsonServerError'>JsonServerError</a>&gt;) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a> { ... }
     fn <a href='#method.pre_request' class='fnname'>pre_request</a>(&amp;mut self) { ... }
+    fn <a href='#method.chunk_size' class='fnname'>chunk_size</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a> { ... }
+    fn <a href='#method.cancel_chunk_upload' class='fnname'>cancel_chunk_upload</a>(&amp;mut self, chunk: &amp;ContentRange) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a> { ... }
     fn <a href='#method.finished' class='fnname'>finished</a>(&amp;mut self, is_success: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) { ... }
 }</pre><div class='docblock'><p>A trait specifying functionality to help controlling any request performed by the API.
 The trait has a conservative default implementation.</p>
@@ -96,7 +98,7 @@ accordingly.</p>
                            href="#arguments">Arguments</a></h1>
 <p><code>json_encoded_value</code> - The json-encoded value which failed to decode.
 <code>json_decode_error</code> - The decoder error</p>
-</div><h3 id='method.http_failure' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='struct' href='../google-androidenterprise1/struct.JsonServerError.html' title='google-androidenterprise1::JsonServerError'>JsonServerError</a>) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a></code></h3><div class='docblock'><p>Called whenever the http request returns with a non-success status code.
+</div><h3 id='method.http_failure' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.http_failure' class='fnname'>http_failure</a>(&amp;mut self, _: &amp;<a class='struct' href='../hyper/client/response/struct.Response.html' title='hyper::client::response::Response'>Response</a>, <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../google-androidenterprise1/struct.JsonServerError.html' title='google-androidenterprise1::JsonServerError'>JsonServerError</a>&gt;) -&gt; <a class='enum' href='../yup-oauth2/helper/enum.Retry.html' title='yup-oauth2::helper::Retry'>Retry</a></code></h3><div class='docblock'><p>Called whenever the http request returns with a non-success status code.
 This can involve authentication issues, or anything else that very much 
 depends on the used API method.
 The delegate should check the status, header and decoded json error to decide
@@ -104,6 +106,13 @@ whether to retry or not. In the latter case, the underlying call will fail.</p>
 </div><h3 id='method.pre_request' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.pre_request' class='fnname'>pre_request</a>(&amp;mut self)</code></h3><div class='docblock'><p>Called prior to sending the main request of the given method. It can be used to time
 the call or to print progress information.
 It&#39;s also useful as you can be sure that a request will definitely be made.</p>
+</div><h3 id='method.chunk_size' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.chunk_size' class='fnname'>chunk_size</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h3><div class='docblock'><p>Return the size of each chunk of a resumable upload.
+Must be a power of two, with 1&lt;&lt;18 being the smallest allowed chunk size.
+Will be called once before starting any resumable upload.</p>
+</div><h3 id='method.cancel_chunk_upload' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.cancel_chunk_upload' class='fnname'>cancel_chunk_upload</a>(&amp;mut self, chunk: &amp;ContentRange) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h3><div class='docblock'><p>Called before the given chunk is uploaded to the server.
+If true is returned, the upload will be interrupted.
+However, it may be resumable if you stored the upload URL in a previous call
+to <code>store_upload_url()</code></p>
 </div><h3 id='method.finished' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.finished' class='fnname'>finished</a>(&amp;mut self, is_success: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h3><div class='docblock'><p>Called before the API request method returns, in every case. It can be used to clean up
 internal state between calls to the API.
 This call always has a matching call to <code>begin(...)</code>.</p>

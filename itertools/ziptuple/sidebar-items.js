@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["TrustedIterator","A **TrustedIterator** has exact size, always."]],"struct":[["Zip","Create an iterator running multiple iterators in lockstep."],["ZipTrusted","Create an iterator running multiple iterators in lockstep."]]});
+initSidebarItems({"struct":[["Zip","Create an iterator running multiple iterators in lockstep."],["ZipTrusted","Create an iterator running multiple iterators in lockstep."]],"trait":[["TrustedIterator","A **TrustedIterator** has exact size, always."]]});

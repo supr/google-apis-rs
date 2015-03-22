@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["IntoLifetime",""],["IntoLifetimeDef",""]],"struct":[["LifetimeDefBuilder",""]]});
+initSidebarItems({"struct":[["LifetimeDefBuilder",""]],"trait":[["IntoLifetime",""],["IntoLifetimeDef",""]]});
